@@ -1,0 +1,10 @@
+{
+  "listingMap": {
+    "slides/introduction.qmd": [
+      "teaching"
+    ],
+    "slides/wrangling.qmd": [
+      "teaching"
+    ]
+  }
+}
