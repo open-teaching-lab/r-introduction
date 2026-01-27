@@ -1,4 +1,3 @@
-# Introduction à l'analyse quantitative avec R
+# R software course
 
-Un cours introductif de `R` pour découvrir la richesse de l'écosystème de valorisation des données.
-
+An introductory course in `R` to explore the richness of the data visualization ecosystem.
