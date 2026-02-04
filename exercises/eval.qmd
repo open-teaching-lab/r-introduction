@@ -110,7 +110,7 @@ Utiliser `gt` pour représenter cela dans un tableau, par exemple dans le style
 de celui disponible plus bas (il n'est pas obligatoire d'aller aussi loin
 dans la mise en forme mais essayez d'obtenir un beau tableau tout de même).
 
-_Note: vous pouvez contrôler vos résultats obtenus avec [cette page](https://www.gouvernement.fr/actualite/election-presidentielle-les-resultats-du-premier-tour)_
+_Note: vous pouvez contrôler vos résultats obtenus avec [this page](https://www.gouvernement.fr/actualite/election-presidentielle-les-resultats-du-premier-tour)_
 
 :::
 

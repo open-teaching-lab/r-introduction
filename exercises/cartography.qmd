@@ -11,8 +11,8 @@ bibliography: ../references.bib
 
 <details>
 <summary>
-Dérouler les _slides_ ci-dessous ou [cliquer ici](/slides/ggplot.qmd)
-pour afficher les slides en plein écran.
+Check out the _slides_ below or [click here](/slides/ggplot.qmd)
+to view the slides in full screen.
 </summary>
 
 
@@ -564,7 +564,7 @@ variable de densité, représenter la même carte avec l'argument `breaks` égal
 on peut tester la représentation par ronds proportionnels. Représenter la
 même information mais en utilisant cette fois des ronds proportionnels. 
 
-4. [Cette page](https://transcarto.github.io/rcartograms/TRANSCARTO_cartograms.html)
+4. [this page](https://transcarto.github.io/rcartograms/TRANSCARTO_cartograms.html)
 propose de nombreuses représentations de données. Reproduire la figure ci-dessous
 avec notre jeu de données du Finistère
 

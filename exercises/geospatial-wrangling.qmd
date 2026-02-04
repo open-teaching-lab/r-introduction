@@ -10,8 +10,8 @@ number-sections: true
 
 <details>
 <summary>
-Dérouler les _slides_ ci-dessous ou [cliquer ici](/slides/geospatial.qmd)
-pour afficher les slides en plein écran.
+Check out the _slides_ below or [click here](/slides/geospatial.qmd)
+to view the slides in full screen.
 </summary>
 
 

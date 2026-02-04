@@ -11,8 +11,8 @@ code-annotations: hover
 
 <details>
 <summary>
-Dérouler les _slides_ ci-dessous ou [cliquer ici](/slides/introduction.qmd)
-pour afficher les slides en plein écran.
+Check out the _slides_ below or [click here](/slides/introduction.qmd)
+to view the slides in full screen.
 </summary>
 
 
