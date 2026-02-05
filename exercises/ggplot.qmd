@@ -24,8 +24,6 @@ to view the slides in full screen.
 In this practical session,
 We will learn how to create synthetic graphical representations with {{< fa brands r-project >}}, which is very well equipped for this task thanks to the `ggplot2` library. This library implements a [grammar of graphics](https://fr.wikibooks.org/wiki/Programmer_en_R/Comprendre_la_grammaire_des_graphiques) that is flexible, consistent, and easy to use.
 
-If you are interested in `Python` {{< fa brands python >}}, a very similar version of this practical session is available in [my ENSAE course](https://pythonds.linogaliana.fr/content/visualisation/matplotlib.html).
-
 
 ::: {.callout-note}
 
