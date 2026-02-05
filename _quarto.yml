@@ -11,6 +11,8 @@ project:
     - utils/report.qmd
     - "/cards/**/*.qmd"
     - "/exercises/**/*.qmd"
+  resources:
+    - "CNAME"
 
 website:
   title: "Introduction aux méthodes quantitatives avec {{< fa brands r-project >}}"
@@ -48,7 +50,7 @@ format:
     code-annotations: hover
     code-link: true
 
-author: Lino Galiana
+author: NC
 
 
 #knitr:
