@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Lino Galiana">
+<meta name="author" content="NC">
 
-<title>Introduction aux méthodes quantitatives avec  - Publications reproductibles avec  et Quarto</title>
+<title>Introduction aux méthodes quantitatives avec  - Reproducible dynamic report generation with  and Quarto</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -99,9 +99,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta name="twitter:title" content="Introduction aux méthodes quantitatives avec  - Publications reproductibles avec  et Quarto">
+<meta name="twitter:title" content="Introduction aux méthodes quantitatives avec  - Reproducible dynamic report generation with  and Quarto">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://rgeo.linogaliana.fr/cards/version-light/baby.png">
+<meta name="twitter:image" content="https://r-intro.openteachinglab.io/cards/version-light/baby.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -152,7 +152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-visualiser">    
         <li>
     <a class="dropdown-item" href="../exercises/ggplot.html" rel="" target="">
- <span class="dropdown-text">Produire des représentations graphiques avec <i class="fa-brands fa-r-project" aria-label="r-project"></i> et <code>ggplot2</code></span></a>
+ <span class="dropdown-text">Data visualisation with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <code>ggplot2</code></span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../exercises/cartography.html" rel="" target="">
@@ -167,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-communiquer">    
         <li>
     <a class="dropdown-item" href="../exercises/quarto.html" rel="" target="">
- <span class="dropdown-text">Publications reproductibles avec <i class="fa-brands fa-r-project" aria-label="r-project"></i> et <code>Quarto</code></span></a>
+ <span class="dropdown-text">Reproducible dynamic report generation with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <code>Quarto</code></span></a>
   </li>  
     </ul>
   </li>
@@ -203,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#initialisation-du-document" id="toc-initialisation-du-document" class="nav-link active" data-scroll-target="#initialisation-du-document"><span class="header-section-number">1</span> Initialisation du document</a></li>
+  <li><a href="#initializing-the-document" id="toc-initializing-the-document" class="nav-link active" data-scroll-target="#initializing-the-document"><span class="header-section-number">1</span> Initializing the document</a></li>
   </ul>
 </nav>
     </div>
@@ -212,7 +212,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Publications reproductibles avec <i class="fa-brands fa-r-project" aria-label="r-project"></i> et <code>Quarto</code></h1>
+<h1 class="title">Reproducible dynamic report generation with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <code>Quarto</code></h1>
 </div>
 
 
@@ -222,7 +222,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Lino Galiana </p>
+             <p>NC </p>
           </div>
   </div>
     
@@ -238,14 +238,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <details>
 <summary>
-Dérouler les <em>slides</em> ci-dessous ou <a href="../slides/quarto.html">cliquer ici</a> pour afficher les slides en plein écran.
+Check out the <em>slides</em> below or <a href="../slides/quarto.html">click here</a> to view the slides in full screen.
 </summary>
 <div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><iframe class="sourceCode yaml code-with-copy" src="/slides/quarto.html"></iframe></div>
 </details>
-<p>L’un des défis majeurs dans la recherche et l’analyse de données est la communication <strong>transparente</strong> et <strong>reproductible</strong> des résultats ainsi que la <strong>collaboration</strong>. Les publications reproductibles offrent une solution à ce défi en intégrant le code, les données et les analyses dans un format permettant à quiconque de connaître les traitements de données mis en oeuvre et de reproduire les résultats exacts à condition de disposer du même environnement.</p>
-<p><code>Quarto</code>, l’outil qui a succédé à <code>R Markdown</code>, permet de produire des documents texte en y intégrant nativement des morceaux de code <code>R</code>. Ceci permet de fluidifier le processus de rédaction d’une publication, en réduisant fortement le nombre de gestes manuels nécessaires pour inclure des graphiques ou du code dans un document : plutôt qu’avoir un code Stata ayant généré des sorties Excel/Calc intégrées dans un document Word ou transformées en table LaTeX, on dispose d’un unique document-source qui contient à la fois le texte et les codes qui produisent les sorties du document final.</p>
-<p>Avec <code>Quarto</code>, nous allons pouvoir dissocier le fond de la forme. Cela nous permettra de nous concentrer sur le contenu prioritaire.</p>
-<p>Un exemple de ce rapport mis en forme est disponible sur <a href="../utils/report.html">cette page</a>.</p>
+<p>One of the major challenges in research and data analysis is the <strong>transparent</strong> and <strong>reproducible</strong> communication of results, as well as <strong>collaboration</strong>. Reproducible publications offer a solution to this challenge by integrating code, data, and analyses into a format that allows anyone to understand the data processing steps that were implemented and to reproduce the exact results, provided they have the same environment.</p>
+<p><code>Quarto</code>, the tool that succeeded to <code>R Markdown</code>, makes it possible to produce text documents while natively integrating chunks of <code>R</code> code. This helps streamline the writing process of a publication by greatly reducing the number of manual steps required to include graphics or code in a document: rather than having Stata code that generates Excel/Calc outputs which are then integrated into a Word document or transformed into LaTeX tables, we rely on a single source document that contains both the text and the code that produces the outputs of the final document.</p>
+<p>With <code>Quarto</code>, we are able to separate content from presentation. This allows us to focus on the most important aspects: the substance of the analysis.</p>
+<p>An example of such a formatted report is available on <a href="../utils/report.html">this page</a>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -256,38 +256,38 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Ce TD est moins guidé qu’habituellement pour offrir de la liberté dans l’exploration pour obtenir un document.</p>
+<p>This practical session is less guided than usual in order to give you more freedom to explore and produce a document.</p>
 </div>
 </div>
-<section id="initialisation-du-document" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="initialisation-du-document"><span class="header-section-number">1</span> Initialisation du document</h2>
+<section id="initializing-the-document" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="initializing-the-document"><span class="header-section-number">1</span> Initializing the document</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercice 1: Création du fichier
+Exercice 1: Creating the file
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Cliquer sur <code>File &gt; New file &gt; Quarto document</code>:
+<li>Click on <code>File &gt; New file &gt; Quarto document</code>:
 <ul>
-<li>Donner un titre et un.e auteur.e au rapport</li>
-<li>Choisir <code>HTML</code> comme format de sortie</li>
-<li>Décocher la case <code>Use visual markdown editor</code></li>
+<li>Provide a title and an author for the report</li>
+<li>Choose <code>HTML</code> as the output format</li>
+<li>Uncheck the <code>Use visual markdown editor</code> option</li>
 </ul></li>
-<li>Sauvegarder le fichier sous le nom <code>report.qmd</code>.</li>
-<li>Dans le <em>header</em> du fichier, modifier les métadonnées de la publication (titre, auteur, date, etc.) en utilisant quelques unes des options de <a href="https://quarto.org/docs/reference/formats/html.html">cette page</a>.</li>
-<li>Ecrire une première phrase dans le corps du document en utilisant un ou deux éléments de la syntaxe <code>Markdown</code> pour la mise en forme. Par exemple, mettre une partie du texte en gras.</li>
-<li>Ajouter un titre de niveau 2 (deux <code>#</code>) pour créer une section <code>A propos</code> et proposer une ou deux phrases dedans</li>
-<li>Compiler en cliquant sur le bouton <code>Render</code>:</li>
+<li>Save the file under the name <code>report.qmd</code>.</li>
+<li>In the file <em>header</em>, modify the publication metadata (title, author, date, etc.) using some of the options from <a href="https://quarto.org/docs/reference/formats/html.html">this page</a>.</li>
+<li>Write a first sentence in the body of the document using one or two elements of <code>Markdown</code> syntax for formatting. For example, make part of the text bold.</li>
+<li>Add a level-2 heading (two <code>#</code>) to create an <code>About</code> section and write one or two sentences in it.</li>
+<li>Render the document by clicking on the <code>Render</code> button:</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://quarto.org/docs/get-started/hello/images/rstudio-render.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Source: <a href="https://quarto.org/docs/get-started/hello/rstudio.html#rendering">Hello Quarto! par <code>Posit</code></a></figcaption>
+<figcaption class="figure-caption">Source: <a href="https://quarto.org/docs/get-started/hello/rstudio.html#rendering">Hello Quarto! by <code>Posit</code></a></figcaption>
 </figure>
 </div>
 </div>
@@ -298,14 +298,14 @@ Exercice 1: Création du fichier
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercice 2: Insertion de sorties <code>R</code>
+Exercice 2: Inserting <code>R</code> outputs
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li><p>Choisir un des chapitres sur lesquels nous avons travaillé précédemment et pour lequel nous avons produit un graphique ou une carte. Reprendre les exemples de code de la correction (import de données et visualisations) et les introduire dans le document.</p></li>
-<li><p>Compiler. S’il y a des erreurs, lire celles-ci et les corriger pour avoir un document reproductible.</p></li>
-<li><p>Utiliser le package <code>GT</code> pour faire un beau tableau, par exemple un tableau de statistique descriptive (une moyenne par exemple).</p></li>
+<li><p>Choose one of the chapters we previously worked on for which we produced a graph or a map. Reuse the example code from the solution (data import and visualizations) and insert it into the document.</p></li>
+<li><p>Compile the document. If there are errors, read them carefully and fix them in order to obtain a reproducible document.</p></li>
+<li><p>Use the <code>GT</code> package to create a nice table, for example a descriptive statistics table (a mean, for instance).</p></li>
 </ol>
 </div>
 </div>
@@ -315,11 +315,11 @@ Exercice 2: Insertion de sorties <code>R</code>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercice 3: Du style !
+Exercice 3: Styling
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Customiser la sortie pour avoir un document esthétique. Pour avoir un document plus esthétique, vous pouvez utiliser un modèle.</p>
+<p>Customize the output to obtain an aesthetically pleasing document. To do so, you may use a template.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -332,7 +332,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Avec un <code>Mac</code> <i class="fa-brands fa-apple" aria-label="apple"></i>, certains caractères utiles sont plus complexes à mettre en oeuvre. Par exemple, <code>|</code> s’obtiendra avec le raccourci suivant: <kbd>MAJ</kbd>+<kbd>option</kbd>+<kbd>L</kbd></p>
+<p>On a <code>Mac</code> <i class="fa-brands fa-apple" aria-label="apple"></i>, some useful characters are more difficult to type. For example, <code>|</code> can be obtained using the following shortcut: <kbd>Shift</kbd> + <kbd>Option</kbd> + <kbd>L</kbd></p>
 </div>
 </div>
 

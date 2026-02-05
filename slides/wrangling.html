@@ -13,7 +13,7 @@
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.3.450">
 
-  <meta name="author" content="Lino Galiana">
+  <meta name="author" content="NC">
   <title>Introduction aux méthodes quantitatives avec </title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -396,7 +396,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <meta name="twitter:title" content="Introduction aux méthodes quantitatives avec ">
 <meta name="twitter:description" content="Chapitre 2: manipuler des données structurées">
-<meta name="twitter:image" content="https://rgeo.linogaliana.fr/cards/version-light/baby.png">
+<meta name="twitter:image" content="https://r-intro.openteachinglab.io/cards/version-light/baby.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 <body class="quarto-light">
@@ -545,15 +545,15 @@
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-1" data-code-lines="6">On convertit le <em>dataframe</em> standard en <code>tibble</code></span>
+<span data-code-lines="6" data-code-cell="annotated-cell-1" data-code-annotation="1">On convertit le <em>dataframe</em> standard en <code>tibble</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-1" data-code-lines="7">On ne garde que les stations services (valeurs <code>B316</code> de <code>TYPEQU</code>)</span>
+<span data-code-lines="7" data-code-cell="annotated-cell-1" data-code-annotation="2">On ne garde que les stations services (valeurs <code>B316</code> de <code>TYPEQU</code>)</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-1" data-code-lines="8">On crée une nouvelle colonne en faisant référence à celles existantes (sans guillemets!)</span>
+<span data-code-lines="8" data-code-cell="annotated-cell-1" data-code-annotation="3">On crée une nouvelle colonne en faisant référence à celles existantes (sans guillemets!)</span>
 </dd>
 </dl>
 </div>
@@ -599,19 +599,19 @@ Illustration du <em>split-apply-combine</em>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-2" data-code-lines="6">On convertit le <em>dataframe</em> standard en <code>tibble</code></span>
+<span data-code-lines="6" data-code-cell="annotated-cell-2" data-code-annotation="1">On convertit le <em>dataframe</em> standard en <code>tibble</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-2" data-code-lines="7">On ne garde que les stations services (valeurs <code>B316</code> de <code>TYPEQU</code>)</span>
+<span data-code-lines="7" data-code-cell="annotated-cell-2" data-code-annotation="2">On ne garde que les stations services (valeurs <code>B316</code> de <code>TYPEQU</code>)</span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-2" data-code-lines="8">On définit <code>DEP</code> comme une variable de stratification pour définir des groupes</span>
+<span data-code-lines="8" data-code-cell="annotated-cell-2" data-code-annotation="3">On définit <code>DEP</code> comme une variable de stratification pour définir des groupes</span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-2" data-code-lines="9">On résume les données en faisant la somme des stations services dans chaque groupe</span>
+<span data-code-lines="9" data-code-cell="annotated-cell-2" data-code-annotation="4">On résume les données en faisant la somme des stations services dans chaque groupe</span>
 </dd>
 </dl>
 </div>
@@ -759,11 +759,11 @@ Illustration du <em>split-apply-combine</em>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-7" data-code-lines="1">On importe la librairie <code>readr</code> pour avoir accès à la fonction <code>read_csv</code></span>
+<span data-code-lines="1" data-code-cell="annotated-cell-7" data-code-annotation="1">On importe la librairie <code>readr</code> pour avoir accès à la fonction <code>read_csv</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-7" data-code-lines="2">On utilise <code>read_csv</code> pour lire les données stockées dans le chemin relatif <code>dossier_donnees/nom_fichier.csv</code></span>
+<span data-code-lines="2" data-code-cell="annotated-cell-7" data-code-annotation="2">On utilise <code>read_csv</code> pour lire les données stockées dans le chemin relatif <code>dossier_donnees/nom_fichier.csv</code></span>
 </dd>
 </dl>
 </div>
@@ -881,11 +881,11 @@ Illustration du <em>split-apply-combine</em>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-12" data-code-lines="1">On importe la librairie <code>jsonlite</code> pour avoir accès à la fonction <code>fromJSON</code></span>
+<span data-code-lines="1" data-code-cell="annotated-cell-12" data-code-annotation="1">On importe la librairie <code>jsonlite</code> pour avoir accès à la fonction <code>fromJSON</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-12" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-12" data-code-lines="2">On utilise <code>fromJSON</code> pour lire les données stockées dans le chemin relatif <code>dossier_donnees/nom_fichier.csv</code></span>
+<span data-code-lines="2" data-code-cell="annotated-cell-12" data-code-annotation="2">On utilise <code>fromJSON</code> pour lire les données stockées dans le chemin relatif <code>dossier_donnees/nom_fichier.csv</code></span>
 </dd>
 </dl>
 </div>
