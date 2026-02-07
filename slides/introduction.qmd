@@ -1,17 +1,18 @@
 ---
-title: Introduction aux méthodes quantitatives avec {{< fa brands r-project >}}
+title: Introduction to quantitative methods with {{< fa brands r-project >}}
 subtitle: |
-  **[Session introductive]{.orange}**
+  **[Introductory session]{.orange}**
 authors: |
-  [Lino Galiana](https://www.linogaliana.fr/),
+  [Nathan Randriamanana](https://www.linkedin.com/in/nathan-randriamanana-69a1721b3/),
+  [Clara Baudry](https://www.linkedin.com/in/nathan-randriamanana-69a1721b3/),
 # date: 
 slide-number: true
 header: |
-  [Retour à la page principale du cours](https://rgeo.linogaliana.fr/)
+  [Back to main page](https://https://r-intro.openteachinglab.io/)
 footer: |
-  Introduction aux méthodes quantitatives avec {{< fa brands r-project >}}, École Normale Supérieure ([retour page principale](/))
+  Introduction to quantitative methods with {{< fa brands r-project >}}, Lesotho Bureau of Statistics ([back to main page](/))
 # uncomment for French presentations:
-lang: fr-FR
+lang: eng-ENG
 # for blind readers:
 slide-tone: false
 # for @olevitt:
@@ -20,7 +21,8 @@ chalkboard: # press the B key to toggle chalkboard
 # uncomment to use the multiplex mode:
 #multiplex: true
 format:
-  onyxia-revealjs
+  onyxia-revealjs: 
+    incremental: true
   # pick the light mode (onyxia-revealjs) or the dark mode (onyxia-dark-revealjs)
   #onyxia-dark-revealjs:
 controls: true
@@ -36,133 +38,194 @@ listing:
 code-annotations: hover
 ---
 
-## Chapitre introductif
+## Introductory Chapter
 
-::: {.callout-note}
-- Exercices associés à ce chapitre [ici](/exercises/r-base.html)
+::: {.callout-note .nonincremental}
+- Exercises associated with this chapter [here](/exercises/r-base.html)
 :::
-
-
 
 ![](../cards/introduction/baby.png){fig-align="center"}
 
-- [Retour à la page principale](/)
+- [Back to main page](/)
 
-# Introduction
+## Scan what you need
 
-## [Qui suis-je ?](https://www.linogaliana.fr/) [{{< fa brands firefox size=tiny >}}](https://linogaliana.fr) [{{< fa brands github size=tiny>}}](https://github.com/linogaliana) [{{< fa brands twitter size=tiny >}}](https://twitter.com/LinoGaliana) [{{< fa brands linkedin size=tiny >}}](https://www.linkedin.com/in/linogaliana/) [[<svg viewBox="0 0 25 28" width="25" height="28"><path d="M12.5 22.6667C11.3458 22.6667 10.3458 22.4153 9.5 21.9127C8.65721 21.412 7.98339 20.7027 7.55521 19.8654C7.09997 18.9942 6.76672 18.0729 6.56354 17.1239C6.34796 16.0947 6.24294 15.0483 6.25 14C6.25 13.1699 6.30417 12.3764 6.41354 11.6176C6.52188 10.8598 6.72292 10.0894 7.01563 9.30748C7.30833 8.52555 7.68542 7.84763 8.14479 7.27274C8.62304 6.68378 9.24141 6.20438 9.95208 5.87163C10.6979 5.51244 11.5458 5.33333 12.5 5.33333C13.6542 5.33333 14.6542 5.58467 15.5 6.08733C16.3428 6.588 17.0166 7.29733 17.4448 8.13459C17.8969 8.99644 18.2271 9.9103 18.4365 10.8761C18.6448 11.841 18.75 12.883 18.75 14C18.75 14.8301 18.6958 15.6236 18.5865 16.3824C18.4699 17.1702 18.2639 17.9446 17.9719 18.6925C17.6698 19.4744 17.2948 20.1524 16.8427 20.7273C16.3906 21.3021 15.7927 21.7692 15.0479 22.1284C14.3031 22.4876 13.4542 22.6667 12.5 22.6667ZM14.7063 16.2945C15.304 15.6944 15.6365 14.864 15.625 14C15.625 13.1073 15.326 12.3425 14.7292 11.7055C14.1313 11.0685 13.3885 10.75 12.5 10.75C11.6115 10.75 10.8688 11.0685 10.2708 11.7055C9.68532 12.3123 9.36198 13.1405 9.375 14C9.375 14.8927 9.67396 15.6575 10.2708 16.2945C10.8688 16.9315 11.6115 17.25 12.5 17.25C13.3885 17.25 14.124 16.9315 14.7063 16.2945ZM12.5 27C19.4031 27 25 21.1792 25 14C25 6.82075 19.4031 1 12.5 1C5.59687 1 0 6.82075 0 14C0 21.1792 5.59687 27 12.5 27Z"></path></svg>](https://observablehq.com/@linogaliana)]{.orange} [{{< fa brands python size=tiny >}}](https://pythonds.linogaliana.fr/)
+:::: {.columns}
+
+::: {.column width="50%"}
+### Introduction slides
+
+{{< qrcode https://r-intro.openteachinglab.io/slides/introduction.html#/title-slide qr1 width=400 height=400 >}}
+
+:::
+
+::: {.column width="50%"}
+### Website
+
+{{< qrcode https://r-intro.openteachinglab.io qr2 width=400 height=400 >}}
+
+:::
+
+::::
+
+## About us {.nonincremental auto-animate=true}
+
+- [**2 french instructors**]{.orange} :fr:
+- colleagues from [**INSEE**]{.orange}: National Institute of Statistics and Economic Studies 
+![](https://www.insee.fr/static/img/logoInseeEn.svg){fig-align="center"}
 
 
+## All about us {.nonincremental auto-animate=true}
 
-- _Data scientist_ au lab de l'Insee :
-    + [Administrateur Insee](https://www.insee.fr/fr/information/4774197)[^admin] ;
-    + Coordonnateur d'un [réseau de _data scientists_](https://ssphub.netlify.app/)
+### Instructor n°1 
+
+![](https://minio.lab.sspcloud.fr/nrandriamanana/portfolio/Nathan_resize.JPG){fig-align="center"}
+
+[**Nathan Randriamanana**]{.orange}
+
+## All about us {.nonincremental auto-animate=true}
+
+### Instructor n°2 
+
+![](https://cdn-icons-png.freepik.com/256/953/953789.png?semt=ais_white_label){fig-align="center"}
+
+[**New character unlocking tomorrow! :lock: :star_struck: :partying_face:**]{.orange}
+
+## [Who am I then ?](https://www.linkedin.com/in/nathan-randriamanana-69a1721b3/) {.nonincremental auto-animate=true}
+
+- _Data scientist_ at Insee
+    + INSEE statistician [**civil servant**](https://www.insee.fr/en/information/2404684#attaches){.blue2}
+    + working now at the [**Business Statistics Directorate**]{.blue2}
+    + [**SIRENE**](https://www.insee.fr/en/metadonnees/definition/c1135){.blue2} business register
+
+
+## [About my job](https://www.linkedin.com/in/nathan-randriamanana-69a1721b3/) {.smaller}
+
+- __I wear two hats__: 
+    - **:tophat: Application Administrator**: Acting as the functional lead for the SIRENE register. I bridge the gap between business needs and IT by writing functional specifications for system maintenance and evolution.
+    - **:billed_cap: Data Scientist**: Managing the end-to-end ML workflow for APE classification from model training and delivery to its integration into the production application.
+
+![Example from presentation at the [Cloud Native Days France 2026](https://www.cloudnativedays.fr/) conference regarding cloud technologies](https://minio.lab.sspcloud.fr/nrandriamanana/portfolio/photo_cnd_codage.jpg)
+
+## Socials {.nonincremental auto-animate=true}
+
+*I may not post every day, but I'd love to stay in touch!*
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### LinkedIn
+
+{{< qrcode https://www.linkedin.com/in/nathan-randriamanana-69a1721b3/ qr3 width=400 height=400 >}}
+:::
+
+::: {.column width="50%"}
+### GitHub
+
+{{< qrcode https://github.com/TheAIWizard qr2 width=400 height=400 >}}
+:::
+
+::::
+
+## [About my courses](https://www.linkedin.com/in/nathan-randriamanana-69a1721b3/)
+
+You might also be interested in my other introductory courses: 
+
+- [GitHub organization for all my courses](https://github.com/open-teaching-lab/); 
+this is just the beginning ! :rocket:
+
+__Most importantly, check out the full training portal on the [Insee datalab](https://www.sspcloud.fr/catalog)__
+
+
+## Getting to know each other {.nonincremental auto-animate=true}
+
+- Let's introduce ourselves
+- What are you looking for in this course?
+    - Any topics you are passionate about?
+    - Any specific expectations?
+
+## Training roadmap
+
+- [**Day 1**]{.orange}: Setting the stage with hands-on R and fundamental data manipulation
+- [**Day 2**]{.orange}: Data cleaning and transformation :broom: :magic_wand:
+- [**Day 3**]{.orange}: Descriptive and inferential statistics 🔎:game_die:
+- [**Day 4**]{.orange}: Data visualisation (ggplot2) :bar_chart:
+- [**Day 5**]{.orange}: Reporting with Quarto and final project :crown:
+
+## Why are we doing this? {.nonincremental auto-animate=true}
+
+1.  **Educational goals**: Upskilling and fostering a culture of technical autonomy.
+2.  **Strategic stakes**: Ensuring institutional independence, cost-efficiency, and scientific transparency.
+
+## 1. Educational goals {.scrollable .nonincremental auto-animate=true}
+
+- Gaining **technical** depth: Moving from "black-box" tools to understanding the underlying code and logic.
+- Developing a **_self-service_** culture: Building the autonomy to create, debug, and improve your own solutions.
+
+## 1. Educational goals {.scrollable .nonincremental auto-animate=true}
 
 . . .
 
-- Implication dans l'innovation statistique, l'_open source_ et la diffusion grand public[^2]:
-    + {{< fa brands r-project >}}: [`utilitR`](https://www.book.utilitr.org/),  [`doremifasol`](https://github.com/InseeFrLab/DoReMIFaSol)
-    + {{< fa brands python >}}: [`cartiflette`](https://github.com/InseeFrLab/cartiflette), [`pynsee`](https://github.com/InseeFrLab/pynsee)
+- **The open data & open source ecosystems**: 
+    - **open data**: Learning to leverage public datasets as a primary resource.
+    - **open source**: Discovering community-driven tools (R, Quarto) to process them.
 
+. . .
+
+- **Hands-on introduction to {{< fa brands r-project >}}**: Learning the fundamentals of R through practical application.
+
+. . .
+
+- Introduction to **reproducible publications** with [`Quarto`](https://quarto.org/): Learn to create automated, transparent, and high-quality reports.
+
+
+## 2. Strategic Stakes {.nonincremental auto-animate=true}
+
+- **Public fund stewardship & financial independence**:
+    - **Optimizing national budget**: Redirecting taxpayer money from recurring proprietary licenses toward internal expertise and innovation.
+    - **Cost-efficiency**: Scaling tools without proportional increases in software costs.
+
+- **Institutional Sovereignty**:
+    - **Full ownership**: Controlling our own statistical production chain without being tied to a vendor's "black-box" roadmap.
+    - **Sustainability**: Ensuring long-term access to our code and methods, independent of private sector pricing policies.
+
+- **Scientific & Public Trust**: 
+    - **Reproducibility**: Guaranteeing that official statistics are auditable and transparent (Open science standards).
+    - **Modernization**: Maintaining the Institute's position at the state-of-the-art of data science.
+
+
+## Practical Information {.nonincremental auto-animate=true}
+
+- A mix of **slides** and, most importantly, **guided practice sessions**.
+
+- Computing infrastructure ([`SSPCloud`](https://datalab.sspcloud.fr/home)) provided by Insee to avoid:
+    - Installation headaches.
+    - Configuration struggles.
+
+- Setup instructions to follow shortly.
     
-[^2]: Pas tout seul ! Avec une communauté de gens sympa de l'administration et de la recherche ! Beaucoup de projets novateurs 😍 sur [compte {{< fa brands github >}} `InseeFrLab`](https://github.com/InseeFrLab/)
+__[We will be using `SSPCloud` 😍🐉☁️🇫🇷!]{.orange}__ 
+
+*(Quick walkthrough coming up later)*
+
+
+## Additional resources {.smaller}
+
+### Comprehensive english references
+- [**R for data science**](https://r4ds.had.co.nz/) – a deep dive into the tidyverse ecosystem.
+- [**Geocomputation with R**](https://geocompr.robinlovelace.net/) – a complete guide for spatial data and mapping.
+- [**Data visualization**](https://socviz.co/) – a practical and thorough introduction by Kieran Healy.
 
 . . .
 
-## [Qui suis-je ?](https://www.linogaliana.fr/) {.smaller}
-
-- Travaux à l'intersection entre
-informatique, économie, sociologie & géographie:
-    + [Ségrégation avec données de téléphonie mobile](https://www.insee.fr/fr/statistiques/fichier/version-html/4925200/G2020-12.pdf)
-    + Inégalités alimentaires à partir de données massives de supermarchés
-
-
-![Exemple tiré de l'[Insee Analyse](https://www.insee.fr/fr/statistiques/fichier/4930403/ia59.pdf) sur la mixité sociale](https://ses.ens-lyon.fr/images/actualites-rapports-etudes-et-4-pages/2020-11-09-insee-ia59-fig4.jpg)
-
-
-[^admin]: Renseignez-vous sur le [concours ENS](https://www.insee.fr/fr/information/4774197) ! Il y a de belles missions ! 
-
-## [Qui suis-je ?](https://www.linogaliana.fr/)
-
-D'autres cours introductifs que je donne peuvent vous intéresser: 
-
-- [`Python` pour la _data science_](https://pythonds.linogaliana.fr/) ;
-- [Bonnes pratiques en `R` et `Git`](https://inseefrlab.github.io/formation-bonnes-pratiques-git-R/) ;
-- [Données émergentes](https://ensai-donnees-emergentes.netlify.app) ;
-
-__Et surtout consultez le portail complet de formation du [datalab de l'Insee](https://www.sspcloud.fr/formation)__
-
-## Objectifs pédagogiques
-
-- Découverte de l'écosystème de l'_open data_ 🇫🇷
+### Interactive learning platforms
+- [**SSPCloud training portal**](https://www.sspcloud.fr/formation) – provides interactive, self-paced tracks on modern data stacks (available in english).
 
 . . .
 
-- Introduction pratique au langage {{< fa brands r-project >}}:
-    + Données classiques
-    + Données géographiques
-    
-. . .
-
-- Introduction à la publication reproductible avec [`Quarto`](https://quarto.org/)
-
-. . .
-
-- Ouverture à la cartographie _web_ avec [`Observable`](https://observablehq.com/)
-
-## Modalités pratiques
-
-- Des _slides_ et surtout des `TP` guidés ;
-
-- Infrastructure informatique ([`SSPCloud`](https://datalab.sspcloud.fr/home)) fournie par l'Insee pour éviter:
-    + les galères d'installation
-    + les galères de configuration
-
-- Modalités d'initialisation à venir ;
-    
-__On va utiliser le [`SSPCloud`](https://datalab.sspcloud.fr/home) 😍🐉☁️🇫🇷 !__ 
-
-_(présentation tout à l'heure)_
-
-## Ressources complémentaires {.smaller}
-
-- [Introduction à `R` et au `tidyverse`](https://juba.github.io/tidyverse/) ;
-
-. . .
-
-- Documentation collaborative [`utilitR`](https://www.book.utilitr.org/) 👶 ;
-
-. . .
-
-- [Portail de formation du `SSPCloud`](https://www.sspcloud.fr/formation) ;
-
-. . .
-
-- [Funathon organisé par l'Insee](https://inseefrlab.github.io/funathon2023/) ;
-
-. . .
-
-- [_`R` for Data Science_](https://r4ds.had.co.nz/) (la bible !) ;
-
-. . .
-
-- [_Data science with `R`_](https://dswithr.netlify.app/) (Sciences Po) ;
-
-. . .
-
-- [Rzine](https://rzine.fr/), du CIST
-
-. . .
-
-- [Geocomputation with R](https://geocompr.robinlovelace.net/), de Lovelace, Nowosad et Muenchow
-
-. . .
-
-- [Data Visualization : A practical introduction](https://socviz.co/), de Kieran Healy
-
-
-
-
+### Community and french resources (worth a look)
+- [**utilitR**](https://www.book.utilitr.org/) – the most comprehensive r documentation 👶. *(tip: great to explore using browser auto-translate)*.
+- [**Rzine**](https://rzine.fr/) – best practices and tutorials for social sciences and geography.
 
 # Panorama général
 
@@ -600,99 +663,101 @@ https://www.numerique.gouv.fr/uploads/RAPPORT-besoins-competences-donnee.pdf
 
 
 
-# Pourquoi faire du {{< fa brands r-project >}} ?
+# Why use {{< fa brands r-project >}}?
 
-## Principe d'un langage _open source_
+## The principle of an open source language
 
 ::: {layout-ncol=2}
-![Principe général](img/cartons.png)
+![General principle](img/cartons.png)
 
-![Illustration avec `R`](img/cartons-r.png)
+![Illustration with `R`](img/cartons-r.png)
 :::
 
+## What is `R`?
 
-
-## Qu'est-ce que `R` ?
-
-- Logiciel statistique _open source_:
-    + Langage de base
-    + _Packages_ étendent les fonctionnalités
+- An **open source** statistical software:
+    + Core language for base operations
+    + **Packages** to extend functionalities
 
 . . .
 
-- Adoption importante dans le monde académique et l'administration
+- Widely adopted across academia and public administrations
 
 . . .
 
-- Beaucoup de ressources d'aide en ligne
+- Extensive online support and resources
 
 
 :::{.callout-note}
-- Naissance dans les années 1990 ;
-- Succès depuis les années 2010 (succès parallèle à `Python`)
+- Created in the 1990s;
+- Massive growth since 2010 (rising alongside `Python`).
+- **RStudio**: the next-generation IDE that makes R accessible and powerful for data science.
 :::
 
+## A "swiss army knife" software
 
-## Un logiciel couteau-suisse
-
-- Manipulation de données de tout type ;
-
-. . .
-
-- Visualisation de données (_dataviz_), cartographie & SIG ;
+- Handling all types of data;
 
 . . .
 
-- Modélisation (_machine learning_, analyse de réseaux...) ;
+- Data visualization (dataviz), mapping and GIS;
 
 . . .
 
-- Rédaction de mémoires, de site web, de slides (comme celles-ci 🤓)...
-
-## Un logiciel couteau-suisse
-
-On peut tout faire en `R`:
-
-![Extrait de [_R for data science_ (la bible)](https://r4ds.had.co.nz/introduction.html)](img/data-science-workflow.png)
-
-## Transparence et reproductibilité {.smaller}
-
-- Traçabilité des statistiques et réalisations graphiques
+- Modeling (machine learning, network analysis...);
 
 . . .
 
-- Partage de code `R` permet une transparence méthodologique:
-    + De plus en plus de journaux exigent les codes !
-    + Encore des progrès à faire dans le domaine
+- Writing reports, websites, and slides (like these ones 🤓)...
+
+## A "swiss army knife" software
+
+You can do everything in `R`:
+
+![Excerpt from [_R for data science_ (the bible)](https://r4ds.had.co.nz/introduction.html)](img/data-science-workflow.png)
+
+## Transparency and reproducibility {.smaller}
+
+- Traceability of statistics and graphical outputs.
 
 . . .
 
-- L'utilisation de `R Markdown` rend plus efficace 🐢🔜🐇:
-    + Suppression des fichiers intermédiaires (texte, excel, images...)
-    + Gain de temps sur la mise en page (des millions d'heures économisées au bas mot)
+- Sharing `R` code ensures methodological transparency:
+    + More and more journals now require code submissions!
+    + Still some progress to be made in the field.
+
+. . .
+
+- Using `R Markdown` (or Quarto) increases efficiency 🐢🔜🐇:
+    + Eliminates messy intermediate files (text, excel, images...).
+    + Saves time on formatting (millions of hours saved, literally).
 
 ::: {.callout-note}
-Voir cours dédié sur le [sujet des bonnes pratiques](https://github.com/InseeFrLab/formation-bonnes-pratiques-git-R) (Insee très impliquée sur le sujet!)
+See the dedicated course on [best practices](https://github.com/InseeFrLab/formation-bonnes-pratiques-git-R) (Insee is highly involved in this topic).
 :::
 
-## Une communauté d'utilisateurs
+## A community of users
 
-- Un logiciel _opensource_ :
-    + Gratuit, collaboratif 
-
-. . .
-
-- Beaucoup de packages:
-    - sur le `CRAN` (*The Comprehensive R Archive Network*)
-    - sur `Github`
+- An **open source** software:
+    + Free and collaborative.
 
 . . .
 
-- Une communauté d'idéalistes de la science ouverte
+- Thousands of packages:
+    - on `CRAN` (*The Comprehensive R Archive Network*).
+    - on `GitHub`.
 
 . . .
 
-- Un pont vers les autres disciplines : sociologie, économie, biologie, sciences politiques _etc_.
+- A community driven by open science ideals.
+
+. . .
+
+- A bridge between disciplines: sociology, economics, biology, political science, etc.
+
+. . .
+
+- **The power of collaboration**: R thrives because users build their own tools and share them with the world.
 
 # Prise en main du `SSP Cloud`
 
