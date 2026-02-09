@@ -112,7 +112,15 @@ The data contains several dimensions suitable for statistical analysis. Therefor
 
 ```{r}
 #| output: false
-df <- readr::read_csv("bike.gz")
+df <- readr::read_csv("bike.gz") %>% 
+  rename(
+    `counter_id` = `Identifiant du compteur`,
+    `Counter name` = `Nom du compteur`,
+    `counting_site_id` = `Identifiant du site de comptage`,
+    `counting_site_name` = `Nom du site de comptage`,
+    `Hourly count` = `Comptage horaire`,
+    `Counting date and time` = `Date et heure de comptage`,
+    `counting_site_installation_date` = `Date d'installation du site de comptage`)
 ```
 
 
@@ -351,8 +359,8 @@ df2_lollipop <- df2 %>%
   mutate(x =  fct_reorder(`Counter name`, `Hourly count` ), y = `Hourly count`)
 
 figure2_lollipop <- ggplot(df2_lollipop, aes(x=x, y=y)) +
-    geom_segment( aes(xend=x, yend=0), alpha = 0.4) +
-    geom_point( size=5, color="forestgreen") +
+    geom_segment(aes(xend=x, yend=0), alpha = 0.4) +
+    geom_point(size=5, color="forestgreen") +
     coord_flip() +
   labs(title = "The 10 counters that recorded the most bicycles",
        x = "Name of the counter",
@@ -473,7 +481,7 @@ If you rather present this with a _lollipop_[^notecouleur] chart:
 ```{r}
 ggplot(monthly_hourly_count, aes(x = month, y = value)) +
   geom_segment(aes(xend = month, yend = 0)) +
-  geom_point( color="#ffcd00", size=4) +
+  geom_point(color="#ffcd00", size=4) +
   labs(x = "Counting date and time", y = "Average hourly count per month\nover the selected period",
        title = "Average monthly bicycle counts") +
   theme_minimal() +
@@ -566,7 +574,7 @@ Some hints for this exercise
 <summary>
 💡 Hint for question 1
 </summary>
-Look up the`day` function of the `lubridate` _package_
+Look up the `day` function of the `lubridate` _package_
 </details>
 
 <details>
