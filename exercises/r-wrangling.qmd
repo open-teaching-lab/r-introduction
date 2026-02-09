@@ -1,11 +1,11 @@
 ---
-title: "Importer et manipuler des données avec {{< fa brands r-project >}}"
+title: "Importing and manipulating data with {{< fa brands r-project >}}"
 echo: true
 number-sections: true
 ---
 
 ::: {.badge}
-<a href="https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=false&networking.user.enabled=true&onyxia.friendlyName=%C2%ABrstudio-cours-ENS%C2%BB" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Tester%20via%20SSP%20cloud%20-%20SSPCloud?logo=R&labelColor=black&color=%231965b8" alt="Onyxia"></a><br>
+<a href="https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=false&networking.user.enabled=true&onyxia.friendlyName=%C2%ABrstudio-cours-ENS%C2%BB" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Test%20via%20SSP%20cloud%20-%20SSPCloud?logo=R&labelColor=black&color=%231965b8" alt="Onyxia"></a><br>
 :::
 
 <details>
@@ -13,143 +13,132 @@ number-sections: true
 Check out the _slides_ below or [click here](/slides/wrangling.qmd)
 to view the slides in full screen.
 </summary>
-
-
 ``` {.yaml code-preview="/slides/wrangling.qmd"}
 ```
 
 </details>
 
-
-Dans ce deuxième TP,
-nous allons apprendre à importer et
-manipuler des données avec
+In this second tutorial,
+we will learn to import and
+manipulate data with
 {{< fa brands r-project >}}. 
 
-Si vous êtes intéressés par `Python` {{< fa brands python >}},
-une version très proche de ce TP est disponible dans [mon cours de l'ENSAE](https://pythonds.linogaliana.fr/content/manipulation/02b_pandas_TP.html).
-
+If you're interested in `Python` {{< fa brands python >}},
+a very similar version of this tutorial is available in [my ENSAE course](https://pythonds.linogaliana.fr/content/manipulation/02b_pandas_TP.html).
 
 ::: {.callout-note}
 
-Certains exemples de code présentent des annotations sur le côté,
-passez votre souris dessus pour les afficher, comme ci-dessous
-
+Some code examples include annotations on the side,
+hover over them to display them, as shown below
 ```{r}
 #| echo: true
 #| output: false
-"une annotation explicative m'accompagne à droite" #<1>
+"an explanatory annotation accompanies me on the right" #<1>
 ```
-1. Je m'affiche quand on passe la souris sur moi 🐭 !
+1. I appear when you hover over me 🐭!
 
 :::
 
-Dans ce chapitre, nous allons principalement utiliser les packages suivants
-du `tidyverse`: 
+In this chapter, we will mainly use the following packages
+from the `tidyverse`: 
 
-- `readr` pour l'import de données ;
-- `dplyr` pour la manipulation de données.
+- `readr` for data import;
+- `dplyr` for data manipulation.
 
 ::: {.callout-note}
 
-Le `tidyverse` n'est pas le seul écosystème complet pour analyser des données.
+The `tidyverse` is not the only complete ecosystem for data analysis.
 
-Néanmoins, pour une introduction à {{< fa brands r-project >}}, c'est 
-certainement le plus raisonnable à adopter. 
+However, for an introduction to {{< fa brands r-project >}}, it's 
+certainly the most reasonable to adopt. 
 
-Les écosystèmes
-concurrents ou complémentaires (`data.table`, `arrow`, `duckdb`) nécessitent
-déjà une bonne compréhension du `tidyverse` et de ses limites. 
+Competing or complementary ecosystems
+(`data.table`, `arrow`, `duckdb`) already require
+a good understanding of the `tidyverse` and its limitations. 
 
 :::
 
-Dans ce tutoriel, nous allons utiliser deux sources de données :
+In this tutorial, we will use two data sources:
 
-* Les émissions de gaz à effet de serre estimées au niveau communal par l'`ADEME`. Le jeu de données est
-disponible sur [data.gouv](https://www.data.gouv.fr/fr/datasets/inventaire-de-gaz-a-effet-de-serre-territorialise/#_)
-et requêtable directement dans {{< fa brands r-project >}} avec
-[cet url](https://koumoul.com/s/data-fair/api/v1/datasets/igt-pouvoir-de-rechauffement-global/convert) (ce sera l'objet du premier exercice)[^notedownload].
-* Idéalement, on utiliserait directement les données
-[disponibles sur le site de l'Insee](https://www.insee.fr/fr/statistiques/3560121) mais celles-ci nécessitent un peu de travail
-de nettoyage qui n'entre pas dans le cadre de ce TP. 
-Pour faciliter l'import de données Insee, il est recommandé d'utiliser les _packages_
-[`doremifasol`](https://github.com/InseeFrLab/DoReMIFaSol) et [`insee`](https://github.com/pyr-opendatafr/R-Insee-Data) qui simplifient l'accès aux données
-de l'Insee disponibles sur le site web [insee.fr](https://www.insee.fr/fr/accueil)
-ou via des API. 
+* Greenhouse gas emissions estimated at the municipal level by `ADEME`. The dataset is
+available on [data.gouv](https://www.data.gouv.fr/fr/datasets/inventaire-de-gaz-a-effet-de-serre-territorialise/#_)
+and directly queryable in {{< fa brands r-project >}} with
+[this url](https://koumoul.com/s/data-fair/api/v1/datasets/igt-pouvoir-de-rechauffement-global/convert) (this will be the subject of the first exercise)[^notedownload].
+* Ideally, we would directly use the data
+[available on the Insee website](https://www.insee.fr/fr/statistiques/3560121) but these require some
+cleaning work that is beyond the scope of this tutorial. 
+To facilitate importing Insee data, it's recommended to use the _packages_
+[`doremifasol`](https://github.com/InseeFrLab/DoReMIFaSol) and [`insee`](https://github.com/pyr-opendatafr/R-Insee-Data) which simplify access to Insee data
+available on the [insee.fr](https://www.insee.fr/fr/accueil) website
+or via APIs. 
 
 [^notedownload]: 
 
-  `readr` offre la possibilité d'importer des données directement depuis un url. C'est l'option 
-  prise dans ce tutoriel. Si vous préfèrez, pour des 
-  raisons d'accès au réseau ou de performance, importer depuis un poste local,
-  vous pouvez télécharger les données et changer
-  les commandes d'import avec le chemin adéquat plutôt que l'url. 
+  `readr` offers the possibility to import data directly from a url. This is the option 
+  taken in this tutorial. If you prefer, for 
+  network access or performance reasons, to import from a local machine,
+  you can download the data and change
+  the import commands with the appropriate path instead of the url. 
 
+# Preliminary steps: installing _packages_
 
-# Etapes préliminaires: installer les _packages_
+{{< fa brands r-project >}} is an _open source_ language. Anyone can
+therefore propose {{< fa brands r-project >}} code to increase the 
+language's functionalities. A coherent set of functionalities is called
+a __library__ or __package__. 
 
-{{< fa brands r-project >}} est un langage _open source_. N'importe qui peut
-donc proposer du code {{< fa brands r-project >}} pour accroître les 
-fonctionnalités du langage. Un ensemble cohérent de fonctionnalités s'appelle
-une __librairie__ ou un __package__. 
+Since the team managing the {{< fa brands r-project >}} language doesn't intend
+to integrate all libraries into the base language (which should
+remain, as its name indicates, basic), there are
+community spaces where people can make their _packages_ available. In
+the {{< fa brands r-project >}} ecosystem, the two main ones[^bioconductor] are:
 
-Comme l'équipe qui gère le langage {{< fa brands r-project >}} n'a pas vocation
-à intégrer toutes les librairies dans le langage de base (celui-ci se doit
-de rester, comme son nom l'indique, basique), il existe des espaces
-communautaires où les gens peuvent mettre à disposition leurs _packages_. Dans
-l'écosystème {{< fa brands r-project >}}, les deux principaux[^bioconductor] sont:
+- The `CRAN` (_Comprehensive R Archive Network_): the official and historical repository
+of {{< fa brands r-project >}} libraries.
+To install a _package_ stored in this space, use `install.package`;
+- `Github` {{< fa brands github >}}: the social network for _open source_ code. 
+To install a _package_ stored in this space, use `remotes::install_github`[^remotes]
 
-- Le `CRAN` (_Comprehensive R Archive Network_): le dépôt officiel et historique
-de librairies {{< fa brands r-project >}}.
-Pour installer un _package_ stocké dans cet espace, on utilise `install.package` ;
-- `Github` {{< fa brands github >}}: le réseau social du code _open source_. 
-Pour installer un _package_ stocké dans cet espace, on utilise `remotes::install_github`[^remotes]
-
-[^bioconductor]: Il existe également `bioconductor` mais celui-ci étant surtout orienté biostatistiques (une des communautés académiques ayant adopté {{< fa brands r-project >}} le plus tôt), nous ne l'utilisons pas vraiment
+[^bioconductor]: There's also `bioconductor` but since it's mainly oriented towards biostatistics (one of the academic communities that adopted {{< fa brands r-project >}} earliest), we don't really use it
 
 [^remotes]:
-    `remotes::install_github` signifie d'utiliser la fonction `install_github` du _package_ `remotes`. Autrement dit, il faut un _package_ pour installer d'autres _packages_ 🤯.
-    C'est parce que `Github` n'existait pas lors de la création de {{< fa brands r-project >}} (années 1990) et que cette fonctionnalité n'a pas été ajouté depuis. 
+    `remotes::install_github` means to use the `install_github` function from the _package_ `remotes`. In other words, you need a _package_ to install other _packages_ 🤯.
+    This is because `Github` didn't exist when {{< fa brands r-project >}} was created (1990s) and this functionality hasn't been added since. 
 
 ::: {.callout-note}
 
-En général, les _packages_ avec une certaine
-maturité sont sur le CRAN. `Github` a un aspect plus fourre-tout où on trouve
-des mines d'or à côté de choses de qualité plus variable. 
+Generally, _packages_ with certain
+maturity are on CRAN. `Github` has a more catch-all aspect where you find
+gems alongside things of more variable quality. 
 
-Certains _packages_ que nous verrons ne sont pas sur le CRAN car la procédure
-de validation pour pouvoir y déposer son _package_ est assez lourde et
-fatiguante pour des développeurs bénévoles, généralement non rémunéré 
-pour ce travail et qui effectuent souvent cela la nuit. 
+Some _packages_ we'll see aren't on CRAN because the validation procedure
+to deposit your _package_ there is quite heavy and
+tiring for volunteer developers, usually unpaid 
+for this work and often doing it at night. 
 
 :::
 
-Pour installer un package disponible sur le CRAN, par exemple
-le package [`dplyr`](https://dplyr.tidyverse.org/),
-vous pouvez faire:
-
+To install a package available on CRAN, for example
+the [`dplyr`](https://dplyr.tidyverse.org/) package,
+you can do:
 ```{r}
 #| eval: false
 #| echo: true
 install.packages("insee")
 ```
 
-Pour installer un package disponible sur `Github` {{< fa brands github >}},
-par exemple [`doremifasol`](https://github.com/InseeFrLab/DoReMIFaSol)
-qui est disponible sur le dépôt du compte `InseeFrLab`, on fait:
-
-
+To install a package available on `Github` {{< fa brands github >}},
+for example [`doremifasol`](https://github.com/InseeFrLab/DoReMIFaSol)
+which is available on the `InseeFrLab` account's repository, do:
 ```{r}
 #| eval: false
 #| echo: true
 remotes::install_github('inseefrlab/DoReMIFaSol')
 ```
 
-
-Voici l'ensemble des instructions pour installer
-les _packages_ afin d'être en mesure d'effectuer tous
-les exercices de ce tutoriel:
-
+Here are all the instructions to install
+the _packages_ needed to perform all
+the exercises in this tutorial:
 ```{r}
 #| echo: true
 #| eval: false
@@ -157,9 +146,8 @@ install.packages(c("readr","dplyr", "tidyr", "ggplot2", "remotes"))
 remotes::install_github('inseefrlab/DoReMIFaSol')
 ```
 
-Puisque nous allons fréquemment utiliser `dplyr`, nous pouvons l'importer
-directement:
-
+Since we'll frequently use `dplyr`, we can import it
+directly:
 ```{r}
 #| echo: true
 #| output: false
@@ -168,69 +156,66 @@ library(tidyr)
 library(stringr)
 ```
 
-# Importer les données
+# Importing data
 
-## Import d'un csv de l'Ademe
+## Importing a csv from Ademe
 
-Pour commencer, nous allons importer les données de l'Ademe à l'aide du
-_package_ [`readr`](https://readr.tidyverse.org/)[^readcsv]. 
+To start, we'll import Ademe data using the
+[`readr`](https://readr.tidyverse.org/) _package_[^readcsv]. 
 
 ::: {.callout-tip}
-## Exercice 1: lire un csv avec `readr` et observer les données
+## Exercise 1: reading a csv with `readr` and observing the data
 
-Voici l'URL sur lequel les données sont disponibles
-
+Here's the URL where the data is available
 ```{r}
 #| echo: true
 url <- "https://koumoul.com/s/data-fair/api/v1/datasets/igt-pouvoir-de-rechauffement-global/convert"
 ```
 
-
-1. Utiliser le _package_  `readr` pour importer ces données. Nommer cet objet `emissions`[^nomdf]
-2. Afficher les premières lignes avec `head` et observer la différence d'affichage avec, par exemple,
-ce `dataframe`:
-
+1. Use the `readr` _package_ to import this data. Name this object `emissions`[^nomdf]
+2. Display the first lines with `head` and observe the display difference with, for example,
+this `dataframe`:
 ```{r}
 #| echo: true
 library(readr)
 emissions <- read_csv(url)
 ```
 
-3. Afficher la classe de `emissions`. Comprenez-vous maintenant pourquoi cet objet est un
-peu différent d'un dataframe de base ?
-4. Utiliser les fonctions adéquates pour les 10 premières valeurs, les 15 dernières et un échantillon aléatoire de 10 valeurs grâce à la [fonction adéquate du package `dplyr`](https://dplyr.tidyverse.org/reference/sample_n.html)
+3. Display the class of `emissions`. Do you now understand why this object is
+slightly different from a base dataframe?
+4. Use appropriate functions for the first 10 values, the last 15 and a random sample of 10 values using the [appropriate function from the `dplyr` package](https://dplyr.tidyverse.org/reference/sample_n.html)
 
 <details>
 <summary>
-En cas de blocage à la question 1
+If stuck on question 1
 </summary>
-Lire la documentation de `read_csv` (très bien faite) ou chercher des exemples
-en ligne pour découvrir cette fonction.
-⚠️ Ne pas utiliser `read.csv` (fonction de base) qui n'est pas performante. 
+Read the `read_csv` documentation (very well done) or search for examples
+online to discover this function.
+⚠️ Don't use `read.csv` (base function) which isn't performant. 
 </details>
 :::
 
-[^nomdf]: Par manque d'imagination, on est souvent tenté d'appeler notre
-_dataframe_ principal `df` ou `data`. C'est souvent une mauvaise idée puisque
-ce nom n'est pas très informatif quand on relit le code quelques semaines
-plus tard. L'autodocumentation, approche qui consiste à avoir un code
-qui se comprend de lui-même, est une bonne pratique et il est donc recommandé
-de donner un nom simple mais efficace pour connaître la nature du _dataset_ en question.
+[^nomdf]: For lack of imagination, we're often tempted to call our
+main _dataframe_ `df` or `data`. This is often a bad idea since
+this name isn't very informative when rereading the code a few weeks
+later. Self-documentation, an approach that consists of having code
+that explains itself, is a good practice and it's therefore recommended
+to give a simple but effective name to know the nature of the _dataset_ in question.
 
-## Premières manipulations de données
+## First data manipulations
 
-Comme c'est évoqué
-dans [`utilitR`](https://www.book.utilitr.org/03_fiches_thematiques/fiche_tidyverse),
-les principales fonctions de `dplyr` (les _verbes_ de la grammaire `dplyr`) 
-sont les suivants:
+As mentioned
+in [`utilitR`](https://www.book.utilitr.org/03_fiches_thematiques/fiche_tidyverse),
+the main functions of `dplyr` (the _verbs_ of the `dplyr` grammar) 
+are as follows:
 
-- `select()` : sélectionner des variables par leur nom ;
-- `rename()` : renommer des variables ;
-- `filter()` : sélectionner des observations selon une ou plusieurs conditions ;
-- `arrange()` : trier la table selon une ou plusieurs variables ;
-- `mutate()` : ajouter des variables qui sont fonction d’autres variables ;
-- `summarise()` : calculer une statistique à partir de données ;
-- `group_by()` : faire des opérations par groupe.
+- `select()`: select variables by their name;
+- `rename()`: rename variables;
+- `filter()`: select observations according to one or more conditions;
+- `arrange()`: sort the table according to one or more variables;
+- `mutate()`: add variables that are functions of other variables;
+- `summarise()`: calculate a statistic from data;
+- `group_by()`: perform operations by group.
 
 ```{ojs}
 //| echo: false
@@ -238,19 +223,18 @@ viewof dplyrVerbs = Inputs.select(['select','rename','filter','mutate', 'arrange
 ```
 
 ::: {#fig-verbs}
-
 ```{ojs}
 //| echo: false
 html`<img src="https://github.com/linogaliana/r-geographie/raw/main/exercises/img/${dplyrVerbs}.png" width="60%"</>`
 ```
 
-Illustration des verbes `dplyr`
+Illustration of `dplyr` verbs
 
 :::
 
-La _cheatsheet_ suivante est très pratique puisqu'elle illustre ces différentes
-fonctions. Il est recommandé de régulièrement
-la consulter (cliquer sur l'image pour zoomer 🔎) :
+The following _cheatsheet_ is very practical as it illustrates these different
+functions. It's recommended to regularly
+consult it (click on the image to zoom 🔎):
 
 ::: {#cheatsheets-dplyr layout-ncol=2}
 
@@ -258,106 +242,100 @@ la consulter (cliquer sur l'image pour zoomer 🔎) :
 
 ![](img/cheatsheet2.png)
 
-[_Cheatsheets_ `dplyr`](https://dplyr.tidyverse.org/)
+[`dplyr` _Cheatsheets_](https://dplyr.tidyverse.org/)
 :::
 
-
 ::: {.callout-tip}
-## Exercice 2: découverte des verbes de `dplyr` pour manipuler des données
+## Exercise 2: discovering `dplyr` verbs for data manipulation
 
-En premier lieu, on propose de se familiariser avec les opérations sur
-les colonnes.
+First, let's familiarize ourselves with operations on
+columns.
 
-1. Créer un _dataframe_ `emissions_copy` ne conservant que les colonnes
-`INSEE commune`, `Commune`, `Autres transports` et `Autres transports international`
+1. Create a _dataframe_ `emissions_copy` keeping only the columns
+`INSEE commune`, `Commune`, `Autres transports` and `Autres transports international`
 
 <details>
 <summary>
-Indice pour cette question
+Hint for this question
 </summary>
 ![](https://github.com/linogaliana/r-geographie/raw/main/exercises/img/select.png)
 </details>
 
-2. Comme les noms de variables sont peu pratiques, les renommer de la
-manière suivante:
+2. Since variable names are impractical, rename them as
+follows:
     + `INSEE commune` $\to$ `code_insee`
     + `Autres transports` $\to$ `transports`
     + `Autres transports international` $\to$ `transports_international`
 
 <details>
 <summary>
-Indice pour cette question
+Hint for this question
 </summary>
 ![](https://github.com/linogaliana/r-geographie/raw/main/exercises/img/rename.png)
 </details>
 
-3. On propose, pour simplifier, de remplacer les valeurs manquantes (`NA`)
-par la valeur 0[^na]. Utiliser la
-fonction [`replace_na`](https://tidyr.tidyverse.org/reference/replace_na.html)
-du package _tidyr_, en conjonction avec `mutate`,
-pour transformer les valeurs manquantes en 0.
+3. To simplify, let's replace missing values (`NA`)
+with the value 0[^na]. Use the
+[`replace_na`](https://tidyr.tidyverse.org/reference/replace_na.html) function
+from the _tidyr_ package, in conjunction with `mutate`,
+to transform missing values to 0.
 
 <details>
 <summary>
-Indice pour cette question
+Hint for this question
 </summary>
 ![](https://github.com/linogaliana/r-geographie/raw/main/exercises/img/mutate.png)
 </details>
 
-
-4. Créer dans la même séquence de code les variables suivantes:
-    - `dep`: le département. Celui-ci peut être créé grâce aux deux premiers caractères de `code_insee` avec la fonction `str_sub` du _package_ `stringr`[^notecorse]
-    - `transports_total`: les émissions du secteur transports (somme des deux variables)
+4. Create the following variables in the same code sequence:
+    - `dep`: the department. This can be created using the first two characters of `code_insee` with the `str_sub` function from the `stringr` _package_[^notecorse]
+    - `transports_total`: transport sector emissions (sum of the two variables)
 
 <details>
 <summary>
-Indice pour cette question
+Hint for this question
 </summary>
 ![](https://github.com/linogaliana/r-geographie/raw/main/exercises/img/mutate.png)
 </details>
 
-
-5. Ordonner les données du plus gros pollueur au plus petit 
-puis ordonner les données 
-du plus gros pollueur au plus petit par département (du 01 au 95). 
+5. Order the data from highest to lowest polluter
+then order the data 
+from highest to lowest polluter by department (from 01 to 95). 
 
 <details>
 <summary>
-Indice pour cette question
+Hint for this question
 </summary>
 ![](https://github.com/linogaliana/r-geographie/raw/main/exercises/img/arrange.png)
 </details>
 
-6. Calculer les émissions totales par départements
+6. Calculate total emissions by department
 
 <details>
 <summary>
-Indice pour cette question
+Hint for this question
 </summary>
 
-* _"Grouper par"_ = `group_by`
-* _"émissions totales"_ = `summarise(sum(***))`
+* _"Group by"_ = `group_by`
+* _"total emissions"_ = `summarise(sum(***))`
 
 </details>
 
-
 :::
 
-[^na]: Cette hypothèse est certainement fausse. Elle est exclusivement
-là pour illustrer la création de variables via `mutate`.
+[^na]: This assumption is certainly false. It's exclusively
+here to illustrate variable creation via `mutate`.
 
-[^notecorse]: Pour être vraiment précis, il faudrait modifier les valeurs
-obtenues pour les départements Corse avec la fonction `case_when`
-du _package_ `dplyr`. Ceci est laissé en exercice supplémentaire. 
-
-
+[^notecorse]: To be really precise, we would need to modify the values
+obtained for Corsican departments with the `case_when` function
+from the `dplyr` _package_. This is left as an additional exercise. 
 ```{r}
 #| code-fold: true
 #| code-summary: "Solution question 1"
 emissions_copy <- emissions %>%
   select(`INSEE commune`, `Commune`, `Autres transports`, `Autres transports international`)
 ```
-  
+
 ```{r}
 #| code-fold: true
 #| code-summary: "Solution question 2"
@@ -378,7 +356,6 @@ emissions_copy <- emissions_copy %>%
     transports_international = replace_na(transports_international)
     )
 ```
-
 
 ```{r}
 #| code-fold: true
@@ -408,16 +385,14 @@ emissions_copy %>%
 emissions_copy %>%
   group_by(dep) %>%
   summarise(sum(transports_total))
-
 ```
 
-## Import de données de l'Insee
+## Importing Insee data
 
-En ce qui concerne nos informations communales, on va utiliser l'une des plus
-sources de l'Insee les plus utilisées : les données [`Filosofi`](https://www.insee.fr/fr/metadonnees/source/serie/s1172). 
-Afin de faciliter la récupération de celles-ci, nous allons
-utiliser le _package_ communautaire `doremifasol` :
-
+For our municipal information, we'll use one of Insee's
+most used sources: [`Filosofi`](https://www.insee.fr/fr/metadonnees/source/serie/s1172) data. 
+To facilitate retrieving these, we'll
+use the community _package_ `doremifasol`:
 ```{r}
 #| output: false
 #| echo: true
@@ -435,44 +410,43 @@ head(filosofi)
 ```
 
 ::: {.callout-note}
-La fonction `as_tibble` nous sert à transformer le _dataframe_ de base (`doremifasol` 
-ne fait pas d'_a priori_ sur l'écosystème de manipulation adopté) en 
-_dataframe_ adapté à une exploitation via le `tidyverse`. 
+The `as_tibble` function converts the base _dataframe_ (`doremifasol` 
+doesn't make assumptions about the manipulation ecosystem adopted) into 
+a _dataframe_ adapted for use via the `tidyverse`. 
 :::
 
-# Nettoyage des données
+# Data cleaning
 
 :::{.callout-tip}
-## Exercice 2
+## Exercise 2
 
-Comme c'est `readr` ou `doremifasol` qui ont
-géré automatiquement l'import des données, on va faire un petit
-contrôle qualité:
+Since `readr` or `doremifasol` automatically
+handled the data import, let's do a small
+quality control:
 
-1. Afficher le nom des colonnes de nos _dataframes_ `emissions` et `filosofi`. 
-Quelles sont les colonnes communes ? Utiliser la fonction `intersect` et comprendre
-la nature du problème.
-2. Observer la structure de nos jeux de données (les types des colonnes). Les types fixés par défaut sont-ils adéquats ?
+1. Display the column names of our _dataframes_ `emissions` and `filosofi`. 
+What are the common columns? Use the `intersect` function and understand
+the nature of the problem.
+2. Observe the structure of our datasets (column types). Are the default types appropriate?
 
-Ensuite, on vérifie les dimensions des `DataFrames` et la structure de certaines variables clés.
-En l'occurrence, les variables fondamentales pour lier nos données sont les variables communales.
-Ici, on a deux variables géographiques: un code commune et un nom de commune. 
-On va donc vérifier qu'elles sont bien adaptées à l'analyse statistique.
+Then, we verify the dimensions of the `DataFrames` and the structure of some key variables.
+In this case, the fundamental variables for linking our data are the municipal variables.
+Here, we have two geographic variables: a municipality code and a municipality name. 
+We'll therefore verify they're well suited for statistical analysis.
 
-3. Vérifier les dimensions des _dataframes_ ;
-4. Vérifier le nombre de valeurs uniques des variables géographiques dans chaque base. Les résultats apparaissent-ils cohérents ?
-5. Identifier dans `filosofi` les noms de communes qui correspondent à plusieurs codes communes et sélectionner leurs codes. En d'autres termes, identifier les `CODGEO` tels qu'il existe des doublons de `LIBGEO` et les stocker dans un dataframe `duplicates`
+3. Check the dimensions of the _dataframes_;
+4. Check the number of unique values of geographic variables in each base. Do the results appear consistent?
+5. Identify in `filosofi` the municipality names that correspond to multiple municipality codes and select their codes. In other words, identify the `CODGEO` such that there are duplicate `LIBGEO` and store them in a dataframe `duplicates`
 
-On se focalise temporairement sur les observations où le libellé comporte plus de deux codes communes différents
+We temporarily focus on observations where the label has more than two different municipality codes
 
-6. Regarder dans `filosofi` ces observations. Pour mieux y voir, réordonner la base obtenue par order alphabétique
-7. Déterminer la taille moyenne (variable nombre de personnes: `NBPERSMENFISC16`) et quelques statistiques descriptives de ces données.
-Comparer aux mêmes statistiques sur les données où libellés et codes communes coïncident
-8. Vérifier les grandes villes (plus de 100 000 personnes),
-la proportion de villes pour lesquelles un même nom est associé à différents codes commune.
-9. Vérifier dans `filosofi` les villes dont le libellé est égal à Montreuil.
-Vérifier également celles qui contiennent le terme 'Saint-Denis'
-
+6. Look at these observations in `filosofi`. For better visibility, reorder the obtained base alphabetically
+7. Determine the average size (variable number of people: `NBPERSMENFISC16`) and some descriptive statistics of this data.
+Compare to the same statistics on data where labels and municipality codes coincide
+8. Check large cities (more than 100,000 people),
+the proportion of cities for which the same name is associated with different municipality codes.
+9. Check in `filosofi` the cities whose label equals Montreuil.
+Also check those containing the term 'Saint-Denis'
 ```{r}
 #| code-fold: true
 #| code-summary: "Solution question 1"
@@ -488,7 +462,6 @@ intersect(colnames(filosofi), colnames(emissions))
 str(filosofi)
 str(emissions)
 ```
-
 
 ```{r}
 #| code-fold: true
@@ -515,7 +488,7 @@ filosofi %>%
 ```{r}
 #| output: false
 #| code-fold: true
-#| code-summary: "Solution questions 5 à 7"
+#| code-summary: "Solution questions 5 to 7"
 
 # Question 5
 duplicates <- filosofi %>%
@@ -541,7 +514,6 @@ filosofi %>%
   summarize(Stats = mean(NBPERSMENFISC16, na.rm = TRUE))
 ```
 
-
 ```{r}
 #| code-fold: true
 #| code-summary: "Solution question 8"
@@ -550,7 +522,7 @@ filosofi_big <- filosofi %>%
   filter(NBPERSMENFISC16 > 100000) %>%
   mutate(probleme = LIBGEO %in% duplicates$LIBGEO)
 
-# Proportion de villes à problème
+# Proportion of problematic cities
 mean_probleme <- filosofi_big %>%
   summarize(mean(probleme))
 
@@ -561,19 +533,15 @@ df_probleme <- filosofi_big %>%
 
 <details>
 <summary>
-Ce que vous devriez trouver dans les questions 8 et 9
+What you should find in questions 8 and 9
 </summary>
 
-Pour la question 8, vous devriez obtenir ceci:
-
-
+For question 8, you should get this:
 ```{r}
 head(df_probleme)
 ```
 
-Alors que pour la question 9, vos deux _dataframes_ ressembleront à
-
-
+While for question 9, your two _dataframes_ will look like
 ```{r}
 #| code-fold: true
 #| code-summary: "Solution question 9"
@@ -590,40 +558,38 @@ filosofi %>%
 
 :::
 
-Ce petit exercice permet de se rassurer car les libellés dupliqués
-sont en fait des noms de commune identiques mais qui ne sont pas dans le même département.
-Il ne s'agit donc pas d'observations dupliquées.
-On se fiera ainsi aux codes communes, qui eux sont uniques.
-
+This small exercise is reassuring because the duplicate labels
+are actually identical municipality names that aren't in the same department.
+These aren't duplicate observations.
+We'll therefore rely on municipality codes, which are unique.
 
 ::: {.callout-tip}
-## Exercice 3
+## Exercise 3
 
-On va commencer l'exploration de données. Cela implique un peu de
-nettoyage de données en amont. 
+Let's start data exploration. This involves some
+data cleaning beforehand. 
 
-1. Renommer la variable `INSEE commune` en `code_insee`[^espace]. 
-2. Les deux premiers chiffres des codes communes sont le numéro de département.
-Créer une variable de département `dep` dans `emissions` et dans `filosofi`
-en utilisant la fonction `str_sub` du package `stringr`[^stringr].
+1. Rename the variable `INSEE commune` to `code_insee`[^espace]. 
+2. The first two digits of municipality codes are the department number.
+Create a department variable `dep` in `emissions` and in `filosofi`
+using the `str_sub` function from the `stringr` package[^stringr].
 
-Commençons le calcul de nos premières statistiques descriptives. 
+Let's start calculating our first descriptive statistics. 
 
-3. Calculer les émissions totales par secteur pour chaque département.
-Mettre en _log_ ces résultats dans un objet `emissions_log`.
-La @fig-sample-log illustre la structure de ces émissions sur 5 départements
-aléatoires. 
+3. Calculate total emissions by sector for each department.
+Log-transform these results in an object `emissions_log`.
+@fig-sample-log illustrates the structure of these emissions for 5 random
+departments. 
 
-4. Repartir du jeu de données `emissions`.
-Calculer les émissions totales par département et sortir la liste
-des 10 principaux émetteurs de CO2 et des 5 départements les moins émetteurs.
-Sans faire de *merge*,
-regarder les caractéristiques de ces départements (population et niveau de vie)
+4. Start from the `emissions` dataset.
+Calculate total emissions by department and output the list
+of the top 10 CO2 emitters and the 5 lowest-emitting departments.
+Without doing a *merge*,
+look at the characteristics of these departments (population and standard of living)
 
-[^stringr]: Les fonctionnalités limitées du langage de base sur la manipulation
-textuelle sont rapidement contraignantes. On passe ainsi rapidement à `stringr`
-même si ce n'est pas l'objet principal du chapitre. 
-
+[^stringr]: The limited functionalities of the base language for text manipulation
+quickly become constraining. We thus quickly move to `stringr`
+even though it's not the main subject of the chapter. 
 ```{r}
 #| code-fold: true
 #| code-summary: "Solution question 1"
@@ -659,7 +625,7 @@ emissions_log <- emissions %>%
 #| code-fold: true
 #| code-summary: "Solution question 4"
 
-## Emissions totales par département
+## Total emissions by department
 emissions_dep <- emissions %>%
   mutate(total = rowSums(pick(where(is.numeric)), na.rm = TRUE)) %>%
   group_by(dep) %>%
@@ -671,7 +637,7 @@ petits_emetteurs <- emissions_dep %>%
   arrange(total) %>%
   head(5)
 
-## Caractéristiques de ces départements dans filosofi
+## Characteristics of these departments in filosofi
 gros_emetteurs_filosofi <- filosofi %>%
   filter(dep %in% gros_emetteurs$dep) %>%
   group_by(dep) %>%
@@ -680,13 +646,12 @@ gros_emetteurs_filosofi <- filosofi %>%
 head(gros_emetteurs_filosofi)
 ```
 
-
 ```{r}
 #| echo: true
-#| fig-cap: Structure des émissions de cinq départements aléatoires
+#| fig-cap: Emission structure of five random departments
 #| label: fig-sample-log
 #| code-fold: true
-#| code-summary: "Code pour créer la figure ci-dessous"
+#| code-summary: "Code to create the figure below"
 
 library(tidyr)
 library(ggplot2)
@@ -704,10 +669,9 @@ ggplot(emissions_log_sample, aes(x = dep, y = Value, fill = Category)) +
     theme(axis.text.x = element_text(angle = 45, hjust = 1)) + scale_fill_viridis_d()
 ```
 
-
 <details>
 <summary>
-Exemple d'utilisation de `str_sub`
+Example of using `str_sub`
 </summary>
 ```r
 library(stringr)
@@ -718,51 +682,48 @@ df %>% mutate(x = str_sub(y, start = 3, end = 5))
 
 :::
 
-[^espace]: L'espace dans le nom de la variable est embêtant. Pour pouvoir
-utiliser le nom de cet variable dans `rename`, il va falloir utiliser
-des backticks, c'est-à-dire ` INSEE commune `.
+[^espace]: The space in the variable name is annoying. To be able to
+use this variable's name in `rename`, we'll need to use
+backticks, i.e., ` INSEE commune `.
 
+# Restructuring data
 
-# Restructurer des données
-
-On présente généralement deux types de données : 
+Two types of data are generally presented: 
     
-* format __wide__: les données comportent des observations répétées, pour un même individu (ou groupe), dans des colonnes différentes 
-* format __long__: les données comportent des observations répétées, pour un même individu, dans des lignes différentes avec une colonne permettant de distinguer les niveaux d'observations
+* __wide__ format: data contains repeated observations for the same individual (or group) in different columns 
+* __long__ format: data contains repeated observations for the same individual in different rows with a column to distinguish observation levels
 
-Un exemple de la distinction entre les deux peut être pris à l'ouvrage de référence d'Hadley Wickham, *R for Data Science*:
+An example of the distinction between the two can be taken from Hadley Wickham's reference work, *R for Data Science*:
 
-![Données _long_ (gauche) et _wide_ (droite) (source: *R for Data Science*)](https://d33wubrfki0l68.cloudfront.net/3aea19108d39606bbe49981acda07696c0c7fcd8/2de65/images/tidy-9.png)
+![_Long_ (left) and _wide_ (right) data (source: *R for Data Science*)](https://d33wubrfki0l68.cloudfront.net/3aea19108d39606bbe49981acda07696c0c7fcd8/2de65/images/tidy-9.png)
 
-On est souvent amené avec {{< fa brands r-project >}} à restructurer les données
-pour les allonger (_wide to long_) et les élargir (_long to wide_). 
-C'est le package _tidyr_ (qui appartient au _tidyverse_) qui permet
-de faire ce type de transformations.
+We often need to restructure data with {{< fa brands r-project >}}
+to lengthen them (_wide to long_) and widen them (_long to wide_). 
+The _tidyr_ package (which belongs to the _tidyverse_) allows
+these types of transformations.
 
-L'aide mémoire suivante aidera à se rappeler les fonctions à appliquer si besoin:
+The following cheat sheet will help remember which functions to apply if needed:
 
 ![](https://scienceparkstudygroup.github.io/r-lesson-based-on-ohi-data-training/img/rstudio-cheatsheet-spread-gather-sep-unite.png){width="80%" fig-align="center"}
 
-Le fait de passer d'un format *wide* au format *long* (ou vice-versa)
-peut être extrêmement pratique car certaines fonctions sont plus adéquates sur une forme de données ou sur l'autre.
+Going from *wide* to *long* format (or vice-versa)
+can be extremely practical because certain functions are more suitable for one data form or another.
 
-En règle générale, les formats *long* sont souvent préférables car il est
-plus facile d'itérer sur des lignes que sur des colonnes du fait de
-la nature vectorielle de {{< fa brands r-project >}}.
-C'est notamment
-la forme de données privilégiée pour préparer des graphiques avec `ggplot`, 
-que nous découvrirons dans le prochain chapitre. 
-
+Generally, *long* formats are often preferable because it's
+easier to iterate over rows than columns due to
+{{< fa brands r-project >}}'s vectorial nature.
+This is particularly
+the preferred data form for preparing graphs with `ggplot`, 
+which we'll discover in the next chapter. 
 
 :::{.callout-tip}
-## Exercice 4: la transformation _wide to long_
-1. Restructurer les données au format *long* pour avoir des données d'émissions par secteur en gardant comme niveau d'analyse la commune (attention aux autres variables identifiantes).
-2. Faire la somme par secteur et représenter graphiquement un _barplot_[^barplot] 
-3. Garder, pour chaque département, le secteur le plus polluant
+## Exercise 4: the _wide to long_ transformation
+1. Restructure the data to *long* format to have emissions data by sector while keeping the municipality as the analysis level (be careful with other identifying variables).
+2. Sum by sector and graphically represent a _barplot_[^barplot] 
+3. Keep, for each department, the most polluting sector
 
-[^barplot]: vous pouvez
-utiliser directement le morceau de code d'aide si vous n'êtes pas familiers de `ggplot`
-
+[^barplot]: you can
+directly use the helper code snippet if you're not familiar with `ggplot`
 ```{r}
 #| code-fold: true
 #| code-summary: "Solution question 1"
@@ -774,7 +735,6 @@ df_long <- emissions %>%
                names_to = "secteur",
                values_to = "emissions")
 ```
-
 ```{r}
 #| code-fold: true
 #| code-summary: "Solution question 2"
@@ -784,11 +744,10 @@ df_long_summary <- df_long %>%
 ```
 
 <details>
-<summary>Graphique à réaliser pour la question 2</summary>
+<summary>Graph to create for question 2</summary>
 
-Une fois le _dataframe_ `df_long_summary` créé, le code minimal
-pour réaliser le _barplot_ voulu est:
-
+Once the `df_long_summary` _dataframe_ is created, the minimal code
+to create the desired _barplot_ is:
 ```{r}
 #| echo: true
 ggplot(df_long_summary) +
@@ -798,11 +757,10 @@ ggplot(df_long_summary) +
   )
 ```
 
-Pas besoin d'aller plus loin pour le moment, nous ferons plus
-de `ggplot` ultérieurement. 
+No need to go further for now, we'll do more
+`ggplot` later. 
 
 </details>
-
 ```{r}
 #| output: false
 #| code-fold: true
@@ -814,39 +772,35 @@ df_long_dep <- df_long %>%
   group_by(dep) %>%
   slice_head(n = 1)
 ```
-
 ```{r}
 #| echo: false
 head(df_long_dep)
 ```
 
-
 :::
 
-
 ::: {.callout-tip}
-## Exercice 5: _long to wide_
+## Exercise 5: _long to wide_
 
 TO DO
 :::
 
+# Combining data
 
-# Combiner les données
+Information we seek is increasingly obtained from multiple data sources rather than a single database. It's becoming common to need to combine data from different sources. 
 
-Une information que l'on cherche à obtenir s'obtient de moins en moins à partir d'une unique base de données. Il devient commun de devoir combiner des données issues de sources différentes. 
+We'll focus here on the most favorable case which is when information allows exact matching of two databases (otherwise we'd be in a much more complex situation of fuzzy matching). The typical situation is matching between two data sources using an individual identifier or municipality code identifier, which is our case.
 
-Nous allons ici nous focaliser sur le cas le plus favorable qui est la situation où une information permet d'apparier de manière exacte deux bases de données (autrement nous serions dans une situation, beaucoup plus complexe, d'appariement flou). La situation typique est l'appariement entre deux sources de données selon un identifiant individuel ou un identifiant de code commune, ce qui est notre cas.
+It's recommended to read [this fairly complete guide on joins with {{< fa brands r-project >}}](https://www.book.utilitr.org/03_fiches_thematiques/fiche_joindre_donnees) which also gives useful recommendations for `Python` {{< fa brands python >}}.
 
-Il est recommandé de lire [ce guide assez complet sur la question des jointures avec {{< fa brands r-project >}}](https://www.book.utilitr.org/03_fiches_thematiques/fiche_joindre_donnees) qui donne des recommandations également utiles en `Python` {{< fa brands python >}}.
-
-Dans le langage courant du statisticien,
-on utilise de manière indifférente les termes *merge* ou *join*. Le deuxième terme provient de la syntaxe `SQL` et c'est celui qui est plutôt utilisé
-quand on code avec `dplyr`. 
+In common statistical language,
+the terms *merge* or *join* are used interchangeably. The second term comes from `SQL` syntax and is the one rather used
+when coding with `dplyr`. 
 
 <details>
 
 <summary>
-Les différents type de _join_ disponibles dans `dplyr`
+The different types of _join_ available in `dplyr`
 </summary>
 
 ![](https://rafalab.dfci.harvard.edu/dsbook/wrangling/img/joins.png){width=80%}
@@ -854,55 +808,52 @@ Les différents type de _join_ disponibles dans `dplyr`
 </details>
 
 ::: {.callout-tip}
-## Exercice 6: enrichir les données d'émissions
+## Exercise 6: enriching emissions data
 
-En premier lieu, on va calculer l'empreinte carbone de chaque commune. 
+First, we'll calculate each municipality's carbon footprint. 
 
-1. Calculer les émissions totales en utilisant la commande suivante
-(comme celle-ci est complexe, nous la donnons directement):
-
-```r
+1. Calculate total emissions using the following command
+(since this is complex, we give it directly):
+```{r}
 emissions <- emissions %>%
   mutate(total = rowSums(pick(where(is.numeric)), na.rm = TRUE))
 ```
 
+2. Perform a left join between emissions data and framing data[^notebiais].
 
-2. Faire une jointure à gauche entre les données d'émissions et les données de cadrage[^notebiais].
+[^notebiais]: Ideally, we should ensure this join doesn't
+introduce bias. Indeed, since our reference years aren't necessarily identical,
+there may be a _mismatch_ between our two sources. Since the tutorial is already long, we won't go down this path. Interested readers can perform such an analysis as an additional exercise.
 
-[^notebiais]: Idéalement, il serait nécessaire de s'assurer que cette jointure n'introduit
-pas de biais. En effet, comme nos années de référence ne sont pas forcément identiques,
-il peut y avoir un _mismatch_ entre nos deux sources. Le TP étant déjà long, nous n'allons pas dans cette voie. Les lecteurs intéressés pourront effectuer une telle analyse en exercice supplémentaire.
+3. Calculate carbon footprint (total emissions / population).
 
-3. Calculer l'empreinte carbone (émissions totales / population).
+At this stage we might want to move toward modeling to try to explain
+carbon footprint determinants from municipal variables. 
+However, an inferential approach requires
+checking descriptive statistics beforehand to be relevant.
 
-A ce stade nous pourrions avoir envie d'aller vers la modélisation pour essayer d'expliquer
-les déterminants de l'empreinte carbone à partir de variables communales. 
-Une approche inférentielle nécessite néanmoins pour être pertinente de
-vérifier en amont des statistiques descriptives.
+4. Use the following code to output a histogram in level then in log of municipal carbon footprint;
 
-4. Utiliser le code suivant pour sortir un histogramme en niveau puis en log de l'empreinte carbone communale ;
-
-```r
+```{r}
 ggplot(emissions_merged) +
   geom_histogram(aes(x = empreinte, y = after_stat(density))) +
   scale_x_log10()
 ```
 
-5. Pour chaque ville, comparer l'empreinte carbone à la médiane du département. En relatif, quelles sont les villes particulièrement vertueuses (c'est-à-dire celles qui ont des émissions bien inférieures à la moyenne départementale) ?
+5. For each city, compare carbon footprint to the department median. In relative terms, which cities are particularly virtuous (i.e., those with emissions well below the department average)?
 
-Avec une meilleure compréhension de nos données, nous nous rapprochons
-de la statistique inférentielle. Néanmoins, nous avons jusqu'à présent
-construit des statistiques univariées mais n'avons pas cherché à comprendre
-les résultats en regardant le lien avec d'autres variables. 
-Cela nous amène vers la statistique bivariée, notamment l'analyse des corrélations. 
-Ce travail est important puisque toute modélisation ultérieure consistera à 
-raffiner l'analyse des corrélations pour tenir compte des corrélations croisées
-entre multiples facteurs. On propose ici de faire cette analyse
-de manière minimale. 
+With better understanding of our data, we're approaching
+inferential statistics. However, we've so far
+built univariate statistics but haven't sought to understand
+results by looking at the link with other variables. 
+This brings us to bivariate statistics, particularly correlation analysis. 
+This work is important since any subsequent modeling will consist of 
+refining correlation analysis to account for cross-correlations
+between multiple factors. We propose here to do this analysis
+in a minimal way. 
 
-6. Regarder la corrélation entre les variables de cadrage et l'empreinte carbone (la solution est donnée, car les manipulations ne sont pas évidentes).
-Certaines variables semblent-elles pouvoir potentiellement influer sur l'empreinte carbone ?
-
+6. Look at the correlation between framing variables and carbon footprint (the solution is given, as the manipulations aren't obvious).
+Do some variables seem to potentially influence carbon footprint?
 ```{r}
 #| output: false
 #| code-fold: true
@@ -951,8 +902,6 @@ emissions_merged <- emissions_merged %>%
 emissions_merged %>% arrange(empreinte_relative)
 ```
 
-
-
 ```{r}
 #| output: false
 #| code-fold: true
@@ -970,13 +919,10 @@ correlations <- enframe(correlations) %>%
   arrange(desc(abs(value)))
 ```
 
-Voici une visualisation rapide des corrélations à l'empreinte carbone:
-
+Here's a quick visualization of correlations with carbon footprint:
 ```{r}
 ggplot(correlations) + geom_bar(aes(x = value, y = name), stat = "identity") +
   scale_y_discrete(limits = correlations$name) 
 ```
 
 :::
-
-
