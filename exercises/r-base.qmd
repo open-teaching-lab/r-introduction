@@ -1,1289 +1,928 @@
 ---
-title: "Découverte des objets de base de {{< fa brands r-project >}}"
-#echo: false
+title: "Importing and manipulating data with {{< fa brands r-project >}}"
+echo: true
 number-sections: true
-code-annotations: hover
 ---
 
 ::: {.badge}
-<a href="https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=false&networking.user.enabled=true&onyxia.friendlyName=%C2%ABrstudio-cours-ENS%C2%BB" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Tester%20via%20SSP%20cloud%20-%20SSPCloud?logo=R&labelColor=black&color=%231965b8" alt="Onyxia"></a><br>
+<a href="https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=false&networking.user.enabled=true&onyxia.friendlyName=%C2%ABrstudio-cours-ENS%C2%BB" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Test%20via%20SSP%20cloud%20-%20SSPCloud?logo=R&labelColor=black&color=%231965b8" alt="Onyxia"></a><br>
 :::
 
 <details>
 <summary>
-Check out the _slides_ below or [click here](/slides/introduction.qmd)
+Check out the _slides_ below or [click here](/slides/wrangling.qmd)
 to view the slides in full screen.
 </summary>
-
-
-```{.yaml code-preview="/slides/introduction.qmd"}
+``` {.yaml code-preview="/slides/wrangling.qmd"}
 ```
 
 </details>
 
-
-Dans ce premier TP,
-nous allons rentrer tranquillement
-dans notre parcours de découverte de 
+In this second tutorial,
+we will learn to import and
+manipulate data with
 {{< fa brands r-project >}}. 
 
-Cela se fera par les étapes suivantes:
-
-1. Familiarisation avec `RStudio`, le logiciel qui nous permettra d'utiliser le langage {{< fa brands r-project >}} ;
-2. Découverte des objets de base de {{< fa brands r-project >}}: les vecteurs de **nombres**, de **chaînes de caractères** et de conditions logiques, les **listes** et les _**dataframes**_ ;
-3. Découverte de l'**assignation** des objets à des **variables** pour réaliser des opérations avec ces dernières.
-
-
-:::{.callout-note collapse="true"}
-## Note sur les annotations
-Certains exemples de code présentent des annotations sur le côté,
-passez votre souris dessus pour les afficher, comme ci-dessous
-
-```{r}
-#| echo: true
-#| output: false
-"une annotation explicative m'accompagne à droite" #<1>
-```
-1. Je m'affiche quand on passe la souris sur moi 🐭 !
-
-:::
-
-# Familiarisation avec `RStudio`
-
-Habituellement, pour pouvoir faire du {{< fa brands r-project >}}, on 
-utilise le logiciel `RStudio`[^rstudio] qui offre un environnement un peu moins
-rudimentaire que l'interface graphique par défaut fournie lors de l'installation
-de {{< fa brands r-project >}}.
-
-[^rstudio]: Pour installer soi-même `RStudio`, les instructions sont [ici](https://posit.co/download/rstudio-desktop/). Néanmoins, dans le cadre
-de ce cours, vous n'aurez pas besoin de faire l'installation, nous allons
-utiliser une infrastructure préconfigurée. De cette manière, nous aurons 
-accès au même environnement.
-
-Pour lancer un service `RStudio` sur des serveurs préconfigurés, nous allons
-utiliser une infrastructure nommée le [`SSPCloud`](https://datalab.sspcloud.fr/)
-qui est développée par l'équipe innovation de l'Insee pour des projets
-d'enseignement ou de _data science_.
-
-![](https://git.lab.sspcloud.fr/diit/presentation/energy-data-hack-2022/20220523-day_1-onyxia_onboarding/-/raw/main/slideshow/macbook_onyxia.png){width=50% fig-align="center"}
-
-<br>
-Après avoir créé un compte sur [datalab.sspcloud.fr/](https://datalab.sspcloud.fr/),
-cliquez sur ce bouton :
-
-::: {.badge}
-<a href="https://datalab.sspcloud.fr/launcher/ide/rstudio?version=1.15.13&networking.user.enabled=true&onyxia.friendlyName=%C2%ABrstudio-cours-ENS%C2%BB»&networking.user.enabled=true&onyxia.friendlyName=«rstudio-cours-ENS»" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Tester%20via%20SSP%20cloud%20-%20SSPCloud?logo=R&labelColor=black&color=%231965b8" alt="Onyxia"></a><br>
-:::
-
-Après quelques instants de lancement du service sur les serveurs de l'Insee, 
-vous pourrez accéder à votre `RStudio` prêt à l'emploi (démonstration
-en _live_ ou [aide mémoire](/slides/introduction.html#/prise-en-main-du-ssp-cloud))
-
-
-:::{.callout-tip collapsable="true"}
-## Exercice 1: se familiariser avec `RStudio`
-
-Ce premier exercice vise, après avoir observé la structure des fenêtres
-de `RStudio`, à prendre en main l'interface:
-
-1. Observer la structure de votre dossier de travail en bas à droite de `RStudio` ;
-2. Créer un script à partir du menu `File/New File/R script` et l’enregistrer sous le nom `script1.R` ;
-3. Observer la mise à jour de votre dossier en bas à droite ;
-4. Faire une recherche dans la partie Help de RStudio pour la fonction `list.files` ;
-5. Ecrire dans `script1.R` le code qui permet de faire la liste des fichiers de votre dossier de travail ;
-6. Utiliser le raccourci `RStudio` <kbd>CTRL</kbd> + <kbd>ENTREE</kbd> pour exécuter ce code dans la console.
-
-::: 
-
-
-
-# Les objets uni-dimensionnels
-
-Nous allons commencer par les objets en une dimension, c'est-à-dire
-les listes de valeurs de même type. Par exemple, `["ENS Ulm", "ENS Lyon", "ENS Paris-Saclay"]`
-ou `[4 8 15 16 23 42]`. 
-
-Ces listes de valeurs en une dimension peuvent être représentées
-par des __vecteurs__. Les quatre types les plus pratiques
-en  {{< fa brands r-project >}} sont :
-
-- Les [vecteurs numériques](#numeric) ;
-- Les [chaines de caractères](#characters) ;
-- Les [vecteurs logiques](#logical) ;
-- Les [facteurs](#factors).
-
-Nous irons ensuite à des structures de données plus complexes
-mais qui sont en fait celles que nous manipulons plus 
-couramment: les [listes](#lists) et les [_dataframes_](#dataframes). 
-
-
-## Les vecteurs numériques (_numeric_) {#numeric}
-
-### Les deux types de vecteurs numériques
-
-{{< fa brands r-project >}} propose différents types d'objets numériques. Pour l'analyse de données, nous allons principalement
-nous intéresser principalement à deux types :
-
-- les entiers (type `int` pour *integer*)
-- les nombres réels (type `double` pour nombres à virgule flottante)
-
-En pratique, les premiers sont un cas spécial des seconds. Contrairement à d'autres langages,
-{{< fa brands r-project >}} ne tente pas de contraindre de manière automatique les nombres sans virgules à être
-des entiers (_integers_). C'est pratique mais sur de gros volumes de données ça peut
-poser problème car les _double_ sont plus lourds que les _int_. 
-
-
-En général, on utilise la fonction `class` pour afficher le type d'un objet {{< fa brands r-project >}} et
-si on veut être plus précis on peut utiliser `typeof`:
-
-```{r}
-#| echo: true
-#| output: false
-class(3)
-typeof(3)
-class(3.14)
-typeof(3.14)
-```
-
-Les fonctions `as.numeric` et `as.integer` peuvent être utilisées pour convertir d'un type à l'autre:
-
-```{r}
-#| echo: true
-# Conversion en int
-as.integer(3.79)
-```
-
-::: {.callout-warning}
-Attention à la conversion *double* $\to$ *int*, qui tronque la partie décimale.
-
-```{r}
-#| echo: true
-# double -> int -> double
-as.numeric(
-    as.integer(3.79)
-)
-```
-:::
-
-Les _floats_ peuvent également être écrits en notation scientifique :
-
-```{r}
-#| echo: true
-2e3
-class(2e3)
-```
-
-
-### Opérations arithmétiques de base
-
-![](img/verybadtrip.gif){fig-align="center"}
-
-Comme tout langage informatique,  {{< fa brands r-project >}} est avant tout
-une calculette. On est sauvé, on peut donc faire des additions:
-
-```{r}
-#| echo: true
-# Addition
-8 + 9
-```
+If you're interested in `Python` {{< fa brands python >}},
+a very similar version of this tutorial is available in [my ENSAE course](https://pythonds.linogaliana.fr/content/manipulation/02b_pandas_TP.html).
 
 ::: {.callout-note}
-{{< fa brands r-project >}} est bien fait, il adapte le type des variables pour les mettre en cohérence lorsqu'elles
-peuvent l'être:
 
+Some code examples include annotations on the side,
+hover over them to display them, as shown below
 ```{r}
 #| echo: true
-# Addition
-8.1 + as.integer(9)
+#| output: false
+"an explanatory annotation accompanies me on the right" #<1>
 ```
+1. I appear when you hover over me 🐭!
 
 :::
 
-On a bien-sûr accès à d'autres opérations standards:
+In this chapter, we will mainly use the following packages
+from the `tidyverse`: 
 
-```{r}
-#| echo: true
-# Soustraction
-5 - 2
-# Multiplication
-2 * 6
-# Division
-9 / 4
-```
+- `readr` for data import;
+- `dplyr` for data manipulation.
 
-Il faut tout de même faire attention à la division par 0
+::: {.callout-note}
 
-```{r}
-#| echo: true
-# Division par 0
-3 / 0
--5 / 0
-```
+The `tidyverse` is not the only complete ecosystem for data analysis.
 
-::: {.callout-warning}
-Certains langages, comme `Python`, ne permettent pas la division par 0, ils renvoient 
-une erreur plutôt qu'`Inf`. C'est un peu piégeux en `R` car cela peut arriver
-d'avoir des divisions par 0 sans qu'on s'en rende compte...
-:::
+However, for an introduction to {{< fa brands r-project >}}, it's 
+certainly the most reasonable to adopt. 
 
-Comme toute calculette, on peut appliquer d'autres types d'opérations
-
-
-```{r}
-#| echo: true
-#| label: division-euclidienne
-# Division euclidienne : quotient
-9 %/% 4
-# Division euclidienne : reste
-9 %% 4
-```
-
-```{r}
-#| echo: true
-# Puissance
-2 ^ 5
-# Racine carrée
-sqrt(5)
-# Log
-log(2)
-# Exponentielle
-exp(2)
-```
-
-L'ordre des opérations suit la convention usuelle:
-
-```{r}
-#| echo: true
-2 + 5 * (10 - 4)
-```
-
-### Vectorisation
-
-Si on ne pouvait utiliser {{< fa brands r-project >}}
-qu'en mode calculette peu raffinée,
-ça ne serait pas un langage très intéressant pour l'analyse
-de données. L'avantage principal de {{< fa brands r-project >}}
-est qu'on va pouvoir
-manipuler des vecteurs, c'est à dire des suites de nombres.
-On va considérer que les vecteurs sont des suites de nombres
-ordonnés en une seule colonne:
-
-$$
-\begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}
-$$
-
-et on va appliquer des opérations sur chaque ligne de ces vecteurs. 
-On parle de __vectorisation__ des opérations pour désigner une opération
-qui s'appliquera de manière automatique à chaque élément de notre
-vecteur.
-
-Par exemple, la multiplication est vectorielle par défaut:
-
-```{r}
-#| echo: true
-5*c(1,20,2)
-```
-
-De même l'addition, à condition de mettre des vecteurs de taille cohérente:
-
-```{r}
-#| echo: true
-c(1,20,2) + c(21,2,20)
-c(1,20,2) - 3
-```
-
-::: {.callout-warning}
-Si la taille des vecteurs n'est pas cohérente, {{< fa brands r-project >}}
-recycle le vecteur le plus petit jusqu'à atteindre la bonne taille
-
-```{r}
-#| echo: true
-c(1,20,2) - c(1,20)
-```
+Competing or complementary ecosystems
+(`data.table`, `arrow`, `duckdb`) already require
+a good understanding of the `tidyverse` and its limitations. 
 
 :::
 
-## Les chaînes de caractères (_characters_) {#characters}
+In this tutorial, we will use two data sources:
 
-Les chaînes de caractères (ou *strings*) sont utilisées pour stocker de l'information textuelle.
-Plus précisément, elles peuvent stocker tout caractère de type [Unicode](https://fr.wikipedia.org/wiki/Unicode), ce qui inclut les lettres des différentes langues, mais également la ponctuation, les chiffres, les smileys, etc.
+* Greenhouse gas emissions estimated at the municipal level by `ADEME`. The dataset is
+available on [data.gouv](https://www.data.gouv.fr/fr/datasets/inventaire-de-gaz-a-effet-de-serre-territorialise/#_)
+and directly queryable in {{< fa brands r-project >}} with
+[this url](https://koumoul.com/s/data-fair/api/v1/datasets/igt-pouvoir-de-rechauffement-global/convert) (this will be the subject of the first exercise)[^notedownload].
+* Ideally, we would directly use the data
+[available on the Insee website](https://www.insee.fr/fr/statistiques/3560121) but these require some
+cleaning work that is beyond the scope of this tutorial. 
+To facilitate importing Insee data, it's recommended to use the _packages_
+[`doremifasol`](https://github.com/InseeFrLab/DoReMIFaSol) and [`insee`](https://github.com/pyr-opendatafr/R-Insee-Data) which simplify access to Insee data
+available on the [insee.fr](https://www.insee.fr/fr/accueil) website
+or via APIs. 
 
+[^notedownload]: 
 
-### Créer un _string_
+  `readr` offers the possibility to import data directly from a url. This is the option 
+  taken in this tutorial. If you prefer, for 
+  network access or performance reasons, to import from a local machine,
+  you can download the data and change
+  the import commands with the appropriate path instead of the url. 
 
-Pour créer une chaine de caractères (_string_), on
-peut utiliser de manière indifférente les guillemets ou les
-apostrophes. 
+# Preliminary steps: installing _packages_
 
+{{< fa brands r-project >}} is an _open source_ language. Anyone can
+therefore propose {{< fa brands r-project >}} code to increase the 
+language's functionalities. A coherent set of functionalities is called
+a __library__ or __package__. 
 
-```{r}
-#| echo: true
-'mot' # <1>
-"ça fonctionne aussi" # <2>
-```
-1. Première méthode: `'`
-2. Deuxième méthode (préférable): `"`
+Since the team managing the {{< fa brands r-project >}} language doesn't intend
+to integrate all libraries into the base language (which should
+remain, as its name indicates, basic), there are
+community spaces where people can make their _packages_ available. In
+the {{< fa brands r-project >}} ecosystem, the two main ones[^bioconductor] are:
 
+- The `CRAN` (_Comprehensive R Archive Network_): the official and historical repository
+of {{< fa brands r-project >}} libraries.
+To install a _package_ stored in this space, use `install.package`;
+- `Github` {{< fa brands github >}}: the social network for _open source_ code. 
+To install a _package_ stored in this space, use `remotes::install_github`[^remotes]
 
-:::{.callout-warning}
-Attention au mélange des deux !
+[^bioconductor]: There's also `bioconductor` but since it's mainly oriented towards biostatistics (one of the academic communities that adopted {{< fa brands r-project >}} earliest), we don't really use it
 
-```{r}
-#| echo: true
-#| error: true
-print('l'apostrophe, quelle catastrophe')
-```
+[^remotes]:
+    `remotes::install_github` means to use the `install_github` function from the _package_ `remotes`. In other words, you need a _package_ to install other _packages_ 🤯.
+    This is because `Github` didn't exist when {{< fa brands r-project >}} was created (1990s) and this functionality hasn't been added since. 
 
-La deuxième apostrophe est comprise comme la fin du _string_,
-et {{< fa brands r-project >}} ne sait pas interpréter le reste de la séquence.
+::: {.callout-note}
 
-Il faut donc varier en cas de besoin :
+Generally, _packages_ with certain
+maturity are on CRAN. `Github` has a more catch-all aspect where you find
+gems alongside things of more variable quality. 
 
-```{r}
-#| echo: true
-"l'apostrophe, aucun problème" # <1>
-```
-1. Cette fois, l'apostrophe `'` est bien enchassée au sein des guillemets qui
-délimitent notre _string_.
-
-Cela fonctionne également en sens inverse: les guillements sont bien
-interprétés lorsqu'ils sont entre apostrophes. 
-
-```{r}
-#| echo: true
-'les guillemets, "aucun problème"'
-```
-
-Comme l'illustre la sortie ci-dessus, il est
-possible de bien définir les caractères
-spéciaux de cette sorte en les échappant avec des antislashs `\`:
-
-```{r}
-#| echo: true
-"les guillemets, \"aucun problème\"" # <1>
-'l\'apostrophe, aucun problème' # <1>
-```
-1. `\` permet à {{< fa brands r-project >}} de comprendre que l'apostrophe
-ou le guillemet fait partie de la chaine de caractère et non de sa délimitation.
+Some _packages_ we'll see aren't on CRAN because the validation procedure
+to deposit your _package_ there is quite heavy and
+tiring for volunteer developers, usually unpaid 
+for this work and often doing it at night. 
 
 :::
 
-### Quelques fonctions utiles
-
-{{< fa brands r-project >}} propose par défaut un certain nombre
-de fonctions utiles pour 
-extraire ou transformer des vecteurs textuels. On en découvrira
-des plus pratiques et plus générales lorsqu'on se focalisera sur
-les données textuelles et le package [`stringr`](https://stringr.tidyverse.org/).
-
-La fonction `nchar` permet de compter le nombre de caractères d'un *string*, tous caractères inclus (lettres, chiffres, espaces, ponctuation...).
-
+To install a package available on CRAN, for example
+the [`dplyr`](https://dplyr.tidyverse.org/) package,
+you can do:
 ```{r}
+#| eval: false
 #| echo: true
-nchar("J'ai 19 charactères")
+install.packages("insee")
 ```
 
-Il ne faut pas la confondre avec la fonction `length`. Celle-ci
-nous donne la longueur du vecteur. Par exemple, 
-
+To install a package available on `Github` {{< fa brands github >}},
+for example [`doremifasol`](https://github.com/InseeFrLab/DoReMIFaSol)
+which is available on the `InseeFrLab` account's repository, do:
 ```{r}
+#| eval: false
 #| echo: true
-length("J'ai 19 charactères")
+remotes::install_github('inseefrlab/DoReMIFaSol')
 ```
 
-est de taille 1 puisqu'on a un seul élément dans notre vecteur.
-Si on prend un vecteur de plus grande dimension:
-
+Here are all the instructions to install
+the _packages_ needed to perform all
+the exercises in this tutorial:
 ```{r}
 #| echo: true
-length(c("J'ai 19 charactères", "pas moi"))
+#| eval: false
+install.packages(c("readr","dplyr", "tidyr", "ggplot2", "remotes"))
+remotes::install_github('inseefrlab/DoReMIFaSol')
 ```
 
-On retrouve bien le nombre d'éléments de notre vecteur en sortie de `length`.
-
-`nchar` est une opération vectorielle, on peut donc compter la longueur
-de chaque ligne de notre jeu de données:
-
+Since we'll frequently use `dplyr`, we can import it
+directly:
 ```{r}
 #| echo: true
-nchar(c("J'ai 19 charactères", "pas moi"))
+#| output: false
+library(dplyr)
+library(tidyr)
+library(stringr)
 ```
 
-L'un des intérêts des fonctions de base de traitement des données
-textuelles est la possibilité de remettre en forme nos chaînes
-de caractères de manière automatique. Par exemple, l'opération la 
-plus simple est de changer la capitalisation de notre texte:
+# Importing data
 
+## Importing a csv from Ademe
+
+To start, we'll import Ademe data using the
+[`readr`](https://readr.tidyverse.org/) _package_[^readcsv]. 
+
+::: {.callout-tip}
+## Exercise 1: reading a csv with `readr` and observing the data
+
+Here's the URL where the data is available
 ```{r}
 #| echo: true
-toupper(c("sequence 850", "Sequence 850")) # <1>
-tolower(c("SEQuEnce 850", "SEQUENCE 850")) # <2>
+url <- "https://koumoul.com/s/data-fair/api/v1/datasets/igt-pouvoir-de-rechauffement-global/convert"
 ```
-1. Mettre en majuscules tout le texte.
-2. Mettre en minuscules.
 
-Mais on peut aussi nettoyer des chaines textuelles avec quelques fonctions
-de base :
-
+1. Use the `readr` _package_ to import this data. Name this object `emissions`[^nomdf]
+2. Display the first lines with `head` and observe the display difference with, for example,
+this `dataframe`:
 ```{r}
 #| echo: true
-strsplit(c("une séquence    à séparer", "uneautreàséparer"), split = " ")
+library(readr)
+emissions <- read_csv(url)
 ```
 
+3. Display the class of `emissions`. Do you now understand why this object is
+slightly different from a base dataframe?
+4. Use appropriate functions for the first 10 values, the last 15 and a random sample of 10 values using the [appropriate function from the `dplyr` package](https://dplyr.tidyverse.org/reference/sample_n.html)
 
-A ce stade, la sortie obtenue, avec des `[[]]`
-peut vous paraître étrange car nous n'avons pas
-encore découvert le type `list`.
+<details>
+<summary>
+If stuck on question 1
+</summary>
+Read the `read_csv` documentation (very well done) or search for examples
+online to discover this function.
+⚠️ Don't use `read.csv` (base function) which isn't performant. 
+</details>
+:::
 
-Ce type de données n'étant pas forcément pratique
-pour l'analyse statistique, pour laquelle on préfère des formats
-comme le vecteur, ce sera beaucoup plus pratique d'utiliser
-le _package_ `stringr` pour faire un _split_.
+[^nomdf]: For lack of imagination, we're often tempted to call our
+main _dataframe_ `df` or `data`. This is often a bad idea since
+this name isn't very informative when rereading the code a few weeks
+later. Self-documentation, an approach that consists of having code
+that explains itself, is a good practice and it's therefore recommended
+to give a simple but effective name to know the nature of the _dataset_ in question.
 
-On peut tout à fait découper notre _string_ sur autre chose que les espaces!
+## First data manipulations
 
-```{r}
-#| echo: true
-strsplit(c("une séquence    à séparer", "uneautreàséparer"), split = "à")
-```
-On peut concaténer des chaines de caractère ensemble, c'est très pratique. 
-Malheureusement le `+` ne fonctionne pas en `R` pour les chaines de 
-caractères (contrairement à `Python`). Pour effectuer cela on 
-utilise `paste` ou `paste0` (une version moins générale mais qui est
-pensée pour les concaténations simples):
+As mentioned
+in [`utilitR`](https://www.book.utilitr.org/03_fiches_thematiques/fiche_tidyverse),
+the main functions of `dplyr` (the _verbs_ of the `dplyr` grammar) 
+are as follows:
 
-
-```{r}
-#| echo: true
-#| label: paste
-paste0(
-    "La première fois qu'Aurélien vit Bérénice,",
-    " ",
-    "il la trouva franchement laide. Elle lui déplut, enfin.",
-    " ",
-    "Il n'aima pas comment elle était habillée."
-) # <1>
-
-paste(
-    "La première fois qu'Aurélien vit Bérénice,",
-    "il la trouva franchement laide. Elle lui déplut, enfin.",
-    "Il n'aima pas comment elle était habillée.",
-    sep = " "
-) # <2>
+- `select()`: select variables by their name;
+- `rename()`: rename variables;
+- `filter()`: select observations according to one or more conditions;
+- `arrange()`: sort the table according to one or more variables;
+- `mutate()`: add variables that are functions of other variables;
+- `summarise()`: calculate a statistic from data;
+- `group_by()`: perform operations by group.
+```{ojs}
+//| echo: false
+viewof dplyrVerbs = Inputs.select(['select','rename','filter','mutate', 'arrange'], {value: "select"})
 ```
 
-1. Avec `paste0`, on concatène en accolant les _strings_, sans espace.
-2. Avec `paste`, on peut choisir la manière d'accoler les _strings_, ici
-en mettant des espaces.
-
-On peut utiliser les strings comme _templates_. C'est particulièrement
-pratique pour automatiquement créer du texte à partir de valeurs 
-issues de nos données. Pour cela on utilise `sprintf`:
-
-```{r}
-#| echo: true
-sprintf("La première fois qu'%s vit %s", "Aurélien", "Bérénice")
-sprintf("%s et %s font %s", 2, 2, 2+2)
+::: {#fig-verbs}
+```{ojs}
+//| echo: false
+html`<img src="https://github.com/linogaliana/r-geographie/raw/main/exercises/img/${dplyrVerbs}.png" width="60%"</>`
 ```
 
-`%s` sert à définir l'endroit où sera collé le texte voulu. 
+Illustration of `dplyr` verbs
 
-## Vecteurs logiques (_logicals_) {#logicals}
+:::
 
-En {{< fa brands r-project >}},
-les vecteurs logiques sont utilisés pour stocker des valeurs booléennes,
-c'est-à-dire des valeurs vraies (`TRUE`) ou fausses (`FALSE`).
+The following _cheatsheet_ is very practical as it illustrates these different
+functions. It's recommended to regularly
+consult it (click on the image to zoom 🔎):
 
-Les vecteurs logiques sont couramment utilisés pour effectuer des opérations de logique, des filtres de données et des sélections conditionnelles. 
-Nous y reviendrons par la suite, nous les utiliserons fréquemment mais de manière indirecte.
+::: {#cheatsheets-dplyr layout-ncol=2}
 
+![](img/cheatsheet1.png)
 
+![](img/cheatsheet2.png)
+
+[`dplyr` _Cheatsheets_](https://dplyr.tidyverse.org/)
+:::
+
+::: {.callout-tip}
+## Exercise 2: discovering `dplyr` verbs for data manipulation
+
+First, let's familiarize ourselves with operations on
+columns.
+
+1. Create a _dataframe_ `emissions_copy` keeping only the columns
+`INSEE commune`, `Commune`, `Autres transports` and `Autres transports international`
+
+<details>
+<summary>
+Hint for this question
+</summary>
+![](https://github.com/linogaliana/r-geographie/raw/main/exercises/img/select.png)
+</details>
+
+2. Since variable names are impractical, rename them as
+follows:
+    + `INSEE commune` $\to$ `code_insee`
+    + `Autres transports` $\to$ `transports`
+    + `Autres transports international` $\to$ `transports_international`
+
+<details>
+<summary>
+Hint for this question
+</summary>
+![](https://github.com/linogaliana/r-geographie/raw/main/exercises/img/rename.png)
+</details>
+
+3. To simplify, let's replace missing values (`NA`)
+with the value 0[^na]. Use the
+[`replace_na`](https://tidyr.tidyverse.org/reference/replace_na.html) function
+from the _tidyr_ package, in conjunction with `mutate`,
+to transform missing values to 0.
+
+<details>
+<summary>
+Hint for this question
+</summary>
+![](https://github.com/linogaliana/r-geographie/raw/main/exercises/img/mutate.png)
+</details>
+
+4. Create the following variables in the same code sequence:
+    - `dep`: the department. This can be created using the first two characters of `code_insee` with the `str_sub` function from the `stringr` _package_[^notecorse]
+    - `transports_total`: transport sector emissions (sum of the two variables)
+
+<details>
+<summary>
+Hint for this question
+</summary>
+![](https://github.com/linogaliana/r-geographie/raw/main/exercises/img/mutate.png)
+</details>
+
+5. Order the data from highest to lowest polluter
+then order the data 
+from highest to lowest polluter by department (from 01 to 95). 
+
+<details>
+<summary>
+Hint for this question
+</summary>
+![](https://github.com/linogaliana/r-geographie/raw/main/exercises/img/arrange.png)
+</details>
+
+6. Calculate total emissions by department
+
+<details>
+<summary>
+Hint for this question
+</summary>
+
+* _"Group by"_ = `group_by`
+* _"total emissions"_ = `summarise(sum(***))`
+
+</details>
+
+:::
+
+[^na]: This assumption is certainly false. It's exclusively
+here to illustrate variable creation via `mutate`.
+
+[^notecorse]: To be really precise, we would need to modify the values
+obtained for Corsican departments with the `case_when` function
+from the `dplyr` _package_. This is left as an additional exercise. 
 ```{r}
-#| echo: true
-5 > 3  # <1>
-2 == 2 # <2> 
-0 == (2 - 2) # <3>
-1 < 0 # <4>
+#| code-fold: true
+#| code-summary: "Solution question 1"
+emissions_copy <- emissions %>%
+  select(`INSEE commune`, `Commune`, `Autres transports`, `Autres transports international`)
 ```
-1. `TRUE`, car 5 est supérieur à 3.
-2. `TRUE`, car 2 est égal à 2.
-3. `TRUE`, le chainage des opérations est respecté.
-4. `FALSE`, car 1 n'est pas inférieur à 0.
-
-On peut généraliser les comparaisons pour obtenir des vecteurs:
 
 ```{r}
-#| echo: true
-c(2, 4, 6, 8, 10, 1, 3) %% 2 == 0
-```
-
-On obtient `TRUE` pour les nombres pairs, `FALSE` pour les impairs.
-
-Utiliser des vecteurs logiques nous permettra, au quotidien,
-sélectionner des données. Par exemple si on a des données d'âge, on
-peut ne vouloir garder que les prénoms des adultes. Cela pourra être fait
-sur le modèle suivant:
-
-```{r}
-#| echo: true
-c('Pierre', 'Paul', 'François', 'et les autres')[
-    c(25, 3, 61, 17) >= 18
-]
-```
-
-
-Néanmoins nous verrons dans les prochains chapitres
-comment intégrer ce principe dans
-une séquence plus générale d'opérations grâce au package [`dplyr`](https://dplyr.tidyverse.org/reference/filter.html).
-
-
-## Les facteurs (_factors_) {#factors}
-
-Les facteurs (_factors_) sont utilisés pour représenter
-des __variables catégorielles__,
-c'est-à-dire des variables qui prennent un nombre fini et prédéterminé de niveaux ou de catégories.
-
-Pour convertir un vecteur numérique ou textuel en vecteur, on utilise
-la fonction `factor`:
-
-```{r}
-#| echo: true
-factor(
-    c("capitale","préfecture","sous-préfecture","préfecture")
-)
-factor(c(1,10,3))
-```
-
-Les niveaux d'un facteur sont les différentes catégories
-ou valeurs possibles que la variable peut prendre. 
-On peut les lister avec la fonction `levels`
-
-```{r}
-levels(
-    factor(
-        c("capitale","préfecture","sous-préfecture","préfecture")
+#| code-fold: true
+#| code-summary: "Solution question 2"
+emissions_copy <- emissions_copy %>%
+  rename(
+    code_insee = `INSEE commune`,
+    transports = `Autres transports`,
+    transports_international = `Autres transports international`
     )
-)
 ```
-
-On peut aussi ordonner ces niveaux si cela a un sens lors de la définition
-du facteur. Cela implique néanmoins de connaître, _a priori_ nos différents 
-niveaux et les renseigner à {{< fa brands r-project >}} dans l'ordre:
 
 ```{r}
-factor(
-    c("capitale","préfecture","sous-préfecture","préfecture"),
-    levels = c("capitale","préfecture","sous-préfecture"),
-    ordered = TRUE
+#| code-fold: true
+#| code-summary: "Solution question 3"
+emissions_copy <- emissions_copy %>%
+  mutate(
+    transports = replace_na(transports),
+    transports_international = replace_na(transports_international)
+    )
+```
+
+```{r}
+#| code-fold: true
+#| code-summary: "Solution question 4"
+emissions_copy <- emissions_copy %>%
+  mutate(
+    dep = str_sub(code_insee, 1, 2),
+    transports_total = transports + transports_international
+    )
+```
+
+```{r}
+#| output: false
+#| code-fold: true
+#| code-summary: "Solution question 5"
+emissions_copy %>%
+  arrange(desc(transports_total))
+
+emissions_copy %>%
+  arrange(dep, desc(transports_total))
+```
+
+```{r}
+#| output: false
+#| code-fold: true
+#| code-summary: "Solution question 6"
+emissions_copy %>%
+  group_by(dep) %>%
+  summarise(sum(transports_total))
+```
+
+## Importing Insee data
+
+For our municipal information, we'll use one of Insee's
+most used sources: [`Filosofi`](https://www.insee.fr/fr/metadonnees/source/serie/s1172) data. 
+To facilitate retrieving these, we'll
+use the community _package_ `doremifasol`:
+```{r}
+#| output: false
+#| echo: true
+library(doremifasol)
+library(tibble)
+filosofi <- as_tibble(
+  telechargerDonnees("FILOSOFI_COM", date = 2016)
 )
+head(filosofi)
 ```
 
-
-# Créer des variables
-
-Jusqu'ici, nous avons dû définir à chaque fois notre objet avant de pouvoir lui appliquer une transformation. Comment faire si l'on veut réutiliser un objet et lui appliquer plusieurs transformations ? Ou faire des opérations à partir de différents objets ?
-
-Pour cela, on va __assigner__ les objets à des variables.
-Cela permet ensuite de réaliser des opérations à partir de ces variables.
-
-En {{< fa brands r-project >}},
-l'assignation se fait suivant le format :
-
-```r
-nom_de_la_variable <- objet
+```{r}
+#| echo: false
+head(filosofi)
 ```
-
-Le sens de la flèche a une importance et il
-est conventionnel de mettre à gauche le nom
-de la variable (et donc
-d'utiliser `nom_de_la_variable <- objet` plutôt que `objet -> nom_de_la_variable`).
 
 ::: {.callout-note}
-
-L'assignation sous la forme `<-` est une spécificité
-de {{< fa brands r-project >}} par rapport
-à beaucoup de langages. Dans la plupart des langages informatiques,
-comme en `Python` par exemple,
-l'assignation se fait avec `=`:
-
-```r
-nom_de_la_variable = objet
-```
-
-C'est également possible en {{< fa brands r-project >}} mais il
-est plus conventionnel d'utiliser `<-`.
-
+The `as_tibble` function converts the base _dataframe_ (`doremifasol` 
+doesn't make assumptions about the manipulation ecosystem adopted) into 
+a _dataframe_ adapted for use via the `tidyverse`. 
 :::
 
-Voici par exemple comment créer un vecteur `x` :
+# Data cleaning
 
+:::{.callout-tip}
+## Exercise 2
+
+Since `readr` or `doremifasol` automatically
+handled the data import, let's do a small
+quality control:
+
+1. Display the column names of our _dataframes_ `emissions` and `filosofi`. 
+What are the common columns? Use the `intersect` function and understand
+the nature of the problem.
+2. Observe the structure of our datasets (column types). Are the default types appropriate?
+
+Then, we verify the dimensions of the `DataFrames` and the structure of some key variables.
+In this case, the fundamental variables for linking our data are the municipal variables.
+Here, we have two geographic variables: a municipality code and a municipality name. 
+We'll therefore verify they're well suited for statistical analysis.
+
+3. Check the dimensions of the _dataframes_;
+4. Check the number of unique values of geographic variables in each base. Do the results appear consistent?
+5. Identify in `filosofi` the municipality names that correspond to multiple municipality codes and select their codes. In other words, identify the `CODGEO` such that there are duplicate `LIBGEO` and store them in a dataframe `duplicates`
+
+We temporarily focus on observations where the label has more than two different municipality codes
+
+6. Look at these observations in `filosofi`. For better visibility, reorder the obtained base alphabetically
+7. Determine the average size (variable number of people: `NBPERSMENFISC16`) and some descriptive statistics of this data.
+Compare to the same statistics on data where labels and municipality codes coincide
+8. Check large cities (more than 100,000 people),
+the proportion of cities for which the same name is associated with different municipality codes.
+9. Check in `filosofi` the cities whose label equals Montreuil.
+Also check those containing the term 'Saint-Denis'
 ```{r}
-#| echo: true
-x <- 5
-x
+#| code-fold: true
+#| code-summary: "Solution question 1"
+#| output: false
+str(emissions)
+intersect(colnames(filosofi), colnames(emissions))
 ```
 
-Celui-ci peut alors être réutilisé ultérieurement dans le code: 
-
 ```{r}
-#| echo: true
-class(x)
+#| code-fold: true
+#| code-summary: "Solution question 2"
+#| output: false
+str(filosofi)
+str(emissions)
 ```
 
-Les variables peuvent être n'importe quel type d'objet {{< fa brands r-project >}}
-et on peut créer une variable à partir d'une autre:
-
 ```{r}
-#| echo: true
-x <- c(5, 10)
-y <- x + 2*x
-y
+#| code-fold: true
+#| code-summary: "Solution question 3"
+#| output: false
+dim(filosofi)
+dim(emissions)
 ```
 
-::: {.callout-warning}
-Contrairement à d'autres langages de programmation, {{< fa brands r-project >}}
-est dit *dynamiquement* typé :
-il est possible de réassigner une variable à un objet de type différent. 
-Cela facilite la lecture et le développement, mais peut parfois générer des problèmes difficiles à débugger...
-
-Il faut donc toujours bien faire attention que le type de la variable est bien celui que l'on s'imagine manipuler.
-
 ```{r}
-#| echo: true
-x <- 3
-x <- "blabla"
-class(x) #<1>
-```
-1. `x` n'est plus un _numeric_ mais un _character_. Gare aux opérations à venir sur `x` !
-:::
+#| output: false
+#| code-fold: true
+#| code-summary: "Solution question 3"
 
-Il y a naturellement certaines contraintes sur les opérations selon les types des objets.
+emissions %>%
+  select('INSEE commune', 'Commune') %>%
+  summarize(Unique_Count = n_distinct(Commune))
 
-```{r}
-#| echo: true
-#| error: true
-x <- "test"
-y <- 3
-x + y # <1>
-```
-1. L'addition `+` n'existe pas pour les _strings_ comme on l'a vu précédemment
-
-Il est par contre possible d'harmoniser les types en amont :
-
-```{r}
-#| echo: true
-x <- "5"
-y <- 3
-z <- as.numeric(x)
-y + z
+filosofi %>%
+  select('CODGEO', 'LIBGEO') %>%
+  summarize(Unique_Count = n_distinct(LIBGEO))
 ```
 
-# Indexation
-
-En {{< fa brands r-project >}},
-les indices de position dans les vecteurs permettent d'accéder à des éléments spécifiques en utilisant leur position dans le vecteur. 
-Les indices commencent à `1`, ce qui signifie que le premier élément a un indice de 1, le deuxième a un indice de 2, et ainsi de suite[^noteindice].
-
-[^noteindice]: 
-  Cette remarque peut paraître triviale mais, en informatique, elle ne l'est pas. 
-  Beaucoup de langages (`Python`, `C`) ont une indexation qui commence à 0, comme
-  c'est la convention en algèbre.
-  Cela signifie que le premier élément a un indice
-  0, le deuxième indice 1 et le dernier un indice $n-1$.
-
 ```{r}
-#| echo: true
-x <- 2*seq(1,10)
+#| output: false
+#| code-fold: true
+#| code-summary: "Solution questions 5 to 7"
+
+# Question 5
+duplicates <- filosofi %>%
+  group_by(LIBGEO) %>%
+  summarize(Count = n()) %>%
+  select(LIBGEO, Count) %>%
+  #arrange(desc(Count)) %>%
+  filter(Count > 1)
+
+# Question 6
+filosofi %>%
+  filter(LIBGEO %in% duplicates$LIBGEO) %>%
+  arrange(LIBGEO)
+
+# Question 7
+filosofi %>%
+  filter(LIBGEO %in% duplicates$LIBGEO) %>%
+  summarize(Stats = mean(NBPERSMENFISC16, na.rm = TRUE))
+
+# Calculate summary statistics for 'NBPERSMENFISC16' for rows where 'LIBGEO' is not in 'x$LIBGEO'
+filosofi %>%
+  filter(!(LIBGEO %in% duplicates$LIBGEO)) %>%
+  summarize(Stats = mean(NBPERSMENFISC16, na.rm = TRUE))
 ```
 
-Pour accéder à un élément spécifique du vecteur en utilisant son indice de position, on utilise la notation `[ ]`. 
-Par exemple, pour obtenir le deuxième élément de `x`, vous pouvez faire ceci :
-
 ```{r}
-#| echo: true
-# Accéder au deuxième élément du vecteur
-deuxieme_position <- x[2]
-deuxieme_position
+#| code-fold: true
+#| code-summary: "Solution question 8"
+
+filosofi_big <- filosofi %>%
+  filter(NBPERSMENFISC16 > 100000) %>%
+  mutate(probleme = LIBGEO %in% duplicates$LIBGEO)
+
+# Proportion of problematic cities
+mean_probleme <- filosofi_big %>%
+  summarize(mean(probleme))
+
+# Filter rows where 'probleme' is TRUE
+df_probleme <- filosofi_big %>%
+  filter(probleme)
 ```
-
-Maintenant, la variable `deuxieme_position` contient la valeur 4.
-
-::: {.callout-note}
-On peut d'ailleurs mettre à jour le vecteur `x`, cela ne changera
-pas la valeur de la variable `deuxieme_position` :
-
-```{r}
-#| echo: true
-x <- seq(5,9)
-print(deuxieme_position)
-deuxieme_position == x[2]
-```
-
-En {{< fa brands r-project >}},
-une valeur de variable n'est changée que s'il y a,
-d'une manière ou d'une autre, réassignation. 
-:::
-
-On peut aussi utiliser une séquence de valeurs pour récupérer
-un sous-ensemble de notre vecteur (on appelle cette opération _slice_)
-
-```{r}
-#| echo: true
-x <- seq(5,15)
-x[1:5]
-x[c(2,3,8)]
-```
-
-Il est également possible de faire des sélections négatives, c'est-à-dire
-toutes les valeurs sauf certaines. Pour cela, on utilise les indices négatifs
-
-```{r}
-#| echo: true
-x[-3] # <1>
-x[c(-3, -1)] # <2>
-```
-1. On sélectionne toutes les données sauf le premier élément
-2. On sélectionne toutes les données sauf les premier et troisième éléments (l'ordre n'importe pas)
-
-Cependant, ce n'est pas une bonne pratique d'utiliser de manière 
-brute les nombres. En effet, imaginons que vous transformiez
-dans une longue chaine d'opérations votre vecteur: vous ne savez
-plus forcément quelles positions stockent quelles valeurs (et sur 
-les vrais jeux de données vous ne savez même pas exactement quelles
-lignes de votre jeu de données stockent quelles valeurs). 
-
-C'est pour cette raison qu'on privilégie les sélections à partir de conditions
-logiques. On l'avait vu précédemment sous cette forme :
-
-```{r}
-#| echo: true
-c('Pierre', 'Paul', 'François', 'et les autres')[
-    c(25, 3, 61, 17) >= 18
-]
-```
-
-Maintenant que nous connaissons l'assignation de variables intermédiaires, 
-la syntaxe se simplifie, ce qui rend le code plus lisible. 
-
-```{r}
-#| echo: true
-prenom <- c('Pierre', 'Paul', 'François', 'et les autres')
-age <- c(25, 3, 61, 17)
-prenom[age >= 18]
-```
-
-Un autre exemple pour illustrer avec des données textuelles:
-
-```{r}
-#| echo: true
-villes <- c("Paris", "Toulouse", "Narbonne", "Foix")
-statut <- c("capitale","préfecture","sous-préfecture","préfecture")
-villes[statut == "préfecture"]
-```
-
-Nous découvrirons lors du prochain chapitre une généralisation de cette
-approche avec les __filtres__ de données. 
-
-# Les valeurs manquantes
-
-Les vrais jeux de données ne sont pas toujours complets. Ils le sont
-même rarement. Par exemple, 
-dans des séries longues de PIB, les valeurs rétrospectives peuvent
-manquer pour des pays qui n'existaient pas avant une certaine date. 
-
-Les valeurs manquantes, souvent représentées
-par `NA` (Not Available) en {{< fa brands r-project >}},
-sont un aspect essentiel de la gestion des données et
-l'une des forces de {{< fa brands r-project >}}
-est de proposer une gestion cohérente de celles-ci. Par exemple, si on désire
-faire la moyenne mondiale des PIB sur une année passée: faut-il exclure ou non les
-pays pour lesquels on a pas d'information cette année-là ou renvoyer une erreur ?
-La gestion appropriée des valeurs manquantes est donc
-cruciale lors de l'analyse de données et de la création de modèles statistiques.
-
-La fonction `is.na()` permet de vérifier si une valeur
-est manquante dans un vecteur:
-
-```{r}
-#| echo: true
-donnees <- c(10, NA, 30, NA, 50) # <1>
-
-is.na(donnees) # <2>
-```
-1. Créer un vecteur avec des valeurs manquantes.
-2. Renvoie `TRUE` pour les valeurs manquantes, `FALSE` sinon.
-
-La gestion appropriée des valeurs manquantes est cruciale 
-pour éviter des biais dans les analyses statistiques
-et pour obtenir des résultats fiables
-car les valeurs manquantes sont rarement un hasard: il existe souvent une raison pour lesquelles une valeur est manquante
-et l'hypothèse de [_missing at random_](https://stefvanbuuren.name/fimd/sec-MCAR.html) est souvent fausse. 
-
-::: {.callout-note collapse="true"}
-## Note sur la gestion des valeurs manquantes
-
-Il existe plusieurs approches pour traiter les valeurs manquantes en fonction de l'objectif d'une analyse. Cela dépasse le cadre de ce cours mais
-voici, dans les grandes lignes, les trois stratégies les plus courantes sont :
-
-- __Suppression des valeurs manquantes__ : supprimer les lignes contenant des valeurs manquantes à l'aide de la fonction `na.omit()` ou `complete.cases()`. C'est par exemple ce que fait la régression linéaire par défaut dans `R`. Cependant, cette approche peut entraîner une perte d'informations ou l'introduction de biais, elle n'est donc pas à faire à la légère ;
-- __Imputation des valeurs manquantes__ : En faisant des hypothèses sur la distribution sous-jacente des valeurs manquantes, les valeurs de ces dernières peuvent être estimées. La méthode la plus simple est d'imputer à la moyenne ou à la médiane mais il existe des méthodes moins frustres comme la régression ou les méthodes basées sur les voisins les plus proches. Néanmoins cette imputation n'est pas à prendre à la légère car elle change la distribution de la variable observée, ce qui peut avoir un
-impact sur les analyses ultérieures, et elle est très dépendante du choix de modélisation;
-- __Traiter les valeurs manquantes comme un groupe à part__ : Dans les statistiques descriptives, il est possible de réaliser des analyses en mettant un groupe où les valeurs manquantes sont fréquentes à part.
-:::
-
-
-# Exercices sur les objets uni-dimensionnel
-
-Première série d'exercices sur les objets uni-dimensionnels
-permettant d'approfondir les notions vues précédemment.
 
 <details>
 <summary>
-Votre état après cette série d'exercices ?
+What you should find in questions 8 and 9
 </summary>
 
-![](img/exhausted.png){width=70% fig-align="center"}
+For question 8, you should get this:
+```{r}
+head(df_probleme)
+```
 
+While for question 9, your two _dataframes_ will look like
+```{r}
+#| code-fold: true
+#| code-summary: "Solution question 9"
+# Question 9
+filosofi %>%
+  filter(LIBGEO == 'Montreuil')
+
+# Question 10
+filosofi %>%
+  filter(grepl('Saint-Denis', LIBGEO)) %>%
+  head(10)
+```
 </details>
 
-:::{.callout-tip}
-## Exercice 2
-
-Afficher le type de `x` lorsque : 
-
-```{r}
-#| echo: true
-x <- 3
-x <- "test"
-x <- 3.5
-```
-
-
-```{r}
-#| output: false
-#| code-fold: true
-#| code-summary: "Solution"
-typeof(3)
-typeof("test")
-typeof(3.5)
-```
-
-
 :::
 
-
-:::{.callout-tip}
-## Exercice 3
-
-Calculer la somme des longueurs de chacune des chaînes de caractères suivantes : 
-
-- _"une première chaîne"_
-- _"et une deuxième"_
-- _"jamais deux sans trois"_
-
-```{r}
-#| output: false
-#| code-fold: true
-#| code-summary: "Solution"
-x1 <- "une première chaîne"
-x2 <- "et une deuxième"
-x3 <- "jamais deux sans trois"
-nchar(paste(x1, x2, x3, sep = ""))
-```
-:::
-
-
-:::{.callout-tip}
-## Exercice 4
-
-Les codes communes sont des identifiants normalisés,
-propres à chaque commune (ce qui les différencie des
-codes postaux). Ils sont issus
-du [code officiel](https://www.insee.fr/fr/information/6800675) que
-nous découvrirons ultérieurement ?
-
-[^cognote]: La suite du cours sera l'occasion d'amplement utiliser ce jeu de données. 
-
-<details>
-<summary>
-Aide si vous ne voyez pas où est le problème
-</summary>
-Faire un test sur les premiers départements, par exemple `02350`.
-</details>
-:::
-
-:::{.callout-tip}
-## Exercice 5
-
-Voici une liste de codes communes issus du [Code Officiel Géographique (COG)]((https://www.insee.fr/fr/information/6800675))
-
-```{r}
-#| echo: true
-liste_communes <- c(
-  '01363', '02644', '03137', '11311', '12269', '13018', '14458', '15008',
-  '23103', '2A119', '2B352', '34005', '2B015', '2A015',
-  '38188', '39574', '40223', '41223', '42064',
-  '63117', '64218', '65209', '66036', '67515', '68266', 
-  '77440', '78372', '79339', '80810', '81295', '82067',
-  '93039', '94054', '95061', '97119', '97219', '97356', '97421', '97611'
-)
-```
-
-1. Extraire le département (deux premiers caractères) pour chaque commune ;
-2. Compter le nombre de départements uniques dans nos données ;
-
-```{r}
-#| code-fold: true
-#| code-summary: "Solution"
-#| output: false
-
-# Question 1
-dep <- substr(liste_communes, start = 1, stop = 2)
-# Question 2
-length(
-  unique(dep)
-)
-```
-
-:::
-
+This small exercise is reassuring because the duplicate labels
+are actually identical municipality names that aren't in the same department.
+These aren't duplicate observations.
+We'll therefore rely on municipality codes, which are unique.
 
 ::: {.callout-tip}
-## Exercice 6
+## Exercise 3
 
-Supprimer les espaces superflus au début et à la fin de la chaîne suivante :
+Let's start data exploration. This involves some
+data cleaning beforehand. 
 
+1. Rename the variable `INSEE commune` to `code_insee`[^espace]. 
+2. The first two digits of municipality codes are the department number.
+Create a department variable `dep` in `emissions` and in `filosofi`
+using the `str_sub` function from the `stringr` package[^stringr].
+
+Let's start calculating our first descriptive statistics. 
+
+3. Calculate total emissions by sector for each department.
+Log-transform these results in an object `emissions_log`.
+@fig-sample-log illustrates the structure of these emissions for 5 random
+departments. 
+
+4. Start from the `emissions` dataset.
+Calculate total emissions by department and output the list
+of the top 10 CO2 emitters and the 5 lowest-emitting departments.
+Without doing a *merge*,
+look at the characteristics of these departments (population and standard of living)
+
+[^stringr]: The limited functionalities of the base language for text manipulation
+quickly become constraining. We thus quickly move to `stringr`
+even though it's not the main subject of the chapter. 
 ```{r}
-#| echo: true
+#| code-fold: true
+#| code-summary: "Solution question 1"
 #| output: false
-a <- "    Un string très mal formatté.         "
+library(stringr)
+
+emissions <- emissions %>%
+  rename('code_insee' = `INSEE commune`)
 ```
 
 ```{r}
 #| code-fold: true
-#| code-summary: "Solution"
-trimws(a)
-```
-
-<details>
-<summary>Aide, si vous êtes bloqués</summary>
-Taper `?trimws()` dans la console pour afficher l'aide de la fonction `trimws()` 
-</details>
-
-:::
-
-
-Les fonctions de base de manipulation de données textuelles étant parfois
-un peu difficiles d'usage avec {{< fa brands r-project >}}, on pourra aller beaucoup plus loin 
-lorsqu'on découvrira le package `stringr`.
-
-
-# Les structures plus complexes
-
-## Les matrices
-
-Les __matrices__ peuvent être vues comme le prolongement
-en deux dimensions des vecteurs. Au lieu
-d'avoir des données sur une seule dimension, on empile des colonnes côte à côte.
-
-$$
-X = \begin{bmatrix}
-x_{11} & x_{12} \\
-x_{21} & x_{22} \\
-\end{bmatrix}
-$$
-
-Néanmoins, les matrices présentent une limite fondamentale: on ne peut stocker dans
-une matrice que des éléments de même type. Autrement dit, on aura exclusivement
-des matrices numériques, des matrices de caractères ou des matrices logiques. 
-Il est impossible de construire une matrice dont certaines variables sont de type numérique (par exemple l’âge des personnes enquêtées) et d’autres de type caractère (par exemple leur secteur d’activité). 
-
-Les matrices ne constituent donc pas un type d’objet susceptible de stocker l’information statistique habituellement mobilisée dans les enquêtes sociales.
-Le _mix_ des types n'est pas pratique, c'est pour cette raison que les
-praticiens de l'analyse de données les utilisent peu[^matrices].
-
-[^matrices]: L'objet matrice sera surtout utilisé par les 
-les chercheurs en statistique mathématique ou les
-spécialistes d'algorithmique qui manipuleront des objets numériques
-bas niveau. 
-
-
-On propose donc un exercice sur les matrices mais on va rapidement passer
-à des types plus flexibles, plus utiles pour l'analyse de données où les 
-variables sont de type diverses. 
-
-:::{.callout-tip}
-## Exercice 7
-
-Soit une matrice:
-
-```{r}
-#| echo: true
-X <- matrix(letters[1:20], nrow = 4, ncol = 5)
+#| code-summary: "Solution question 2"
+emissions <- emissions %>%
+  mutate(dep = str_sub(code_insee, start = 1, end = 2))
+filosofi <- filosofi %>%
+  mutate(dep = str_sub(CODGEO, start = 1, end = 2))
 ```
 
 ```{r}
 #| code-fold: true
-#| code-summary: "Solution"
+#| code-summary: "Solution question 3"
+#| label: question 3 exo 3
 #| output: false
-X[1,1] # <1>
-X[1,]  # <2>
-X[,1]  # <3>
-X[2:3,c(1,3)] #<4>
+emissions_log <- emissions %>%
+    group_by(dep) %>%
+    summarise(across(where(is.numeric), sum, na.rm = TRUE)) %>%
+    mutate(across(where(is.numeric), log))
 ```
-1. Sélectionner l'élement le plus à gauche de notre matrice (première ligne, première colonne)
-2. Sélectionner l'ensemble de la première ligne
-3. Sélectionner l'ensemble de la première colonne
-4. Sélectionner les éléments à l'intersection :
-    + Des 2e et 3e ligne
-    + Des 1ères et 3e colonne
 
+```{r}
+#| output: false
+#| code-fold: true
+#| code-summary: "Solution question 4"
+
+## Total emissions by department
+emissions_dep <- emissions %>%
+  mutate(total = rowSums(pick(where(is.numeric)), na.rm = TRUE)) %>%
+  group_by(dep) %>%
+  summarise(total = sum(total))
+gros_emetteurs <- emissions_dep %>%
+  arrange(desc(total)) %>%
+  head(10)
+petits_emetteurs <- emissions_dep %>%
+  arrange(total) %>%
+  head(5)
+
+## Characteristics of these departments in filosofi
+gros_emetteurs_filosofi <- filosofi %>%
+  filter(dep %in% gros_emetteurs$dep) %>%
+  group_by(dep) %>%
+  summarise(across(c('NBPERSMENFISC16','MED16'), \(x) mean(x, na.rm = TRUE)))
+
+head(gros_emetteurs_filosofi)
+```
+
+```{r}
+#| echo: true
+#| fig-cap: Emission structure of five random departments
+#| label: fig-sample-log
+#| code-fold: true
+#| code-summary: "Code to create the figure below"
+
+library(tidyr)
+library(ggplot2)
+
+emissions_log_sample <- emissions_log %>%
+  filter(dep %in% sample(unique(dep),5))
+
+emissions_log_sample <- emissions_log_sample %>%
+  pivot_longer(cols = -dep, names_to = "Category", values_to = "Value")
+
+ggplot(emissions_log_sample, aes(x = dep, y = Value, fill = Category)) +
+    geom_bar(stat = "identity") +
+    labs(x = "Department", y = "Value") +
+    theme_minimal() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1)) + scale_fill_viridis_d()
+```
 
 <details>
 <summary>
-Indice si vous êtes bloqués
+Example of using `str_sub`
 </summary>
-Avec un vecteur, on accédait aux positions d'un élément avec `X[*]`.
-Avec les matrices le principe est le même mais on ajoute une dimension `X[*,*]`
-</details>
-:::
-
-
-## Les listes
-
-Les __listes__ constituent un type d’objet beaucoup plus riche qui permet précisément de rassembler des types d’objets très différents : une liste peut contenir tous les types d’objet (vecteurs numériques, caractères, logiques, matrices, etc.), y compris d’autres listes.
-
-Cette très grande souplesse fait de la liste l’objet de prédilection pour stocker une information complexe et structurée, en particulier les résultats de procédures statistiques complexes (régression, classification, etc.).
-Pour des données plus structurées, comme le sont les jeux de données, nous allons voir ensuite que nous
-allons utiliser un type spécial de liste: le **_dataframe_**. 
-
-![Proposition d'illustration du principe des listes avec `R` par [Dall-E-2](https://openai.com/dall-e-2)](img/boites.png){width=50% fig-align="center"}
-
-:::{.callout-tip}
-## Exercice 8
-
-Voici une liste illustrant le principe de stockage
-de données hétérogènes dans un même objet:
-
 ```{r}
-#| echo: true
-ma_liste <- list(
-    1,
-    "texte",
-    matrix(letters[1:20], nrow = 4, ncol = 5),
-    c(2, 3, 4)
-)
+library(stringr)
+df %>% mutate(x = str_sub(y, start = 3, end = 5))
 ```
 
-1. Afficher la liste et observer la différence avec l'affichage
-des objets précédents
-2. Utiliser la notation `[[]]` pour accéder au 2e élément de notre
-liste pour au 2e nombre au sein du dernier élément de notre matrice
-3. On peut utiliser des noms pour les éléments de notre liste (c'est
-d'ailleurs une bonne pratique). Créer un élément nommé `communes`
-dans votre liste stockant les données suivantes `c('01363', '02644', '03137', '11311')`
-4. Créer un élément `departements` en extrayant les deux premiers chiffres
-de votre élément `communes`
+</details>
+
+:::
+
+[^espace]: The space in the variable name is annoying. To be able to
+use this variable's name in `rename`, we'll need to use
+backticks, i.e., ` INSEE commune `.
+
+# Restructuring data
+
+Two types of data are generally presented: 
+    
+* __wide__ format: data contains repeated observations for the same individual (or group) in different columns 
+* __long__ format: data contains repeated observations for the same individual in different rows with a column to distinguish observation levels
+
+An example of the distinction between the two can be taken from Hadley Wickham's reference work, *R for Data Science*:
+
+![_Long_ (left) and _wide_ (right) data (source: *R for Data Science*)](https://d33wubrfki0l68.cloudfront.net/3aea19108d39606bbe49981acda07696c0c7fcd8/2de65/images/tidy-9.png)
+
+We often need to restructure data with {{< fa brands r-project >}}
+to lengthen them (_wide to long_) and widen them (_long to wide_). 
+The _tidyr_ package (which belongs to the _tidyverse_) allows
+these types of transformations.
+
+The following cheat sheet will help remember which functions to apply if needed:
+
+![](https://scienceparkstudygroup.github.io/r-lesson-based-on-ohi-data-training/img/rstudio-cheatsheet-spread-gather-sep-unite.png){width="80%" fig-align="center"}
+
+Going from *wide* to *long* format (or vice-versa)
+can be extremely practical because certain functions are more suitable for one data form or another.
+
+Generally, *long* formats are often preferable because it's
+easier to iterate over rows than columns due to
+{{< fa brands r-project >}}'s vectorial nature.
+This is particularly
+the preferred data form for preparing graphs with `ggplot`, 
+which we'll discover in the next chapter. 
+
+:::{.callout-tip}
+## Exercise 4: the _wide to long_ transformation
+1. Restructure the data to *long* format to have emissions data by sector while keeping the municipality as the analysis level (be careful with other identifying variables).
+2. Sum by sector and graphically represent a _barplot_[^barplot] 
+3. Keep, for each department, the most polluting sector
+
+[^barplot]: you can
+directly use the helper code snippet if you're not familiar with `ggplot`
+```{r}
+#| code-fold: true
+#| code-summary: "Solution question 1"
+
+library(tidyr)
+
+df_long <- emissions %>%
+  pivot_longer(cols = -c(code_insee, Commune, dep),
+               names_to = "secteur",
+               values_to = "emissions")
+```
 
 ```{r}
 #| code-fold: true
-#| code-summary: "Solution"
-#| output: false
+#| code-summary: "Solution question 2"
 
-#Question 1: afficher la liste
-ma_liste
-# Question 2: Accéder au deuxième élément de la liste
-ma_liste[[2]]
-ma_liste[[4]][2]
-# Question 3: mettre à jour la liste avec un élément nommé et y accéder
-ma_liste[['communes']] <- c(
-  '01363', '02644', '03137', '11311'
+df_long_summary <- df_long %>%
+  group_by(secteur) %>% summarise(emissions = sum(emissions, na.rm = TRUE))
+```
+
+<details>
+<summary>Graph to create for question 2</summary>
+
+Once the `df_long_summary` _dataframe_ is created, the minimal code
+to create the desired _barplot_ is:
+```{r}
+#| echo: true
+ggplot(df_long_summary) +
+  geom_bar(
+    aes(y = secteur, x = emissions),
+    stat ='identity'
   )
-ma_liste[['communes']]  
-# Question 4: effectuer une opération 
-ma_liste[['departements']] <- substr(ma_liste[['communes']] , start = 1, stop = 2)
+```
+
+No need to go further for now, we'll do more
+`ggplot` later. 
+
+</details>
+```{r}
+#| output: false
+#| code-fold: true
+#| code-summary: "Solution question 3"
+df_long_dep <- df_long %>%
+  group_by(secteur, dep) %>%
+  summarise(emissions = sum(emissions, na.rm = TRUE)) %>%
+  arrange(desc(dep), desc(emissions)) %>%
+  group_by(dep) %>%
+  slice_head(n = 1)
+```
+
+```{r}
+#| echo: false
+head(df_long_dep)
 ```
 
 :::
 
-Lorsqu'on utilise des listes, on peut effectuer
-des opérations sur chaque élément de notre liste.
-On appelle cela boucler sur notre liste.
+::: {.callout-tip}
+## Exercise 5: _long to wide_
 
-<!----
-Les boucles
-sont un élément fondamental en informatique et `R`
-comme tous les autres langages, permet de faire
-ce type d'itérations (boucles `for`, `while`...).
-Cela va être illustré dans le prochain exercice. Il
-convient néanmoins de garder en tête que c'est souvent
-une mauvaise pratique d'effectuer une boucle: il existe
-généralement des opérations vectorisées développées
-par
-des experts qui permettent
-d'éviter de faire soi-même une boucle inefficiente.
------>
+TO DO
+:::
 
-:::{.callout-tip}
-## Exercice 9
+# Combining data
 
-Dans cet exercice, nous allons découvrir comment appliquer la même fonction
-aux éléments de notre liste grâce à `lapply`.
+Information we seek is increasingly obtained from multiple data sources rather than a single database. It's becoming common to need to combine data from different sources. 
 
-1. Avant cela, combien d'éléments comporte le premier niveau de notre liste ? 
-2. Combien d'éléments comportent chaque niveaux de notre liste ?
-3. Créer un vecteur numérique qui est égal à 1 si `typeof` de l'élément est "double" et 0 sinon 
+We'll focus here on the most favorable case which is when information allows exact matching of two databases (otherwise we'd be in a much more complex situation of fuzzy matching). The typical situation is matching between two data sources using an individual identifier or municipality code identifier, which is our case.
 
-```{r}
-#| code-fold: true
-#| code-summary: "Solution"
-#| output: false
+It's recommended to read [this fairly complete guide on joins with {{< fa brands r-project >}}](https://www.book.utilitr.org/03_fiches_thematiques/fiche_joindre_donnees) which also gives useful recommendations for `Python` {{< fa brands python >}}.
 
-# Question 1
-longueur_liste <- length(ma_liste)
-# Question 2
-lapply(ma_liste, length)
-as.numeric(
-    lapply(ma_liste, function(l) typeof(l) == "double")
-)
-```
+In common statistical language,
+the terms *merge* or *join* are used interchangeably. The second term comes from `SQL` syntax and is the one rather used
+when coding with `dplyr`. 
 
 <details>
-<summary>Si `?lapply` ne vous aide pas</summary>
-Exemple d'utilisation de `lapply` pour faire la somme dans chaque élément de notre
-liste
 
-```{r}
-#| echo: true
-ma_liste_nombres <- list(c(1,2), seq(1,10))
-lapply(ma_liste_nombres, sum)
-```
+<summary>
+The different types of _join_ available in `dplyr`
+</summary>
+
+![](https://rafalab.dfci.harvard.edu/dsbook/wrangling/img/joins.png){width=80%}
 
 </details>
 
-:::
-
-
-## Les _dataframes_
-
-
-C'est l'objet central de l'analyse de données avec {{< fa brands r-project >}}. 
-Ces objets permettent en effet de représenter sous la forme d’une table (i.e. d’un objet à deux dimensions) des données de nature tant quantitatives (variables numériques) que qualitatives (variables de type caractère ou facteur).
-
-![Illustration du principe du _dataframe_ (empruntée à H. Wickham)](https://d33wubrfki0l68.cloudfront.net/6f1ddb544fc5c69a2478e444ab8112fb0eea23f8/91adc/images/tidy-1.png)
-
-
-Voici par exemple un `dataframe`:
-
-```{r}
-#| echo: true
-# Création du data.frame df
-df <- data.frame(
-  var1 = 1:10,
-  var2 = letters[1:10],
-  var3 = rep(c(TRUE, FALSE), times = 5)
-)
-```
-
-Sa structure interne peut être vérifiée avec la fonction `str`:
-
-```{r}
-#| echo: true
-str(df)
-```
-
-Quand on travaille avec `R`, l'une des fonctions qu'on utilise le plus est `head`. 
-Elle permet d'afficher les $n$ premières lignes de notre jeu de données:
-
-```{r}
-head(df)
-```
-
-::: {.callout-warning}
-Il est également possible d'utiliser le _viewer_ de `RStudio` pour afficher
-des jeux de données.
-
-Attention cependant, ce _viewer_ peut rencontrer des
-problèmes de performance et faire planter votre session `R` quand le jeu de
-données commence à être d'une taille conséquente. 
-
-Je recommande plutôt
-de toucher utiliser `head` ou de sélectionner des lignes aléatoirement avec
-`sample`:
-
-```{r}
-#| echo: true
-df[sample(nrow(df), 3), ]
-```
-
-:::
-
-
-Du point de vue de sa structure, un `data.frame` est en réalité une liste dont tous les éléments ont la même longueur : c’est ce qui permet de le représenter sous la forme d’un tableau à deux dimensions.
-
-```{r}
-#| echo: true
-is.list(df)
-lapply(df, length)
-```
-
-De ce fait, les `data.frame` empruntent leurs caractéristiques tantôt aux listes,
-tantôt aux matrices comme le montre l'exercice suivant:
-
 ::: {.callout-tip}
-## Exercice 10
+## Exercise 6: enriching emissions data
 
-- Vérifier la dimension du dataframe `df`
-- Compter le nombre de lignes et de colonnes de `df`
-- Vérifier la longueur (_length_) de `df`. Est-ce le comportement d'une
-matrice ou d'une liste ? 
-- Extraire l'élement à la 2e ligne, 3e colonne de `df`. Est-ce le comportement d'indexation d'une
-matrice ou d'une liste ?
-- Récupérer la 3e ligne des variables `var1` et `var2`. 
+First, we'll calculate each municipality's carbon footprint. 
 
+1. Calculate total emissions using the following command
+(since this is complex, we give it directly):
 ```{r}
-#| code-fold: true
-#| code-summary: "Solution"
+emissions <- emissions %>%
+  mutate(total = rowSums(pick(where(is.numeric)), na.rm = TRUE))
+```
+
+2. Perform a left join between emissions data and framing data[^notebiais].
+
+[^notebiais]: Ideally, we should ensure this join doesn't
+introduce bias. Indeed, since our reference years aren't necessarily identical,
+there may be a _mismatch_ between our two sources. Since the tutorial is already long, we won't go down this path. Interested readers can perform such an analysis as an additional exercise.
+
+3. Calculate carbon footprint (total emissions / population).
+
+At this stage we might want to move toward modeling to try to explain
+carbon footprint determinants from municipal variables. 
+However, an inferential approach requires
+checking descriptive statistics beforehand to be relevant.
+
+4. Use the following code to output a histogram in level then in log of municipal carbon footprint;
+```{r}
+ggplot(emissions_merged) +
+  geom_histogram(aes(x = empreinte, y = after_stat(density))) +
+  scale_x_log10()
+```
+
+5. For each city, compare carbon footprint to the department median. In relative terms, which cities are particularly virtuous (i.e., those with emissions well below the department average)?
+
+With better understanding of our data, we're approaching
+inferential statistics. However, we've so far
+built univariate statistics but haven't sought to understand
+results by looking at the link with other variables. 
+This brings us to bivariate statistics, particularly correlation analysis. 
+This work is important since any subsequent modeling will consist of 
+refining correlation analysis to account for cross-correlations
+between multiple factors. We propose here to do this analysis
+in a minimal way. 
+
+6. Look at the correlation between framing variables and carbon footprint (the solution is given, as the manipulations aren't obvious).
+Do some variables seem to potentially influence carbon footprint?
+```{r}
 #| output: false
+#| code-fold: true
+#| code-summary: "Solution question 1"
 
-dim(df)
-nrow(df)
-ncol(df)
-length(df) #comme une liste
-df[3, c("var1","var2")]
+emissions <- emissions %>%
+  mutate(total = rowSums(pick(where(is.numeric)), na.rm = TRUE))
 ```
-
-:::
-
-L'intérêt d'utiliser un `data.frame` est qu'on peut facilement mettre à jour
-nos données lors d'une analyse statistique. Les opérations les plus classiques,
-sur lesquelles nous reviendrons lors du prochain chapitre, sont 
-
-- Créer une nouvelle colonne à partir des colonnes pré-existantes ;
-- Sélectionner un sous-échantillon des données correspondant à certaines
-valeurs observées. 
-
-Il existe plusieurs manières de faire référence à une colonne déjà existante
-d'un dataframe. La plus simple est d'utiliser la structure `dataframe$colonne`. 
-Cela nous donnera un vecteur et on retombe sur ce format qu'on connaît déjà:
 
 ```{r}
-#| echo: true
-class(df$var1)
+#| output: false
+#| code-fold: true
+#| code-summary: "Solution question 2"
+emissions_merged <- emissions %>%
+  left_join(filosofi, by = c("code_insee" = "CODGEO"))
 ```
 
-::: {.callout-tip}
-## Exercice 11
+```{r}
+#| output: false
+#| code-fold: true
+#| code-summary: "Solution question 3"
+emissions_merged <- emissions_merged %>%
+  mutate(empreinte = total/NBPERSMENFISC16)
+```
 
-- Créer une colonne `var4` de notre jeu de données égale au carré de `var1`
-- Créer une colonne `var5` de notre jeu de données concaténant les deux premières
-variables en généralisant le schéma `1=a`. 
-- Créer un dataframe `df_small1` pour les lignes où la condition logique `var3` est vérifiée
-- Créer un dataframe `df_small2` pour les lignes où `var1` est paire (voir plus haut l'exemple sur la division euclidienne pour le modèle)
+```{r}
+#| output: false
+#| code-fold: true
+#| code-summary: "Solution question 4"
+ggplot(emissions_merged) +
+  geom_histogram(aes(x = empreinte, y = after_stat(density))) +
+  scale_x_log10()
+```
+
+```{r}
+#| output: false
+#| code-fold: true
+#| code-summary: "Solution question 5"
+#| echo: true
+emissions_merged <- emissions_merged %>%
+  rename(departement = dep.x) %>%
+  group_by(departement) %>%
+  mutate(empreinte_mediane = median(empreinte, na.rm = TRUE)) %>%
+  mutate(empreinte_relative = empreinte/empreinte_mediane)
+
+emissions_merged %>% arrange(empreinte_relative)
+```
+
+```{r}
+#| output: false
+#| code-fold: true
+#| code-summary: "Solution question 6"
+
+library(tibble)
+
+correlations <- cor(
+  emissions_merged %>% ungroup() %>% select(where(is.numeric)),
+  use="complete.obs"
+  )[,'empreinte']
+
+correlations <- enframe(correlations) %>%
+  filter(name %in% colnames(filosofi)) %>%
+  arrange(desc(abs(value)))
+```
+
+Here's a quick visualization of correlations with carbon footprint:
+```{r}
+ggplot(correlations) + geom_bar(aes(x = value, y = name), stat = "identity") +
+  scale_y_discrete(limits = correlations$name) 
+```
+
 :::
-
-Le prochain chapitre va nous permettre d'aller beaucoup plus loin grâce
-à l'écosystème du `tidyverse` et notamment son _package_ phare `dplyr`.
-Sans cet ensemble de _packages_ facilitant grandement l'analyse statistique,
-{{< fa brands r-project >}} ne serait pas devenu l'un des deux langages
-phares de la statistique. 
