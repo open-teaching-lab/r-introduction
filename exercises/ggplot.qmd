@@ -428,7 +428,7 @@ Hourly counts obtained after this step
 </summary>
 
 ```{r}
-comptage_horaires_mois
+monthly_hourly_count
 ```
 
 </details>
@@ -437,7 +437,7 @@ Apply previous recommendations to gradually construct and improve a chart simila
 to the third figure on the Paris _Open Data_ page.
 
 ```{r}
-figure3 <- ggplot(comptage_horaires_mois) +
+figure3 <- ggplot(monthly_hourly_count) +
   geom_bar(aes(x = month, y = value), fill = "#ffcd00", stat = "identity") +
   labs(x = "Date and time of count", y = "Moyenne mensuelle du comptage par heure\nsur la période sélectionnée",
        title = "Moyenne mensuelle des comptages vélos") +
@@ -471,7 +471,7 @@ figure3
 If you rather present this with a _lollipop_[^notecouleur] chart:
 
 ```{r}
-ggplot(comptage_horaires_mois, aes(x = month, y = value)) +
+ggplot(monthly_hourly_count, aes(x = month, y = value)) +
   geom_segment(aes(xend = month, yend = 0)) +
   geom_point( color="#ffcd00", size=4) +
   labs(x = "Date et heure de comptage", y = "Moyenne mensuelle du comptage par heure\nsur la période sélectionnée",
