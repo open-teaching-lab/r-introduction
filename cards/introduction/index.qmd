@@ -1,11 +1,11 @@
 ---
 image: baby.png
-title: Introduction aux objets de base <i class="fa-brands fa-r-project"></i>
+title: Importing and manipulating data with <i class="fa-brands fa-r-project"></i>
 date: "2023-09-01"
 description: |
   <br>
-  Introduction aux objets basiques de <i class="fa-brands fa-r-project"></i>
-  et à <code>RStudio</code>
+  Introduction to R <i class="fa-brands fa-r-project"></i>
+  and to <code>RStudio</code>
   <br>
 categories:
   - Introduction

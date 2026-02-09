@@ -1,5 +1,5 @@
 ---
-title: "Reproducible dynamic report generation with {{< fa brands r-project >}} and `Quarto`"
+title: "Reproducible report generation with {{< fa brands r-project >}} and `Quarto`"
 echo: true
 number-sections: true
 ---
