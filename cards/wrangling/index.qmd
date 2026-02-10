@@ -4,8 +4,8 @@ title: Manipuler des données avec le <code>tidyverse</code>
 date: "2023-09-01"
 description: |
   <br>
-  Introduction à l'écosystème du <code>tidyverse</code>
-  pour lire et manipuler des données structurées avec <i class="fa-brands fa-r-project"></i>
+  Introduction to the <code>tidyverse</code>
+  to import and manipulate data with <i class="fa-brands fa-r-project"></i>
   <br>
 categories:
   - Introduction

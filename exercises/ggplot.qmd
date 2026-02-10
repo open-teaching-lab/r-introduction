@@ -33,7 +33,7 @@ Some code examples have annotations on the side; hover your mouse over them to d
 ```{r}
 #| echo: true
 #| output: false
-"une annotation explicative m'accompagne à droite" #<1>
+"An explanatory note accompanies me on the right" #<1>
 ```
 1. I appear when you hover your mouse over me 🐭 !
 
@@ -112,15 +112,23 @@ The data contains several dimensions suitable for statistical analysis. Therefor
 
 ```{r}
 #| output: false
-df <- readr::read_csv("bike.gz")
+df <- readr::read_csv("bike.gz") %>% 
+  rename(
+    `counter_id` = `Identifiant du compteur`,
+    `Counter name` = `Nom du compteur`,
+    `counting_site_id` = `Identifiant du site de comptage`,
+    `counting_site_name` = `Nom du site de comptage`,
+    `Hourly count` = `Comptage horaire`,
+    `Counting date and time` = `Date et heure de comptage`,
+    `counting_site_installation_date` = `Date d'installation du site de comptage`)
 ```
 
 
 ```{r}
 df1 <- df %>%
-  group_by(`Nom du compteur`) %>%
-  summarise(`Comptage horaire` = mean(`Comptage horaire`, na.rm = TRUE)) %>%
-  arrange(desc(`Comptage horaire`)) %>%
+  group_by(`Counter name`) %>%
+  summarise(`Hourly count` = mean(`Hourly count`, na.rm = TRUE)) %>%
+  arrange(desc(`Hourly count`)) %>%
   head(10)
 ```
 
@@ -142,7 +150,7 @@ We can now focus on producing the graphic
 Initial figure without style
 </summary>
 ```{r}
-ggplot(df1, aes(y = `Nom du compteur`, x = `Comptage horaire`)) +
+ggplot(df1, aes(y = `Counter name`, x = `Hourly count`)) +
   geom_bar(stat = "identity")
 ```
 </details>
@@ -158,8 +166,8 @@ Figure with reordered bars
 
 ```{r}
 figure1 <- ggplot(df1,
-       aes(y = reorder(`Nom du compteur`, `Comptage horaire`), # <1>
-           x = `Comptage horaire`)
+       aes(y = reorder(`Counter name`, `Hourly count`), # <1>
+           x = `Hourly count`)
        ) +
   geom_bar(stat = "identity")
 figure1
@@ -178,8 +186,8 @@ Figurewith red bars
 
 ```{r}
 figure1 <- ggplot(df1,
-       aes(y = reorder(`Nom du compteur`, `Comptage horaire`), # <1>
-           x = `Comptage horaire`)
+       aes(y = reorder(`Counter name`, `Hourly count`), # <1>
+           x = `Hourly count`)
        ) +
   geom_bar(stat = "identity", fill = "red")
 figure1
@@ -210,9 +218,9 @@ Figure with labeled axes
 
 ```{r}
 figure1 <- figure1 + labs( # <1>
-  title = "Les 10 compteurs avec la moyenne horaire la plus élevée",
-  x = "Nom du compteur",
-  y = "Moyenne horaire"
+  title = "The 10 counters with the highest hourly average",
+  x = "Counter name",
+  y = "Hourly average"
 )
 figure1
 ```
@@ -271,7 +279,7 @@ add the mean hourly counts as in the Paris Open Data figure[^annotation].
 ```{r}
 figure1 <- figure1 + 
   geom_text(
-    aes(label=round(`Comptage horaire`)),
+    aes(label=round(`Hourly count`)),
     position=position_dodge(width=0.9),
     hjust=-0.5
     )
@@ -304,15 +312,15 @@ Repeat the process for figure 2 (_"The 10 counters with the highest total counts
 
 ```{r}
 df2 <- df %>%
-  group_by(`Nom du compteur`) %>%
-  summarise(`Comptage horaire` = sum(`Comptage horaire`, na.rm = TRUE)) %>%
-  arrange(desc(`Comptage horaire`)) %>%
+  group_by(`Counter name`) %>%
+  summarise(`Hourly count` = sum(`Hourly count`, na.rm = TRUE)) %>%
+  arrange(desc(`Hourly count`)) %>%
   head(10)
 ```
 
 ```{r}
 # Create a horizontal bar plot
-figure2 <- ggplot(df2, aes(y = reorder(`Nom du compteur`, `Comptage horaire`), x = `Comptage horaire`)) +
+figure2 <- ggplot(df2, aes(y = reorder(`Counter name`, `Hourly count`), x = `Hourly count`)) +
   geom_bar(stat = "identity", fill = "forestgreen") +
   labs(title = "The 10 counters that recorded the most bicycles",
        x = "Name of the counter",
@@ -348,11 +356,11 @@ Here is an example of the second figure rendered as a _lollipop chart_:
 
 ```{r}
 df2_lollipop <- df2 %>%
-  mutate(x =  fct_reorder(`Nom du compteur`, `Comptage horaire` ), y = `Comptage horaire`)
+  mutate(x =  fct_reorder(`Counter name`, `Hourly count` ), y = `Hourly count`)
 
 figure2_lollipop <- ggplot(df2_lollipop, aes(x=x, y=y)) +
-    geom_segment( aes(xend=x, yend=0), alpha = 0.4) +
-    geom_point( size=5, color="forestgreen") +
+    geom_segment(aes(xend=x, yend=0), alpha = 0.4) +
+    geom_point(size=5, color="forestgreen") +
     coord_flip() +
   labs(title = "The 10 counters that recorded the most bicycles",
        x = "Name of the counter",
@@ -412,14 +420,14 @@ to allow aggregation at a larger time interval.
 
 ```{r}
 df <- df %>%
-  mutate(month = format(`Date et heure de comptage`, "%Y-%m"))
+  mutate(month = format(`Counting date and time`, "%Y-%m"))
 ```
 
 ```{r}
 # Question 2
 monthly_hourly_count <- df %>%
   group_by(month) %>%
-  summarise(value = mean(`Comptage horaire`, na.rm = TRUE))
+  summarise(value = mean(`Hourly count`, na.rm = TRUE))
 ```
 
 <details>
@@ -428,7 +436,7 @@ Hourly counts obtained after this step
 </summary>
 
 ```{r}
-monthly_hourly_count  
+monthly_hourly_count
 ```
 
 </details>
@@ -437,10 +445,10 @@ Apply previous recommendations to gradually construct and improve a chart simila
 to the third figure on the Paris _Open Data_ page.
 
 ```{r}
-figure3 <- ggplot(monthly_hourly_count  ) +
+figure3 <- ggplot(monthly_hourly_count) +
   geom_bar(aes(x = month, y = value), fill = "#ffcd00", stat = "identity") +
-  labs(x = "Date and time of count", y = "Moyenne mensuelle du comptage par heure\nsur la période sélectionnée",
-       title = "Moyenne mensuelle des comptages vélos") +
+  labs(x = "Date and time of count", y = "Average hourly count per month\nover the selected period",
+       title = "Average monthly bicycle counts") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         axis.title.y = element_text(color = "#ffcd00", face = "bold"),
@@ -471,11 +479,11 @@ figure3
 If you rather present this with a _lollipop_[^notecouleur] chart:
 
 ```{r}
-ggplot(monthly_hourly_count  , aes(x = month, y = value)) +
+ggplot(monthly_hourly_count, aes(x = month, y = value)) +
   geom_segment(aes(xend = month, yend = 0)) +
-  geom_point( color="#ffcd00", size=4) +
-  labs(x = "Date et heure de comptage", y = "Moyenne mensuelle du comptage par heure\nsur la période sélectionnée",
-       title = "Moyenne mensuelle des comptages vélos") +
+  geom_point(color="#ffcd00", size=4) +
+  labs(x = "Counting date and time", y = "Average hourly count per month\nover the selected period",
+       title = "Average monthly bicycle counts") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         #axis.title.y = element_text(color = "#ffcd00", face = "bold"),
@@ -499,17 +507,17 @@ Time series visualizations are more common for data with a temporal dimension.
 
 ```{r}
 df <- df %>%
-  mutate(day = date(`Date et heure de comptage`))
+  mutate(day = date(`Counting date and time`))
 
-moyenne_quotidienne <- df %>%
+daily_average <- df %>%
   group_by(day) %>%
-  summarise(value = mean(`Comptage horaire`, na.rm = TRUE))
+  summarise(value = mean(`Hourly count`, na.rm = TRUE))
 ```
 
 2. Plot this as a time series without worrying about styling;
 
 ```{r}
-figure4 <- ggplot(moyenne_quotidienne, aes(x = day, y = value)) +
+figure4 <- ggplot(daily_average, aes(x = day, y = value)) +
   geom_line(color = "magenta")
 ```
 
@@ -542,8 +550,8 @@ figure4
 
 ```{r}
 figure4 <- figure4 +
-  labs(x = "Date et heure de comptage (Jour)", y = "Moyenne journalière du comptage par heure\nsur la période sélectionnée",
-       title = "Moyenne journalière des comptages vélos") +
+  labs(x = "Counting date and time (Day)", y = "Average hourly count per day\nover the selected period",
+       title = "Average daily bicycle counts") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         plot.title = element_text(hjust = 0.5),
@@ -566,7 +574,7 @@ Some hints for this exercise
 <summary>
 💡 Hint for question 1
 </summary>
-Look up the`day` function of the `lubridate` _package_
+Look up the `day` function of the `lubridate` _package_
 </details>
 
 <details>
@@ -582,7 +590,7 @@ Look up the`day` function of the `lubridate` _package_
 Data for Figure 4
 </summary>
 ```{r}
-head(moyenne_quotidienne)
+head(daily_average)
 ```
 </details>
 
@@ -621,7 +629,7 @@ Time series figure without styling
 </summary>
 ```{r}
 plot_ly(
-  moyenne_quotidienne, x = ~day, y = ~value,
+  daily_average, x = ~day, y = ~value,
   type = 'scatter', mode = 'lines'
 )
 ```
@@ -638,7 +646,7 @@ Add area under the line
 
 ```{r}
 plot_ly(
-  moyenne_quotidienne, x = ~day, y = ~value,
+  daily_average, x = ~day, y = ~value,
   fill = 'tozeroy',
   type = 'scatter', mode = 'lines'
 )
@@ -650,16 +658,16 @@ plot_ly(
 
 ```{r}
 fig <- plot_ly(
-  moyenne_quotidienne, x = ~day, y = ~value,
+  daily_average, x = ~day, y = ~value,
   color = I("magenta"),
-  hovertemplate = ~paste(day, ": ", round(value), " passages de vélo en moyenne par heure"),
+  hovertemplate = ~paste(day, ": ", round(value), " bicycle passages per hour on average"),
   hoverinfo = "text",
   fill = 'tozeroy',
   type = 'scatter', mode = 'lines')
 fig4 <- fig %>%
-  layout(title = "Moyenne journalière des comptages vélos",
-         xaxis = list(title = "Date et heure de comptage (Jour)"),
-         yaxis = list(title = "Moyenne journalière du comptage par heure\nsur la période sélectionnée"))
+  layout(title = "Average daily bicycle counts",
+         xaxis = list(title = "Counting date and time (Day)"),
+         yaxis = list(title = "Average hourly count per day\nover the selected period"))
 ```
 
 
@@ -706,21 +714,21 @@ fig4 %>% layout(shapes = list(vline("2020-03-17"), vline("2020-05-11")))
 Finally, here’s how to reproduce this figure with `Plotly`:
 
 ```{r}
-df1 <- df1 %>% mutate(`Nom du compteur` = fct_reorder(`Nom du compteur`, `Comptage horaire`))
+df1 <- df1 %>% mutate(`Counter name` = fct_reorder(`Counter name`, `Hourly count`))
 
 fig <- plot_ly(
   df1,
-  x = ~ `Comptage horaire`, y = ~`Nom du compteur`,
+  x = ~ `Hourly count`, y = ~`Counter name`,
   color = I("red"),
-  hovertext = ~paste0(`Nom du compteur`, ": ", round(`Comptage horaire`)),
+  hovertext = ~paste0(`Counter name`, ": ", round(`Hourly count`)),
   hoverinfo = 'text',
   type = 'bar',
-  name = 'Principales stations')
+  name = 'Main stations')
 
 
 fig <- fig %>% layout(
-  yaxis = list(title = 'Moyenne horaire'),
-  xaxis = list(title = 'Nom du compteur', color = "red")
+  yaxis = list(title = 'Hourly average'),
+  xaxis = list(title = 'Counter name', color = "red")
   )
 ```
 

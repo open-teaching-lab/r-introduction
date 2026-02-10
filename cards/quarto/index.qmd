@@ -1,11 +1,11 @@
 ---
 image: scroll.png
-title: Introduction aux publications reproductibles avec <code>quarto</code>
+title: Reproducible report generation with <code>quarto</code>
 date: "2023-11-02"
 description: |
   <br>
-  Introduction à <code>quarto</code>,
-  pour produire des publications avec
+  Introduction to <code>quarto</code>,
+  to generate reports with
   <i class="fa-brands fa-r-project"></i>
   <br>
 categories:

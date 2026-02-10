@@ -1,11 +1,11 @@
 ---
 image: drawing.png
-title: Produire des représentations graphiques avec <code>ggplot2</code>
+title: Create data visualizations with <code>ggplot2</code>
 date: "2023-09-01"
 description: |
   <br>
-  Introduction à <code>ggplot2</code>,
-  pour produire des graphiques avec
+  Introduction to <code>ggplot2</code>,
+  to create plots with
   <i class="fa-brands fa-r-project"></i>
   <br>
 categories:
