@@ -13,3 +13,5 @@ _site
 *_files/
 core
 *.gz
+
+**/*.quarto_ipynb
