@@ -1,17 +1,17 @@
 ---
-title: Introduction aux méthodes quantitatives avec {{< fa brands r-project >}}
+title: Introduction to Quantitative Methods with {{< fa brands r-project >}}
 subtitle: |
-  **[Chapitre 2: manipuler des données structurées]{.orange}**
+  **[Chapter 2: Manipulating Structured Data]{.orange}**
 authors: |
   [Lino Galiana](https://www.linogaliana.fr/),
 # date: 
 slide-number: true
 header: |
-  [Retour à la page principale du cours](https://rgeo.linogaliana.fr/)
+  [Back to the course main page](https://rgeo.linogaliana.fr/)
 footer: |
-  Introduction aux méthodes quantitatives avec {{< fa brands r-project >}}, École Normale Supérieure ([retour page principale](/))
+  Introduction to Quantitative Methods with {{< fa brands r-project >}}, École Normale Supérieure ([back to main page](/))
 # uncomment for French presentations:
-lang: fr-FR
+lang: en-US
 # for blind readers:
 slide-tone: false
 # for @olevitt:
@@ -35,93 +35,90 @@ listing:
 #  - reveal-header
 ---
 
-## Chapitre introductif
+## Introductory Chapter
 
 ::: {.callout-note}
-- Exercices associés à ce chapitre [ici](/exercises/r-wrangling.html)
+- Exercises associated with this chapter [here](/exercises/r-wrangling.html)
 :::
 
 ![](../cards/wrangling/kidmatrix.png){fig-align="center"}
 
-- [Retour à la page principale](/)
+- [Back to the main page](/)
 
 ## Introduction
 
-- {{< fa brands r-project >}} centré autour du _dataframe_ 
+- {{< fa brands r-project >}} centered around the _dataframe_ 
 
 . . .
 
-- Mais manipulations parfois un peu lourdes :
-    - `df$var`: un peu lourd
-    - `df[,]`: un peu trop calqué sur les matrices
+- But manipulations sometimes a bit cumbersome:
+    - `df$var`: a bit heavy
+    - `df[,]`: a bit too modeled on matrices
 
 . . . 
 
-- Données textuelles: une base perfectible
-    - Des _outputs_ alambiqués
-    - Des fonctionnalités manquantes par rapport à `Python`
+- Textual data: a perfectible base
+    - Convoluted _outputs_
+    - Missing functionalities compared to `Python`
     
-## La réponse: le `tidyverse` !
+## The answer: the `tidyverse`!
 
-![L'écosystème du [`tidyverse`](https://www.tidyverse.org/)](./img/tidyverse.png)
+![The [`tidyverse`](https://www.tidyverse.org/) ecosystem](./img/tidyverse.png)
 
-## La réponse: le `tidyverse` !
+## The answer: the `tidyverse`!
 
-Un ensemble de _packages_ développés par `RStudio` qui facilite :
+A set of _packages_ developed by `RStudio` that facilitates:
 
-- La lecture (`readr`) et la manipulation de bases de données (`dplyr`)
-- L'exploitation de données textuelles (`stringr`), temporelles (`lubridate`)
-ou catégorielles (`forcats`)
-- La création de graphiques (`ggplot2`)
-- La programmation à partir de _dataframes_ (`purrr`)
-- Et bien d'autres choses...
+- Reading (`readr`) and manipulating databases (`dplyr`)
+- Exploiting textual data (`stringr`), temporal (`lubridate`)
+or categorical (`forcats`)
+- Creating graphics (`ggplot2`)
+- Programming from _dataframes_ (`purrr`)
+- And many other things...
 
-## Le concept de données _tidy_
+## The _tidy_ data concept
 
-
-- Chaque variable possède sa propre colonne ;
-- Chaque observation possède sa propre ligne ;
-- Une valeur, matérialisant une observation d’une variable, se trouve sur une unique cellule.
+- Each variable has its own column;
+- Each observation has its own row;
+- A value, materializing an observation of a variable, is found in a single cell.
 
 ::: {.callout-note}
-Concept popularisé par Hadley Wickham.
+Concept popularized by Hadley Wickham.
 :::
 
 ## `readr`
 
 ![](https://readr.tidyverse.org/logo.png){width=20%}
 
-- Le _package_ pour lire des fichiers plats (`.csv`, `.txt`...)
-- Permet d'obtenir un `tibble`, le _dataframe_ augmenté du `tidyverse`
+- The _package_ for reading flat files (`.csv`, `.txt`...)
+- Allows obtaining a `tibble`, the augmented _dataframe_ of the `tidyverse`
 
 ## `dplyr` 
 
 ![](https://dplyr.tidyverse.org/logo.png){width=20%}
 
-- Le _package_ central de l'écosystème de manipulation de données ;
-- Manipulation de données et statistiques descriptives ;
+- The central _package_ of the data manipulation ecosystem;
+- Data manipulation and descriptive statistics;
 
 ## `dplyr` {.smaller}
 
-### Principaux verbes
+### Main verbs
 
-On travaille sur un `tibble` (_dataframe_ augmenté)
+We work on a `tibble` (augmented _dataframe_)
 
-- `select()` : sélectionner des variables par leur nom ;
-- `rename()` : renommer des variables ;
-- `filter()` : sélectionner des observations selon une ou plusieurs conditions ;
-- `arrange()` : trier la table selon une ou plusieurs variables ;
-- `mutate()` : ajouter des variables qui sont fonction d’autres variables ;
-- `summarise()` : calculer une statistique à partir de données ;
-- `group_by()` : faire des opérations par groupe.- `
-
-
+- `select()`: select variables by their name;
+- `rename()`: rename variables;
+- `filter()`: select observations according to one or more conditions;
+- `arrange()`: sort the table according to one or more variables;
+- `mutate()`: add variables that are functions of other variables;
+- `summarise()`: calculate a statistic from data;
+- `group_by()`: perform operations by group.
 
 ## `dplyr` {.smaller}
 
-### Manipulation de données
+### Data manipulation
 
-On enchaine des séquences avec les  _pipe_ (`%>%`)
+We chain sequences with _pipes_ (`%>%`)
 ```{r}
 #| eval: false
 #| echo: true
@@ -134,29 +131,28 @@ base_publique_equipements %>%
   filter(TYPEQU == "B316") %>% # <2>
   mutate(x = paste0(AN, "_", NB_EQUIP)) # <3>
 ```
-1. On convertit le _dataframe_ standard en `tibble`
-2. On ne garde que les stations services (valeurs `B316` de `TYPEQU`)
-3. On crée une nouvelle colonne en faisant référence à celles existantes (sans guillemets!)
+1. We convert the standard _dataframe_ to `tibble`
+2. We keep only gas stations (values `B316` of `TYPEQU`)
+3. We create a new column by referencing existing ones (without quotes!)
 
 <br>
 
 ::: {.callout-note}
-Plus de détails dans [`utilitR`](https://www.book.utilitr.org/03_fiches_thematiques/fiche_tidyverse)
+More details in [`utilitR`](https://www.book.utilitr.org/03_fiches_thematiques/fiche_tidyverse)
 :::
 
 ## `dplyr` {.smaller}
 
-### Statistiques agrégées
+### Aggregated statistics
 
-- Logique du _split-apply-combine_ avec `groupby`
+- _split-apply-combine_ logic with `groupby`
 
 <details>
 <summary>
-Illustration du _split-apply-combine_
+Illustration of _split-apply-combine_
 </summary>
 ![](https://miro.medium.com/v2/resize:fit:1400/1*w2oGdXv5btEMxAkAsz8fbg.png)
 </details>
-
 ```{r}
 #| eval: false
 #| echo: true
@@ -170,20 +166,20 @@ base_publique_equipements %>%
   group_by(DEP) %>% # <3>
   summarise(nombre_station_serv = sum(NB_EQUIP, na.rm = TRUE))  # <4>
 ```
-1. On convertit le _dataframe_ standard en `tibble`
-2. On ne garde que les stations services (valeurs `B316` de `TYPEQU`)
-3. On définit `DEP` comme une variable de stratification pour définir des groupes
-4. On résume les données en faisant la somme des stations services dans chaque groupe
+1. We convert the standard _dataframe_ to `tibble`
+2. We keep only gas stations (values `B316` of `TYPEQU`)
+3. We define `DEP` as a stratification variable to define groups
+4. We summarize the data by summing gas stations in each group
 
 ## `ggplot`
 
 ![](https://ggplot2.tidyverse.org/logo.png){width=20%}
 
-- Le _package_ indispensable pour faire des graphiques ❤️ ;
-- Approche cohérente et flexible basée sur la __grammaire des graphiques__
-    + Objet d'un chapitre dédié
+- The essential _package_ for making graphics ❤️;
+- Coherent and flexible approach based on the __grammar of graphics__
+    + Subject of a dedicated chapter
 
-## `stringr`, `forcats` et `lubridate`
+## `stringr`, `forcats` and `lubridate`
 
 :::{ncol-layout=3 fig-align="center"}
 ![](https://stringr.tidyverse.org/logo.png){width=20%}
@@ -191,49 +187,45 @@ base_publique_equipements %>%
 ![](https://lubridate.tidyverse.org/logo.png){width=20%}
 :::
 
-- Plein de fonctions facilitant la manipulation:
-    - Données textuelles: `stringr`
-    - Données catégorielles: `forcats`
-    - Données temporelles: `lubridate`
+- Many functions facilitating manipulation:
+    - Textual data: `stringr`
+    - Categorical data: `forcats`
+    - Temporal data: `lubridate`
 
-# Les formats de données
+# Data Formats
 
-## Généralités
+## General Information
 
-- Données peuvent être stockées dans de nombreux formats différents
-    + Standards différents
-    + Manières d'importer différentes
+- Data can be stored in many different formats
+    + Different standards
+    + Different ways of importing
 
 . . .
 
-- Fonctionnalités de {{< fa brands r-project >}} limitées:
-    + Packages spécialisés pour certains formats
-    + Objectif: applatir l'information dans un _dataframe_
+- Limited {{< fa brands r-project >}} functionalities:
+    + Specialized packages for certain formats
+    + Objective: flatten information into a _dataframe_
 
 ::: {.callout-note}
-On verra les formats géographiques, et leurs enjeux, ultérieurement
+We'll see geographic formats, and their challenges, later
 :::
 
-## Le `CSV`
+## `CSV`
 
-- Format de fichier plat avec des colonnes délimitées:
-    + Standard: `,` en délimitateur, `.` en décimale ;
-    + Variante européenne 😮‍💨: `;` en délimitateur, `,` en décimale
+- Flat file format with delimited columns:
+    + Standard: `,` as delimiter, `.` as decimal;
+    + European variant 😮‍💨: `;` as delimiter, `,` as decimal
 
-- Format universel, simple d'utilisation (quelques limites)
-
-
+- Universal format, simple to use (some limitations)
 ```{ojs}
 viewof info_csv = Inputs.radio(
-  ["Fichier brut", "Ficher après import"], {value: "Fichier brut"}
+  ["Raw file", "File after import"], {value: "Raw file"}
 )
 ```
 
 ```{ojs}
-info_csv == "Fichier brut" ? html`<div>${md_csv}<div>` : html`<div>${df_csv}<div>`
+info_csv == "Raw file" ? html`<div>${md_csv}<div>` : html`<div>${df_csv}<div>`
 ```
-
-
 
 ```{ojs}
 //| output: false
@@ -259,41 +251,38 @@ raw_csv = `DEP,REG,CHEFLIEU,TNCC,NCC,NCCENR,LIBELLE
 `
 ```
 
-## Le `CSV`
+## `CSV`
 
-- Lecture avec la fonction `read_csv` du package `readr`!
-
+- Reading with the `read_csv` function from the `readr` package!
 ```{r}
 #| eval: false
 #| echo: true
 library(readr) # <1>
-read_csv("dossier_donnees/nom_fichier.csv") # <2>
+read_csv("data_folder/file_name.csv") # <2>
 ```
-1. On importe la librairie `readr` pour avoir accès à la fonction `read_csv`
-2. On utilise `read_csv` pour lire les données stockées dans le chemin relatif
-`dossier_donnees/nom_fichier.csv`
-
+1. We import the `readr` library to have access to the `read_csv` function
+2. We use `read_csv` to read data stored in the relative path
+`data_folder/file_name.csv`
 
 :::{.callout-note}
-- CSV avec délimitateur `;`: fonction `read_csv2`. 
-- Formats plats plus exotiques (`.txt` par exemple): `read_delim`
+- CSV with `;` delimiter: `read_csv2` function. 
+- More exotic flat formats (`.txt` for example): `read_delim`
 
-Plus de détails dans la documentation [`utilitR`](https://www.book.utilitr.org/03_fiches_thematiques/fiche_import_fichiers_plats#importer-un-fichier-avec-le-package-readr)
+More details in the [`utilitR`](https://www.book.utilitr.org/03_fiches_thematiques/fiche_import_fichiers_plats#importer-un-fichier-avec-le-package-readr) documentation
 :::
 
-## Le `JSON`
+## `JSON`
 
-- Le format du _web_, notamment des API 
-    + API: on verra ça plus tard
-
+- The _web_ format, especially for APIs 
+    + API: we'll see that later
 ```{ojs}
 viewof info_json = Inputs.radio(
-  ["Fichier brut", "Ficher après import"], {value: "Fichier brut"}
+  ["Raw file", "File after import"], {value: "Raw file"}
 )
 ```
 
 ```{ojs}
-info_json == "Fichier brut" ? html`<div>${md_json}<div>` : html`<div>${df_json}<div>`
+info_json == "Raw file" ? html`<div>${md_json}<div>` : html`<div>${df_json}<div>`
 ```
 
 ```{ojs}
@@ -326,51 +315,47 @@ ${json_string}
 df_json = Inputs.table(raw_json)
 ```
 
-## Le `JSON`
+## `JSON`
 
-- Importé comme une liste hiérarchisée
-- Objectif: transformer cette information dans un _dataframe_ `tidy`
-    + Pas toujours évident !
-
+- Imported as a hierarchical list
+- Objective: transform this information into a `tidy` _dataframe_
+    + Not always easy!
 ```{r}
 #| eval: false
 #| echo: true
 library(jsonlite) # <1>
-df <- fromJSON(file="dossier_donnees/nom_fichier.json") # <2>
+df <- fromJSON(file="data_folder/file_name.json") # <2>
 ```
-1. On importe la librairie `jsonlite` pour avoir accès à la fonction `fromJSON`
-2. On utilise `fromJSON` pour lire les données stockées dans le chemin relatif
-`dossier_donnees/nom_fichier.csv`
+1. We import the `jsonlite` library to have access to the `fromJSON` function
+2. We use `fromJSON` to read data stored in the relative path
+`data_folder/file_name.json`
 
-
-## Les formats Excel
+## Excel formats
 
 {{< iconify face-vomiting size=10x >}}
 
-## Les formats Excel
+## Excel formats
 
-- Format propriétaire
+- Proprietary format
 
-- Mélange mise en forme et données brute
-    + Pas approprié pour l'analyse de données
-    + Dangereux pour la reproductibilité et la transparence
+- Mixes formatting and raw data
+    + Not appropriate for data analysis
+    + Dangerous for reproducibility and transparency
 
-- Plus de détails sur [`utilitR`](https://www.book.utilitr.org/03_fiches_thematiques/fiche_import_tableurs)
+- More details on [`utilitR`](https://www.book.utilitr.org/03_fiches_thematiques/fiche_import_tableurs)
 
-# Le _pipe_ `magrittr` (`%>%`)
+# The `magrittr` _pipe_ (`%>%`)
 
-## Le _pipe_ `magrittr` (`%>%`)
+## The `magrittr` _pipe_ (`%>%`)
 
-
-Une manière de chaîner les opérations
+A way to chain operations
 
 ![](https://magrittr.tidyverse.org/logo.png){width=20%}
 
 ::: {.panel-tabset}
 
-## Fonctions emboitées
-
-```
+## Nested functions
+```{r}
 library(dplyr)
 library(doremifasol)
 
@@ -385,10 +370,8 @@ summarise(
 )
 ```  
 
-
-## Avec le _pipe_
-
-```
+## With the _pipe_
+```{r}
 library(dplyr)
 library(doremifasol)
 
@@ -398,6 +381,5 @@ telechargerDonnees("BPE_ENS") %>%
   group_by(DEP) %>% 
   summarise(nombre_station_serv = sum(NB_EQUIP, na.rm = TRUE)) 
 ```  
-
 
 :::

@@ -1,17 +1,17 @@
 ---
-title: Introduction aux méthodes quantitatives avec {{< fa brands r-project >}}
+title: Introduction to Quantitative Methods with {{< fa brands r-project >}}
 subtitle: |
-  **[Chapitre 6: Introduction aux publications reproductibles avec `quarto`]{.orange}**
+  **[Chapter 6: Introduction to Reproducible Publications with `quarto`]{.orange}**
 authors: |
   [Lino Galiana](https://www.linogaliana.fr/),
 # date: 
 slide-number: true
 header: |
-  [Retour à la page principale du cours](https://rgeo.linogaliana.fr/)
+  [Back to the course main page](https://rgeo.linogaliana.fr/)
 footer: |
-  Introduction aux méthodes quantitatives avec {{< fa brands r-project >}}, École Normale Supérieure ([retour page principale](/))
+  Introduction to Quantitative Methods with {{< fa brands r-project >}}, École Normale Supérieure ([back to main page](/))
 # uncomment for French presentations:
-lang: fr-FR
+lang: en-US
 # for blind readers:
 slide-tone: false
 # for @olevitt:
@@ -38,70 +38,65 @@ listing:
 ## Introduction
 
 ::: {.callout-note}
-- Exercices associés à ce chapitre [ici](/exercises/quarto.html)
+- Exercises associated with this chapter [here](/exercises/quarto.html)
 :::
 
 ![](../cards/quarto/scroll.png){fig-align="center"}
 
-- [Retour à la page principale](/)
+- [Back to the main page](/)
 
+## Challenges
 
-
-## Enjeux
-
-- Produire des [**études reproductibles**]{.orange} en intégrant le code et le texte dans un même document
+- Produce [**reproducible studies**]{.orange} by integrating code and text in the same document
 
 . . .
 
-- La génération complète de l'étude est contenue dans un [**unique projet**]{.orange}
+- The complete generation of the study is contained in a [**single project**]{.orange}
 
 . . .
 
-- [**Limiter les risques d'erreurs**]{.orange} dues aux gestes manuels
+- [**Limit the risk of errors**]{.orange} due to manual actions
 
 . . .
 
-- Gestion native de [**différents formats**]{.orange} pour le document final (`pdf`, `html`, `odt`, etc.)
+- Native management of [**different formats**]{.orange} for the final document (pdf, html, odt, etc.)
 
 ## `R Markdown` {.smaller}
 
 ::: {.incremental}
-- `R Markdown` est un *package* `R` qui permet de lier
-  - Du [**texte**]{.orange} au format `Markdown`
-  - Du [**code**]{.orange} `R` qui peut être exécuté et dont les sorties peuvent être intégrées au texte
+- `R Markdown` is an `R` *package* that allows linking
+  - [**Text**]{.orange} in `Markdown` format
+  - [**Code**]{.orange} in `R` that can be executed and whose outputs can be integrated into the text
 :::
 
 . . .
 
-- [**Dissociation du fond et de la forme**]{.orange} du document
+- [**Separation of content and form**]{.orange} of the document
 
 ::: {.incremental}
-- Un document est [**compilé**]{.orange} en deux étapes
-  - [***knit***]{.green2} : le package `knitr` transforme le texte et les sorties `R` en un document `Markdown` standard
-  - [***convert***]{.green2} : le logiciel `pandoc` transforme le document `.md` en un format de sortie standard (`html`, `pdf`, etc.)
+- A document is [**compiled**]{.orange} in two steps
+  - [***knit***]{.green2}: the `knitr` package transforms the text and `R` outputs into a standard `Markdown` document
+  - [***convert***]{.green2}: the `pandoc` software transforms the `.md` document into a standard output format (html, pdf, etc.)
 :::
 
 ## `Quarto`
 
-- `Quarto` est le successeur de `R Markdown`
+- `Quarto` is the successor to `R Markdown`
 
 . . .
 
-- `Quarto` supporte [**différents moteurs de calcul**]{.orange} (`knitr`, `Jupyter`, `Observable`..) ce qui le rend nativement [**multi-langage**]{.orange} (`R`, `Python`, `JavaScript`..)
+- `Quarto` supports [**different computation engines**]{.orange} (knitr, Jupyter, Observable...) which makes it natively [**multi-language**]{.orange} (R, Python, JavaScript...)
 
 . . .
 
-- Le fonctionnement des deux systèmes reste très proche
+- The functioning of both systems remains very similar
 
-## Anatomie d'un document reproductible
+## Anatomy of a Reproducible Document
 
 ![](https://inseefrlab.github.io/formation-bonnes-pratiques-git-R/slides/img/qmd.png){height="500" fig-align="center"}
 
-## Ressources supplémentaires
+## Additional Resources
 
-- La [documentation officielle de `R Markdown`](https://rmarkdown.rstudio.com/lesson-1.html)
-
-- La [fiche `UtilitR` sur `R Markdown`](https://www.book.utilitr.org/rmarkdown.html)
-
-- La [documentation officielle de `quarto`](https://quarto.org/)
-
+- The [official `R Markdown` documentation](https://rmarkdown.rstudio.com/lesson-1.html)
+- The [`UtilitR` guide on `R Markdown`](https://www.book.utilitr.org/rmarkdown.html)
+- The [official `quarto` documentation](https://quarto.org/)
