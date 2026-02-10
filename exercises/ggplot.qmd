@@ -86,7 +86,7 @@ We propose downloading these data and saving them to a local file before importi
 ```{r}
 #| echo: true
 url <- "https://minio.lab.sspcloud.fr/projet-formation/diffusion/python-datascientist/bike.csv"
-download.file(url, "bike.gz") # <1>
+download.file(url, "bike.gz", mode = "wb") # <1>
 ```
 
 1. The `.gz` extension is important because `readr` needs it to understand that the file is compressed.
