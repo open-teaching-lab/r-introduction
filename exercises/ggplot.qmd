@@ -113,7 +113,7 @@ The data contains several dimensions suitable for statistical analysis. Therefor
 ```{r}
 #| output: false
 df <- readr::read_csv("bike.gz") %>% 
-  rename(
+   dplyr::rename(
     `counter_id` = `Identifiant du compteur`,
     `Counter name` = `Nom du compteur`,
     `counting_site_id` = `Identifiant du site de comptage`,
