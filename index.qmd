@@ -8,14 +8,13 @@ page-layout: full
 toc: false
 ---
 
-# Introduction aux méthodes quantitatives avec {{< fa brands r-project >}}
+# Introduction to quantitative methods with {{< fa brands r-project >}}
 
-[**Lino Galiana**](https://www.linogaliana.fr/)
+This course is based on the course of [**Lino Galiana**](https://www.linogaliana.fr/)
+for the Department of Social Sciences at ENS Ulm.
 
-Cours du département de sciences sociales de l'ENS Ulm. 
-
-Un cours pour se familiariser à {{< fa brands r-project >}} par la
-pratique avec l'_open data_.
+A course to become familiar with {{< fa brands r-project >}} through hands-on 
+practice using __open data__.
 
 ::: {#formations}
 :::
