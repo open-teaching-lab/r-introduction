@@ -835,6 +835,7 @@ checking descriptive statistics beforehand to be relevant.
 4. Use the following code to output a histogram in level then in log of municipal carbon footprint;
 
 ```{r}
+#| eval: false
 ggplot(emissions_merged) +
   geom_histogram(aes(x = empreinte, y = after_stat(density))) +
   scale_x_log10()
