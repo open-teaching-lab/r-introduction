@@ -9,7 +9,7 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    container: inseefrlab/onyxia-rstudio:latest
+    container: inseefrlab/onyxia-rstudio:r4.5.2
     steps:
       - name: Checkout
         uses: actions/checkout@v4
