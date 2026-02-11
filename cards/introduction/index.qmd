@@ -4,7 +4,7 @@ title: Importing and manipulating data with <i class="fa-brands fa-r-project"></
 date: "2023-09-01"
 description: |
   <br>
-  Introduction to R <i class="fa-brands fa-r-project"></i>
+  Introduction to <i class="fa-brands fa-r-project"></i>
   and to <code>RStudio</code>
   <br>
 categories:
