@@ -1,9 +1,10 @@
 ---
 title: Introduction to quantitative methods with {{< fa brands r-project >}}
 subtitle: |
-  **[Chapter 3: Manipulating structured data]{.orange}**
+  **[Chapter 3: Describe and infer data]{.orange}**
 authors: |
-  [Lino Galiana](https://www.linogaliana.fr/),
+  [Nathan Randriamanana](https://www.linkedin.com/in/nathan-randriamanana-69a1721b3/),
+  [Clara Baudry](https://www.linkedin.com/in/clara-baudry/),
 # date: 
 slide-number: true
 header: |
@@ -41,7 +42,7 @@ listing:
 - Exercises associated with this chapter [here](/exercises/stats.html)
 :::
 
-![](../cards/wrangling/kidmatrix.png){fig-align="center"}
+![](../cards/stats/teacher_stats.png){fig-align="center"}
 
 - [Back to the main page](/)
 
