@@ -1,0 +1,16 @@
+---
+image: baby.png
+title: Importing and manipulating data with <i class="fa-brands fa-r-project"></i>
+date: "2023-09-01"
+description: |
+  <br>
+  Introduction to R <i class="fa-brands fa-r-project"></i>
+  and to <code>RStudio</code>
+  <br>
+categories:
+  - Introduction
+website: /slides/introduction.html
+exercise: /exercises/r-base.html
+order: 3
+---
+

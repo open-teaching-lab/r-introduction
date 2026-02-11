@@ -12,7 +12,7 @@ header: |
 footer: |
   Introduction to quantitative methods with {{< fa brands r-project >}}, Lesotho Bureau of Statistics ([back to main page](/))
 # uncomment for French presentations:
-lang: eng-ENG
+lang: en-US
 # for blind readers:
 slide-tone: false
 # for @olevitt:
@@ -74,10 +74,9 @@ code-annotations: hover
 - colleagues from [**INSEE**]{.orange}: National Institute of Statistics and Economic Studies 
 ![](https://www.insee.fr/static/img/logoInseeEn.svg){fig-align="center"}
 
-
 ## All about us {.nonincremental auto-animate=true}
 
-### Instructor n°1 
+### Instructors 
 
 ![](https://minio.lab.sspcloud.fr/nrandriamanana/portfolio/Nathan_resize.JPG){fig-align="center"}
 
@@ -85,7 +84,7 @@ code-annotations: hover
 
 ## All about us {.nonincremental auto-animate=true}
 
-### Instructor n°2 
+### Instructors 
 
 ![](https://cdn-icons-png.freepik.com/256/953/953789.png?semt=ais_white_label){fig-align="center"}
 
@@ -164,37 +163,38 @@ __Most importantly, check out the full training portal on the [Insee datalab](ht
 
 ## 1. Educational goals {.scrollable .nonincremental auto-animate=true}
 
-. . .
-
 - **The open data & open source ecosystems**: 
     - **open data**: Learning to leverage public datasets as a primary resource.
     - **open source**: Discovering community-driven tools (R, Quarto) to process them.
-
-. . .
-
 - **Hands-on introduction to {{< fa brands r-project >}}**: Learning the fundamentals of R through practical application.
-
-. . .
-
 - Introduction to **reproducible publications** with [`Quarto`](https://quarto.org/): Learn to create automated, transparent, and high-quality reports.
-
 
 ## 2. Strategic Stakes {.nonincremental auto-animate=true}
 
 - **Public fund stewardship & financial independence**:
     - **Optimizing national budget**: Redirecting taxpayer money from recurring proprietary licenses toward internal expertise and innovation.
     - **Cost-efficiency**: Scaling tools without proportional increases in software costs.
-
 - **Institutional Sovereignty**:
     - **Full ownership**: Controlling our own statistical production chain without being tied to a vendor's "black-box" roadmap.
-    - **Sustainability**: Ensuring long-term access to our code and methods, independent of private sector pricing policies.
 
+## 2. Strategic Stakes {.nonincremental auto-animate=true}
+
+- **Institutional Sovereignty**:
+    - **Sustainability**: Ensuring long-term access to our code and methods, independent of private sector pricing policies.
 - **Scientific & Public Trust**: 
-    - **Reproducibility**: Guaranteeing that official statistics are auditable and transparent (Open science standards).
+    - **Reproducibility**: Guaranteeing that official statistics are auditable and transparent (open science standards).
     - **Modernization**: Maintaining the Institute's position at the state-of-the-art of data science.
 
+## What you stand to gain {.nonincremental auto-animate=true}
 
-## Practical Information {.nonincremental auto-animate=true}
+- Understand the strategic value of open source in today's landscape
+- Learn professional best practices :gem:
+- Gain independence from proprietary solutions :office:
+- Connect and collaborate with the global data community :earth_africa:
+- Demystify the "industrialization" of data through practice 
+    - :arrow_right: Build higher technical expertise
+
+## Practical Information {.nonincremental}
 
 - A mix of **slides** and, most importantly, **guided practice sessions**.
 
@@ -209,463 +209,141 @@ __[We will be using `SSPCloud` 😍🐉☁️🇫🇷!]{.orange}__
 *(Quick walkthrough coming up later)*
 
 
+## Additional resources {.nonincremental .smaller}
+
+- **Comprehensive english references**
+    - [**R for data science**](https://r4ds.had.co.nz/) – a deep dive into the tidyverse ecosystem.
+    - [**Geocomputation with R**](https://geocompr.robinlovelace.net/) – a complete guide for spatial data and mapping.
+    - [**Data visualization**](https://socviz.co/) – a practical and thorough introduction by Kieran Healy.
+
+- **Interactive learning platforms**
+    - [**SSPCloud training portal**](https://www.sspcloud.fr/formation) – provides interactive, self-paced tracks on modern data stacks (available in english).
+
 ## Additional resources {.smaller}
 
-### Comprehensive english references
-- [**R for data science**](https://r4ds.had.co.nz/) – a deep dive into the tidyverse ecosystem.
-- [**Geocomputation with R**](https://geocompr.robinlovelace.net/) – a complete guide for spatial data and mapping.
-- [**Data visualization**](https://socviz.co/) – a practical and thorough introduction by Kieran Healy.
+- **Community and french resources (worth a look)**
+    - [**utilitR**](https://www.book.utilitr.org/) – the most comprehensive r documentation 👶. *(tip: great to explore using browser auto-translate)*.
+    - [**Rzine**](https://rzine.fr/) – best practices and tutorials for social sciences and geography.
 
-. . .
+# General overview
 
-### Interactive learning platforms
-- [**SSPCloud training portal**](https://www.sspcloud.fr/formation) – provides interactive, self-paced tracks on modern data stacks (available in english).
+## Data proliferation {.nonincremental}
 
-. . .
+- Digitalization and technological innovation have slashed the cost of data production.
+    + Exponential growth in the volume of data generated.
+- The use of statistics for governance is not new (cf. [Desrosières](https://www.cairn.info/la-politique-des-grands-nombres--9782707165046.htm) or [Ian Hacking](https://en.wikipedia.org/wiki/The_Taming_of_Chance))...
+- ... but numbers now hold a central place in public debate and policy-making ([Supiot](https://www.fayard.fr/sciences-humaines/la-gouvernance-par-les-nombres-9782213681092), [Davies](https://www.theguardian.com/books/2018/sep/19/nervous-states-william-davies-review)).
 
-### Community and french resources (worth a look)
-- [**utilitR**](https://www.book.utilitr.org/) – the most comprehensive r documentation 👶. *(tip: great to explore using browser auto-translate)*.
-- [**Rzine**](https://rzine.fr/) – best practices and tutorials for social sciences and geography.
+## Data diversification (1/4)
 
-# Panorama général
+### Classic tabular data {.nonincremental}
 
-## Prolifération des données
-
-- Numérisation et innovations technologiques ont réduit le coût de production de la donnée ;
-    + Volume de données produites en explosion
-
-. . .
-
-- L'utilisation des statistiques n'est pas nouvelle (cf. [Desrosières](https://www.cairn.info/la-politique-des-grands-nombres--9782707165046.htm))...
-
-. . .
-
-- ... mais une place accrue dans le débat public et l'action publique ([Supiot](https://www.fayard.fr/sciences-humaines/la-gouvernance-par-les-nombres-9782213681092), [Martin](https://www.cairn.info/l-empire-des-chiffres--9782200625719.htm))
-
-## Diversification des données (1/4)
-
-### Données tabulaires classiques
-
-
-```{ojs}
-viewof info_mutations = Inputs.radio(
-  ["Tableau", "Graphique"], {value: "Tableau"}
-)
-```
-
-```{ojs}
-info_mutations == "Tableau" ? html`<div>${table_mutations1}<div>` : html`<div>${plot_mutations}<div>`
-```
-
-```{ojs}
-//| output: false
-url = "https://files.data.gouv.fr/geo-dvf/latest/csv/2020/communes/92/92049.csv"
-proxy = "https://corsproxy.io/?"
-dvf = d3.csv(proxy + url)
-```
-
-```{ojs}
-//| output: false
-table_mutations1 = Inputs.table(dvf, {"columns": ['date_mutation', 'valeur_fonciere', 'adresse_nom_voie']})
-plot_mutations = Plot.plot({
-  y: {grid: true, label: "Nombre de transactions"},
-  x: {
-    ticks: 12,
-    transform: (d) => Math.pow(10, d),
-    type: "log",
-    tickFormat: "~s",
-    label: "Prix (échelle log) →"
-  },
-  marks: [
-    Plot.rectY(
-      dvf.filter(d => d.valeur_fonciere > 10000),
-      Plot.binX({y: "count"},
-      {
-        x: d => Math.log10(d.valeur_fonciere),
-        tip: true
-      })
-    ),
-    Plot.ruleY([0])
-  ]
-})
-```
-
-```{ojs}
-Plot = require("https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6.10/dist/plot.umd.min.js")
-```
-
-
-## Diversification des données (1/4) 
-
-### Données tabulaires classiques
-
-- Données __structurées__ sous forme de tableau
-
+- **Structured** data in table format (rows and columns).
 ![Source: [Hadley Wickham, _R for data science_](https://r4ds.hadley.nz/data-tidy.html)](https://r4ds.hadley.nz/images/tidy-1.png)
+- {{< fa brands r-project >}} is exceptionally well-equipped for this (handled via dataframes).
+
+## Data diversification (2/4)
+
+### Geospatial data {.nonincremental}
+
+- Tabular data with a spatial dimension.
+    + Geography comes in multiple forms: points, lines, polygons...
+- {{< fa brands r-project >}} offers powerful tools for this type of data (as long as data volume fits in memory).
+
+## Data diversification (3/4) {.smaller}
+
+### Textual and unstructured data {.nonincremental}
+
+- Historical statistical roots ([Levenshtein 1957](https://en.wikipedia.org/wiki/Levenshtein_distance), [perceptron](https://en.wikipedia.org/wiki/Perceptron)).
+- Rapid development since 2010:
+    + Massive collection: social media, open-ended survey questions...
+    + Lower storage costs and increased computing power.
+    + New techniques: webscraping, Natural Language Processing (NLP), and LLMs.
+
+- Heavy usage across government, research, and the private sector.
+
+## Data diversification (4/4)
+
+### Images, sound and video {.nonincremental}
+
+- Computer vision and signal processing are now part of the statistical toolkit (e.g., analyzing satellite imagery for agricultural yields).
 
 
-- {{< fa brands r-project >}} très bien outillé pour ces données (si volumétrie adaptée)
+## Emergence of new players {.nonincremental.smaller}
 
+- [**Traditional actors**]{.orange}: 
+    + National Statistical Institutes (Insee, BoS Lesotho) and line ministries;
+    + Central administrations (Tax authorities, Digital agencies) or mapping agencies (e.g., IGN);
+    + More details to follow.
+- [**Crowdsourced and collaborative projects**]{.orange}: 
+    + `OpenStreetMap Lesotho` (essential for local infrastructure mapping);
+    + `Wikidata`, `OpenFoodFacts`...
 
-## Diversification des données (2/4)
+## Emergence of new players {.nonincremental.smaller}
 
-<h3>Données géolocalisées</h3>
+- [**Private sectors**]{.orange}:
+    + Vast datasets collected from users and customers (Big Data);
+    + New opportunities for data-sharing partnerships (e.g., for research or public health);
+    + **The challenge**: How to integrate these non-traditional sources into official statistics? (ex: [UNECE](https://unece.org/statistics/access-privately-held-data))
 
-```{ojs}
-viewof info_power_plants = Inputs.radio(
-  ["Tableau", "Carte"], {value: "Tableau"}
-)
-```
+## The democratization of data {.nonincremental .smaller}
 
-```{ojs}
-info_power_plants == "Tableau" ? html`<div>${table_power_plants}<div>` : html`<div>${plot_power_plants}<div>`
-```
+- **The rise of Open Data and Open Source**:
+    + Global momentum for government transparency (starting in the late 2000s).
+    + Rapid growth of national and international open data portals (World Bank, UN, National Platforms).
+- **Technological and cultural shifts**:
+    + Generalization of open and standardized formats.
+    + Mass adoption of open-source programming languages (especially `Python` {{< fa brands python >}} and `R` {{< fa brands r-project >}}).
+    + Increasing use of **APIs** for direct data retrieval.
 
-
-```{ojs}
-//| output: false
-import {us_power_plants, states} from "@observablehq/build-your-first-map-with-observable-plot"
-
-table_power_plants = Inputs.table(
-  us_power_plants
-)
-
-
-plot_power_plants = Plot.plot({
-  projection: "albers-usa",
-  marks: [
-    Plot.geo(states, { fill: "white", stroke: "#e2e2e2"  }),
-    Plot.dot(us_power_plants, {
-      x: "longitude",
-      y: "latitude",
-      r: "Total_MW",
-      fill: "PrimSource",
-      opacity: 0.7,
-      tip: true
-    }),
-    Plot.dot(us_power_plants, { // Can you figure out what this additional Plot.dot layer adds?
-      x: "longitude",
-      y: "latitude",
-      r: "Total_MW",
-      fill: "PrimSource",
-      stroke: "black",
-      filter: d => d.Total_MW > 3500,
-    }),
-    Plot.text(us_power_plants, { // Add text to the map using data from us_power_plants
-      x: "longitude", // Place text horizontally at plant longitude
-      y: "latitude", // Place text vertically at plant latitude
-      text: "Plant_Name", // The text that appears is the value from the Plant_Name column,
-      filter: (d) => d.Total_MW > 3500, // Only add text for plants with capacity exceeding 3500 MW
-      fontSize: 12, // Increased font size
-      fontWeight: 600, // Increased font weight
-      stroke: "white", // Adds white outer stroke to text (for readability)
-      fill: "black", // Text fill color
-      textAnchor: "start", // Left align text with the x- and y-coordinates
-      dx: 15 // Shifts text to the right (starting from left alignment with coordinate)
-    })
-  ],
-  r: { range: [1, 15] },
-  color: { legend: true },
-  height: 500,
-  width: 800,
-  margin: 50
-})
-```
-
-## Diversification des données (2/4)
-
-<h3>Données géolocalisées</h3>
-
-- Données tabulaires avec une dimension spatiale supplémentaire
-    + Dimension géographique prend des formes multiples:
-    + Points, lignes, polygones...
-
-. . .
-
-- {{< fa brands r-project >}} très bien outillé pour ces données (si volumétrie adaptée)
-
-## Diversification des données (3/4) {.smaller}
-
-<h3>Données textuelles et non structurées</h3>
-
-- Techniques statistiques anciennes ([Levenshtein 1957](https://en.wikipedia.org/wiki/Levenshtein_distance), [perceptron](https://fr.wikipedia.org/wiki/Perceptron)) ;
-
-. . .
-
-- Applications limitées jusqu'aux années 2010 ;
-
-. . .
-
-- Développement très rapide de la recherche :
-    + Collecte accrue : réseaux sociaux, enquêtes...
-    + Baisse coûts stockage & augmentation ressources traitement ;
-    + Nouvelles techniques statistiques: _webscraping_, LLM...
-
-. . .
-
-- Utilisation intensive dans l'administration, la recherche et le secteur privé
-    + Plus d'infos dans mon cours sur les [données émergentes](https://ensai-donnees-emergentes.netlify.app/textes)
-
-## Diversification des données (4/4)
-
-### Images, sons et vidéos
-
-![Plus d'infos dans mon cours sur les [données émergentes](https://ensai-donnees-emergentes.netlify.app/textes)](https://nanonets.com/blog/content/images/2020/08/1_Hz6t-tokG1niaUfmcysusw.jpeg)
-
-
-## Apparition de nouveaux acteurs {.smaller}
-
-- Acteurs classiques: 
-    + Instituts statistiques (INSEE et SSM[^1]) ;
-    + Administrations centrales (DGFiP, DINUM...) ou opérateurs (IGN...)
-    + Plus de détails à venir
-
-[^1]: Le [service statistique public](https://www.insee.fr/fr/information/1302192) est constitué de l’Insee et des 16 __services statistiques ministériels__ (SSM)
-
-. . .
-
-- Collectivités locales (exemple: [_Open data_ Paris](https://opendata.paris.fr/pages/home/))
-
-. . .
-
-
-- Projets contributifs: `OpenStreetMap`, `Wikidata`, `OpenFoodFacts`...
-
-. . .
-
-- Acteurs privés:
-    + Collectent des données sur leurs utilisateurs/clients (extrapolation possible?)
-    + Peuvent mettre à disposition ces données à d'autres acteurs (chercheurs par exemple)
-    + Cadre réglementaire: [RGPD](https://www.cnil.fr/fr/rgpd-de-quoi-parle-t-on)
-
-
-
-## Accès de plus en plus direct à la donnée {.smaller}
-
-- Ere de l'_open data_ et _open source_ :
-    + Mouvement accéléré depuis l'élection Obama 2008
-    + Création Etalab en 2011 ;
-    + Loi pour une république numérique 2016
-    
-. . .
-
-- Changements technologiques et culturels :
-    + Formats ouverts et standardisés ;
-    + Succès des langages open source (notamment `Python` {{< fa brands python >}} et `R` {{< fa brands r-project >}})
-    + Acculturation aux [API](https://www.book.utilitr.org/03_fiches_thematiques/fiche_api)
-    
-
+::: {.callout-note}
+### See _European Union_ website 
+"[Open (Government) Data](https://data.europa.eu/en/dataeuropa-academy/what-open-data) refers to the information collected, produced or paid for by the public bodies (also referred to as Public Sector Information) and made freely available for re-use for any purpose. The licence will specify the terms of use. These principles for Open Data are described in detail in the Open Definition." 
+:::
 
 ## _Data is everywhere_
 
 ![](img/moredata.png)
 
-# Les acteurs de la donnée et du code en France
+# Data sources and ecosystems
 
-## L'Insee {.smaller}
+## National Statistical Institutes (BoS & Insee) {.nonincremental .smaller}
 
-- Collecte, produit, analyse et diffuse l'information statistique :
-    - Producteur de statistiques (enquêtes, données administratives) ;
-    - Producteur d'études pour le débat public (rare chez les instituts statistiques)
+- **Core missions**: Both the **Bureau of Statistics (Lesotho)** and **Insee (France)** share the same fundamental goals:
+    - Collecting and analyzing vital data: Census, GDP, Inflation (CPI), and Labor Force Surveys.
+- **Specific feature**: Insee also has a strong mandate for social and economic research to inform public debate.
+- **The R Ecosystem**: 
+    - Many NSI datasets are now directly accessible through **R packages**.
+    - This ensures **reproducibility**: your analysis can be updated instantly when the BoS or Insee releases new data.
 
-. . .
+## National Open Data Portals {.nonincremental .smaller}
 
-- Publie énormément d'informations:
-    - Recensement, taux de chômage, inflation, PIB, fichier des prénoms...
-    - __[Code officiel géographique (COG)](https://www.insee.fr/fr/information/2560452)__ et zonages d'études
+- **The Hub**: A single platform centralizing data from all public sectors (Health, Transport, Local districts).
+- **Transparency**: Allows citizens and researchers to find and reuse raw data.
+- **The R advantage**: Instead of manual downloads, we use R to query these portals directly, ensuring our analysis stays up-to-date.
 
-. . .
+## Why does this matter for this training ? {.nonincremental .smaller}
 
-- Rôle de coordination du service statistique public: 
-    - Instituts statistiques ministériels: DREES (Santé), DARES (Travail)...
-
-. . .
-
-- Diffusion données sur [insee.fr](https://www.insee.fr/fr/accueil)
-    + Utilisateurs de {{< fa brands r-project >}}: accès facilité via des _packages_
+> In the past, we had to "ask" for data. Today, we **programmatically access** it. 
+> Whether you are at BoS Lesotho, Insee, or a mapping agency, **R** is the bridge between these portals and your analysis.
 
 
-![](https://upload.wikimedia.org/wikipedia/fr/1/10/Logo_Insee.svg){width=100px}
+## `GitHub` {{< fa brands github >}}: Where the code lives {.nonincremental .scrollable}
 
-## L'IGN {.smaller}
-
-- Produit et diffuse la géométrie du territoire national et l'occupation du sol:
-    + Producteur de cartes 🥾 (top25...)
-    + LIDAR
-
-. . .
-
-- Producteur des fonds de carte utiles pour nous:
-    - BDTopo, BD Forêt, 
-    - AdminExpress
-
-. . .
-
-- Diffusion données depuis [geoservices de l'IGN](https://geoservices.ign.fr/) (en attendant la [geoplateforme](https://ign.fr/geoplateforme))
-    + Utilisateurs de {{< fa brands r-project >}}: accès facilité à certaines sources via [`cartiflette`](https://github.com/InseeFrLab/cartiflette)
-
-<br>
-![](https://www.afigeo.asso.fr/wp-content/uploads/2020/11/27/ign.png){width=130px}
-
-## `data.gouv`
-
-- Plateforme de l'_open data_ en France 
-    + Crée par Etalab (DINUM) en 2011
-
-. . .
-
-- Recense des jeux de données produits par les acteurs publics:
-    + Administrations centrales
-    + Collectivités locales
-
-. . .
-
-- Mise à disposition directe de certains jeux de données
-
-. . .
-
-- Recense des réutilisations
-
-
-## `Github` {{< fa brands github >}}: là où on trouve du code
-
-- Plateforme de mise à disposition de code
-
-. . .
-
-- Beaucoup plus que seulement du code:
-    + Documentation de projets
-    + Sites web
-
-. . .
-
-- Lieu de l'_open source_ et de la recherche transparente
-
+- **Collaborative platform**: A global hub for sharing and hosting code.
+- **Much more than just code**:
+    - Project documentation and tutorials;
+    - Professional websites and dashboards (like the ones we can build with R).
+- **The home of Open Source and Reproducible Research**:
+    - Where NSIs (like Insee, Stats NZ, or UK ONS) share their methodology;
+    - Allows for transparent and verifiable statistical production.
 
 ![](https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg){width=100px}
 
 
-## `Observable`: _the new place to be_
+# Why use {{< fa brands r-project >}} ?
 
-- Plateforme de _dataviz_ web
-    + Créée par [Mike Bostock](https://en.wikipedia.org/wiki/Mike_Bostock) (dieu dans la dataviz)
-
-. . .
-
-- Emergence récente mais forte dynamique
-    + Très complémentaire à `R`
-
-. . .
-
-- Investie par des cartographes qui font de super visualisations :
-    + [Nicolas Lambert](https://neocarto.hypotheses.org/nicolas-lambert)
-    + [Eric Mauvière](https://observablehq.com/@ericmauviere)
-    + [Thomas Ansart](https://thomasansart.info/)
-
-# Les sciences sociales quantitatives
-
-## Des métiers multiples dans l'administration {.smaller}
-
-
-:::: {layout-ncol=2}
-
-::: {#first-column}
-![](img/datascientist.png)
-:::
-
-::: {#second-column}
-* mais aussi _data engineer_, _data architect_, _data analyst_...
-* cf. [Rapport INSEE-DINUM "Évaluation des besoins de l’État en compétences et expertises en matière de donnée"](https://www.numerique.gouv.fr/uploads/RAPPORT-besoins-competences-donnee.pdf)
-:::
-
-::::
-
-
-
-https://www.numerique.gouv.fr/uploads/RAPPORT-besoins-competences-donnee.pdf
-
-
-## Le tournant numérique des sciences sociales
-
-- Accès facilité à des données spatialisées ;
-
-- Acculturation aux SIG et langages statistiques ;
-
-- Développement de technologies _web_ interactives ([`observable`](https://observablehq.com/))
-
-:::{.smaller}
-
-<details>
-<summary>Références</summary>
-
-* Roth Camille. 2019. “[Digital, Digitized, and Numerical Humanities.](https://academic.oup.com/dsh/article-abstract/34/3/616/5161109)” _Digital Scholarship in the Humanities_ 
-* Ash J, Kitchin R, Leszczynski A. 2018. “[Digital turn, digital geographies ?](https://journals.sagepub.com/doi/10.1177/0309132516664800)” _Progress in Human Geography_
-* Einav, L., & Levin, J. (2014). _Economics in the age of big data_. _Science_, 346(6210), 1243089.
-
-</details>
-
-:::
-
-
-## Le tournant numérique des sciences sociales {.smaller}
-
-> We live life in the network. We check our e-mails regularly, make mobile phone calls from almost any location, swipe transit cards to use public transportation,and  make  purchases  with  credit cards. Our movements in public places may be captured by video cameras, and our medical records stored as digital files. We may post blog entries accessible to anyone, or maintain friendships through online social networks. Each of these transactions leaves digital traces that can be compiled into comprehensive pictures of both individual and group behavior, with the potential to transform our understanding of our lives, organizations, and societies.
->
-> [Lazer et al. ,_Computational Social Science_, _Science_ (2009)](https://gking.harvard.edu/files/LazPenAda09.pdf)
-
-## La géographie quantitative
-
-![Une des premières cartes statistiques (1798)](img/carto.png)
-
-## La géographie quantitative
-
-![John Snow cartographie le choléra à Londres](https://upload.wikimedia.org/wikipedia/commons/2/27/Snow-cholera-map-1.jpg)
-
-
-## Années 1950-1960 : révolution quantitative {.smaller}
-
-> Everything is related to everything else, but near things are more related than distant things.
-> 
-> W. Tobler, 1970, _Economic Geography_
-
-- Une science nomothétique : recherche des lois générales de l'organisation de l'espace
-
-. . .
-
-- Une science explicative : modélisation 
-    + [Modèle de Christaller](https://fr.wikipedia.org/wiki/Mod%C3%A8le_christall%C3%A9rien)
-
-. . .
-
-- Une science appliquée : essor de la _regional science_, de l'économétrie spatiale
-    + [Loi de Zipf](http://geoconfluences.ens-lyon.fr/glossaire/zipf-loi-ou-regle-de)...)
-
-. . .
-
-- Une science de l'information (déjà):
-    + [Sémiologie (carto)graphique de Bertin, 1967](https://visionscarto.net/la-semiologie-graphique-a-50-ans)
-
-
-## Années 2010 : tournant _"digital"_ de la géographie quantitative
-
-- Quantification de masse de phénomènes <del>spatiaux</del> sociaux:
-    + Déplacements, lieux fréquentés...
-
-. . .
-
-- Intersection avec d'autres sciences : _data science_, CSS 
-    + Exemple: le [RIATE](https://riate.cnrs.fr/)
-
-. . .
-
-
-- Arribas-Bel, D, 2018. “[Geography and Computers: Past, Present, and Future](https://onlinelibrary.wiley.com/doi/abs/10.1111/gec3.12403)” _Geography Compass_.
-
-
-
-# Why use {{< fa brands r-project >}}?
-
-## The principle of an open source language
+## The principle of an open source language {.nonincremental .smaller}
 
 ::: {layout-ncol=2}
 ![General principle](img/cartons.png)
@@ -673,20 +351,13 @@ https://www.numerique.gouv.fr/uploads/RAPPORT-besoins-competences-donnee.pdf
 ![Illustration with `R`](img/cartons-r.png)
 :::
 
-## What is `R`?
+## What is `R`? {.nonincremental}
 
 - An **open source** statistical software:
     + Core language for base operations
     + **Packages** to extend functionalities
-
-. . .
-
 - Widely adopted across academia and public administrations
-
-. . .
-
 - Extensive online support and resources
-
 
 :::{.callout-note}
 - Created in the 1990s;
@@ -694,40 +365,25 @@ https://www.numerique.gouv.fr/uploads/RAPPORT-besoins-competences-donnee.pdf
 - **RStudio**: the next-generation IDE that makes R accessible and powerful for data science.
 :::
 
-## A "swiss army knife" software
+## A "swiss army knife" software {.nonincremental }
 
 - Handling all types of data;
-
-. . .
-
 - Data visualization (dataviz), mapping and GIS;
-
-. . .
-
-- Modeling (machine learning, network analysis...);
-
-. . .
-
+- Modeling (machine learning, network analysis...)
 - Writing reports, websites, and slides (like these ones 🤓)...
 
-## A "swiss army knife" software
+## A "swiss army knife" software {.nonincremental }
 
 You can do everything in `R`:
 
 ![Excerpt from [_R for data science_ (the bible)](https://r4ds.had.co.nz/introduction.html)](img/data-science-workflow.png)
 
-## Transparency and reproducibility {.smaller}
+## Transparency and reproducibility {.nonincremental .scrollable}
 
 - Traceability of statistics and graphical outputs.
-
-. . .
-
 - Sharing `R` code ensures methodological transparency:
     + More and more journals now require code submissions!
     + Still some progress to be made in the field.
-
-. . .
-
 - Using `R Markdown` (or Quarto) increases efficiency 🐢🔜🐇:
     + Eliminates messy intermediate files (text, excel, images...).
     + Saves time on formatting (millions of hours saved, literally).
@@ -736,99 +392,126 @@ You can do everything in `R`:
 See the dedicated course on [best practices](https://github.com/InseeFrLab/formation-bonnes-pratiques-git-R) (Insee is highly involved in this topic).
 :::
 
-## A community of users
+## A community of users {.nonincremental}
 
 - An **open source** software:
     + Free and collaborative.
-
-. . .
-
 - Thousands of packages:
     - on `CRAN` (*The Comprehensive R Archive Network*).
     - on `GitHub`.
-
-. . .
-
 - A community driven by open science ideals.
-
-. . .
-
 - A bridge between disciplines: sociology, economics, biology, political science, etc.
-
-. . .
-
 - **The power of collaboration**: R thrives because users build their own tools and share them with the world.
 
-# Prise en main du `SSP Cloud`
+## The `RStudio` Interface {.nonincremental }
+
+![The four main panes of RStudio](https://bookdown.org/ageraci/STAT160Companion/images/rstudiopanes.png)
+
+## The `RStudio` Interface {.nonincremental .smaller}
+
+![The four main panes of RStudio](https://bookdown.org/ageraci/STAT160Companion/images/rstudiopanes.png){fig-align="left"}
+
+- **Source** (Top Left): Your script editor. This is where you write and save your code.
+- **Console** (Bottom Left): Where the code actually runs. You can type commands here for quick tests.
+- **Environment** (Top Right): Shows your active data, variables, and history.
+- **Output Panes** (Bottom Right): Where you see your plots, files, and help pages.
+
+## Is RStudio really the next-generation IDE ? {.nonincremental .scrollable} 
+
+- **[RStudio is now Posit]{.orange}**: The company changed its name to show they support more than just R (Python, Julia, etc.).
+- **[The rise of VS Code]{.orange}**: Many data scientists are moving toward **VS Code**, a universal editor that is becoming the industry standard. 
+- **[Why change ?]{.orange}**: VS Code is faster, supports multiple languages better, and has a massive ecosystem of extensions. 
+
+::: {.callout-note}
+### The take-away
+Learn RStudio today because it's the easiest for beginners. But keep an eye on **VS Code**, it is likely where the future of professional data science is heading.
+:::
+
+## Why move from RStudio to VS Code ? {.nonincremental .scrollable}
+
+- **Polyglot**: Work on R {{< fa brands r-project >}}, Python {{< fa brands python >}}, and SQL {{< fa database >}} in the same window.
+- **Performance**: More lightweight and stable for very large projects.
+- **Standardization**: It’s the same tool used by software engineers worldwide.
+- **Positron**: Posit is even building a new IDE based on VS Code technology!
+
+# Getting started with `SSP Cloud`
 
 ![](https://git.lab.sspcloud.fr/diit/presentation/energy-data-hack-2022/20220523-day_1-onyxia_onboarding/-/raw/main/slideshow/DragonHoldingComputer.svg)
 
-## Le SSP Cloud, c'est quoi ?
+## What is the SSP Cloud? {.nonincremental }
 
 ![](https://git.lab.sspcloud.fr/diit/presentation/energy-data-hack-2022/20220523-day_1-onyxia_onboarding/-/raw/main/slideshow/macbook_onyxia.png)
 
-## Le SSP Cloud, c'est quoi ?
+## What is the SSP Cloud? {.nonincremental }
 
-- Des serveurs hébergés à l'Insee avec de nombreux logiciels statistiques (dont `R`) dessus
-- Environnement ouvert aux agents de l'Etat et à des formations en data science
-pour découvrir et expérimenter
-- __Seulement avec des données en open data__
+- A cloud-native playground for data science (powered by Onyxia)
+- High-performance servers with R and RStudio pre-installed
+- An open space to learn, experiment, and share code
 
-
-:::{.callout-note}
-Plus de détails dans la [documentation du `SSP Cloud`](https://www.sspcloud.fr/formation) ou dans [`utilitR`](https://www.book.utilitr.org/01_r_insee/fiche_utiliser_rstudio_sspcloud)
+::: {.callout-warning}
+### Important: Data Security 
+This platform is for **open data only**. 
+Do not upload any confidential or sensitive production data from the BoS. 
+Keep your official datasets on your secured local servers.
 :::
 
-## Pourquoi utiliser le SSP Cloud ?
+:::{.callout-note}
+More details available in the [SSP Cloud documentation](https://www.sspcloud.fr/formation)
+:::
 
-- Pénible d'installer `R`, `RStudio` et une ribambelle de _packages_
-- Mise à disposition d'un environnement standardisé:
-    + TP parfaitement reproductibles
-- Un TP peut être lancé en un clic-bouton:
-    + __Exemple bouton TO DO__
+## Why use the SSP Cloud ? {.nonincremental }
 
-## Créer un compte
+- No installation headache: no need to manage R, RStudio, or packages locally
+- Standardized environment: everyone uses the same versions for reproducible work
+- One-click launch: start a full workspace in seconds (using "Training" buttons)
 
-- Utiliser votre adresse `@ens.fr` pour créer un compte sur https://datalab.sspcloud.fr/
-- Votre nom d’utilisateur ne doit contenir ni caractères accentués, ni caractère spécial, ni signe de ponctuation:
+## Creating your account {.nonincremental }
 
-> Vous pouvez adopter le format prenomnom en faisant attention aux règles précédentes. Par exemple, si vous vous appelez Jérôme-Gérard L’Hâltère, votre nom d’utilisateur pourra être __jeromegerardlhaltere__.
+- Use your official **@gov.ls** address at [datalab.sspcloud.fr](https://datalab.sspcloud.fr/)
+- **Username rules**: No accents, no special characters, no punctuation.
 
-## Lancer un service `RStudio`  {transition="fade-in slide-out" transition-speed="slow"}
-### Aide-mémoire
+> Use a simple format like **firstname.lastname**. For example, if you are **Ntate Stunna**, your username could be **ntatestunna**.
 
-![Cliquer à gauche sur `Catalogue de service`](https://www.book.utilitr.org/pics/SSPCloud/01_catalogue_services.png)
+## Launching an `RStudio` service {transition="fade-in slide-out" transition-speed="slow"}
+### Quick Guide
 
-
-## Lancer un service `RStudio`  {transition="fade-in slide-out" transition-speed="slow"}
-### Aide-mémoire
-
-![Laisser les options par défaut de `RStudio`](https://www.book.utilitr.org/pics/SSPCloud/02b_lancer_rstudio_options.png)
+![Click on `Service Catalog` on the left menu](https://www.book.utilitr.org/pics/SSPCloud/01_catalogue_services.png)
 
 
-## Lancer un service `RStudio`  {transition="fade-in slide-out" transition-speed="slow"}
-### Aide-mémoire
+## Launching an `RStudio` service {transition="fade-in slide-out" transition-speed="slow"}
+### Quick Guide
 
-![Récupérer le mot de passe des services `RStudio`](img/auth-onyxia-1.png)
-
-## Lancer un service `RStudio`  {transition="fade-in slide-out" transition-speed="slow"}
-### Aide-mémoire
-
-![Autre manière de récupérer le mot de passe des services `RStudio`](https://www.book.utilitr.org/pics_resized/SSPCloud/99_SSPCloud_4bis.png)
-
-## Lancer un service `RStudio`  {transition="fade-in slide-out" transition-speed="slow"}
-### Aide-mémoire
-
-![S'authentifier sur le service](img/auth-onyxia-2.png)
+![Keep the default `RStudio` settings and launch](https://www.book.utilitr.org/pics/SSPCloud/02b_lancer_rstudio_options.png)
 
 
-## L'interface `RStudio` 
+## Launching an `RStudio` service {transition="fade-in slide-out" transition-speed="slow"}
+### Quick Guide
 
+![Retrieve your `RStudio` service password](img/auth-onyxia-1.png)
 
-![Illustration empruntée à [ce livre](https://bookdown.org/ageraci/STAT160Companion/intro.html)](https://bookdown.org/ageraci/STAT160Companion/images/rstudiopanes.png)
+## Launching an `RStudio` service {transition="fade-in slide-out" transition-speed="slow"}
+### Quick Guide
 
-# Premier TP: se familiariser au langage de base
+![Alternative way to find your service password](https://www.book.utilitr.org/pics_resized/SSPCloud/99_SSPCloud_4bis.png)
 
+## Launching an `RStudio` service {transition="fade-in slide-out" transition-speed="slow"}
+### Quick Guide
 
+![Log in to your service](img/auth-onyxia-2.png)
 
+# Building a Data Community
 
+## We want YOU to lead the innovation {.nonincremental }
+
+![](https://media.giphy.com/media/M90mJvCqxJvS8/giphy.gif){width=25% fig-align="center"}
+
+- [**Create your space**]{.orange}: Don't just code alone. Start a **Slack channel**, a **Teams group**, or an internal forum to help each other.
+- [**Onyxia is a helper, not a cage**]{.orange}: It is a facilitator based on **open standards**. Your code remains yours and stays portable.
+- [**Continuous Exchange**]{.orange}: For those inspired to lead or teach others, we will offer **one day of remote follow-up** to exchange ideas, troubleshoot together, and help you kickstart your internal community.
+
+::: {.callout-tip}
+### Take the lead
+The best way to learn is to teach others. Build your BoS community today and we will help you become the next generation of instructors.
+:::
+
+# Lab 1: Getting started with the language

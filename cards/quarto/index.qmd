@@ -12,6 +12,6 @@ categories:
   - Introduction
 website: /slides/quarto.html
 exercise: /exercises/quarto.html
-order: 6
+order: 5
 ---
 
