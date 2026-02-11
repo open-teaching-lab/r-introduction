@@ -45,341 +45,125 @@ listing:
 
 - [Back to the main page](/)
 
-## Introduction
+## The Logic of Data Aggregation
 
-- {{< fa brands r-project >}} centered around the _dataframe_ 
+* **Concept**: The "Split-Apply-Combine" paradigm.
+* **`group_by()`**: Partitions the dataset into logical subsets.
+* **`summarise()`**: Applies a function to each subset to return a single value.
+* **`across()`**: Scales the operation to multiple columns at once.
 
-. . .
+## Practical Aggregation
 
-- But manipulations sometimes a bit cumbersome:
-    - `df$var`: a bit heavy
-    - `df[,]`: a bit too modeled on matrices
-
-. . . 
-
-- Textual data: a perfectible base
-    - Convoluted _outputs_
-    - Missing functionalities compared to `Python`
-    
-## The answer: the `tidyverse`!
-
-![The [`tidyverse`](https://www.tidyverse.org/) ecosystem](./img/tidyverse.png)
-
-## The answer: the `tidyverse`!
-
-A set of _packages_ developed by `RStudio` that facilitates:
-
-- Reading (`readr`) and manipulating databases (`dplyr`)
-- Exploiting textual data (`stringr`), temporal (`lubridate`)
-or categorical (`forcats`)
-- Creating graphics (`ggplot2`)
-- Programming from _dataframes_ (`purrr`)
-- And many other things...
-
-## The _tidy_ data concept
-
-- Each variable has its own column;
-- Each observation has its own row;
-- A value, materializing an observation of a variable, is found in a single cell.
-
-::: {.callout-note}
-Concept popularized by Hadley Wickham.
-:::
-
-## `readr`
-
-![](https://readr.tidyverse.org/logo.png){width=20%}
-
-- The _package_ for reading flat files (`.csv`, `.txt`...)
-- Allows obtaining a `tibble`, the augmented _dataframe_ of the `tidyverse`
-
-## `dplyr` 
-
-![](https://dplyr.tidyverse.org/logo.png){width=20%}
-
-- The central _package_ of the data manipulation ecosystem;
-- Data manipulation and descriptive statistics;
-
-## `dplyr` {.smaller}
-
-### Main verbs
-
-We work on a `tibble` (augmented _dataframe_)
-
-- `select()`: select variables by their name;
-- `rename()`: rename variables;
-- `filter()`: select observations according to one or more conditions;
-- `arrange()`: sort the table according to one or more variables;
-- `mutate()`: add variables that are functions of other variables;
-- `summarise()`: calculate a statistic from data;
-- `group_by()`: perform operations by group.
-
-## `dplyr` {.smaller}
-
-### Data manipulation
-
-We chain sequences with _pipes_ (`%>%`)
 ```{r}
-#| eval: false
 #| echo: true
-library(doremifasol)
+#| eval: false
 library(dplyr)
 
-base_publique_equipements <- telechargerDonnees("BPE_ENS")
-base_publique_equipements %>%
-  as_tibble() %>% # <1>
-  filter(TYPEQU == "B316") %>% # <2>
-  mutate(x = paste0(AN, "_", NB_EQUIP)) # <3>
+# Standard descriptive pipeline
+data %>%
+  group_by(category) %>%
+  summarise(
+    n = n(),
+    across(c(income, age), list(avg = ~mean(.x, na.rm = TRUE), med = ~median(.x, na.rm = TRUE)))
+  )
 ```
-1. We convert the standard _dataframe_ to `tibble`
-2. We keep only gas stations (values `B316` of `TYPEQU`)
-3. We create a new column by referencing existing ones (without quotes!)
 
-<br>
+The Specificity of Survey Data
 
-::: {.callout-note}
-More details in [`utilitR`](https://www.book.utilitr.org/03_fiches_thematiques/fiche_tidyverse)
-:::
+    {{< fa scale-balanced >}} Sampling Weights: Essential to restore the representativeness of the target population.
 
-## `dplyr` {.smaller}
+    The Bias Risk: Standard arithmetic functions (mean, sd) assume equal probability. On weighted data, they produce scientifically biased results.
 
-### Aggregated statistics
+    Horvitz-Thompson: Every observation i must be weighted by wi​=1/πi​.
 
-- _split-apply-combine_ logic with `groupby`
+Point Estimates with Hmisc
 
-<details>
-<summary>
-Illustration of _split-apply-combine_
-</summary>
-![](https://miro.medium.com/v2/resize:fit:1400/1*w2oGdXv5btEMxAkAsz8fbg.png)
-</details>
+    Optimized for quick weighted statistics within dplyr.
+
+    Key functions: wtd.mean(), wtd.var(), wtd.quantile().
+
 ```{r}
-#| eval: false
 #| echo: true
-library(doremifasol)
-library(dplyr)
-
-base_publique_equipements <- telechargerDonnees("BPE_ENS")
-base_publique_equipements %>%
-  as_tibble() %>% # <1>
-  filter(TYPEQU == "B316") %>% # <2>
-  group_by(DEP) %>% # <3>
-  summarise(nombre_station_serv = sum(NB_EQUIP, na.rm = TRUE))  # <4>
-```
-1. We convert the standard _dataframe_ to `tibble`
-2. We keep only gas stations (values `B316` of `TYPEQU`)
-3. We define `DEP` as a stratification variable to define groups
-4. We summarize the data by summing gas stations in each group
-
-## `ggplot`
-
-![](https://ggplot2.tidyverse.org/logo.png){width=20%}
-
-- The essential _package_ for making graphics ❤️;
-- Coherent and flexible approach based on the __grammar of graphics__
-    + Subject of a dedicated chapter
-
-## `stringr`, `forcats` and `lubridate`
-
-:::{ncol-layout=3 fig-align="center"}
-![](https://stringr.tidyverse.org/logo.png){width=20%}
-![](https://forcats.tidyverse.org/logo.png){width=20%}
-![](https://lubridate.tidyverse.org/logo.png){width=20%}
-:::
-
-- Many functions facilitating manipulation:
-    - Textual data: `stringr`
-    - Categorical data: `forcats`
-    - Temporal data: `lubridate`
-
-# Data Formats
-
-## General Information
-
-- Data can be stored in many different formats
-    + Different standards
-    + Different ways of importing
-
-. . .
-
-- Limited {{< fa brands r-project >}} functionalities:
-    + Specialized packages for certain formats
-    + Objective: flatten information into a _dataframe_
-
-::: {.callout-note}
-We'll see geographic formats, and their challenges, later
-:::
-
-## `CSV`
-
-- Flat file format with delimited columns:
-    + Standard: `,` as delimiter, `.` as decimal;
-    + European variant 😮‍💨: `;` as delimiter, `,` as decimal
-
-- Universal format, simple to use (some limitations)
-```{ojs}
-viewof info_csv = Inputs.radio(
-  ["Raw file", "File after import"], {value: "Raw file"}
-)
-```
-
-```{ojs}
-info_csv == "Raw file" ? html`<div>${md_csv}<div>` : html`<div>${df_csv}<div>`
-```
-
-```{ojs}
-//| output: false
-df_csv = Inputs.table(
-  d3.csvParse(raw_csv)
-)
-md_csv = md`
-\`\`\`
-${raw_csv}
-\`\`\`
-`
-```
-
-```{ojs}
-//| output: false
-raw_csv = `DEP,REG,CHEFLIEU,TNCC,NCC,NCCENR,LIBELLE
-01,84,01053,5,AIN,Ain,Ain
-02,32,02408,5,AISNE,Aisne,Aisne
-03,84,03190,5,ALLIER,Allier,Allier
-04,93,04070,4,ALPES DE HAUTE PROVENCE,Alpes-de-Haute-Provence,Alpes-de-Haute-Provence
-05,93,05061,4,HAUTES ALPES,Hautes-Alpes,Hautes-Alpes
-06,93,06088,4,ALPES MARITIMES,Alpes-Maritimes,Alpes-Maritimes
-`
-```
-
-## `CSV`
-
-- Reading with the `read_csv` function from the `readr` package!
-```{r}
 #| eval: false
-#| echo: true
-library(readr) # <1>
-read_csv("data_folder/file_name.csv") # <2>
-```
-1. We import the `readr` library to have access to the `read_csv` function
-2. We use `read_csv` to read data stored in the relative path
-`data_folder/file_name.csv`
+library(Hmisc)
 
-:::{.callout-note}
-- CSV with `;` delimiter: `read_csv2` function. 
-- More exotic flat formats (`.txt` for example): `read_delim`
-
-More details in the [`utilitR`](https://www.book.utilitr.org/03_fiches_thematiques/fiche_import_fichiers_plats#importer-un-fichier-avec-le-package-readr) documentation
-:::
-
-## `JSON`
-
-- The _web_ format, especially for APIs 
-    + API: we'll see that later
-```{ojs}
-viewof info_json = Inputs.radio(
-  ["Raw file", "File after import"], {value: "Raw file"}
-)
+# Weighted summary
+data %>%
+  group_by(education_level) %>%
+  summarise(
+    weighted_avg = wtd.mean(income, weights = weight_var),
+    weighted_med = wtd.quantile(income, weights = weight_var, probs = 0.5)
+  )
 ```
 
-```{ojs}
-info_json == "Raw file" ? html`<div>${md_json}<div>` : html`<div>${df_json}<div>`
-```
+Inference with the survey Package
 
-```{ojs}
-//| output: false
-json_string = `[
-  {"DEP": "01", "REG": "84", "CHEFLIEU": "01053", "TNCC": "5", "NCC": "AIN", "NCCENR": "Ain", "LIBELLE": "Ain"},
-  {"DEP": "02", "REG": "32", "CHEFLIEU": "02408", "TNCC": "5", "NCC": "AISNE", "NCCENR": "Aisne", "LIBELLE": "Aisne"},
-  {"DEP": "03", "REG": "84", "CHEFLIEU": "03190", "TNCC": "5", "NCC": "ALLIER", "NCCENR": "Allier", "LIBELLE": "Allier"},
-  {"DEP": "04", "REG": "93", "CHEFLIEU": "04070", "TNCC": "4", "NCC": "ALPES DE HAUTE PROVENCE", "NCCENR": "Alpes-de-Haute-Provence", "LIBELLE": "Alpes-de-Haute-Provence"},
-  {"DEP": "05", "REG": "93", "CHEFLIEU": "05061", "TNCC": "4", "NCC": "HAUTES ALPES", "NCCENR": "Hautes-Alpes", "LIBELLE": "Hautes-Alpes"},
-  {"DEP": "06", "REG": "93", "CHEFLIEU": "06088", "TNCC": "4", "NCC": "ALPES MARITIMES", "NCCENR": "Alpes-Maritimes", "LIBELLE": "Alpes-Maritimes"}
-]`
-raw_json = [
-  {"DEP": "01", "REG": "84", "CHEFLIEU": "01053", "TNCC": "5", "NCC": "AIN", "NCCENR": "Ain", "LIBELLE": "Ain"},
-  {"DEP": "02", "REG": "32", "CHEFLIEU": "02408", "TNCC": "5", "NCC": "AISNE", "NCCENR": "Aisne", "LIBELLE": "Aisne"},
-  {"DEP": "03", "REG": "84", "CHEFLIEU": "03190", "TNCC": "5", "NCC": "ALLIER", "NCCENR": "Allier", "LIBELLE": "Allier"},
-  {"DEP": "04", "REG": "93", "CHEFLIEU": "04070", "TNCC": "4", "NCC": "ALPES DE HAUTE PROVENCE", "NCCENR": "Alpes-de-Haute-Provence", "LIBELLE": "Alpes-de-Haute-Provence"},
-  {"DEP": "05", "REG": "93", "CHEFLIEU": "05061", "TNCC": "4", "NCC": "HAUTES ALPES", "NCCENR": "Hautes-Alpes", "LIBELLE": "Hautes-Alpes"},
-  {"DEP": "06", "REG": "93", "CHEFLIEU": "06088", "TNCC": "4", "NCC": "ALPES MARITIMES", "NCCENR": "Alpes-Maritimes", "LIBELLE": "Alpes-Maritimes"}
-]
-md_json = md`
-\`\`\`
-${json_string}
-\`\`\`
-`
-```
+    Complex Designs: Takes into account strata and clusters.
 
-```{ojs}
-//| output: false
-df_json = Inputs.table(raw_json)
-```
+    Variance: Computes correct Standard Errors (SE) adjusted for the design effect.
 
-## `JSON`
-
-- Imported as a hierarchical list
-- Objective: transform this information into a `tidy` _dataframe_
-    + Not always easy!
 ```{r}
+#| echo: true
 #| eval: false
-#| echo: true
-library(jsonlite) # <1>
-df <- fromJSON(file="data_folder/file_name.json") # <2>
+library(survey)
+
+# 1. Define the design object
+design <- svydesign(
+  ids = ~cluster_id, 
+  strata = ~strata_id, 
+  weights = ~sampling_weight, 
+  data = data, 
+  nest = TRUE
+)
+
+# 2. Estimate with precision
+svymean(~income, design = design)
+svyquantile(~income, design = design, quantiles = 0.5)
 ```
-1. We import the `jsonlite` library to have access to the `fromJSON` function
-2. We use `fromJSON` to read data stored in the relative path
-`data_folder/file_name.json`
 
-## Excel formats
+Hypothesis Testing & P-values
 
-{{< iconify face-vomiting size=10x >}}
+    {{< fa chart-line >}} Comparison: Testing if differences between sub-groups are real or due to sampling noise.
 
-## Excel formats
+    Design-Adjusted Tests: standard t-tests or χ2 will underestimate variance.
 
-- Proprietary format
-
-- Mixes formatting and raw data
-    + Not appropriate for data analysis
-    + Dangerous for reproducibility and transparency
-
-- More details on [`utilitR`](https://www.book.utilitr.org/03_fiches_thematiques/fiche_import_tableurs)
-
-# The `magrittr` _pipe_ (`%>%`)
-
-## The `magrittr` _pipe_ (`%>%`)
-
-A way to chain operations
-
-![](https://magrittr.tidyverse.org/logo.png){width=20%}
-
-::: {.panel-tabset}
-
-## Nested functions
 ```{r}
-library(dplyr)
-library(doremifasol)
+#| echo: true
+#| eval: false
+# Weighted T-test for group differences
+test_res <- svyttest(income ~ gender, design = design)
+print(test_res)
 
-df <- filter(
-  as_tibble(telechargerDonnees("BPE_ENS")),
-  TYPEQU == "B316"
-)
+# Interpretation:
+# p-value < 0.05 => Reject H0 (Significant difference)
+# p-value > 0.05 => Fail to reject H0 (No significant difference)
+```
 
-summarise(
-  group_by(df, DEP),
-  nombre_station_serv = sum(NB_EQUIP, na.rm = TRUE)
-)
-```  
+Advanced Modeling: svyglm()
 
-## With the _pipe_
+    Allows for Linear and Logistic regressions on survey data.
+
+    Adjusts the variance-covariance matrix.
+
+    Ensures that coefficient p-values and confidence intervals are valid under complex sampling.
+
 ```{r}
-library(dplyr)
-library(doremifasol)
+#| echo: true
+#| eval: false
+# Weighted Logistic Regression
+model <- svyglm(employed ~ age + education, design = design, family = quasibinomial())
+summary(model)
+```
 
-telechargerDonnees("BPE_ENS") %>%
-  as_tibble() %>%
-  filter(TYPEQU == "B316") %>% 
-  group_by(DEP) %>% 
-  summarise(nombre_station_serv = sum(NB_EQUIP, na.rm = TRUE)) 
-```  
+| Goal | Library | Method |
+|:---|:---:|:---|
+| **Exploration** | `dplyr` | `group_by()` + `summarise()` |
+| **Weighted Point** | `Hmisc` | `wtd.mean()`, `wtd.quantile()` |
+| **Inference & Tests** | `survey` | `svydesign()` + `svyttest()` |
+| **P-values & Modeling** | `survey` | `svyglm()` |
 
+::: {.callout-important}
+### Note
+
+A statistician's duty is to report the Confidence Interval. A point estimate without its measure of uncertainty is incomplete.
 :::
