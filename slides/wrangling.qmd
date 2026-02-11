@@ -118,18 +118,32 @@ We work on a `tibble` (augmented _dataframe_)
 
 ### Data manipulation
 
+```{r importing and preparing data}
+#| eval: true
+#| echo: false
+install.packages("eurostat")
+library(eurostat)
+library(dplyr)
+
+pop_by_age <- get_eurostat("demo_pjan") %>% 
+  select(-c(freq,unit)) %>% 
+  filter(!age %in% c("TOTAL", "Y_OPEN", "UNK"), 
+         sex != "T", 
+         !(geo %in% c("EA19","EA20","EEA30_2007","EEA31","EFTA","EU27_2007","EU27_2020","EU28",
+                      "DE_TOT","FX")))
+```
+
+
 We chain sequences with _pipes_ (`%>%`)
 ```{r}
 #| eval: false
 #| echo: true
-library(doremifasol)
 library(dplyr)
 
-base_publique_equipements <- telechargerDonnees("BPE_ENS")
-base_publique_equipements %>%
+pop_by_age %>%
   as_tibble() %>% # <1>
-  filter(TYPEQU == "B316") %>% # <2>
-  mutate(x = paste0(AN, "_", NB_EQUIP)) # <3>
+  filter(sex == "F") %>% # <2>
+  mutate(x = paste0(age, "_", sex)) # <3>
 ```
 1. We convert the standard _dataframe_ to `tibble`
 2. We keep only gas stations (values `B316` of `TYPEQU`)
@@ -156,19 +170,17 @@ Illustration of _split-apply-combine_
 ```{r}
 #| eval: false
 #| echo: true
-library(doremifasol)
 library(dplyr)
 
-base_publique_equipements <- telechargerDonnees("BPE_ENS")
-base_publique_equipements %>%
+pop_by_age %>%
   as_tibble() %>% # <1>
-  filter(TYPEQU == "B316") %>% # <2>
-  group_by(DEP) %>% # <3>
-  summarise(nombre_station_serv = sum(NB_EQUIP, na.rm = TRUE))  # <4>
+  filter(TIME_PERIOD == "2025-01-01") %>% # <2>
+  group_by(geo) %>% # <3>
+  summarise(pop_by_country_2025 = sum(values, na.rm = TRUE))  # <4>
 ```
 1. We convert the standard _dataframe_ to `tibble`
-2. We keep only gas stations (values `B316` of `TYPEQU`)
-3. We define `DEP` as a stratification variable to define groups
+2. We keep only gas stations (values `2025-01-01` of `TIME_PERIOD`)
+3. We define `geo` as a stratification variable to define groups
 4. We summarize the data by summing gas stations in each group
 
 ## `ggplot`
@@ -357,29 +369,27 @@ A way to chain operations
 ## Nested functions
 ```{r}
 library(dplyr)
-library(doremifasol)
 
 df <- filter(
-  as_tibble(telechargerDonnees("BPE_ENS")),
-  TYPEQU == "B316"
+  as_tibble(pop_by_age),
+  TIME_PERIOD == "2025-01-01"
 )
 
 summarise(
-  group_by(df, DEP),
-  nombre_station_serv = sum(NB_EQUIP, na.rm = TRUE)
+  group_by(pop_by_age, geo),
+  pop_by_country_2025 = sum(values, na.rm = TRUE)
 )
 ```  
 
 ## With the _pipe_
 ```{r}
 library(dplyr)
-library(doremifasol)
 
-telechargerDonnees("BPE_ENS") %>%
+pop_by_age %>%
   as_tibble() %>%
-  filter(TYPEQU == "B316") %>% 
-  group_by(DEP) %>% 
-  summarise(nombre_station_serv = sum(NB_EQUIP, na.rm = TRUE)) 
+  filter(TIME_PERIOD == "2025-01-01") %>% 
+  group_by(geo) %>% 
+  summarise(pop_by_country_2025 = sum(values, na.rm = TRUE)) 
 ```  
 
 :::
