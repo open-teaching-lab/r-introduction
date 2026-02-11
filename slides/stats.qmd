@@ -1,7 +1,7 @@
 ---
-title: Introduction to Quantitative Methods with {{< fa brands r-project >}}
+title: Introduction to quantitative methods with {{< fa brands r-project >}}
 subtitle: |
-  **[Chapter 2: Manipulating Structured Data]{.orange}**
+  **[Chapter 3: Manipulating structured data]{.orange}**
 authors: |
   [Lino Galiana](https://www.linogaliana.fr/),
 # date: 
@@ -9,7 +9,7 @@ slide-number: true
 header: |
   [Back to the course main page](https://rgeo.linogaliana.fr/)
 footer: |
-  Introduction to Quantitative Methods with {{< fa brands r-project >}}, École Normale Supérieure ([back to main page](/))
+  Introduction to quantitative methods with {{< fa brands r-project >}}, Lesotho Bureau of Statistics ([back to main page](/))
 # uncomment for French presentations:
 lang: en-US
 # for blind readers:
@@ -38,7 +38,7 @@ listing:
 ## Introductory Chapter
 
 ::: {.callout-note}
-- Exercises associated with this chapter [here](/exercises/r-wrangling.html)
+- Exercises associated with this chapter [here](/exercises/stats.html)
 :::
 
 ![](../cards/wrangling/kidmatrix.png){fig-align="center"}

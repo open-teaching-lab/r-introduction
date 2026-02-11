@@ -1,4 +1,4 @@
-REPO_URL=https://github.com/linogaliana/r-geographie.git
+REPO_URL=https://github.com/open-teaching-lab/r-introduction.git
 WORK_DIR=/home/onyxia/work
 TUTO_DIR=${WORK_DIR}/tutoriel
 

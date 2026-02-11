@@ -1,17 +1,17 @@
 ---
-title: Introduction aux méthodes quantitatives avec {{< fa brands r-project >}}
+title: Introduction to Quantitative Methods with {{< fa brands r-project >}}
 subtitle: |
-  **[Chapitre 3: représenter des données avec `ggplot2`]{.orange}**
+  **[Chapter 3: Representing Data with `ggplot2`]{.orange}**
 authors: |
   [Lino Galiana](https://www.linogaliana.fr/),
 # date: 
 slide-number: true
 header: |
-  [Retour à la page principale du cours](https://rgeo.linogaliana.fr/)
+  [Back to the course main page](https://rgeo.linogaliana.fr/)
 footer: |
-  Introduction aux méthodes quantitatives avec {{< fa brands r-project >}}, École Normale Supérieure ([retour page principale](/))
+  Introduction to Quantitative Methods with {{< fa brands r-project >}}, École Normale Supérieure ([back to main page](/))
 # uncomment for French presentations:
-lang: fr-FR
+lang: en-US
 # for blind readers:
 slide-tone: false
 # for @olevitt:
@@ -38,29 +38,26 @@ listing:
 ## Introduction
 
 ::: {.callout-note}
-- Exercices associés à ce chapitre [ici](/exercises/r-wrangling.html)
+- Exercises associated with this chapter [here](/exercises/r-wrangling.html)
 :::
 
 ![](../cards/ggplot/drawing.png){fig-align="center"}
 
-- [Retour à la page principale](/)
-
+- [Back to the main page](/)
 
 ## Introduction
 
-- La visualisation de données synthétise la structure des données
-    + Guide l'exploration ultérieure de données
-    + Transmets un message au lecteur
+- Data visualization synthesizes data structure
+    + Guides further data exploration
+    + Conveys a message to the reader
     
 . . .
 
-- 2 types de visualisations :
-    + Représentations figées: `ggplot2`
-    + Représentations HTML: `leaflet`
+- 2 types of visualizations:
+    + Static representations: `ggplot2`
+    + HTML representations: `leaflet`
 
-
-## Jeu de données des exemples
-
+## Example dataset
 ```{r}
 #| output: false
 #| echo: true
@@ -75,18 +72,16 @@ df <- telechargerDonnees("FILOSOFI_DISP_IRIS", date = 2017) %>%
 ```
 
 ::: {.callout-note}
-Inspiration pour ces slides :
+Inspiration for these slides:
 
-- Documentation collaborative [`utilitR`](https://www.book.utilitr.org/) ;
-- Manuel [`ggplot`](https://ggplot2-book.org) ;
-- Cours de [Joseph Larmarange](https://larmarange.github.io/guide-R/analyses/ggplot2.html)
+- Collaborative documentation [`utilitR`](https://www.book.utilitr.org/);
+- [`ggplot` manual](https://ggplot2-book.org);
+- Course by [Joseph Larmarange](https://larmarange.github.io/guide-R/analyses/ggplot2.html)
 :::
-
 
 ## `ggplot2`
 
-__Initialise une figure associée à un jeu de données__
-
+__Initialize a figure associated with a dataset__
 ```{r}
 #| echo: true
 #| code-line-numbers: "1"
@@ -95,8 +90,7 @@ ggplot(df, aes(x = DISP_MED17, y = DISP_D917))
 
 ## `ggplot2`
 
-__Ajoute des couches (`+`) avec les fonctions `geom_*`__
-
+__Add layers (`+`) with `geom_*` functions__
 ```{r}
 #| echo: true
 #| code-line-numbers: "2"
@@ -104,11 +98,9 @@ ggplot(df) +
   geom_point(aes(x = DISP_MED17, y = DISP_D917))
 ```
 
-
 ## `ggplot2` {.smaller}
 
-__Paramétrise les couches avec `aes`__
-
+__Parameterize layers with `aes`__
 ```{r}
 #| echo: true
 #| code-line-numbers: "2-3"
@@ -117,19 +109,15 @@ ggplot(df) +
 ```
 
 ::: {.callout-note}
-Le contrôle de l'esthétique d'une couche `geom_` se fait :
+Aesthetic control of a `geom_` layer is done through:
 
-- `aes`: paramètres variables de la couche liés à une variable ;
-- hors `aes`: paramètres qui s'appliquent uniformément sur la couche
+- `aes`: variable parameters of the layer linked to a variable;
+- outside `aes`: parameters that apply uniformly to the layer
 :::
-
-
 
 ## `ggplot2`
 
-__Ajoute des couches (`+`) avec les fonctions `geom_*`__
-
-
+__Add layers (`+`) with `geom_*` functions__
 ```{r}
 #| echo: true
 #| code-line-numbers: "3"
@@ -140,8 +128,7 @@ ggplot(df, aes(x = DISP_MED17, y = DISP_D917)) +
 
 ## `ggplot2` {.smaller}
 
-__Modifier les échelles avec les fonctions `scale_`__
-
+__Modify scales with `scale_` functions__
 ```{r}
 #| echo: true
 #| code-line-numbers: "4-6"
@@ -155,8 +142,7 @@ ggplot(df, aes(x = DISP_MED17, y = DISP_D917)) +
 
 ## `ggplot2` {.smaller}
 
-__Modifier les échelles avec les fonctions `scale_`__
-
+__Modify scales with `scale_` functions__
 ```{r}
 #| echo: true
 #| code-line-numbers: "5-7"
@@ -171,8 +157,7 @@ ggplot(df, aes(x = DISP_MED17, y = DISP_D917)) +
 
 ## `ggplot2` {.smaller}
 
-__Modifier l'esthétique, à la fin seulement__
-
+__Modify aesthetics, only at the end__
 ```{r}
 #| echo: true
 #| code-line-numbers: "8-10"
@@ -184,7 +169,6 @@ p <- ggplot(df, aes(x = DISP_MED17, y = DISP_D917)) +
   scale_color_viridis_d(option = "turbo")
 
 p + theme_bw() +
-  labs(x = "Revenu médian", y = "9e décile", color = "Quartile") +
+  labs(x = "Median income", y = "9th decile", color = "Quartile") +
   theme(legend.position = "bottom")
 ```
-

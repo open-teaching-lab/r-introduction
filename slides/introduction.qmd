@@ -4,7 +4,7 @@ subtitle: |
   **[Introductory session]{.orange}**
 authors: |
   [Nathan Randriamanana](https://www.linkedin.com/in/nathan-randriamanana-69a1721b3/),
-  [Clara Baudry](https://www.linkedin.com/in/nathan-randriamanana-69a1721b3/),
+  [Clara Baudry](https://www.linkedin.com/in/clara-baudry/),
 # date: 
 slide-number: true
 header: |
@@ -12,7 +12,7 @@ header: |
 footer: |
   Introduction to quantitative methods with {{< fa brands r-project >}}, Lesotho Bureau of Statistics ([back to main page](/))
 # uncomment for French presentations:
-lang: eng-ENG
+lang: en-US
 # for blind readers:
 slide-tone: false
 # for @olevitt:
