@@ -8,7 +8,7 @@
 
 <meta name="author" content="NC">
 
-<title>Introduction aux méthodes quantitatives avec  - Importer et manipuler des données avec </title>
+<title>Introduction aux méthodes quantitatives avec  - Importing and manipulating data with </title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,7 +103,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
-<meta name="twitter:title" content="Introduction aux méthodes quantitatives avec  - Importer et manipuler des données avec ">
+<meta name="twitter:title" content="Introduction aux méthodes quantitatives avec  - Importing and manipulating data with ">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://r-intro.openteachinglab.io/cards/version-light/baby.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -141,12 +141,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-manipuler-des-données">    
         <li>
     <a class="dropdown-item" href="../exercises/r-wrangling.html" rel="" target="">
- <span class="dropdown-text">Importer et manipuler des données avec <i class="fa-brands fa-r-project" aria-label="r-project"></i></span></a>
+ <span class="dropdown-text">Importing and manipulating data with <i class="fa-brands fa-r-project" aria-label="r-project"></i></span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../exercises/geospatial-wrangling.html" rel="" target="">
- <span class="dropdown-text">Manipuler des données spatiales avec <code>sf</code></span></a>
-  </li>  
+        <li class="dropdown-header">exercises/geospatial-wrangling.qmd</li>
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -158,10 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../exercises/ggplot.html" rel="" target="">
  <span class="dropdown-text">Data visualisation with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <code>ggplot2</code></span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../exercises/cartography.html" rel="" target="">
- <span class="dropdown-text">Produire des cartes avec <i class="fa-brands fa-r-project" aria-label="r-project"></i></span></a>
-  </li>  
+        <li class="dropdown-header">exercises/cartography.qmd</li>
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -171,7 +165,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-communiquer">    
         <li>
     <a class="dropdown-item" href="../exercises/quarto.html" rel="" target="">
- <span class="dropdown-text">Reproducible dynamic report generation with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <code>Quarto</code></span></a>
+ <span class="dropdown-text">Reproducible report generation with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <code>Quarto</code></span></a>
   </li>  
     </ul>
   </li>
@@ -180,10 +174,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Evaluation</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-evaluation">    
-        <li>
-    <a class="dropdown-item" href="../exercises/eval.html" rel="" target="">
- <span class="dropdown-text">Evaluation</span></a>
-  </li>  
+        <li class="dropdown-header">exercises/eval.qmd</li>
     </ul>
   </li>
   <li class="nav-item compact">
@@ -207,16 +198,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#etapes-préliminaires-installer-les-packages" id="toc-etapes-préliminaires-installer-les-packages" class="nav-link active" data-scroll-target="#etapes-préliminaires-installer-les-packages"><span class="header-section-number">1</span> Etapes préliminaires: installer les <em>packages</em></a></li>
-  <li><a href="#importer-les-données" id="toc-importer-les-données" class="nav-link" data-scroll-target="#importer-les-données"><span class="header-section-number">2</span> Importer les données</a>
+  <li><a href="#preliminary-steps-installing-packages" id="toc-preliminary-steps-installing-packages" class="nav-link active" data-scroll-target="#preliminary-steps-installing-packages"><span class="header-section-number">1</span> Preliminary steps: installing <em>packages</em></a></li>
+  <li><a href="#importing-data" id="toc-importing-data" class="nav-link" data-scroll-target="#importing-data"><span class="header-section-number">2</span> Importing data</a>
   <ul class="collapse">
-  <li><a href="#import-dun-csv-de-lademe" id="toc-import-dun-csv-de-lademe" class="nav-link" data-scroll-target="#import-dun-csv-de-lademe"><span class="header-section-number">2.1</span> Import d’un csv de l’Ademe</a></li>
-  <li><a href="#premières-manipulations-de-données" id="toc-premières-manipulations-de-données" class="nav-link" data-scroll-target="#premières-manipulations-de-données"><span class="header-section-number">2.2</span> Premières manipulations de données</a></li>
-  <li><a href="#import-de-données-de-linsee" id="toc-import-de-données-de-linsee" class="nav-link" data-scroll-target="#import-de-données-de-linsee"><span class="header-section-number">2.3</span> Import de données de l’Insee</a></li>
+  <li><a href="#importing-a-csv-from-ademe" id="toc-importing-a-csv-from-ademe" class="nav-link" data-scroll-target="#importing-a-csv-from-ademe"><span class="header-section-number">2.1</span> Importing a csv from Ademe</a></li>
+  <li><a href="#first-data-manipulations" id="toc-first-data-manipulations" class="nav-link" data-scroll-target="#first-data-manipulations"><span class="header-section-number">2.2</span> First data manipulations</a></li>
+  <li><a href="#importing-insee-data" id="toc-importing-insee-data" class="nav-link" data-scroll-target="#importing-insee-data"><span class="header-section-number">2.3</span> Importing Insee data</a></li>
   </ul></li>
-  <li><a href="#nettoyage-des-données" id="toc-nettoyage-des-données" class="nav-link" data-scroll-target="#nettoyage-des-données"><span class="header-section-number">3</span> Nettoyage des données</a></li>
-  <li><a href="#restructurer-des-données" id="toc-restructurer-des-données" class="nav-link" data-scroll-target="#restructurer-des-données"><span class="header-section-number">4</span> Restructurer des données</a></li>
-  <li><a href="#combiner-les-données" id="toc-combiner-les-données" class="nav-link" data-scroll-target="#combiner-les-données"><span class="header-section-number">5</span> Combiner les données</a></li>
+  <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning"><span class="header-section-number">3</span> Data cleaning</a></li>
+  <li><a href="#restructuring-data" id="toc-restructuring-data" class="nav-link" data-scroll-target="#restructuring-data"><span class="header-section-number">4</span> Restructuring data</a></li>
+  <li><a href="#combining-data" id="toc-combining-data" class="nav-link" data-scroll-target="#combining-data"><span class="header-section-number">5</span> Combining data</a></li>
   </ul>
 </nav>
     </div>
@@ -225,7 +216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Importer et manipuler des données avec <i class="fa-brands fa-r-project" aria-label="r-project"></i></h1>
+<h1 class="title">Importing and manipulating data with <i class="fa-brands fa-r-project" aria-label="r-project"></i></h1>
 </div>
 
 
@@ -247,7 +238,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <div class="badge">
-<p><a href="https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=false&amp;networking.user.enabled=true&amp;onyxia.friendlyName=%C2%ABrstudio-cours-ENS%C2%BB" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Tester%20via%20SSP%20cloud%20-%20SSPCloud?logo=R&amp;labelColor=black&amp;color=%231965b8" alt="Onyxia"></a><br></p>
+<p><a href="https://datalab.sspcloud.fr/launcher/ide/rstudio?autoLaunch=false&amp;networking.user.enabled=true&amp;onyxia.friendlyName=%C2%ABrstudio-cours-ENS%C2%BB" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Test%20via%20SSP%20cloud%20-%20SSPCloud?logo=R&amp;labelColor=black&amp;color=%231965b8" alt="Onyxia"></a><br></p>
 </div>
 <details>
 <summary>
@@ -255,8 +246,8 @@ Check out the <em>slides</em> below or <a href="../slides/wrangling.html">click 
 </summary>
 <div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><iframe class="sourceCode yaml code-with-copy" src="/slides/wrangling.html"></iframe></div>
 </details>
-<p>Dans ce deuxième TP, nous allons apprendre à importer et manipuler des données avec <i class="fa-brands fa-r-project" aria-label="r-project"></i>.</p>
-<p>Si vous êtes intéressés par <code>Python</code> <i class="fa-brands fa-python" aria-label="python"></i>, une version très proche de ce TP est disponible dans <a href="https://pythonds.linogaliana.fr/content/manipulation/02b_pandas_TP.html">mon cours de l’ENSAE</a>.</p>
+<p>In this second tutorial, we will learn to import and manipulate data with <i class="fa-brands fa-r-project" aria-label="r-project"></i>.</p>
+<p>If you’re interested in <code>Python</code> <i class="fa-brands fa-python" aria-label="python"></i>, a very similar version of this tutorial is available in <a href="https://pythonds.linogaliana.fr/content/manipulation/02b_pandas_TP.html">my ENSAE course</a>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -267,24 +258,24 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Certains exemples de code présentent des annotations sur le côté, passez votre souris dessus pour les afficher, comme ci-dessous</p>
+<p>Some code examples include annotations on the side, hover over them to display them, as shown below</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1">1</button><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a><span class="st">"une annotation explicative m'accompagne à droite"</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1">1</button><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a><span class="st">"an explanatory annotation accompanies me on the right"</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="1" data-code-annotation="1">Je m’affiche quand on passe la souris sur moi 🐭 !</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-1" data-code-lines="1">I appear when you hover over me 🐭!</span>
 </dd>
 </dl>
 </div>
 </div>
 </div>
 </div>
-<p>Dans ce chapitre, nous allons principalement utiliser les packages suivants du <code>tidyverse</code>:</p>
+<p>In this chapter, we will mainly use the following packages from the <code>tidyverse</code>:</p>
 <ul>
-<li><code>readr</code> pour l’import de données ;</li>
-<li><code>dplyr</code> pour la manipulation de données.</li>
+<li><code>readr</code> for data import;</li>
+<li><code>dplyr</code> for data manipulation.</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -296,23 +287,23 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Le <code>tidyverse</code> n’est pas le seul écosystème complet pour analyser des données.</p>
-<p>Néanmoins, pour une introduction à <i class="fa-brands fa-r-project" aria-label="r-project"></i>, c’est certainement le plus raisonnable à adopter.</p>
-<p>Les écosystèmes concurrents ou complémentaires (<code>data.table</code>, <code>arrow</code>, <code>duckdb</code>) nécessitent déjà une bonne compréhension du <code>tidyverse</code> et de ses limites.</p>
+<p>The <code>tidyverse</code> is not the only complete ecosystem for data analysis.</p>
+<p>However, for an introduction to <i class="fa-brands fa-r-project" aria-label="r-project"></i>, it’s certainly the most reasonable to adopt.</p>
+<p>Competing or complementary ecosystems (<code>data.table</code>, <code>arrow</code>, <code>duckdb</code>) already require a good understanding of the <code>tidyverse</code> and its limitations.</p>
 </div>
 </div>
-<p>Dans ce tutoriel, nous allons utiliser deux sources de données :</p>
+<p>In this tutorial, we will use two data sources:</p>
 <ul>
-<li>Les émissions de gaz à effet de serre estimées au niveau communal par l’<code>ADEME</code>. Le jeu de données est disponible sur <a href="https://www.data.gouv.fr/fr/datasets/inventaire-de-gaz-a-effet-de-serre-territorialise/#_">data.gouv</a> et requêtable directement dans <i class="fa-brands fa-r-project" aria-label="r-project"></i> avec <a href="https://koumoul.com/s/data-fair/api/v1/datasets/igt-pouvoir-de-rechauffement-global/convert">cet url</a> (ce sera l’objet du premier exercice)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</li>
-<li>Idéalement, on utiliserait directement les données <a href="https://www.insee.fr/fr/statistiques/3560121">disponibles sur le site de l’Insee</a> mais celles-ci nécessitent un peu de travail de nettoyage qui n’entre pas dans le cadre de ce TP. Pour faciliter l’import de données Insee, il est recommandé d’utiliser les <em>packages</em> <a href="https://github.com/InseeFrLab/DoReMIFaSol"><code>doremifasol</code></a> et <a href="https://github.com/pyr-opendatafr/R-Insee-Data"><code>insee</code></a> qui simplifient l’accès aux données de l’Insee disponibles sur le site web <a href="https://www.insee.fr/fr/accueil">insee.fr</a> ou via des API.</li>
+<li>Greenhouse gas emissions estimated at the municipal level by <code>ADEME</code>. The dataset is available on <a href="https://www.data.gouv.fr/fr/datasets/inventaire-de-gaz-a-effet-de-serre-territorialise/#_">data.gouv</a> and directly queryable in <i class="fa-brands fa-r-project" aria-label="r-project"></i> with <a href="https://koumoul.com/s/data-fair/api/v1/datasets/igt-pouvoir-de-rechauffement-global/convert">this url</a> (this will be the subject of the first exercise)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</li>
+<li>Ideally, we would directly use the data <a href="https://www.insee.fr/fr/statistiques/3560121">available on the Insee website</a> but these require some cleaning work that is beyond the scope of this tutorial. To facilitate importing Insee data, it’s recommended to use the <em>packages</em> <a href="https://github.com/InseeFrLab/DoReMIFaSol"><code>doremifasol</code></a> and <a href="https://github.com/pyr-opendatafr/R-Insee-Data"><code>insee</code></a> which simplify access to Insee data available on the <a href="https://www.insee.fr/fr/accueil">insee.fr</a> website or via APIs.</li>
 </ul>
-<section id="etapes-préliminaires-installer-les-packages" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Etapes préliminaires: installer les <em>packages</em></h1>
-<p><i class="fa-brands fa-r-project" aria-label="r-project"></i> est un langage <em>open source</em>. N’importe qui peut donc proposer du code <i class="fa-brands fa-r-project" aria-label="r-project"></i> pour accroître les fonctionnalités du langage. Un ensemble cohérent de fonctionnalités s’appelle une <strong>librairie</strong> ou un <strong>package</strong>.</p>
-<p>Comme l’équipe qui gère le langage <i class="fa-brands fa-r-project" aria-label="r-project"></i> n’a pas vocation à intégrer toutes les librairies dans le langage de base (celui-ci se doit de rester, comme son nom l’indique, basique), il existe des espaces communautaires où les gens peuvent mettre à disposition leurs <em>packages</em>. Dans l’écosystème <i class="fa-brands fa-r-project" aria-label="r-project"></i>, les deux principaux<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> sont:</p>
+<section id="preliminary-steps-installing-packages" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Preliminary steps: installing <em>packages</em></h1>
+<p><i class="fa-brands fa-r-project" aria-label="r-project"></i> is an <em>open source</em> language. Anyone can therefore propose <i class="fa-brands fa-r-project" aria-label="r-project"></i> code to increase the language’s functionalities. A coherent set of functionalities is called a <strong>library</strong> or <strong>package</strong>.</p>
+<p>Since the team managing the <i class="fa-brands fa-r-project" aria-label="r-project"></i> language doesn’t intend to integrate all libraries into the base language (which should remain, as its name indicates, basic), there are community spaces where people can make their <em>packages</em> available. In the <i class="fa-brands fa-r-project" aria-label="r-project"></i> ecosystem, the two main ones<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> are:</p>
 <ul>
-<li>Le <code>CRAN</code> (<em>Comprehensive R Archive Network</em>): le dépôt officiel et historique de librairies <i class="fa-brands fa-r-project" aria-label="r-project"></i>. Pour installer un <em>package</em> stocké dans cet espace, on utilise <code>install.package</code> ;</li>
-<li><code>Github</code> <i class="fa-brands fa-github" aria-label="github"></i>: le réseau social du code <em>open source</em>. Pour installer un <em>package</em> stocké dans cet espace, on utilise <code>remotes::install_github</code><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
+<li>The <code>CRAN</code> (<em>Comprehensive R Archive Network</em>): the official and historical repository of <i class="fa-brands fa-r-project" aria-label="r-project"></i> libraries. To install a <em>package</em> stored in this space, use <code>install.package</code>;</li>
+<li><code>Github</code> <i class="fa-brands fa-github" aria-label="github"></i>: the social network for <em>open source</em> code. To install a <em>package</em> stored in this space, use <code>remotes::install_github</code><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -324,52 +315,52 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>En général, les <em>packages</em> avec une certaine maturité sont sur le CRAN. <code>Github</code> a un aspect plus fourre-tout où on trouve des mines d’or à côté de choses de qualité plus variable.</p>
-<p>Certains <em>packages</em> que nous verrons ne sont pas sur le CRAN car la procédure de validation pour pouvoir y déposer son <em>package</em> est assez lourde et fatiguante pour des développeurs bénévoles, généralement non rémunéré pour ce travail et qui effectuent souvent cela la nuit.</p>
+<p>Generally, <em>packages</em> with certain maturity are on CRAN. <code>Github</code> has a more catch-all aspect where you find gems alongside things of more variable quality.</p>
+<p>Some <em>packages</em> we’ll see aren’t on CRAN because the validation procedure to deposit your <em>package</em> there is quite heavy and tiring for volunteer developers, usually unpaid for this work and often doing it at night.</p>
 </div>
 </div>
-<p>Pour installer un package disponible sur le CRAN, par exemple le package <a href="https://dplyr.tidyverse.org/"><code>dplyr</code></a>, vous pouvez faire:</p>
+<p>To install a package available on CRAN, for example the <a href="https://dplyr.tidyverse.org/"><code>dplyr</code></a> package, you can do:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"insee"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Pour installer un package disponible sur <code>Github</code> <i class="fa-brands fa-github" aria-label="github"></i>, par exemple <a href="https://github.com/InseeFrLab/DoReMIFaSol"><code>doremifasol</code></a> qui est disponible sur le dépôt du compte <code>InseeFrLab</code>, on fait:</p>
+<p>To install a package available on <code>Github</code> <i class="fa-brands fa-github" aria-label="github"></i>, for example <a href="https://github.com/InseeFrLab/DoReMIFaSol"><code>doremifasol</code></a> which is available on the <code>InseeFrLab</code> account’s repository, do:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">'inseefrlab/DoReMIFaSol'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Voici l’ensemble des instructions pour installer les <em>packages</em> afin d’être en mesure d’effectuer tous les exercices de ce tutoriel:</p>
+<p>Here are all the instructions to install the <em>packages</em> needed to perform all the exercises in this tutorial:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"readr"</span>,<span class="st">"dplyr"</span>, <span class="st">"tidyr"</span>, <span class="st">"ggplot2"</span>, <span class="st">"remotes"</span>))</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">'inseefrlab/DoReMIFaSol'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Puisque nous allons fréquemment utiliser <code>dplyr</code>, nous pouvons l’importer directement:</p>
+<p>Since we’ll frequently use <code>dplyr</code>, we can import it directly:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="importer-les-données" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Importer les données</h1>
-<section id="import-dun-csv-de-lademe" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="import-dun-csv-de-lademe"><span class="header-section-number">2.1</span> Import d’un csv de l’Ademe</h2>
-<p>Pour commencer, nous allons importer les données de l’Ademe à l’aide du <em>package</em> <a href="https://readr.tidyverse.org/"><code>readr</code></a>[^readcsv].</p>
+<section id="importing-data" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Importing data</h1>
+<section id="importing-a-csv-from-ademe" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="importing-a-csv-from-ademe"><span class="header-section-number">2.1</span> Importing a csv from Ademe</h2>
+<p>To start, we’ll import Ademe data using the <a href="https://readr.tidyverse.org/"><code>readr</code></a> <em>package</em>[^readcsv].</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercice 1: lire un csv avec <code>readr</code> et observer les données
+Exercise 1: reading a csv with <code>readr</code> and observing the data
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Voici l’URL sur lequel les données sont disponibles</p>
+<p>Here’s the URL where the data is available</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://koumoul.com/s/data-fair/api/v1/datasets/igt-pouvoir-de-rechauffement-global/convert"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol type="1">
-<li>Utiliser le <em>package</em> <code>readr</code> pour importer ces données. Nommer cet objet <code>emissions</code><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></li>
-<li>Afficher les premières lignes avec <code>head</code> et observer la différence d’affichage avec, par exemple, ce <code>dataframe</code>:</li>
+<li>Use the <code>readr</code> <em>package</em> to import this data. Name this object <code>emissions</code><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></li>
+<li>Display the first lines with <code>head</code> and observe the display difference with, for example, this <code>dataframe</code>:</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
@@ -386,32 +377,32 @@ dbl (10): Agriculture, Autres transports, Autres transports international, C...
 </div>
 </div>
 <ol start="3" type="1">
-<li>Afficher la classe de <code>emissions</code>. Comprenez-vous maintenant pourquoi cet objet est un peu différent d’un dataframe de base ?</li>
-<li>Utiliser les fonctions adéquates pour les 10 premières valeurs, les 15 dernières et un échantillon aléatoire de 10 valeurs grâce à la <a href="https://dplyr.tidyverse.org/reference/sample_n.html">fonction adéquate du package <code>dplyr</code></a></li>
+<li>Display the class of <code>emissions</code>. Do you now understand why this object is slightly different from a base dataframe?</li>
+<li>Use appropriate functions for the first 10 values, the last 15 and a random sample of 10 values using the <a href="https://dplyr.tidyverse.org/reference/sample_n.html">appropriate function from the <code>dplyr</code> package</a></li>
 </ol>
 <details>
 <summary>
-En cas de blocage à la question 1
+If stuck on question 1
 </summary>
-Lire la documentation de <code>read_csv</code> (très bien faite) ou chercher des exemples en ligne pour découvrir cette fonction. ⚠️ Ne pas utiliser <code>read.csv</code> (fonction de base) qui n’est pas performante.
+Read the <code>read_csv</code> documentation (very well done) or search for examples online to discover this function. ⚠️ Don’t use <code>read.csv</code> (base function) which isn’t performant.
 </details>
 </div>
 </div>
 </section>
-<section id="premières-manipulations-de-données" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="premières-manipulations-de-données"><span class="header-section-number">2.2</span> Premières manipulations de données</h2>
-<p>Comme c’est évoqué dans <a href="https://www.book.utilitr.org/03_fiches_thematiques/fiche_tidyverse"><code>utilitR</code></a>, les principales fonctions de <code>dplyr</code> (les <em>verbes</em> de la grammaire <code>dplyr</code>) sont les suivants:</p>
+<section id="first-data-manipulations" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="first-data-manipulations"><span class="header-section-number">2.2</span> First data manipulations</h2>
+<p>As mentioned in <a href="https://www.book.utilitr.org/03_fiches_thematiques/fiche_tidyverse"><code>utilitR</code></a>, the main functions of <code>dplyr</code> (the <em>verbs</em> of the <code>dplyr</code> grammar) are as follows:</p>
 <ul>
-<li><code>select()</code> : sélectionner des variables par leur nom ;</li>
-<li><code>rename()</code> : renommer des variables ;</li>
-<li><code>filter()</code> : sélectionner des observations selon une ou plusieurs conditions ;</li>
-<li><code>arrange()</code> : trier la table selon une ou plusieurs variables ;</li>
-<li><code>mutate()</code> : ajouter des variables qui sont fonction d’autres variables ;</li>
-<li><code>summarise()</code> : calculer une statistique à partir de données ;</li>
-<li><code>group_by()</code> : faire des opérations par groupe.</li>
+<li><code>select()</code>: select variables by their name;</li>
+<li><code>rename()</code>: rename variables;</li>
+<li><code>filter()</code>: select observations according to one or more conditions;</li>
+<li><code>arrange()</code>: sort the table according to one or more variables;</li>
+<li><code>mutate()</code>: add variables that are functions of other variables;</li>
+<li><code>summarise()</code>: calculate a statistic from data;</li>
+<li><code>group_by()</code>: perform operations by group.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="236" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 235;"><span id="cb9-236"><a href="#cb9-236" aria-hidden="true" tabindex="-1"></a>viewof dplyrVerbs <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">'select'</span><span class="op">,</span><span class="st">'rename'</span><span class="op">,</span><span class="st">'filter'</span><span class="op">,</span><span class="st">'mutate'</span><span class="op">,</span> <span class="st">'arrange'</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="st">"select"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="221" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 220;"><span id="cb9-221"><a href="#cb9-221" aria-hidden="true" tabindex="-1"></a>viewof dplyrVerbs <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">'select'</span><span class="op">,</span><span class="st">'rename'</span><span class="op">,</span><span class="st">'filter'</span><span class="op">,</span><span class="st">'mutate'</span><span class="op">,</span> <span class="st">'arrange'</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="st">"select"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
@@ -421,17 +412,17 @@ Lire la documentation de <code>read_csv</code> (très bien faite) ou chercher de
 <div id="fig-verbs" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="243" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 242;"><span id="cb10-243"><a href="#cb10-243" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;img src="https://github.com/linogaliana/r-geographie/raw/main/exercises/img/</span><span class="sc">${</span>dplyrVerbs<span class="sc">}</span><span class="vs">.png" width="60%"&lt;/&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="227" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 226;"><span id="cb10-227"><a href="#cb10-227" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;img src="https://github.com/linogaliana/r-geographie/raw/main/exercises/img/</span><span class="sc">${</span>dplyrVerbs<span class="sc">}</span><span class="vs">.png" width="60%"&lt;/&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="expression">
 
 </div>
 </div>
 </div>
-<figcaption class="figure-caption">Figure&nbsp;1: Illustration des verbes <code>dplyr</code></figcaption>
+<figcaption class="figure-caption">Figure&nbsp;1: Illustration of <code>dplyr</code> verbs</figcaption>
 </figure>
 </div>
-<p>La <em>cheatsheet</em> suivante est très pratique puisqu’elle illustre ces différentes fonctions. Il est recommandé de régulièrement la consulter (cliquer sur l’image pour zoomer 🔎) :</p>
+<p>The following <em>cheatsheet</em> is very practical as it illustrates these different functions. It’s recommended to regularly consult it (click on the image to zoom 🔎):</p>
 <div id="cheatsheets-dplyr" class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
@@ -443,7 +434,7 @@ Lire la documentation de <code>read_csv</code> (très bien faite) ou chercher de
 </div>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><a href="https://dplyr.tidyverse.org/"><em>Cheatsheets</em> <code>dplyr</code></a></p>
+<p><a href="https://dplyr.tidyverse.org/"><code>dplyr</code> <em>Cheatsheets</em></a></p>
 </div>
 </div>
 </div>
@@ -453,22 +444,22 @@ Lire la documentation de <code>read_csv</code> (très bien faite) ou chercher de
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercice 2: découverte des verbes de <code>dplyr</code> pour manipuler des données
+Exercise 2: discovering <code>dplyr</code> verbs for data manipulation
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>En premier lieu, on propose de se familiariser avec les opérations sur les colonnes.</p>
+<p>First, let’s familiarize ourselves with operations on columns.</p>
 <ol type="1">
-<li>Créer un <em>dataframe</em> <code>emissions_copy</code> ne conservant que les colonnes <code>INSEE commune</code>, <code>Commune</code>, <code>Autres transports</code> et <code>Autres transports international</code></li>
+<li>Create a <em>dataframe</em> <code>emissions_copy</code> keeping only the columns <code>INSEE commune</code>, <code>Commune</code>, <code>Autres transports</code> and <code>Autres transports international</code></li>
 </ol>
 <details>
 <summary>
-Indice pour cette question
+Hint for this question
 </summary>
 <img src="https://github.com/linogaliana/r-geographie/raw/main/exercises/img/select.png" class="img-fluid">
 </details>
 <ol start="2" type="1">
-<li>Comme les noms de variables sont peu pratiques, les renommer de la manière suivante:
+<li>Since variable names are impractical, rename them as follows:
 <ul>
 <li><code>INSEE commune</code> <span class="math inline">\(\to\)</span> <code>code_insee</code></li>
 <li><code>Autres transports</code> <span class="math inline">\(\to\)</span> <code>transports</code></li>
@@ -477,51 +468,51 @@ Indice pour cette question
 </ol>
 <details>
 <summary>
-Indice pour cette question
+Hint for this question
 </summary>
 <img src="https://github.com/linogaliana/r-geographie/raw/main/exercises/img/rename.png" class="img-fluid">
 </details>
 <ol start="3" type="1">
-<li>On propose, pour simplifier, de remplacer les valeurs manquantes (<code>NA</code>) par la valeur 0<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. Utiliser la fonction <a href="https://tidyr.tidyverse.org/reference/replace_na.html"><code>replace_na</code></a> du package <em>tidyr</em>, en conjonction avec <code>mutate</code>, pour transformer les valeurs manquantes en 0.</li>
+<li>To simplify, let’s replace missing values (<code>NA</code>) with the value 0<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. Use the <a href="https://tidyr.tidyverse.org/reference/replace_na.html"><code>replace_na</code></a> function from the <em>tidyr</em> package, in conjunction with <code>mutate</code>, to transform missing values to 0.</li>
 </ol>
 <details>
 <summary>
-Indice pour cette question
+Hint for this question
 </summary>
 <img src="https://github.com/linogaliana/r-geographie/raw/main/exercises/img/mutate.png" class="img-fluid">
 </details>
 <ol start="4" type="1">
-<li>Créer dans la même séquence de code les variables suivantes:
+<li>Create the following variables in the same code sequence:
 <ul>
-<li><code>dep</code>: le département. Celui-ci peut être créé grâce aux deux premiers caractères de <code>code_insee</code> avec la fonction <code>str_sub</code> du <em>package</em> <code>stringr</code><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></li>
-<li><code>transports_total</code>: les émissions du secteur transports (somme des deux variables)</li>
+<li><code>dep</code>: the department. This can be created using the first two characters of <code>code_insee</code> with the <code>str_sub</code> function from the <code>stringr</code> <em>package</em><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></li>
+<li><code>transports_total</code>: transport sector emissions (sum of the two variables)</li>
 </ul></li>
 </ol>
 <details>
 <summary>
-Indice pour cette question
+Hint for this question
 </summary>
 <img src="https://github.com/linogaliana/r-geographie/raw/main/exercises/img/mutate.png" class="img-fluid">
 </details>
 <ol start="5" type="1">
-<li>Ordonner les données du plus gros pollueur au plus petit puis ordonner les données du plus gros pollueur au plus petit par département (du 01 au 95).</li>
+<li>Order the data from highest to lowest polluter then order the data from highest to lowest polluter by department (from 01 to 95).</li>
 </ol>
 <details>
 <summary>
-Indice pour cette question
+Hint for this question
 </summary>
 <img src="https://github.com/linogaliana/r-geographie/raw/main/exercises/img/arrange.png" class="img-fluid">
 </details>
 <ol start="6" type="1">
-<li>Calculer les émissions totales par départements</li>
+<li>Calculate total emissions by department</li>
 </ol>
 <details>
 <summary>
-Indice pour cette question
+Hint for this question
 </summary>
 <ul>
-<li><em>“Grouper par”</em> = <code>group_by</code></li>
-<li><em>“émissions totales”</em> = <code>summarise(sum(***))</code></li>
+<li><em>“Group by”</em> = <code>group_by</code></li>
+<li><em>“total emissions”</em> = <code>summarise(sum(***))</code></li>
 </ul>
 </details>
 </div>
@@ -583,9 +574,9 @@ Indice pour cette question
 </details>
 </div>
 </section>
-<section id="import-de-données-de-linsee" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="import-de-données-de-linsee"><span class="header-section-number">2.3</span> Import de données de l’Insee</h2>
-<p>En ce qui concerne nos informations communales, on va utiliser l’une des plus sources de l’Insee les plus utilisées : les données <a href="https://www.insee.fr/fr/metadonnees/source/serie/s1172"><code>Filosofi</code></a>. Afin de faciliter la récupération de celles-ci, nous allons utiliser le <em>package</em> communautaire <code>doremifasol</code> :</p>
+<section id="importing-insee-data" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="importing-insee-data"><span class="header-section-number">2.3</span> Importing Insee data</h2>
+<p>For our municipal information, we’ll use one of Insee’s most used sources: <a href="https://www.insee.fr/fr/metadonnees/source/serie/s1172"><code>Filosofi</code></a> data. To facilitate retrieving these, we’ll use the community <em>package</em> <code>doremifasol</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(doremifasol)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
@@ -622,40 +613,40 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>La fonction <code>as_tibble</code> nous sert à transformer le <em>dataframe</em> de base (<code>doremifasol</code> ne fait pas d’<em>a priori</em> sur l’écosystème de manipulation adopté) en <em>dataframe</em> adapté à une exploitation via le <code>tidyverse</code>.</p>
+<p>The <code>as_tibble</code> function converts the base <em>dataframe</em> (<code>doremifasol</code> doesn’t make assumptions about the manipulation ecosystem adopted) into a <em>dataframe</em> adapted for use via the <code>tidyverse</code>.</p>
 </div>
 </div>
 </section>
 </section>
-<section id="nettoyage-des-données" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Nettoyage des données</h1>
+<section id="data-cleaning" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Data cleaning</h1>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercice 2
+Exercise 2
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Comme c’est <code>readr</code> ou <code>doremifasol</code> qui ont géré automatiquement l’import des données, on va faire un petit contrôle qualité:</p>
+<p>Since <code>readr</code> or <code>doremifasol</code> automatically handled the data import, let’s do a small quality control:</p>
 <ol type="1">
-<li>Afficher le nom des colonnes de nos <em>dataframes</em> <code>emissions</code> et <code>filosofi</code>. Quelles sont les colonnes communes ? Utiliser la fonction <code>intersect</code> et comprendre la nature du problème.</li>
-<li>Observer la structure de nos jeux de données (les types des colonnes). Les types fixés par défaut sont-ils adéquats ?</li>
+<li>Display the column names of our <em>dataframes</em> <code>emissions</code> and <code>filosofi</code>. What are the common columns? Use the <code>intersect</code> function and understand the nature of the problem.</li>
+<li>Observe the structure of our datasets (column types). Are the default types appropriate?</li>
 </ol>
-<p>Ensuite, on vérifie les dimensions des <code>DataFrames</code> et la structure de certaines variables clés. En l’occurrence, les variables fondamentales pour lier nos données sont les variables communales. Ici, on a deux variables géographiques: un code commune et un nom de commune. On va donc vérifier qu’elles sont bien adaptées à l’analyse statistique.</p>
+<p>Then, we verify the dimensions of the <code>DataFrames</code> and the structure of some key variables. In this case, the fundamental variables for linking our data are the municipal variables. Here, we have two geographic variables: a municipality code and a municipality name. We’ll therefore verify they’re well suited for statistical analysis.</p>
 <ol start="3" type="1">
-<li>Vérifier les dimensions des <em>dataframes</em> ;</li>
-<li>Vérifier le nombre de valeurs uniques des variables géographiques dans chaque base. Les résultats apparaissent-ils cohérents ?</li>
-<li>Identifier dans <code>filosofi</code> les noms de communes qui correspondent à plusieurs codes communes et sélectionner leurs codes. En d’autres termes, identifier les <code>CODGEO</code> tels qu’il existe des doublons de <code>LIBGEO</code> et les stocker dans un dataframe <code>duplicates</code></li>
+<li>Check the dimensions of the <em>dataframes</em>;</li>
+<li>Check the number of unique values of geographic variables in each base. Do the results appear consistent?</li>
+<li>Identify in <code>filosofi</code> the municipality names that correspond to multiple municipality codes and select their codes. In other words, identify the <code>CODGEO</code> such that there are duplicate <code>LIBGEO</code> and store them in a dataframe <code>duplicates</code></li>
 </ol>
-<p>On se focalise temporairement sur les observations où le libellé comporte plus de deux codes communes différents</p>
+<p>We temporarily focus on observations where the label has more than two different municipality codes</p>
 <ol start="6" type="1">
-<li>Regarder dans <code>filosofi</code> ces observations. Pour mieux y voir, réordonner la base obtenue par order alphabétique</li>
-<li>Déterminer la taille moyenne (variable nombre de personnes: <code>NBPERSMENFISC16</code>) et quelques statistiques descriptives de ces données. Comparer aux mêmes statistiques sur les données où libellés et codes communes coïncident</li>
-<li>Vérifier les grandes villes (plus de 100 000 personnes), la proportion de villes pour lesquelles un même nom est associé à différents codes commune.</li>
-<li>Vérifier dans <code>filosofi</code> les villes dont le libellé est égal à Montreuil. Vérifier également celles qui contiennent le terme ‘Saint-Denis’</li>
+<li>Look at these observations in <code>filosofi</code>. For better visibility, reorder the obtained base alphabetically</li>
+<li>Determine the average size (variable number of people: <code>NBPERSMENFISC16</code>) and some descriptive statistics of this data. Compare to the same statistics on data where labels and municipality codes coincide</li>
+<li>Check large cities (more than 100,000 people), the proportion of cities for which the same name is associated with different municipality codes.</li>
+<li>Check in <code>filosofi</code> the cities whose label equals Montreuil. Also check those containing the term ‘Saint-Denis’</li>
 </ol>
 <div class="cell">
 <details>
@@ -692,7 +683,7 @@ Exercice 2
 </div>
 <div class="cell">
 <details>
-<summary>Solution questions 5 à 7</summary>
+<summary>Solution questions 5 to 7</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Question 5</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>duplicates <span class="ot">&lt;-</span> filosofi <span class="sc">%&gt;%</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(LIBGEO) <span class="sc">%&gt;%</span></span>
@@ -724,7 +715,7 @@ Exercice 2
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(NBPERSMENFISC16 <span class="sc">&gt;</span> <span class="dv">100000</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">probleme =</span> LIBGEO <span class="sc">%in%</span> duplicates<span class="sc">$</span>LIBGEO)</span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion de villes à problème</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion of problematic cities</span></span>
 <span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>mean_probleme <span class="ot">&lt;-</span> filosofi_big <span class="sc">%&gt;%</span></span>
 <span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">mean</span>(probleme))</span>
 <span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
@@ -735,9 +726,9 @@ Exercice 2
 </div>
 <details>
 <summary>
-Ce que vous devriez trouver dans les questions 8 et 9
+What you should find in questions 8 and 9
 </summary>
-<p>Pour la question 8, vous devriez obtenir ceci:</p>
+<p>For question 8, you should get this:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_probleme)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -755,7 +746,7 @@ Ce que vous devriez trouver dans les questions 8 et 9
 #   PIMPOT16 &lt;dbl&gt;, D116 &lt;dbl&gt;, D916 &lt;dbl&gt;, RD16 &lt;dbl&gt;, probleme &lt;lgl&gt;</code></pre>
 </div>
 </div>
-<p>Alors que pour la question 9, vos deux <em>dataframes</em> ressembleront à</p>
+<p>While for question 9, your two <em>dataframes</em> will look like</p>
 <div class="cell">
 <details>
 <summary>Solution question 9</summary>
@@ -808,26 +799,26 @@ Ce que vous devriez trouver dans les questions 8 et 9
 </details>
 </div>
 </div>
-<p>Ce petit exercice permet de se rassurer car les libellés dupliqués sont en fait des noms de commune identiques mais qui ne sont pas dans le même département. Il ne s’agit donc pas d’observations dupliquées. On se fiera ainsi aux codes communes, qui eux sont uniques.</p>
+<p>This small exercise is reassuring because the duplicate labels are actually identical municipality names that aren’t in the same department. These aren’t duplicate observations. We’ll therefore rely on municipality codes, which are unique.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercice 3
+Exercise 3
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>On va commencer l’exploration de données. Cela implique un peu de nettoyage de données en amont.</p>
+<p>Let’s start data exploration. This involves some data cleaning beforehand.</p>
 <ol type="1">
-<li>Renommer la variable <code>INSEE commune</code> en <code>code_insee</code><a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>.</li>
-<li>Les deux premiers chiffres des codes communes sont le numéro de département. Créer une variable de département <code>dep</code> dans <code>emissions</code> et dans <code>filosofi</code> en utilisant la fonction <code>str_sub</code> du package <code>stringr</code><a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>.</li>
+<li>Rename the variable <code>INSEE commune</code> to <code>code_insee</code><a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>.</li>
+<li>The first two digits of municipality codes are the department number. Create a department variable <code>dep</code> in <code>emissions</code> and in <code>filosofi</code> using the <code>str_sub</code> function from the <code>stringr</code> package<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>.</li>
 </ol>
-<p>Commençons le calcul de nos premières statistiques descriptives.</p>
+<p>Let’s start calculating our first descriptive statistics.</p>
 <ol start="3" type="1">
-<li><p>Calculer les émissions totales par secteur pour chaque département. Mettre en <em>log</em> ces résultats dans un objet <code>emissions_log</code>. La <a href="#fig-sample-log">Figure&nbsp;2</a> illustre la structure de ces émissions sur 5 départements aléatoires.</p></li>
-<li><p>Repartir du jeu de données <code>emissions</code>. Calculer les émissions totales par département et sortir la liste des 10 principaux émetteurs de CO2 et des 5 départements les moins émetteurs. Sans faire de <em>merge</em>, regarder les caractéristiques de ces départements (population et niveau de vie)</p></li>
+<li><p>Calculate total emissions by sector for each department. Log-transform these results in an object <code>emissions_log</code>. <a href="#fig-sample-log">Figure&nbsp;2</a> illustrates the structure of these emissions for 5 random departments.</p></li>
+<li><p>Start from the <code>emissions</code> dataset. Calculate total emissions by department and output the list of the top 10 CO2 emitters and the 5 lowest-emitting departments. Without doing a <em>merge</em>, look at the characteristics of these departments (population and standard of living)</p></li>
 </ol>
 <div class="cell">
 <details>
@@ -859,7 +850,7 @@ Exercice 3
 <div class="cell">
 <details>
 <summary>Solution question 4</summary>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Emissions totales par département</span></span>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Total emissions by department</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>emissions_dep <span class="ot">&lt;-</span> emissions <span class="sc">%&gt;%</span></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">rowSums</span>(<span class="fu">pick</span>(<span class="fu">where</span>(is.numeric)), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dep) <span class="sc">%&gt;%</span></span>
@@ -871,7 +862,7 @@ Exercice 3
 <span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(total) <span class="sc">%&gt;%</span></span>
 <span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span>
 <span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Caractéristiques de ces départements dans filosofi</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Characteristics of these departments in filosofi</span></span>
 <span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>gros_emetteurs_filosofi <span class="ot">&lt;-</span> filosofi <span class="sc">%&gt;%</span></span>
 <span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dep <span class="sc">%in%</span> gros_emetteurs<span class="sc">$</span>dep) <span class="sc">%&gt;%</span></span>
 <span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dep) <span class="sc">%&gt;%</span></span>
@@ -882,7 +873,7 @@ Exercice 3
 </div>
 <div class="cell">
 <details>
-<summary>Code pour créer la figure ci-dessous</summary>
+<summary>Code to create the figure below</summary>
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -899,20 +890,21 @@ Exercice 3
 <span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span> <span class="fu">scale_fill_viridis_d</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 1 rows containing missing values (`geom_bar()`).</code></pre>
+<pre><code>Warning: Removed 1 row containing missing values or values outside the scale range
+(`geom_bar()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div id="fig-sample-log" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="r-wrangling_files/figure-html/fig-sample-log-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;2: Structure des émissions de cinq départements aléatoires</figcaption>
+<figcaption class="figure-caption">Figure&nbsp;2: Emission structure of five random departments</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <details>
 <summary>
-Exemple d’utilisation de <code>str_sub</code>
+Example of using <code>str_sub</code>
 </summary>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">x =</span> <span class="fu">str_sub</span>(y, <span class="at">start =</span> <span class="dv">3</span>, <span class="at">end =</span> <span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -920,43 +912,43 @@ Exemple d’utilisation de <code>str_sub</code>
 </div>
 </div>
 </section>
-<section id="restructurer-des-données" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Restructurer des données</h1>
-<p>On présente généralement deux types de données :</p>
+<section id="restructuring-data" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Restructuring data</h1>
+<p>Two types of data are generally presented:</p>
 <ul>
-<li>format <strong>wide</strong>: les données comportent des observations répétées, pour un même individu (ou groupe), dans des colonnes différentes</li>
-<li>format <strong>long</strong>: les données comportent des observations répétées, pour un même individu, dans des lignes différentes avec une colonne permettant de distinguer les niveaux d’observations</li>
+<li><strong>wide</strong> format: data contains repeated observations for the same individual (or group) in different columns</li>
+<li><strong>long</strong> format: data contains repeated observations for the same individual in different rows with a column to distinguish observation levels</li>
 </ul>
-<p>Un exemple de la distinction entre les deux peut être pris à l’ouvrage de référence d’Hadley Wickham, <em>R for Data Science</em>:</p>
+<p>An example of the distinction between the two can be taken from Hadley Wickham’s reference work, <em>R for Data Science</em>:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://d33wubrfki0l68.cloudfront.net/3aea19108d39606bbe49981acda07696c0c7fcd8/2de65/images/tidy-9.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Données <em>long</em> (gauche) et <em>wide</em> (droite) (source: <em>R for Data Science</em>)</figcaption>
+<figcaption class="figure-caption"><em>Long</em> (left) and <em>wide</em> (right) data (source: <em>R for Data Science</em>)</figcaption>
 </figure>
 </div>
-<p>On est souvent amené avec <i class="fa-brands fa-r-project" aria-label="r-project"></i> à restructurer les données pour les allonger (<em>wide to long</em>) et les élargir (<em>long to wide</em>). C’est le package <em>tidyr</em> (qui appartient au <em>tidyverse</em>) qui permet de faire ce type de transformations.</p>
-<p>L’aide mémoire suivante aidera à se rappeler les fonctions à appliquer si besoin:</p>
+<p>We often need to restructure data with <i class="fa-brands fa-r-project" aria-label="r-project"></i> to lengthen them (<em>wide to long</em>) and widen them (<em>long to wide</em>). The <em>tidyr</em> package (which belongs to the <em>tidyverse</em>) allows these types of transformations.</p>
+<p>The following cheat sheet will help remember which functions to apply if needed:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://scienceparkstudygroup.github.io/r-lesson-based-on-ohi-data-training/img/rstudio-cheatsheet-spread-gather-sep-unite.png" class="img-fluid figure-img" style="width:80.0%"></p>
 </figure>
 </div>
-<p>Le fait de passer d’un format <em>wide</em> au format <em>long</em> (ou vice-versa) peut être extrêmement pratique car certaines fonctions sont plus adéquates sur une forme de données ou sur l’autre.</p>
-<p>En règle générale, les formats <em>long</em> sont souvent préférables car il est plus facile d’itérer sur des lignes que sur des colonnes du fait de la nature vectorielle de <i class="fa-brands fa-r-project" aria-label="r-project"></i>. C’est notamment la forme de données privilégiée pour préparer des graphiques avec <code>ggplot</code>, que nous découvrirons dans le prochain chapitre.</p>
+<p>Going from <em>wide</em> to <em>long</em> format (or vice-versa) can be extremely practical because certain functions are more suitable for one data form or another.</p>
+<p>Generally, <em>long</em> formats are often preferable because it’s easier to iterate over rows than columns due to <i class="fa-brands fa-r-project" aria-label="r-project"></i>’s vectorial nature. This is particularly the preferred data form for preparing graphs with <code>ggplot</code>, which we’ll discover in the next chapter.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercice 4: la transformation <em>wide to long</em>
+Exercise 4: the <em>wide to long</em> transformation
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Restructurer les données au format <em>long</em> pour avoir des données d’émissions par secteur en gardant comme niveau d’analyse la commune (attention aux autres variables identifiantes).</li>
-<li>Faire la somme par secteur et représenter graphiquement un <em>barplot</em><a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></li>
-<li>Garder, pour chaque département, le secteur le plus polluant</li>
+<li>Restructure the data to <em>long</em> format to have emissions data by sector while keeping the municipality as the analysis level (be careful with other identifying variables).</li>
+<li>Sum by sector and graphically represent a <em>barplot</em><a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></li>
+<li>Keep, for each department, the most polluting sector</li>
 </ol>
 <div class="cell">
 <details>
@@ -978,9 +970,9 @@ Exercice 4: la transformation <em>wide to long</em>
 </div>
 <details>
 <summary>
-Graphique à réaliser pour la question 2
+Graph to create for question 2
 </summary>
-<p>Une fois le <em>dataframe</em> <code>df_long_summary</code> créé, le code minimal pour réaliser le <em>barplot</em> voulu est:</p>
+<p>Once the <code>df_long_summary</code> <em>dataframe</em> is created, the minimal code to create the desired <em>barplot</em> is:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_long_summary) <span class="sc">+</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(</span>
@@ -988,10 +980,10 @@ Graphique à réaliser pour la question 2
 <span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">stat =</span><span class="st">'identity'</span></span>
 <span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="r-wrangling_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="672"></p>
+<p><img src="r-wrangling_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Pas besoin d’aller plus loin pour le moment, nous ferons plus de <code>ggplot</code> ultérieurement.</p>
+<p>No need to go further for now, we’ll do more <code>ggplot</code> later.</p>
 </details>
 <div class="cell">
 <details>
@@ -1026,7 +1018,7 @@ Graphique à réaliser pour la question 2
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercice 5: <em>long to wide</em>
+Exercise 5: <em>long to wide</em>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1034,15 +1026,15 @@ Exercice 5: <em>long to wide</em>
 </div>
 </div>
 </section>
-<section id="combiner-les-données" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Combiner les données</h1>
-<p>Une information que l’on cherche à obtenir s’obtient de moins en moins à partir d’une unique base de données. Il devient commun de devoir combiner des données issues de sources différentes.</p>
-<p>Nous allons ici nous focaliser sur le cas le plus favorable qui est la situation où une information permet d’apparier de manière exacte deux bases de données (autrement nous serions dans une situation, beaucoup plus complexe, d’appariement flou). La situation typique est l’appariement entre deux sources de données selon un identifiant individuel ou un identifiant de code commune, ce qui est notre cas.</p>
-<p>Il est recommandé de lire <a href="https://www.book.utilitr.org/03_fiches_thematiques/fiche_joindre_donnees">ce guide assez complet sur la question des jointures avec <i class="fa-brands fa-r-project" aria-label="r-project"></i></a> qui donne des recommandations également utiles en <code>Python</code> <i class="fa-brands fa-python" aria-label="python"></i>.</p>
-<p>Dans le langage courant du statisticien, on utilise de manière indifférente les termes <em>merge</em> ou <em>join</em>. Le deuxième terme provient de la syntaxe <code>SQL</code> et c’est celui qui est plutôt utilisé quand on code avec <code>dplyr</code>.</p>
+<section id="combining-data" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Combining data</h1>
+<p>Information we seek is increasingly obtained from multiple data sources rather than a single database. It’s becoming common to need to combine data from different sources.</p>
+<p>We’ll focus here on the most favorable case which is when information allows exact matching of two databases (otherwise we’d be in a much more complex situation of fuzzy matching). The typical situation is matching between two data sources using an individual identifier or municipality code identifier, which is our case.</p>
+<p>It’s recommended to read <a href="https://www.book.utilitr.org/03_fiches_thematiques/fiche_joindre_donnees">this fairly complete guide on joins with <i class="fa-brands fa-r-project" aria-label="r-project"></i></a> which also gives useful recommendations for <code>Python</code> <i class="fa-brands fa-python" aria-label="python"></i>.</p>
+<p>In common statistical language, the terms <em>merge</em> or <em>join</em> are used interchangeably. The second term comes from <code>SQL</code> syntax and is the one rather used when coding with <code>dplyr</code>.</p>
 <details>
 <summary>
-Les différents type de <em>join</em> disponibles dans <code>dplyr</code>
+The different types of <em>join</em> available in <code>dplyr</code>
 </summary>
 <p><img src="https://rafalab.dfci.harvard.edu/dsbook/wrangling/img/joins.png" class="img-fluid" style="width:80.0%"></p>
 </details>
@@ -1052,35 +1044,39 @@ Les différents type de <em>join</em> disponibles dans <code>dplyr</code>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercice 6: enrichir les données d’émissions
+Exercise 6: enriching emissions data
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>En premier lieu, on va calculer l’empreinte carbone de chaque commune.</p>
+<p>First, we’ll calculate each municipality’s carbon footprint.</p>
 <ol type="1">
-<li>Calculer les émissions totales en utilisant la commande suivante (comme celle-ci est complexe, nous la donnons directement):</li>
+<li>Calculate total emissions using the following command (since this is complex, we give it directly):</li>
 </ol>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>emissions <span class="ot">&lt;-</span> emissions <span class="sc">%&gt;%</span></span>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>emissions <span class="ot">&lt;-</span> emissions <span class="sc">%&gt;%</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">rowSums</span>(<span class="fu">pick</span>(<span class="fu">where</span>(is.numeric)), <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ol start="2" type="1">
-<li>Faire une jointure à gauche entre les données d’émissions et les données de cadrage<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>.</li>
+<li>Perform a left join between emissions data and framing data<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>.</li>
 </ol>
 <ol start="3" type="1">
-<li>Calculer l’empreinte carbone (émissions totales / population).</li>
+<li>Calculate carbon footprint (total emissions / population).</li>
 </ol>
-<p>A ce stade nous pourrions avoir envie d’aller vers la modélisation pour essayer d’expliquer les déterminants de l’empreinte carbone à partir de variables communales. Une approche inférentielle nécessite néanmoins pour être pertinente de vérifier en amont des statistiques descriptives.</p>
+<p>At this stage we might want to move toward modeling to try to explain carbon footprint determinants from municipal variables. However, an inferential approach requires checking descriptive statistics beforehand to be relevant.</p>
 <ol start="4" type="1">
-<li>Utiliser le code suivant pour sortir un histogramme en niveau puis en log de l’empreinte carbone communale ;</li>
+<li>Use the following code to output a histogram in level then in log of municipal carbon footprint;</li>
 </ol>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(emissions_merged) <span class="sc">+</span></span>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(emissions_merged) <span class="sc">+</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> empreinte, <span class="at">y =</span> <span class="fu">after_stat</span>(density))) <span class="sc">+</span></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ol start="5" type="1">
-<li>Pour chaque ville, comparer l’empreinte carbone à la médiane du département. En relatif, quelles sont les villes particulièrement vertueuses (c’est-à-dire celles qui ont des émissions bien inférieures à la moyenne départementale) ?</li>
+<li>For each city, compare carbon footprint to the department median. In relative terms, which cities are particularly virtuous (i.e., those with emissions well below the department average)?</li>
 </ol>
-<p>Avec une meilleure compréhension de nos données, nous nous rapprochons de la statistique inférentielle. Néanmoins, nous avons jusqu’à présent construit des statistiques univariées mais n’avons pas cherché à comprendre les résultats en regardant le lien avec d’autres variables. Cela nous amène vers la statistique bivariée, notamment l’analyse des corrélations. Ce travail est important puisque toute modélisation ultérieure consistera à raffiner l’analyse des corrélations pour tenir compte des corrélations croisées entre multiples facteurs. On propose ici de faire cette analyse de manière minimale.</p>
+<p>With better understanding of our data, we’re approaching inferential statistics. However, we’ve so far built univariate statistics but haven’t sought to understand results by looking at the link with other variables. This brings us to bivariate statistics, particularly correlation analysis. This work is important since any subsequent modeling will consist of refining correlation analysis to account for cross-correlations between multiple factors. We propose here to do this analysis in a minimal way.</p>
 <ol start="6" type="1">
-<li>Regarder la corrélation entre les variables de cadrage et l’empreinte carbone (la solution est donnée, car les manipulations ne sont pas évidentes). Certaines variables semblent-elles pouvoir potentiellement influer sur l’empreinte carbone ?</li>
+<li>Look at the correlation between framing variables and carbon footprint (the solution is given, as the manipulations aren’t obvious). Do some variables seem to potentially influence carbon footprint?</li>
 </ol>
 <div class="cell">
 <details>
@@ -1138,7 +1134,7 @@ Exercice 6: enrichir les données d’émissions
 <span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="fu">abs</span>(value)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Voici une visualisation rapide des corrélations à l’empreinte carbone:</p>
+<p>Here’s a quick visualization of correlations with carbon footprint:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(correlations) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">y =</span> name), <span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_discrete</span>(<span class="at">limits =</span> correlations<span class="sc">$</span>name) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1156,16 +1152,16 @@ Exercice 6: enrichir les données d’émissions
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p><code>readr</code> offre la possibilité d’importer des données directement depuis un url. C’est l’option prise dans ce tutoriel. Si vous préfèrez, pour des raisons d’accès au réseau ou de performance, importer depuis un poste local, vous pouvez télécharger les données et changer les commandes d’import avec le chemin adéquat plutôt que l’url.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Il existe également <code>bioconductor</code> mais celui-ci étant surtout orienté biostatistiques (une des communautés académiques ayant adopté <i class="fa-brands fa-r-project" aria-label="r-project"></i> le plus tôt), nous ne l’utilisons pas vraiment<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p><code>remotes::install_github</code> signifie d’utiliser la fonction <code>install_github</code> du <em>package</em> <code>remotes</code>. Autrement dit, il faut un <em>package</em> pour installer d’autres <em>packages</em> 🤯. C’est parce que <code>Github</code> n’existait pas lors de la création de <i class="fa-brands fa-r-project" aria-label="r-project"></i> (années 1990) et que cette fonctionnalité n’a pas été ajouté depuis.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>Par manque d’imagination, on est souvent tenté d’appeler notre <em>dataframe</em> principal <code>df</code> ou <code>data</code>. C’est souvent une mauvaise idée puisque ce nom n’est pas très informatif quand on relit le code quelques semaines plus tard. L’autodocumentation, approche qui consiste à avoir un code qui se comprend de lui-même, est une bonne pratique et il est donc recommandé de donner un nom simple mais efficace pour connaître la nature du <em>dataset</em> en question.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>Cette hypothèse est certainement fausse. Elle est exclusivement là pour illustrer la création de variables via <code>mutate</code>.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>Pour être vraiment précis, il faudrait modifier les valeurs obtenues pour les départements Corse avec la fonction <code>case_when</code> du <em>package</em> <code>dplyr</code>. Ceci est laissé en exercice supplémentaire.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>L’espace dans le nom de la variable est embêtant. Pour pouvoir utiliser le nom de cet variable dans <code>rename</code>, il va falloir utiliser des backticks, c’est-à-dire <code>INSEE commune</code>.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8"><p>Les fonctionnalités limitées du langage de base sur la manipulation textuelle sont rapidement contraignantes. On passe ainsi rapidement à <code>stringr</code> même si ce n’est pas l’objet principal du chapitre.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9"><p>vous pouvez utiliser directement le morceau de code d’aide si vous n’êtes pas familiers de <code>ggplot</code><a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10"><p>Idéalement, il serait nécessaire de s’assurer que cette jointure n’introduit pas de biais. En effet, comme nos années de référence ne sont pas forcément identiques, il peut y avoir un <em>mismatch</em> entre nos deux sources. Le TP étant déjà long, nous n’allons pas dans cette voie. Les lecteurs intéressés pourront effectuer une telle analyse en exercice supplémentaire.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p><code>readr</code> offers the possibility to import data directly from a url. This is the option taken in this tutorial. If you prefer, for network access or performance reasons, to import from a local machine, you can download the data and change the import commands with the appropriate path instead of the url.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>There’s also <code>bioconductor</code> but since it’s mainly oriented towards biostatistics (one of the academic communities that adopted <i class="fa-brands fa-r-project" aria-label="r-project"></i> earliest), we don’t really use it<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><code>remotes::install_github</code> means to use the <code>install_github</code> function from the <em>package</em> <code>remotes</code>. In other words, you need a <em>package</em> to install other <em>packages</em> 🤯. This is because <code>Github</code> didn’t exist when <i class="fa-brands fa-r-project" aria-label="r-project"></i> was created (1990s) and this functionality hasn’t been added since.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>For lack of imagination, we’re often tempted to call our main <em>dataframe</em> <code>df</code> or <code>data</code>. This is often a bad idea since this name isn’t very informative when rereading the code a few weeks later. Self-documentation, an approach that consists of having code that explains itself, is a good practice and it’s therefore recommended to give a simple but effective name to know the nature of the <em>dataset</em> in question.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>This assumption is certainly false. It’s exclusively here to illustrate variable creation via <code>mutate</code>.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>To be really precise, we would need to modify the values obtained for Corsican departments with the <code>case_when</code> function from the <code>dplyr</code> <em>package</em>. This is left as an additional exercise.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>The space in the variable name is annoying. To be able to use this variable’s name in <code>rename</code>, we’ll need to use backticks, i.e., <code>INSEE commune</code>.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>The limited functionalities of the base language for text manipulation quickly become constraining. We thus quickly move to <code>stringr</code> even though it’s not the main subject of the chapter.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>you can directly use the helper code snippet if you’re not familiar with <code>ggplot</code><a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>Ideally, we should ensure this join doesn’t introduce bias. Indeed, since our reference years aren’t necessarily identical, there may be a <em>mismatch</em> between our two sources. Since the tutorial is already long, we won’t go down this path. Interested readers can perform such an analysis as an additional exercise.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script type="ojs-module-contents">

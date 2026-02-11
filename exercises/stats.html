@@ -7,10 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="NC">
-<meta name="dcterms.date" content="2023-09-01">
-<meta name="description" content="  Introduction to the tidyverse to import and manipulate data with   ">
 
-<title>Manipuler des données avec le tidyverse</title>
+<title>Introduction aux méthodes quantitatives avec  - Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,27 +21,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -66,7 +98,11 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../styles.css">
+<meta name="twitter:title" content="Introduction aux méthodes quantitatives avec  - Statistics">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="https://r-intro.openteachinglab.io/cards/version-light/baby.png">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed">
@@ -76,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Introduction aux méthodes quantitatives avec <i class="fa-brands fa-r-project" aria-label="r-project"></i></span>
     </a>
   </div>
@@ -87,11 +123,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
+    <a class="nav-link" href="../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../exercises/r-base.html" rel="" target="">
+    <a class="nav-link" href="../exercises/r-base.html" rel="" target="">
  <span class="menu-text">Introduction</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -100,7 +136,7 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-manipuler-des-données">    
         <li>
-    <a class="dropdown-item" href="../../exercises/r-wrangling.html" rel="" target="">
+    <a class="dropdown-item" href="../exercises/r-wrangling.html" rel="" target="">
  <span class="dropdown-text">Importing and manipulating data with <i class="fa-brands fa-r-project" aria-label="r-project"></i></span></a>
   </li>  
         <li class="dropdown-header">exercises/geospatial-wrangling.qmd</li>
@@ -112,7 +148,7 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-visualiser">    
         <li>
-    <a class="dropdown-item" href="../../exercises/ggplot.html" rel="" target="">
+    <a class="dropdown-item" href="../exercises/ggplot.html" rel="" target="">
  <span class="dropdown-text">Data visualisation with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <code>ggplot2</code></span></a>
   </li>  
         <li class="dropdown-header">exercises/cartography.qmd</li>
@@ -124,7 +160,7 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-communiquer">    
         <li>
-    <a class="dropdown-item" href="../../exercises/quarto.html" rel="" target="">
+    <a class="dropdown-item" href="../exercises/quarto.html" rel="" target="">
  <span class="dropdown-text">Reproducible report generation with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <code>Quarto</code></span></a>
   </li>  
     </ul>
@@ -154,24 +190,22 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#initializing-the-document" id="toc-initializing-the-document" class="nav-link active" data-scroll-target="#initializing-the-document"><span class="header-section-number">1</span> Initializing the document</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Manipuler des données avec le <code>tidyverse</code></h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">Introduction</div>
-  </div>
-  </div>
-
-<div>
-  <div class="description">
-    <p><br> Introduction to the <code>tidyverse</code> to import and manipulate data with <i class="fa-brands fa-r-project"></i> <br></p>
-  </div>
+<h1 class="title">Statistics</h1>
 </div>
+
 
 
 <div class="quarto-title-meta">
@@ -183,12 +217,6 @@ ul.task-list li input[type="checkbox"] {
           </div>
   </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">September 1, 2023</p>
-    </div>
-  </div>
   
     
   </div>
@@ -196,8 +224,108 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<div class="badge">
+<p><a href="https://datalab.sspcloud.fr/launcher/ide/rstudio?name=BoS-Lesotho-rstudio&amp;autoLaunch=false&amp;networking.user.enabled=true" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Test%20via%20SSP%20cloud%20-%20SSPCloud?logo=R&amp;labelColor=black&amp;color=%231965b8" alt="Onyxia"></a><br></p>
+</div>
+<details>
+<summary>
+Check out the <em>slides</em> below or <a href="../slides/stats.qmd">click here</a> to view the slides in full screen.
+</summary>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><iframe class="sourceCode yaml code-with-copy" src="/slides/stats.html"></iframe></div>
+</details>
+<p>blabla lorem ips</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This practical session is less guided than usual in order to give you more freedom to explore and produce a document.</p>
+</div>
+</div>
+<section id="initializing-the-document" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="initializing-the-document"><span class="header-section-number">1</span> Initializing the document</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercice 1: Creating the file
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Click on <code>File &gt; New file &gt; Quarto document</code>:
+<ul>
+<li>Provide a title and an author for the report</li>
+<li>Choose <code>HTML</code> as the output format</li>
+<li>Uncheck the <code>Use visual markdown editor</code> option</li>
+</ul></li>
+<li>Save the file under the name <code>report.qmd</code>.</li>
+<li>In the file <em>header</em>, modify the publication metadata (title, author, date, etc.) using some of the options from <a href="https://quarto.org/docs/reference/formats/html.html">this page</a>.</li>
+<li>Write a first sentence in the body of the document using one or two elements of <code>Markdown</code> syntax for formatting. For example, make part of the text bold.</li>
+<li>Add a level-2 heading (two <code>#</code>) to create an <code>About</code> section and write one or two sentences in it.</li>
+<li>Render the document by clicking on the <code>Render</code> button:</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://quarto.org/docs/get-started/hello/images/rstudio-render.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Source: <a href="https://quarto.org/docs/get-started/hello/rstudio.html#rendering">Hello Quarto! by <code>Posit</code></a></figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercice 2: Inserting <code>R</code> outputs
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>Choose one of the chapters we previously worked on for which we produced a graph or a map. Reuse the example code from the solution (data import and visualizations) and insert it into the document.</p></li>
+<li><p>Compile the document. If there are errors, read them carefully and fix them in order to obtain a reproducible document.</p></li>
+<li><p>Use the <code>GT</code> package to create a nice table, for example a descriptive statistics table (a mean, for instance).</p></li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercice 3: Styling
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Customize the output to obtain an aesthetically pleasing document. To do so, you may use a template.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>On a <code>Mac</code> <i class="fa-brands fa-apple" aria-label="apple"></i>, some useful characters are more difficult to type. For example, <code>|</code> can be obtained using the following shortcut: <kbd>Shift</kbd> + <kbd>Option</kbd> + <kbd>L</kbd></p>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

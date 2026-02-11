@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr-FR"><head>
+<html lang="en-US"><head>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -14,7 +14,7 @@
   <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="NC">
-  <title>Introduction aux méthodes quantitatives avec </title>
+  <title>Introduction aux méthodes quantitatives avec  - Introduction to Quantitative Methods with </title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -394,8 +394,8 @@
   <script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
   <link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<meta name="twitter:title" content="Introduction aux méthodes quantitatives avec ">
-<meta name="twitter:description" content="Chapitre 2: manipuler des données structurées">
+<meta name="twitter:title" content="Introduction aux méthodes quantitatives avec  - Introduction to Quantitative Methods with ">
+<meta name="twitter:description" content="Chapter 2: Manipulating Structured Data">
 <meta name="twitter:image" content="https://r-intro.openteachinglab.io/cards/version-light/baby.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -404,8 +404,8 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="_extensions/InseeFrLab/onyxia/background.svg" data-background-size="contain" class="quarto-title-block center">
-  <h1 class="title">Introduction aux méthodes quantitatives avec <i class="fa-brands fa-r-project" aria-label="r-project"></i></h1>
-  <p class="subtitle"></p><p><strong><span class="orange">Chapitre 2: manipuler des données structurées</span></strong></p><p></p>
+  <h1 class="title">Introduction to Quantitative Methods with <i class="fa-brands fa-r-project" aria-label="r-project"></i></h1>
+  <p class="subtitle"></p><p><strong><span class="orange">Chapter 2: Manipulating Structured Data</span></strong></p><p></p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -416,8 +416,8 @@
 </div>
 
 </section>
-<section id="chapitre-introductif" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Chapitre introductif</h2>
+<section id="introductory-chapter" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Introductory Chapter</h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -428,61 +428,61 @@
 </div>
 <div class="callout-content">
 <ul>
-<li>Exercices associés à ce chapitre <a href="../exercises/r-wrangling.html">ici</a></li>
+<li>Exercises associated with this chapter <a href="../exercises/r-wrangling.html">here</a></li>
 </ul>
 </div>
 </div>
 </div>
 
 <img data-src="../cards/wrangling/kidmatrix.png" class="r-stretch quarto-figure-center"><ul>
-<li><a href="../">Retour à la page principale</a></li>
+<li><a href="../">Back to the main page</a></li>
 </ul>
 </section>
 <section id="introduction" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Introduction</h2>
 <ul>
-<li><i class="fa-brands fa-r-project" aria-label="r-project"></i> centré autour du <em>dataframe</em></li>
+<li><i class="fa-brands fa-r-project" aria-label="r-project"></i> centered around the <em>dataframe</em></li>
 </ul>
 <div class="fragment">
 <ul>
-<li>Mais manipulations parfois un peu lourdes :
+<li>But manipulations sometimes a bit cumbersome:
 <ul>
-<li><code>df$var</code>: un peu lourd</li>
-<li><code>df[,]</code>: un peu trop calqué sur les matrices</li>
+<li><code>df$var</code>: a bit heavy</li>
+<li><code>df[,]</code>: a bit too modeled on matrices</li>
 </ul></li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li>Données textuelles: une base perfectible
+<li>Textual data: a perfectible base
 <ul>
-<li>Des <em>outputs</em> alambiqués</li>
-<li>Des fonctionnalités manquantes par rapport à <code>Python</code></li>
+<li>Convoluted <em>outputs</em></li>
+<li>Missing functionalities compared to <code>Python</code></li>
 </ul></li>
 </ul>
 </div>
 </section>
-<section id="la-réponse-le-tidyverse" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>La réponse: le <code>tidyverse</code> !</h2>
+<section id="the-answer-the-tidyverse" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>The answer: the <code>tidyverse</code>!</h2>
 
-<img data-src="./img/tidyverse.png" class="r-stretch quarto-figure-center"><p class="caption">L’écosystème du <a href="https://www.tidyverse.org/"><code>tidyverse</code></a></p></section>
-<section id="la-réponse-le-tidyverse-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>La réponse: le <code>tidyverse</code> !</h2>
-<p>Un ensemble de <em>packages</em> développés par <code>RStudio</code> qui facilite :</p>
+<img data-src="./img/tidyverse.png" class="r-stretch quarto-figure-center"><p class="caption">The <a href="https://www.tidyverse.org/"><code>tidyverse</code></a> ecosystem</p></section>
+<section id="the-answer-the-tidyverse-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>The answer: the <code>tidyverse</code>!</h2>
+<p>A set of <em>packages</em> developed by <code>RStudio</code> that facilitates:</p>
 <ul>
-<li>La lecture (<code>readr</code>) et la manipulation de bases de données (<code>dplyr</code>)</li>
-<li>L’exploitation de données textuelles (<code>stringr</code>), temporelles (<code>lubridate</code>) ou catégorielles (<code>forcats</code>)</li>
-<li>La création de graphiques (<code>ggplot2</code>)</li>
-<li>La programmation à partir de <em>dataframes</em> (<code>purrr</code>)</li>
-<li>Et bien d’autres choses…</li>
+<li>Reading (<code>readr</code>) and manipulating databases (<code>dplyr</code>)</li>
+<li>Exploiting textual data (<code>stringr</code>), temporal (<code>lubridate</code>) or categorical (<code>forcats</code>)</li>
+<li>Creating graphics (<code>ggplot2</code>)</li>
+<li>Programming from <em>dataframes</em> (<code>purrr</code>)</li>
+<li>And many other things…</li>
 </ul>
 </section>
-<section id="le-concept-de-données-tidy" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Le concept de données <em>tidy</em></h2>
+<section id="the-tidy-data-concept" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>The <em>tidy</em> data concept</h2>
 <ul>
-<li>Chaque variable possède sa propre colonne ;</li>
-<li>Chaque observation possède sa propre ligne ;</li>
-<li>Une valeur, matérialisant une observation d’une variable, se trouve sur une unique cellule.</li>
+<li>Each variable has its own column;</li>
+<li>Each observation has its own row;</li>
+<li>A value, materializing an observation of a variable, is found in a single cell.</li>
 </ul>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -493,7 +493,7 @@
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>Concept popularisé par Hadley Wickham.</p>
+<p>Concept popularized by Hadley Wickham.</p>
 </div>
 </div>
 </div>
@@ -502,58 +502,67 @@
 <h2><code>readr</code></h2>
 
 <img data-src="https://readr.tidyverse.org/logo.png" style="width:20.0%" class="r-stretch"><ul>
-<li>Le <em>package</em> pour lire des fichiers plats (<code>.csv</code>, <code>.txt</code>…)</li>
-<li>Permet d’obtenir un <code>tibble</code>, le <em>dataframe</em> augmenté du <code>tidyverse</code></li>
+<li>The <em>package</em> for reading flat files (<code>.csv</code>, <code>.txt</code>…)</li>
+<li>Allows obtaining a <code>tibble</code>, the augmented <em>dataframe</em> of the <code>tidyverse</code></li>
 </ul>
 </section>
 <section id="dplyr" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2><code>dplyr</code></h2>
 
 <img data-src="https://dplyr.tidyverse.org/logo.png" style="width:20.0%" class="r-stretch"><ul>
-<li>Le <em>package</em> central de l’écosystème de manipulation de données ;</li>
-<li>Manipulation de données et statistiques descriptives ;</li>
+<li>The central <em>package</em> of the data manipulation ecosystem;</li>
+<li>Data manipulation and descriptive statistics;</li>
 </ul>
 </section>
 <section id="dplyr-1" class="slide level2 smaller" data-background-image="background.svg" data-background-size="contain">
 <h2><code>dplyr</code></h2>
-<h3 data-background-image="background.svg" data-background-size="contain" id="principaux-verbes">Principaux verbes</h3>
-<p>On travaille sur un <code>tibble</code> (<em>dataframe</em> augmenté)</p>
+<h3 data-background-image="background.svg" data-background-size="contain" id="main-verbs">Main verbs</h3>
+<p>We work on a <code>tibble</code> (augmented <em>dataframe</em>)</p>
 <ul>
-<li><code>select()</code> : sélectionner des variables par leur nom ;</li>
-<li><code>rename()</code> : renommer des variables ;</li>
-<li><code>filter()</code> : sélectionner des observations selon une ou plusieurs conditions ;</li>
-<li><code>arrange()</code> : trier la table selon une ou plusieurs variables ;</li>
-<li><code>mutate()</code> : ajouter des variables qui sont fonction d’autres variables ;</li>
-<li><code>summarise()</code> : calculer une statistique à partir de données ;</li>
-<li><code>group_by()</code> : faire des opérations par groupe.- `</li>
+<li><code>select()</code>: select variables by their name;</li>
+<li><code>rename()</code>: rename variables;</li>
+<li><code>filter()</code>: select observations according to one or more conditions;</li>
+<li><code>arrange()</code>: sort the table according to one or more variables;</li>
+<li><code>mutate()</code>: add variables that are functions of other variables;</li>
+<li><code>summarise()</code>: calculate a statistic from data;</li>
+<li><code>group_by()</code>: perform operations by group.</li>
 </ul>
 </section>
 <section id="dplyr-2" class="slide level2 smaller" data-background-image="background.svg" data-background-size="contain">
 <h2><code>dplyr</code></h2>
-<h3 data-background-image="background.svg" data-background-size="contain" id="manipulation-de-données">Manipulation de données</h3>
-<p>On enchaine des séquences avec les <em>pipe</em> (<code>%&gt;%</code>)</p>
+<h3 data-background-image="background.svg" data-background-size="contain" id="data-manipulation">Data manipulation</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1"></a><span class="fu">library</span>(doremifasol)</span>
-<span id="annotated-cell-1-2"><a href="#annotated-cell-1-2"></a><span class="fu">library</span>(dplyr)</span>
-<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3"></a></span>
-<span id="annotated-cell-1-4"><a href="#annotated-cell-1-4"></a>base_publique_equipements <span class="ot">&lt;-</span> <span class="fu">telechargerDonnees</span>(<span class="st">"BPE_ENS"</span>)</span>
-<span id="annotated-cell-1-5"><a href="#annotated-cell-1-5"></a>base_publique_equipements <span class="sc">%&gt;%</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-6" class="code-annotation-target"><a href="#annotated-cell-1-6"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-1-7" class="code-annotation-target"><a href="#annotated-cell-1-7"></a>  <span class="fu">filter</span>(TYPEQU <span class="sc">==</span> <span class="st">"B316"</span>) <span class="sc">%&gt;%</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-1-8" class="code-annotation-target"><a href="#annotated-cell-1-8"></a>  <span class="fu">mutate</span>(<span class="at">x =</span> <span class="fu">paste0</span>(AN, <span class="st">"_"</span>, NB_EQUIP))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The following package(s) will be installed:
+- eurostat [4.0.0]
+These packages will be installed into "/__w/r-introduction/r-introduction/renv/library/R-4.5/x86_64-pc-linux-gnu".
+
+# Installing packages --------------------------------------------------------
+- Installing eurostat ...                       OK [linked from cache]
+Successfully installed 1 package in 6.8 milliseconds.</code></pre>
+</div>
+</div>
+<p>We chain sequences with <em>pipes</em> (<code>%&gt;%</code>)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="annotated-cell-1-2"><a href="#annotated-cell-1-2"></a></span>
+<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3"></a>pop_by_age <span class="sc">%&gt;%</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-4" class="code-annotation-target"><a href="#annotated-cell-1-4"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-1-5" class="code-annotation-target"><a href="#annotated-cell-1-5"></a>  <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">"F"</span>) <span class="sc">%&gt;%</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-1-6" class="code-annotation-target"><a href="#annotated-cell-1-6"></a>  <span class="fu">mutate</span>(<span class="at">x =</span> <span class="fu">paste0</span>(age, <span class="st">"_"</span>, sex))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="1" data-code-lines="6">On convertit le <em>dataframe</em> standard en <code>tibble</code></span>
+<span data-code-cell="annotated-cell-1" data-code-annotation="1" data-code-lines="4">We convert the standard <em>dataframe</em> to <code>tibble</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="2" data-code-lines="7">On ne garde que les stations services (valeurs <code>B316</code> de <code>TYPEQU</code>)</span>
+<span data-code-cell="annotated-cell-1" data-code-annotation="2" data-code-lines="5">We keep only gas stations (values <code>B316</code> of <code>TYPEQU</code>)</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="3" data-code-lines="8">On crée une nouvelle colonne en faisant référence à celles existantes (sans guillemets!)</span>
+<span data-code-cell="annotated-cell-1" data-code-annotation="3" data-code-lines="6">We create a new column by referencing existing ones (without quotes!)</span>
 </dd>
 </dl>
 </div>
@@ -568,50 +577,48 @@
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>Plus de détails dans <a href="https://www.book.utilitr.org/03_fiches_thematiques/fiche_tidyverse"><code>utilitR</code></a></p>
+<p>More details in <a href="https://www.book.utilitr.org/03_fiches_thematiques/fiche_tidyverse"><code>utilitR</code></a></p>
 </div>
 </div>
 </div>
 </section>
 <section id="dplyr-3" class="slide level2 smaller" data-background-image="background.svg" data-background-size="contain">
 <h2><code>dplyr</code></h2>
-<h3 data-background-image="background.svg" data-background-size="contain" id="statistiques-agrégées">Statistiques agrégées</h3>
+<h3 data-background-image="background.svg" data-background-size="contain" id="aggregated-statistics">Aggregated statistics</h3>
 <ul>
-<li>Logique du <em>split-apply-combine</em> avec <code>groupby</code></li>
+<li><em>split-apply-combine</em> logic with <code>groupby</code></li>
 </ul>
 <details>
 <summary>
-Illustration du <em>split-apply-combine</em>
+Illustration of <em>split-apply-combine</em>
 </summary>
 <img data-src="https://miro.medium.com/v2/resize:fit:1400/1*w2oGdXv5btEMxAkAsz8fbg.png">
 </details>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-2-1"><a href="#annotated-cell-2-1"></a><span class="fu">library</span>(doremifasol)</span>
-<span id="annotated-cell-2-2"><a href="#annotated-cell-2-2"></a><span class="fu">library</span>(dplyr)</span>
-<span id="annotated-cell-2-3"><a href="#annotated-cell-2-3"></a></span>
-<span id="annotated-cell-2-4"><a href="#annotated-cell-2-4"></a>base_publique_equipements <span class="ot">&lt;-</span> <span class="fu">telechargerDonnees</span>(<span class="st">"BPE_ENS"</span>)</span>
-<span id="annotated-cell-2-5"><a href="#annotated-cell-2-5"></a>base_publique_equipements <span class="sc">%&gt;%</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-6" class="code-annotation-target"><a href="#annotated-cell-2-6"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-2-7" class="code-annotation-target"><a href="#annotated-cell-2-7"></a>  <span class="fu">filter</span>(TYPEQU <span class="sc">==</span> <span class="st">"B316"</span>) <span class="sc">%&gt;%</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-2-8" class="code-annotation-target"><a href="#annotated-cell-2-8"></a>  <span class="fu">group_by</span>(DEP) <span class="sc">%&gt;%</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-2-9" class="code-annotation-target"><a href="#annotated-cell-2-9"></a>  <span class="fu">summarise</span>(<span class="at">nombre_station_serv =</span> <span class="fu">sum</span>(NB_EQUIP, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-2-1"><a href="#annotated-cell-2-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="annotated-cell-2-2"><a href="#annotated-cell-2-2"></a></span>
+<span id="annotated-cell-2-3"><a href="#annotated-cell-2-3"></a>pop_by_age <span class="sc">%&gt;%</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-4" class="code-annotation-target"><a href="#annotated-cell-2-4"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-2-5" class="code-annotation-target"><a href="#annotated-cell-2-5"></a>  <span class="fu">filter</span>(TIME_PERIOD <span class="sc">==</span> <span class="st">"2025-01-01"</span>) <span class="sc">%&gt;%</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-2-6" class="code-annotation-target"><a href="#annotated-cell-2-6"></a>  <span class="fu">group_by</span>(geo) <span class="sc">%&gt;%</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-2-7" class="code-annotation-target"><a href="#annotated-cell-2-7"></a>  <span class="fu">summarise</span>(<span class="at">pop_by_country_2025 =</span> <span class="fu">sum</span>(values, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-annotation="1" data-code-lines="6">On convertit le <em>dataframe</em> standard en <code>tibble</code></span>
+<span data-code-cell="annotated-cell-2" data-code-annotation="1" data-code-lines="4">We convert the standard <em>dataframe</em> to <code>tibble</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-annotation="2" data-code-lines="7">On ne garde que les stations services (valeurs <code>B316</code> de <code>TYPEQU</code>)</span>
+<span data-code-cell="annotated-cell-2" data-code-annotation="2" data-code-lines="5">We keep only gas stations (values <code>2025-01-01</code> of <code>TIME_PERIOD</code>)</span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-annotation="3" data-code-lines="8">On définit <code>DEP</code> comme une variable de stratification pour définir des groupes</span>
+<span data-code-cell="annotated-cell-2" data-code-annotation="3" data-code-lines="6">We define <code>geo</code> as a stratification variable to define groups</span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-annotation="4" data-code-lines="9">On résume les données en faisant la somme des stations services dans chaque groupe</span>
+<span data-code-cell="annotated-cell-2" data-code-annotation="4" data-code-lines="7">We summarize the data by summing gas stations in each group</span>
 </dd>
 </dl>
 </div>
@@ -621,47 +628,47 @@ Illustration du <em>split-apply-combine</em>
 <h2><code>ggplot</code></h2>
 
 <img data-src="https://ggplot2.tidyverse.org/logo.png" style="width:20.0%" class="r-stretch"><ul>
-<li>Le <em>package</em> indispensable pour faire des graphiques ❤️ ;</li>
-<li>Approche cohérente et flexible basée sur la <strong>grammaire des graphiques</strong>
+<li>The essential <em>package</em> for making graphics ❤️;</li>
+<li>Coherent and flexible approach based on the <strong>grammar of graphics</strong>
 <ul>
-<li>Objet d’un chapitre dédié</li>
+<li>Subject of a dedicated chapter</li>
 </ul></li>
 </ul>
 </section>
-<section id="stringr-forcats-et-lubridate" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2><code>stringr</code>, <code>forcats</code> et <code>lubridate</code></h2>
+<section id="stringr-forcats-and-lubridate" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2><code>stringr</code>, <code>forcats</code> and <code>lubridate</code></h2>
 <div data-ncol-layout="3" data-fig-align="center">
 <p><img data-src="https://stringr.tidyverse.org/logo.png" style="width:20.0%"> <img data-src="https://forcats.tidyverse.org/logo.png" style="width:20.0%"> <img data-src="https://lubridate.tidyverse.org/logo.png" style="width:20.0%"></p>
 </div>
 <ul>
-<li>Plein de fonctions facilitant la manipulation:
+<li>Many functions facilitating manipulation:
 <ul>
-<li>Données textuelles: <code>stringr</code></li>
-<li>Données catégorielles: <code>forcats</code></li>
-<li>Données temporelles: <code>lubridate</code></li>
+<li>Textual data: <code>stringr</code></li>
+<li>Categorical data: <code>forcats</code></li>
+<li>Temporal data: <code>lubridate</code></li>
 </ul></li>
 </ul>
 </section>
 <section>
-<section id="les-formats-de-données" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Les formats de données</h1>
+<section id="data-formats" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1>Data Formats</h1>
 
 </section>
-<section id="généralités" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Généralités</h2>
+<section id="general-information" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>General Information</h2>
 <ul>
-<li>Données peuvent être stockées dans de nombreux formats différents
+<li>Data can be stored in many different formats
 <ul>
-<li>Standards différents</li>
-<li>Manières d’importer différentes</li>
+<li>Different standards</li>
+<li>Different ways of importing</li>
 </ul></li>
 </ul>
 <div class="fragment">
 <ul>
-<li>Fonctionnalités de <i class="fa-brands fa-r-project" aria-label="r-project"></i> limitées:
+<li>Limited <i class="fa-brands fa-r-project" aria-label="r-project"></i> functionalities:
 <ul>
-<li>Packages spécialisés pour certains formats</li>
-<li>Objectif: applatir l’information dans un <em>dataframe</em></li>
+<li>Specialized packages for certain formats</li>
+<li>Objective: flatten information into a <em>dataframe</em></li>
 </ul></li>
 </ul>
 <div class="callout callout-note callout-titled callout-style-default">
@@ -673,26 +680,26 @@ Illustration du <em>split-apply-combine</em>
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>On verra les formats géographiques, et leurs enjeux, ultérieurement</p>
+<p>We’ll see geographic formats, and their challenges, later</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="le-csv" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Le <code>CSV</code></h2>
+<section id="csv" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2><code>CSV</code></h2>
 <ul>
-<li>Format de fichier plat avec des colonnes délimitées:
+<li>Flat file format with delimited columns:
 <ul>
-<li>Standard: <code>,</code> en délimitateur, <code>.</code> en décimale ;</li>
-<li>Variante européenne 😮‍💨: <code>;</code> en délimitateur, <code>,</code> en décimale</li>
+<li>Standard: <code>,</code> as delimiter, <code>.</code> as decimal;</li>
+<li>European variant 😮‍💨: <code>;</code> as delimiter, <code>,</code> as decimal</li>
 </ul></li>
-<li>Format universel, simple d’utilisation (quelques limites)</li>
+<li>Universal format, simple to use (some limitations)</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="226" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 225;"><span id="cb1-226"><a href="#cb1-226"></a>viewof info_csv <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">radio</span>(</span>
-<span id="cb1-227"><a href="#cb1-227"></a>  [<span class="st">"Fichier brut"</span><span class="op">,</span> <span class="st">"Ficher après import"</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="st">"Fichier brut"</span>}</span>
-<span id="cb1-228"><a href="#cb1-228"></a>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="232" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 231;"><span id="cb2-232"><a href="#cb2-232"></a>viewof info_csv <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">radio</span>(</span>
+<span id="cb2-233"><a href="#cb2-233"></a>  [<span class="st">"Raw file"</span><span class="op">,</span> <span class="st">"File after import"</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="st">"Raw file"</span>}</span>
+<span id="cb2-234"><a href="#cb2-234"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
@@ -700,7 +707,7 @@ Illustration du <em>split-apply-combine</em>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="232" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 231;"><span id="cb2-232"><a href="#cb2-232"></a>info_csv <span class="op">==</span> <span class="st">"Fichier brut"</span> <span class="op">?</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;</span><span class="sc">${</span>md_csv<span class="sc">}</span><span class="vs">&lt;div&gt;`</span> <span class="op">:</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;</span><span class="sc">${</span>df_csv<span class="sc">}</span><span class="vs">&lt;div&gt;`</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="238" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 237;"><span id="cb3-238"><a href="#cb3-238"></a>info_csv <span class="op">==</span> <span class="st">"Raw file"</span> <span class="op">?</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;</span><span class="sc">${</span>md_csv<span class="sc">}</span><span class="vs">&lt;div&gt;`</span> <span class="op">:</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;</span><span class="sc">${</span>df_csv<span class="sc">}</span><span class="vs">&lt;div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="expression">
 
@@ -708,14 +715,14 @@ Illustration du <em>split-apply-combine</em>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="240" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 239;"><span id="cb3-240"><a href="#cb3-240"></a>df_csv <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">table</span>(</span>
-<span id="cb3-241"><a href="#cb3-241"></a>  d3<span class="op">.</span><span class="fu">csvParse</span>(raw_csv)</span>
-<span id="cb3-242"><a href="#cb3-242"></a>)</span>
-<span id="cb3-243"><a href="#cb3-243"></a>md_csv <span class="op">=</span> <span class="fu">md</span><span class="vs">`</span></span>
-<span id="cb3-244"><a href="#cb3-244"></a><span class="sc">\`\`\`</span></span>
-<span id="cb3-245"><a href="#cb3-245"></a><span class="sc">${</span>raw_csv<span class="sc">}</span></span>
-<span id="cb3-246"><a href="#cb3-246"></a><span class="sc">\`\`\`</span></span>
-<span id="cb3-247"><a href="#cb3-247"></a><span class="vs">`</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="244" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 243;"><span id="cb4-244"><a href="#cb4-244"></a>df_csv <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">table</span>(</span>
+<span id="cb4-245"><a href="#cb4-245"></a>  d3<span class="op">.</span><span class="fu">csvParse</span>(raw_csv)</span>
+<span id="cb4-246"><a href="#cb4-246"></a>)</span>
+<span id="cb4-247"><a href="#cb4-247"></a>md_csv <span class="op">=</span> <span class="fu">md</span><span class="vs">`</span></span>
+<span id="cb4-248"><a href="#cb4-248"></a><span class="sc">\`\`\`</span></span>
+<span id="cb4-249"><a href="#cb4-249"></a><span class="sc">${</span>raw_csv<span class="sc">}</span></span>
+<span id="cb4-250"><a href="#cb4-250"></a><span class="sc">\`\`\`</span></span>
+<span id="cb4-251"><a href="#cb4-251"></a><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display hidden">
 <div>
 <div id="ojs-cell-3-1" data-nodetype="declaration">
@@ -732,14 +739,14 @@ Illustration du <em>split-apply-combine</em>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="251" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 250;"><span id="cb4-251"><a href="#cb4-251"></a>raw_csv <span class="op">=</span> <span class="vs">`DEP,REG,CHEFLIEU,TNCC,NCC,NCCENR,LIBELLE</span></span>
-<span id="cb4-252"><a href="#cb4-252"></a><span class="vs">01,84,01053,5,AIN,Ain,Ain</span></span>
-<span id="cb4-253"><a href="#cb4-253"></a><span class="vs">02,32,02408,5,AISNE,Aisne,Aisne</span></span>
-<span id="cb4-254"><a href="#cb4-254"></a><span class="vs">03,84,03190,5,ALLIER,Allier,Allier</span></span>
-<span id="cb4-255"><a href="#cb4-255"></a><span class="vs">04,93,04070,4,ALPES DE HAUTE PROVENCE,Alpes-de-Haute-Provence,Alpes-de-Haute-Provence</span></span>
-<span id="cb4-256"><a href="#cb4-256"></a><span class="vs">05,93,05061,4,HAUTES ALPES,Hautes-Alpes,Hautes-Alpes</span></span>
-<span id="cb4-257"><a href="#cb4-257"></a><span class="vs">06,93,06088,4,ALPES MARITIMES,Alpes-Maritimes,Alpes-Maritimes</span></span>
-<span id="cb4-258"><a href="#cb4-258"></a><span class="vs">`</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="255" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 254;"><span id="cb5-255"><a href="#cb5-255"></a>raw_csv <span class="op">=</span> <span class="vs">`DEP,REG,CHEFLIEU,TNCC,NCC,NCCENR,LIBELLE</span></span>
+<span id="cb5-256"><a href="#cb5-256"></a><span class="vs">01,84,01053,5,AIN,Ain,Ain</span></span>
+<span id="cb5-257"><a href="#cb5-257"></a><span class="vs">02,32,02408,5,AISNE,Aisne,Aisne</span></span>
+<span id="cb5-258"><a href="#cb5-258"></a><span class="vs">03,84,03190,5,ALLIER,Allier,Allier</span></span>
+<span id="cb5-259"><a href="#cb5-259"></a><span class="vs">04,93,04070,4,ALPES DE HAUTE PROVENCE,Alpes-de-Haute-Provence,Alpes-de-Haute-Provence</span></span>
+<span id="cb5-260"><a href="#cb5-260"></a><span class="vs">05,93,05061,4,HAUTES ALPES,Hautes-Alpes,Hautes-Alpes</span></span>
+<span id="cb5-261"><a href="#cb5-261"></a><span class="vs">06,93,06088,4,ALPES MARITIMES,Alpes-Maritimes,Alpes-Maritimes</span></span>
+<span id="cb5-262"><a href="#cb5-262"></a><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-4" data-nodetype="declaration">
 
@@ -747,23 +754,23 @@ Illustration du <em>split-apply-combine</em>
 </div>
 </div>
 </section>
-<section id="le-csv-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Le <code>CSV</code></h2>
+<section id="csv-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2><code>CSV</code></h2>
 <ul>
-<li>Lecture avec la fonction <code>read_csv</code> du package <code>readr</code>!</li>
+<li>Reading with the <code>read_csv</code> function from the <code>readr</code> package!</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-7-1" class="code-annotation-target"><a href="#annotated-cell-7-1"></a><span class="fu">library</span>(readr)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-7-2" class="code-annotation-target"><a href="#annotated-cell-7-2"></a><span class="fu">read_csv</span>(<span class="st">"dossier_donnees/nom_fichier.csv"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-7-2" class="code-annotation-target"><a href="#annotated-cell-7-2"></a><span class="fu">read_csv</span>(<span class="st">"data_folder/file_name.csv"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-annotation="1" data-code-lines="1">On importe la librairie <code>readr</code> pour avoir accès à la fonction <code>read_csv</code></span>
+<span data-code-cell="annotated-cell-7" data-code-annotation="1" data-code-lines="1">We import the <code>readr</code> library to have access to the <code>read_csv</code> function</span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-annotation="2" data-code-lines="2">On utilise <code>read_csv</code> pour lire les données stockées dans le chemin relatif <code>dossier_donnees/nom_fichier.csv</code></span>
+<span data-code-cell="annotated-cell-7" data-code-annotation="2" data-code-lines="2">We use <code>read_csv</code> to read data stored in the relative path <code>data_folder/file_name.csv</code></span>
 </dd>
 </dl>
 </div>
@@ -778,26 +785,26 @@ Illustration du <em>split-apply-combine</em>
 </div>
 <div class="callout-content">
 <ul>
-<li>CSV avec délimitateur <code>;</code>: fonction <code>read_csv2</code>.</li>
-<li>Formats plats plus exotiques (<code>.txt</code> par exemple): <code>read_delim</code></li>
+<li>CSV with <code>;</code> delimiter: <code>read_csv2</code> function.</li>
+<li>More exotic flat formats (<code>.txt</code> for example): <code>read_delim</code></li>
 </ul>
-<p>Plus de détails dans la documentation <a href="https://www.book.utilitr.org/03_fiches_thematiques/fiche_import_fichiers_plats#importer-un-fichier-avec-le-package-readr"><code>utilitR</code></a></p>
+<p>More details in the <a href="https://www.book.utilitr.org/03_fiches_thematiques/fiche_import_fichiers_plats#importer-un-fichier-avec-le-package-readr"><code>utilitR</code></a> documentation</p>
 </div>
 </div>
 </div>
 </section>
-<section id="le-json" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Le <code>JSON</code></h2>
+<section id="json" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2><code>JSON</code></h2>
 <ul>
-<li>Le format du <em>web</em>, notamment des API
+<li>The <em>web</em> format, especially for APIs
 <ul>
-<li>API: on verra ça plus tard</li>
+<li>API: we’ll see that later</li>
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="289" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 288;"><span id="cb5-289"><a href="#cb5-289"></a>viewof info_json <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">radio</span>(</span>
-<span id="cb5-290"><a href="#cb5-290"></a>  [<span class="st">"Fichier brut"</span><span class="op">,</span> <span class="st">"Ficher après import"</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="st">"Fichier brut"</span>}</span>
-<span id="cb5-291"><a href="#cb5-291"></a>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="290" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 289;"><span id="cb6-290"><a href="#cb6-290"></a>viewof info_json <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">radio</span>(</span>
+<span id="cb6-291"><a href="#cb6-291"></a>  [<span class="st">"Raw file"</span><span class="op">,</span> <span class="st">"File after import"</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="st">"Raw file"</span>}</span>
+<span id="cb6-292"><a href="#cb6-292"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-5" data-nodetype="declaration">
 
@@ -805,7 +812,7 @@ Illustration du <em>split-apply-combine</em>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="295" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 294;"><span id="cb6-295"><a href="#cb6-295"></a>info_json <span class="op">==</span> <span class="st">"Fichier brut"</span> <span class="op">?</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;</span><span class="sc">${</span>md_json<span class="sc">}</span><span class="vs">&lt;div&gt;`</span> <span class="op">:</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;</span><span class="sc">${</span>df_json<span class="sc">}</span><span class="vs">&lt;div&gt;`</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="296" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 295;"><span id="cb7-296"><a href="#cb7-296"></a>info_json <span class="op">==</span> <span class="st">"Raw file"</span> <span class="op">?</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;</span><span class="sc">${</span>md_json<span class="sc">}</span><span class="vs">&lt;div&gt;`</span> <span class="op">:</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;</span><span class="sc">${</span>df_json<span class="sc">}</span><span class="vs">&lt;div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-6" data-nodetype="expression">
 
@@ -813,27 +820,27 @@ Illustration du <em>split-apply-combine</em>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="301" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 300;"><span id="cb7-301"><a href="#cb7-301"></a>json_string <span class="op">=</span> <span class="vs">`[</span></span>
-<span id="cb7-302"><a href="#cb7-302"></a><span class="vs">  {"DEP": "01", "REG": "84", "CHEFLIEU": "01053", "TNCC": "5", "NCC": "AIN", "NCCENR": "Ain", "LIBELLE": "Ain"},</span></span>
-<span id="cb7-303"><a href="#cb7-303"></a><span class="vs">  {"DEP": "02", "REG": "32", "CHEFLIEU": "02408", "TNCC": "5", "NCC": "AISNE", "NCCENR": "Aisne", "LIBELLE": "Aisne"},</span></span>
-<span id="cb7-304"><a href="#cb7-304"></a><span class="vs">  {"DEP": "03", "REG": "84", "CHEFLIEU": "03190", "TNCC": "5", "NCC": "ALLIER", "NCCENR": "Allier", "LIBELLE": "Allier"},</span></span>
-<span id="cb7-305"><a href="#cb7-305"></a><span class="vs">  {"DEP": "04", "REG": "93", "CHEFLIEU": "04070", "TNCC": "4", "NCC": "ALPES DE HAUTE PROVENCE", "NCCENR": "Alpes-de-Haute-Provence", "LIBELLE": "Alpes-de-Haute-Provence"},</span></span>
-<span id="cb7-306"><a href="#cb7-306"></a><span class="vs">  {"DEP": "05", "REG": "93", "CHEFLIEU": "05061", "TNCC": "4", "NCC": "HAUTES ALPES", "NCCENR": "Hautes-Alpes", "LIBELLE": "Hautes-Alpes"},</span></span>
-<span id="cb7-307"><a href="#cb7-307"></a><span class="vs">  {"DEP": "06", "REG": "93", "CHEFLIEU": "06088", "TNCC": "4", "NCC": "ALPES MARITIMES", "NCCENR": "Alpes-Maritimes", "LIBELLE": "Alpes-Maritimes"}</span></span>
-<span id="cb7-308"><a href="#cb7-308"></a><span class="vs">]`</span></span>
-<span id="cb7-309"><a href="#cb7-309"></a>raw_json <span class="op">=</span> [</span>
-<span id="cb7-310"><a href="#cb7-310"></a>  {<span class="st">"DEP"</span><span class="op">:</span> <span class="st">"01"</span><span class="op">,</span> <span class="st">"REG"</span><span class="op">:</span> <span class="st">"84"</span><span class="op">,</span> <span class="st">"CHEFLIEU"</span><span class="op">:</span> <span class="st">"01053"</span><span class="op">,</span> <span class="st">"TNCC"</span><span class="op">:</span> <span class="st">"5"</span><span class="op">,</span> <span class="st">"NCC"</span><span class="op">:</span> <span class="st">"AIN"</span><span class="op">,</span> <span class="st">"NCCENR"</span><span class="op">:</span> <span class="st">"Ain"</span><span class="op">,</span> <span class="st">"LIBELLE"</span><span class="op">:</span> <span class="st">"Ain"</span>}<span class="op">,</span></span>
-<span id="cb7-311"><a href="#cb7-311"></a>  {<span class="st">"DEP"</span><span class="op">:</span> <span class="st">"02"</span><span class="op">,</span> <span class="st">"REG"</span><span class="op">:</span> <span class="st">"32"</span><span class="op">,</span> <span class="st">"CHEFLIEU"</span><span class="op">:</span> <span class="st">"02408"</span><span class="op">,</span> <span class="st">"TNCC"</span><span class="op">:</span> <span class="st">"5"</span><span class="op">,</span> <span class="st">"NCC"</span><span class="op">:</span> <span class="st">"AISNE"</span><span class="op">,</span> <span class="st">"NCCENR"</span><span class="op">:</span> <span class="st">"Aisne"</span><span class="op">,</span> <span class="st">"LIBELLE"</span><span class="op">:</span> <span class="st">"Aisne"</span>}<span class="op">,</span></span>
-<span id="cb7-312"><a href="#cb7-312"></a>  {<span class="st">"DEP"</span><span class="op">:</span> <span class="st">"03"</span><span class="op">,</span> <span class="st">"REG"</span><span class="op">:</span> <span class="st">"84"</span><span class="op">,</span> <span class="st">"CHEFLIEU"</span><span class="op">:</span> <span class="st">"03190"</span><span class="op">,</span> <span class="st">"TNCC"</span><span class="op">:</span> <span class="st">"5"</span><span class="op">,</span> <span class="st">"NCC"</span><span class="op">:</span> <span class="st">"ALLIER"</span><span class="op">,</span> <span class="st">"NCCENR"</span><span class="op">:</span> <span class="st">"Allier"</span><span class="op">,</span> <span class="st">"LIBELLE"</span><span class="op">:</span> <span class="st">"Allier"</span>}<span class="op">,</span></span>
-<span id="cb7-313"><a href="#cb7-313"></a>  {<span class="st">"DEP"</span><span class="op">:</span> <span class="st">"04"</span><span class="op">,</span> <span class="st">"REG"</span><span class="op">:</span> <span class="st">"93"</span><span class="op">,</span> <span class="st">"CHEFLIEU"</span><span class="op">:</span> <span class="st">"04070"</span><span class="op">,</span> <span class="st">"TNCC"</span><span class="op">:</span> <span class="st">"4"</span><span class="op">,</span> <span class="st">"NCC"</span><span class="op">:</span> <span class="st">"ALPES DE HAUTE PROVENCE"</span><span class="op">,</span> <span class="st">"NCCENR"</span><span class="op">:</span> <span class="st">"Alpes-de-Haute-Provence"</span><span class="op">,</span> <span class="st">"LIBELLE"</span><span class="op">:</span> <span class="st">"Alpes-de-Haute-Provence"</span>}<span class="op">,</span></span>
-<span id="cb7-314"><a href="#cb7-314"></a>  {<span class="st">"DEP"</span><span class="op">:</span> <span class="st">"05"</span><span class="op">,</span> <span class="st">"REG"</span><span class="op">:</span> <span class="st">"93"</span><span class="op">,</span> <span class="st">"CHEFLIEU"</span><span class="op">:</span> <span class="st">"05061"</span><span class="op">,</span> <span class="st">"TNCC"</span><span class="op">:</span> <span class="st">"4"</span><span class="op">,</span> <span class="st">"NCC"</span><span class="op">:</span> <span class="st">"HAUTES ALPES"</span><span class="op">,</span> <span class="st">"NCCENR"</span><span class="op">:</span> <span class="st">"Hautes-Alpes"</span><span class="op">,</span> <span class="st">"LIBELLE"</span><span class="op">:</span> <span class="st">"Hautes-Alpes"</span>}<span class="op">,</span></span>
-<span id="cb7-315"><a href="#cb7-315"></a>  {<span class="st">"DEP"</span><span class="op">:</span> <span class="st">"06"</span><span class="op">,</span> <span class="st">"REG"</span><span class="op">:</span> <span class="st">"93"</span><span class="op">,</span> <span class="st">"CHEFLIEU"</span><span class="op">:</span> <span class="st">"06088"</span><span class="op">,</span> <span class="st">"TNCC"</span><span class="op">:</span> <span class="st">"4"</span><span class="op">,</span> <span class="st">"NCC"</span><span class="op">:</span> <span class="st">"ALPES MARITIMES"</span><span class="op">,</span> <span class="st">"NCCENR"</span><span class="op">:</span> <span class="st">"Alpes-Maritimes"</span><span class="op">,</span> <span class="st">"LIBELLE"</span><span class="op">:</span> <span class="st">"Alpes-Maritimes"</span>}</span>
-<span id="cb7-316"><a href="#cb7-316"></a>]</span>
-<span id="cb7-317"><a href="#cb7-317"></a>md_json <span class="op">=</span> <span class="fu">md</span><span class="vs">`</span></span>
-<span id="cb7-318"><a href="#cb7-318"></a><span class="sc">\`\`\`</span></span>
-<span id="cb7-319"><a href="#cb7-319"></a><span class="sc">${</span>json_string<span class="sc">}</span></span>
-<span id="cb7-320"><a href="#cb7-320"></a><span class="sc">\`\`\`</span></span>
-<span id="cb7-321"><a href="#cb7-321"></a><span class="vs">`</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="302" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 301;"><span id="cb8-302"><a href="#cb8-302"></a>json_string <span class="op">=</span> <span class="vs">`[</span></span>
+<span id="cb8-303"><a href="#cb8-303"></a><span class="vs">  {"DEP": "01", "REG": "84", "CHEFLIEU": "01053", "TNCC": "5", "NCC": "AIN", "NCCENR": "Ain", "LIBELLE": "Ain"},</span></span>
+<span id="cb8-304"><a href="#cb8-304"></a><span class="vs">  {"DEP": "02", "REG": "32", "CHEFLIEU": "02408", "TNCC": "5", "NCC": "AISNE", "NCCENR": "Aisne", "LIBELLE": "Aisne"},</span></span>
+<span id="cb8-305"><a href="#cb8-305"></a><span class="vs">  {"DEP": "03", "REG": "84", "CHEFLIEU": "03190", "TNCC": "5", "NCC": "ALLIER", "NCCENR": "Allier", "LIBELLE": "Allier"},</span></span>
+<span id="cb8-306"><a href="#cb8-306"></a><span class="vs">  {"DEP": "04", "REG": "93", "CHEFLIEU": "04070", "TNCC": "4", "NCC": "ALPES DE HAUTE PROVENCE", "NCCENR": "Alpes-de-Haute-Provence", "LIBELLE": "Alpes-de-Haute-Provence"},</span></span>
+<span id="cb8-307"><a href="#cb8-307"></a><span class="vs">  {"DEP": "05", "REG": "93", "CHEFLIEU": "05061", "TNCC": "4", "NCC": "HAUTES ALPES", "NCCENR": "Hautes-Alpes", "LIBELLE": "Hautes-Alpes"},</span></span>
+<span id="cb8-308"><a href="#cb8-308"></a><span class="vs">  {"DEP": "06", "REG": "93", "CHEFLIEU": "06088", "TNCC": "4", "NCC": "ALPES MARITIMES", "NCCENR": "Alpes-Maritimes", "LIBELLE": "Alpes-Maritimes"}</span></span>
+<span id="cb8-309"><a href="#cb8-309"></a><span class="vs">]`</span></span>
+<span id="cb8-310"><a href="#cb8-310"></a>raw_json <span class="op">=</span> [</span>
+<span id="cb8-311"><a href="#cb8-311"></a>  {<span class="st">"DEP"</span><span class="op">:</span> <span class="st">"01"</span><span class="op">,</span> <span class="st">"REG"</span><span class="op">:</span> <span class="st">"84"</span><span class="op">,</span> <span class="st">"CHEFLIEU"</span><span class="op">:</span> <span class="st">"01053"</span><span class="op">,</span> <span class="st">"TNCC"</span><span class="op">:</span> <span class="st">"5"</span><span class="op">,</span> <span class="st">"NCC"</span><span class="op">:</span> <span class="st">"AIN"</span><span class="op">,</span> <span class="st">"NCCENR"</span><span class="op">:</span> <span class="st">"Ain"</span><span class="op">,</span> <span class="st">"LIBELLE"</span><span class="op">:</span> <span class="st">"Ain"</span>}<span class="op">,</span></span>
+<span id="cb8-312"><a href="#cb8-312"></a>  {<span class="st">"DEP"</span><span class="op">:</span> <span class="st">"02"</span><span class="op">,</span> <span class="st">"REG"</span><span class="op">:</span> <span class="st">"32"</span><span class="op">,</span> <span class="st">"CHEFLIEU"</span><span class="op">:</span> <span class="st">"02408"</span><span class="op">,</span> <span class="st">"TNCC"</span><span class="op">:</span> <span class="st">"5"</span><span class="op">,</span> <span class="st">"NCC"</span><span class="op">:</span> <span class="st">"AISNE"</span><span class="op">,</span> <span class="st">"NCCENR"</span><span class="op">:</span> <span class="st">"Aisne"</span><span class="op">,</span> <span class="st">"LIBELLE"</span><span class="op">:</span> <span class="st">"Aisne"</span>}<span class="op">,</span></span>
+<span id="cb8-313"><a href="#cb8-313"></a>  {<span class="st">"DEP"</span><span class="op">:</span> <span class="st">"03"</span><span class="op">,</span> <span class="st">"REG"</span><span class="op">:</span> <span class="st">"84"</span><span class="op">,</span> <span class="st">"CHEFLIEU"</span><span class="op">:</span> <span class="st">"03190"</span><span class="op">,</span> <span class="st">"TNCC"</span><span class="op">:</span> <span class="st">"5"</span><span class="op">,</span> <span class="st">"NCC"</span><span class="op">:</span> <span class="st">"ALLIER"</span><span class="op">,</span> <span class="st">"NCCENR"</span><span class="op">:</span> <span class="st">"Allier"</span><span class="op">,</span> <span class="st">"LIBELLE"</span><span class="op">:</span> <span class="st">"Allier"</span>}<span class="op">,</span></span>
+<span id="cb8-314"><a href="#cb8-314"></a>  {<span class="st">"DEP"</span><span class="op">:</span> <span class="st">"04"</span><span class="op">,</span> <span class="st">"REG"</span><span class="op">:</span> <span class="st">"93"</span><span class="op">,</span> <span class="st">"CHEFLIEU"</span><span class="op">:</span> <span class="st">"04070"</span><span class="op">,</span> <span class="st">"TNCC"</span><span class="op">:</span> <span class="st">"4"</span><span class="op">,</span> <span class="st">"NCC"</span><span class="op">:</span> <span class="st">"ALPES DE HAUTE PROVENCE"</span><span class="op">,</span> <span class="st">"NCCENR"</span><span class="op">:</span> <span class="st">"Alpes-de-Haute-Provence"</span><span class="op">,</span> <span class="st">"LIBELLE"</span><span class="op">:</span> <span class="st">"Alpes-de-Haute-Provence"</span>}<span class="op">,</span></span>
+<span id="cb8-315"><a href="#cb8-315"></a>  {<span class="st">"DEP"</span><span class="op">:</span> <span class="st">"05"</span><span class="op">,</span> <span class="st">"REG"</span><span class="op">:</span> <span class="st">"93"</span><span class="op">,</span> <span class="st">"CHEFLIEU"</span><span class="op">:</span> <span class="st">"05061"</span><span class="op">,</span> <span class="st">"TNCC"</span><span class="op">:</span> <span class="st">"4"</span><span class="op">,</span> <span class="st">"NCC"</span><span class="op">:</span> <span class="st">"HAUTES ALPES"</span><span class="op">,</span> <span class="st">"NCCENR"</span><span class="op">:</span> <span class="st">"Hautes-Alpes"</span><span class="op">,</span> <span class="st">"LIBELLE"</span><span class="op">:</span> <span class="st">"Hautes-Alpes"</span>}<span class="op">,</span></span>
+<span id="cb8-316"><a href="#cb8-316"></a>  {<span class="st">"DEP"</span><span class="op">:</span> <span class="st">"06"</span><span class="op">,</span> <span class="st">"REG"</span><span class="op">:</span> <span class="st">"93"</span><span class="op">,</span> <span class="st">"CHEFLIEU"</span><span class="op">:</span> <span class="st">"06088"</span><span class="op">,</span> <span class="st">"TNCC"</span><span class="op">:</span> <span class="st">"4"</span><span class="op">,</span> <span class="st">"NCC"</span><span class="op">:</span> <span class="st">"ALPES MARITIMES"</span><span class="op">,</span> <span class="st">"NCCENR"</span><span class="op">:</span> <span class="st">"Alpes-Maritimes"</span><span class="op">,</span> <span class="st">"LIBELLE"</span><span class="op">:</span> <span class="st">"Alpes-Maritimes"</span>}</span>
+<span id="cb8-317"><a href="#cb8-317"></a>]</span>
+<span id="cb8-318"><a href="#cb8-318"></a>md_json <span class="op">=</span> <span class="fu">md</span><span class="vs">`</span></span>
+<span id="cb8-319"><a href="#cb8-319"></a><span class="sc">\`\`\`</span></span>
+<span id="cb8-320"><a href="#cb8-320"></a><span class="sc">${</span>json_string<span class="sc">}</span></span>
+<span id="cb8-321"><a href="#cb8-321"></a><span class="sc">\`\`\`</span></span>
+<span id="cb8-322"><a href="#cb8-322"></a><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display hidden">
 <div>
 <div id="ojs-cell-7-1" data-nodetype="declaration">
@@ -857,7 +864,7 @@ Illustration du <em>split-apply-combine</em>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="325" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 324;"><span id="cb8-325"><a href="#cb8-325"></a>df_json <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">table</span>(raw_json)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="326" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 325;"><span id="cb9-326"><a href="#cb9-326"></a>df_json <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">table</span>(raw_json)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display hidden">
 <div id="ojs-cell-8" data-nodetype="declaration">
 
@@ -865,89 +872,105 @@ Illustration du <em>split-apply-combine</em>
 </div>
 </div>
 </section>
-<section id="le-json-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Le <code>JSON</code></h2>
+<section id="json-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2><code>JSON</code></h2>
 <ul>
-<li>Importé comme une liste hiérarchisée</li>
-<li>Objectif: transformer cette information dans un <em>dataframe</em> <code>tidy</code>
+<li>Imported as a hierarchical list</li>
+<li>Objective: transform this information into a <code>tidy</code> <em>dataframe</em>
 <ul>
-<li>Pas toujours évident !</li>
+<li>Not always easy!</li>
 </ul></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="annotated-cell-12"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-12-1" class="code-annotation-target"><a href="#annotated-cell-12-1"></a><span class="fu">library</span>(jsonlite)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-12-2" class="code-annotation-target"><a href="#annotated-cell-12-2"></a>df <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="at">file=</span><span class="st">"dossier_donnees/nom_fichier.json"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-12-2" class="code-annotation-target"><a href="#annotated-cell-12-2"></a>df <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="at">file=</span><span class="st">"data_folder/file_name.json"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-12" data-code-annotation="1" data-code-lines="1">On importe la librairie <code>jsonlite</code> pour avoir accès à la fonction <code>fromJSON</code></span>
+<span data-code-cell="annotated-cell-12" data-code-annotation="1" data-code-lines="1">We import the <code>jsonlite</code> library to have access to the <code>fromJSON</code> function</span>
 </dd>
 <dt data-target-cell="annotated-cell-12" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-12" data-code-annotation="2" data-code-lines="2">On utilise <code>fromJSON</code> pour lire les données stockées dans le chemin relatif <code>dossier_donnees/nom_fichier.csv</code></span>
+<span data-code-cell="annotated-cell-12" data-code-annotation="2" data-code-lines="2">We use <code>fromJSON</code> to read data stored in the relative path <code>data_folder/file_name.json</code></span>
 </dd>
 </dl>
 </div>
 </div>
 </section>
-<section id="les-formats-excel" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Les formats Excel</h2>
+<section id="excel-formats" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Excel formats</h2>
 <p><iconify-icon inline="" icon="fluent-emoji:face-vomiting" style="font-size: 10em;"></iconify-icon></p>
 </section>
-<section id="les-formats-excel-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Les formats Excel</h2>
+<section id="excel-formats-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Excel formats</h2>
 <ul>
-<li><p>Format propriétaire</p></li>
-<li><p>Mélange mise en forme et données brute</p>
+<li><p>Proprietary format</p></li>
+<li><p>Mixes formatting and raw data</p>
 <ul>
-<li>Pas approprié pour l’analyse de données</li>
-<li>Dangereux pour la reproductibilité et la transparence</li>
+<li>Not appropriate for data analysis</li>
+<li>Dangerous for reproducibility and transparency</li>
 </ul></li>
-<li><p>Plus de détails sur <a href="https://www.book.utilitr.org/03_fiches_thematiques/fiche_import_tableurs"><code>utilitR</code></a></p></li>
+<li><p>More details on <a href="https://www.book.utilitr.org/03_fiches_thematiques/fiche_import_tableurs"><code>utilitR</code></a></p></li>
 </ul>
 </section></section>
 <section>
-<section id="le-pipe-magrittr" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
-<h1>Le <em>pipe</em> <code>magrittr</code> (<code>%&gt;%</code>)</h1>
+<section id="the-magrittr-pipe" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1>The <code>magrittr</code> <em>pipe</em> (<code>%&gt;%</code>)</h1>
 
 </section>
-<section id="le-pipe-magrittr-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Le <em>pipe</em> <code>magrittr</code> (<code>%&gt;%</code>)</h2>
-<p>Une manière de chaîner les opérations</p>
+<section id="the-magrittr-pipe-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>The <code>magrittr</code> <em>pipe</em> (<code>%&gt;%</code>)</h2>
+<p>A way to chain operations</p>
 
 <img data-src="https://magrittr.tidyverse.org/logo.png" style="width:20.0%" class="r-stretch"><div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Fonctions emboitées</a></li><li><a href="#tabset-1-2">Avec le <em>pipe</em></a></li></ul>
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Nested functions</a></li><li><a href="#tabset-1-2">With the <em>pipe</em></a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
-<pre><code>library(dplyr)
-library(doremifasol)
-
-df &lt;- filter(
-  as_tibble(telechargerDonnees("BPE_ENS")),
-  TYPEQU == "B316"
-)
-
-summarise(
-  group_by(df, DEP),
-  nombre_station_serv = sum(NB_EQUIP, na.rm = TRUE)
-)</code></pre>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 48 × 2
+   geo   pop_by_country_2025
+   &lt;chr&gt;               &lt;dbl&gt;
+ 1 AD                1938528
+ 2 AL               66085816
+ 3 AM               41834200
+ 4 AT              523911792
+ 5 AZ              180389320
+ 6 BE              677625197
+ 7 BG              529118397
+ 8 BY              123719805
+ 9 CH              462691936
+10 CY               26631335
+# ℹ 38 more rows</code></pre>
+</div>
+</div>
 </div>
 <div id="tabset-1-2">
-<pre><code>library(dplyr)
-library(doremifasol)
-
-telechargerDonnees("BPE_ENS") %&gt;%
-  as_tibble() %&gt;%
-  filter(TYPEQU == "B316") %&gt;% 
-  group_by(DEP) %&gt;% 
-  summarise(nombre_station_serv = sum(NB_EQUIP, na.rm = TRUE)) </code></pre>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 34 × 2
+   geo   pop_by_country_2025
+   &lt;chr&gt;               &lt;dbl&gt;
+ 1 AL                2362991
+ 2 AT                9195525
+ 3 AZ               10223305
+ 4 BE               11880328
+ 5 BG                6436921
+ 6 CH                9048831
+ 7 CY                 982819
+ 8 CZ               10908523
+ 9 DE               83559239
+10 DK                5991469
+# ℹ 24 more rows</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 
 <div class="footer footer-default">
-<p>Introduction aux méthodes quantitatives avec <i class="fa-brands fa-r-project" aria-label="r-project"></i>, École Normale Supérieure (<a href="../">retour page principale</a>)</p>
+<p>Introduction to Quantitative Methods with <i class="fa-brands fa-r-project" aria-label="r-project"></i>, École Normale Supérieure (<a href="../">back to main page</a>)</p>
 </div>
 </section></section>
     </div>
@@ -1165,7 +1188,7 @@ telechargerDonnees("BPE_ENS") %&gt;%
     </script>
     
     <script type="ojs-module-contents">
-    {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"viewof info_csv = Inputs.radio(\n  [\"Fichier brut\", \"Ficher après import\"], {value: \"Fichier brut\"}\n)\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"info_csv == \"Fichier brut\" ? html`<div>${md_csv}<div>` : html`<div>${df_csv}<div>`\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"df_csv = Inputs.table(\n  d3.csvParse(raw_csv)\n)\nmd_csv = md`\n\\`\\`\\`\n${raw_csv}\n\\`\\`\\`\n`\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"raw_csv = `DEP,REG,CHEFLIEU,TNCC,NCC,NCCENR,LIBELLE\n01,84,01053,5,AIN,Ain,Ain\n02,32,02408,5,AISNE,Aisne,Aisne\n03,84,03190,5,ALLIER,Allier,Allier\n04,93,04070,4,ALPES DE HAUTE PROVENCE,Alpes-de-Haute-Provence,Alpes-de-Haute-Provence\n05,93,05061,4,HAUTES ALPES,Hautes-Alpes,Hautes-Alpes\n06,93,06088,4,ALPES MARITIMES,Alpes-Maritimes,Alpes-Maritimes\n`\n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"viewof info_json = Inputs.radio(\n  [\"Fichier brut\", \"Ficher après import\"], {value: \"Fichier brut\"}\n)\n"},{"methodName":"interpret","cellName":"ojs-cell-6","inline":false,"source":"info_json == \"Fichier brut\" ? html`<div>${md_json}<div>` : html`<div>${df_json}<div>`\n"},{"methodName":"interpret","cellName":"ojs-cell-7","inline":false,"source":"json_string = `[\n  {\"DEP\": \"01\", \"REG\": \"84\", \"CHEFLIEU\": \"01053\", \"TNCC\": \"5\", \"NCC\": \"AIN\", \"NCCENR\": \"Ain\", \"LIBELLE\": \"Ain\"},\n  {\"DEP\": \"02\", \"REG\": \"32\", \"CHEFLIEU\": \"02408\", \"TNCC\": \"5\", \"NCC\": \"AISNE\", \"NCCENR\": \"Aisne\", \"LIBELLE\": \"Aisne\"},\n  {\"DEP\": \"03\", \"REG\": \"84\", \"CHEFLIEU\": \"03190\", \"TNCC\": \"5\", \"NCC\": \"ALLIER\", \"NCCENR\": \"Allier\", \"LIBELLE\": \"Allier\"},\n  {\"DEP\": \"04\", \"REG\": \"93\", \"CHEFLIEU\": \"04070\", \"TNCC\": \"4\", \"NCC\": \"ALPES DE HAUTE PROVENCE\", \"NCCENR\": \"Alpes-de-Haute-Provence\", \"LIBELLE\": \"Alpes-de-Haute-Provence\"},\n  {\"DEP\": \"05\", \"REG\": \"93\", \"CHEFLIEU\": \"05061\", \"TNCC\": \"4\", \"NCC\": \"HAUTES ALPES\", \"NCCENR\": \"Hautes-Alpes\", \"LIBELLE\": \"Hautes-Alpes\"},\n  {\"DEP\": \"06\", \"REG\": \"93\", \"CHEFLIEU\": \"06088\", \"TNCC\": \"4\", \"NCC\": \"ALPES MARITIMES\", \"NCCENR\": \"Alpes-Maritimes\", \"LIBELLE\": \"Alpes-Maritimes\"}\n]`\nraw_json = [\n  {\"DEP\": \"01\", \"REG\": \"84\", \"CHEFLIEU\": \"01053\", \"TNCC\": \"5\", \"NCC\": \"AIN\", \"NCCENR\": \"Ain\", \"LIBELLE\": \"Ain\"},\n  {\"DEP\": \"02\", \"REG\": \"32\", \"CHEFLIEU\": \"02408\", \"TNCC\": \"5\", \"NCC\": \"AISNE\", \"NCCENR\": \"Aisne\", \"LIBELLE\": \"Aisne\"},\n  {\"DEP\": \"03\", \"REG\": \"84\", \"CHEFLIEU\": \"03190\", \"TNCC\": \"5\", \"NCC\": \"ALLIER\", \"NCCENR\": \"Allier\", \"LIBELLE\": \"Allier\"},\n  {\"DEP\": \"04\", \"REG\": \"93\", \"CHEFLIEU\": \"04070\", \"TNCC\": \"4\", \"NCC\": \"ALPES DE HAUTE PROVENCE\", \"NCCENR\": \"Alpes-de-Haute-Provence\", \"LIBELLE\": \"Alpes-de-Haute-Provence\"},\n  {\"DEP\": \"05\", \"REG\": \"93\", \"CHEFLIEU\": \"05061\", \"TNCC\": \"4\", \"NCC\": \"HAUTES ALPES\", \"NCCENR\": \"Hautes-Alpes\", \"LIBELLE\": \"Hautes-Alpes\"},\n  {\"DEP\": \"06\", \"REG\": \"93\", \"CHEFLIEU\": \"06088\", \"TNCC\": \"4\", \"NCC\": \"ALPES MARITIMES\", \"NCCENR\": \"Alpes-Maritimes\", \"LIBELLE\": \"Alpes-Maritimes\"}\n]\nmd_json = md`\n\\`\\`\\`\n${json_string}\n\\`\\`\\`\n`\n"},{"methodName":"interpret","cellName":"ojs-cell-8","inline":false,"source":"df_json = Inputs.table(raw_json)\n"},{"methodName":"interpretQuiet","source":"shinyInput('info_csv')"},{"methodName":"interpretQuiet","source":"shinyInput('info_json')"}]}
+    {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"viewof info_csv = Inputs.radio(\n  [\"Raw file\", \"File after import\"], {value: \"Raw file\"}\n)\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"info_csv == \"Raw file\" ? html`<div>${md_csv}<div>` : html`<div>${df_csv}<div>`\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"df_csv = Inputs.table(\n  d3.csvParse(raw_csv)\n)\nmd_csv = md`\n\\`\\`\\`\n${raw_csv}\n\\`\\`\\`\n`\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"raw_csv = `DEP,REG,CHEFLIEU,TNCC,NCC,NCCENR,LIBELLE\n01,84,01053,5,AIN,Ain,Ain\n02,32,02408,5,AISNE,Aisne,Aisne\n03,84,03190,5,ALLIER,Allier,Allier\n04,93,04070,4,ALPES DE HAUTE PROVENCE,Alpes-de-Haute-Provence,Alpes-de-Haute-Provence\n05,93,05061,4,HAUTES ALPES,Hautes-Alpes,Hautes-Alpes\n06,93,06088,4,ALPES MARITIMES,Alpes-Maritimes,Alpes-Maritimes\n`\n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"viewof info_json = Inputs.radio(\n  [\"Raw file\", \"File after import\"], {value: \"Raw file\"}\n)\n"},{"methodName":"interpret","cellName":"ojs-cell-6","inline":false,"source":"info_json == \"Raw file\" ? html`<div>${md_json}<div>` : html`<div>${df_json}<div>`\n"},{"methodName":"interpret","cellName":"ojs-cell-7","inline":false,"source":"json_string = `[\n  {\"DEP\": \"01\", \"REG\": \"84\", \"CHEFLIEU\": \"01053\", \"TNCC\": \"5\", \"NCC\": \"AIN\", \"NCCENR\": \"Ain\", \"LIBELLE\": \"Ain\"},\n  {\"DEP\": \"02\", \"REG\": \"32\", \"CHEFLIEU\": \"02408\", \"TNCC\": \"5\", \"NCC\": \"AISNE\", \"NCCENR\": \"Aisne\", \"LIBELLE\": \"Aisne\"},\n  {\"DEP\": \"03\", \"REG\": \"84\", \"CHEFLIEU\": \"03190\", \"TNCC\": \"5\", \"NCC\": \"ALLIER\", \"NCCENR\": \"Allier\", \"LIBELLE\": \"Allier\"},\n  {\"DEP\": \"04\", \"REG\": \"93\", \"CHEFLIEU\": \"04070\", \"TNCC\": \"4\", \"NCC\": \"ALPES DE HAUTE PROVENCE\", \"NCCENR\": \"Alpes-de-Haute-Provence\", \"LIBELLE\": \"Alpes-de-Haute-Provence\"},\n  {\"DEP\": \"05\", \"REG\": \"93\", \"CHEFLIEU\": \"05061\", \"TNCC\": \"4\", \"NCC\": \"HAUTES ALPES\", \"NCCENR\": \"Hautes-Alpes\", \"LIBELLE\": \"Hautes-Alpes\"},\n  {\"DEP\": \"06\", \"REG\": \"93\", \"CHEFLIEU\": \"06088\", \"TNCC\": \"4\", \"NCC\": \"ALPES MARITIMES\", \"NCCENR\": \"Alpes-Maritimes\", \"LIBELLE\": \"Alpes-Maritimes\"}\n]`\nraw_json = [\n  {\"DEP\": \"01\", \"REG\": \"84\", \"CHEFLIEU\": \"01053\", \"TNCC\": \"5\", \"NCC\": \"AIN\", \"NCCENR\": \"Ain\", \"LIBELLE\": \"Ain\"},\n  {\"DEP\": \"02\", \"REG\": \"32\", \"CHEFLIEU\": \"02408\", \"TNCC\": \"5\", \"NCC\": \"AISNE\", \"NCCENR\": \"Aisne\", \"LIBELLE\": \"Aisne\"},\n  {\"DEP\": \"03\", \"REG\": \"84\", \"CHEFLIEU\": \"03190\", \"TNCC\": \"5\", \"NCC\": \"ALLIER\", \"NCCENR\": \"Allier\", \"LIBELLE\": \"Allier\"},\n  {\"DEP\": \"04\", \"REG\": \"93\", \"CHEFLIEU\": \"04070\", \"TNCC\": \"4\", \"NCC\": \"ALPES DE HAUTE PROVENCE\", \"NCCENR\": \"Alpes-de-Haute-Provence\", \"LIBELLE\": \"Alpes-de-Haute-Provence\"},\n  {\"DEP\": \"05\", \"REG\": \"93\", \"CHEFLIEU\": \"05061\", \"TNCC\": \"4\", \"NCC\": \"HAUTES ALPES\", \"NCCENR\": \"Hautes-Alpes\", \"LIBELLE\": \"Hautes-Alpes\"},\n  {\"DEP\": \"06\", \"REG\": \"93\", \"CHEFLIEU\": \"06088\", \"TNCC\": \"4\", \"NCC\": \"ALPES MARITIMES\", \"NCCENR\": \"Alpes-Maritimes\", \"LIBELLE\": \"Alpes-Maritimes\"}\n]\nmd_json = md`\n\\`\\`\\`\n${json_string}\n\\`\\`\\`\n`\n"},{"methodName":"interpret","cellName":"ojs-cell-8","inline":false,"source":"df_json = Inputs.table(raw_json)\n"},{"methodName":"interpretQuiet","source":"shinyInput('info_csv')"},{"methodName":"interpretQuiet","source":"shinyInput('info_json')"}]}
     </script>
     <script type="module">
     if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
@@ -1264,12 +1287,12 @@ telechargerDonnees("BPE_ENS") %&gt;%
         // flash "checked"
         button.classList.add('code-copy-button-checked');
         var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copié");
+        button.setAttribute("title", "Copied!");
         let tooltip;
         if (window.bootstrap) {
           button.setAttribute("data-bs-toggle", "tooltip");
           button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copié");
+          button.setAttribute("data-bs-title", "Copied!");
           tooltip = new bootstrap.Tooltip(button, 
             { trigger: "manual", 
               customClass: "code-copy-button-tooltip",

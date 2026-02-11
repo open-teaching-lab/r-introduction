@@ -8,7 +8,7 @@
 
 <meta name="author" content="NC">
 
-<title>Introduction aux méthodes quantitatives avec  - Reproducible dynamic report generation with  and Quarto</title>
+<title>Introduction aux méthodes quantitatives avec  - Reproducible report generation with  and Quarto</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -99,7 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta name="twitter:title" content="Introduction aux méthodes quantitatives avec  - Reproducible dynamic report generation with  and Quarto">
+<meta name="twitter:title" content="Introduction aux méthodes quantitatives avec  - Reproducible report generation with  and Quarto">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://r-intro.openteachinglab.io/cards/version-light/baby.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -137,12 +137,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-manipuler-des-données">    
         <li>
     <a class="dropdown-item" href="../exercises/r-wrangling.html" rel="" target="">
- <span class="dropdown-text">Importer et manipuler des données avec <i class="fa-brands fa-r-project" aria-label="r-project"></i></span></a>
+ <span class="dropdown-text">Importing and manipulating data with <i class="fa-brands fa-r-project" aria-label="r-project"></i></span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../exercises/geospatial-wrangling.html" rel="" target="">
- <span class="dropdown-text">Manipuler des données spatiales avec <code>sf</code></span></a>
-  </li>  
+        <li class="dropdown-header">exercises/geospatial-wrangling.qmd</li>
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -154,10 +151,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../exercises/ggplot.html" rel="" target="">
  <span class="dropdown-text">Data visualisation with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <code>ggplot2</code></span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../exercises/cartography.html" rel="" target="">
- <span class="dropdown-text">Produire des cartes avec <i class="fa-brands fa-r-project" aria-label="r-project"></i></span></a>
-  </li>  
+        <li class="dropdown-header">exercises/cartography.qmd</li>
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -167,7 +161,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-communiquer">    
         <li>
     <a class="dropdown-item" href="../exercises/quarto.html" rel="" target="">
- <span class="dropdown-text">Reproducible dynamic report generation with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <code>Quarto</code></span></a>
+ <span class="dropdown-text">Reproducible report generation with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <code>Quarto</code></span></a>
   </li>  
     </ul>
   </li>
@@ -176,10 +170,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Evaluation</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-evaluation">    
-        <li>
-    <a class="dropdown-item" href="../exercises/eval.html" rel="" target="">
- <span class="dropdown-text">Evaluation</span></a>
-  </li>  
+        <li class="dropdown-header">exercises/eval.qmd</li>
     </ul>
   </li>
   <li class="nav-item compact">
@@ -212,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Reproducible dynamic report generation with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <code>Quarto</code></h1>
+<h1 class="title">Reproducible report generation with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <code>Quarto</code></h1>
 </div>
 
 
@@ -245,7 +236,7 @@ Check out the <em>slides</em> below or <a href="../slides/quarto.html">click her
 <p>One of the major challenges in research and data analysis is the <strong>transparent</strong> and <strong>reproducible</strong> communication of results, as well as <strong>collaboration</strong>. Reproducible publications offer a solution to this challenge by integrating code, data, and analyses into a format that allows anyone to understand the data processing steps that were implemented and to reproduce the exact results, provided they have the same environment.</p>
 <p><code>Quarto</code>, the tool that succeeded to <code>R Markdown</code>, makes it possible to produce text documents while natively integrating chunks of <code>R</code> code. This helps streamline the writing process of a publication by greatly reducing the number of manual steps required to include graphics or code in a document: rather than having Stata code that generates Excel/Calc outputs which are then integrated into a Word document or transformed into LaTeX tables, we rely on a single source document that contains both the text and the code that produces the outputs of the final document.</p>
 <p>With <code>Quarto</code>, we are able to separate content from presentation. This allows us to focus on the most important aspects: the substance of the analysis.</p>
-<p>An example of such a formatted report is available on <a href="../utils/report.html">this page</a>.</p>
+<p>An example of such a formatted report is available on <a href="../utils/report.qmd">this page</a>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">

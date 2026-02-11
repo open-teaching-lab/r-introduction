@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr-FR"><head>
+<html lang="en-US"><head>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -13,7 +13,7 @@
   <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="NC">
-  <title>Introduction aux méthodes quantitatives avec </title>
+  <title>Introduction aux méthodes quantitatives avec  - Introduction to Quantitative Methods with </title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -391,8 +391,8 @@
     }
   </style>
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<meta name="twitter:title" content="Introduction aux méthodes quantitatives avec ">
-<meta name="twitter:description" content="Chapitre 3: représenter des données avec ggplot2">
+<meta name="twitter:title" content="Introduction aux méthodes quantitatives avec  - Introduction to Quantitative Methods with ">
+<meta name="twitter:description" content="Chapter 3: Representing Data with ggplot2">
 <meta name="twitter:image" content="https://r-intro.openteachinglab.io/cards/version-light/baby.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -401,8 +401,8 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="_extensions/InseeFrLab/onyxia/background.svg" data-background-size="contain" class="quarto-title-block center">
-  <h1 class="title">Introduction aux méthodes quantitatives avec <i class="fa-brands fa-r-project" aria-label="r-project"></i></h1>
-  <p class="subtitle"></p><p><strong><span class="orange">Chapitre 3: représenter des données avec <code>ggplot2</code></span></strong></p><p></p>
+  <h1 class="title">Introduction to Quantitative Methods with <i class="fa-brands fa-r-project" aria-label="r-project"></i></h1>
+  <p class="subtitle"></p><p><strong><span class="orange">Chapter 3: Representing Data with <code>ggplot2</code></span></strong></p><p></p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -425,37 +425,37 @@
 </div>
 <div class="callout-content">
 <ul>
-<li>Exercices associés à ce chapitre <a href="../exercises/r-wrangling.html">ici</a></li>
+<li>Exercises associated with this chapter <a href="../exercises/r-wrangling.html">here</a></li>
 </ul>
 </div>
 </div>
 </div>
 
 <img data-src="../cards/ggplot/drawing.png" class="r-stretch quarto-figure-center"><ul>
-<li><a href="../">Retour à la page principale</a></li>
+<li><a href="../">Back to the main page</a></li>
 </ul>
 </section>
 <section id="introduction-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2>Introduction</h2>
 <ul>
-<li>La visualisation de données synthétise la structure des données
+<li>Data visualization synthesizes data structure
 <ul>
-<li>Guide l’exploration ultérieure de données</li>
-<li>Transmets un message au lecteur</li>
+<li>Guides further data exploration</li>
+<li>Conveys a message to the reader</li>
 </ul></li>
 </ul>
 <div class="fragment">
 <ul>
-<li>2 types de visualisations :
+<li>2 types of visualizations:
 <ul>
-<li>Représentations figées: <code>ggplot2</code></li>
-<li>Représentations HTML: <code>leaflet</code></li>
+<li>Static representations: <code>ggplot2</code></li>
+<li>HTML representations: <code>leaflet</code></li>
 </ul></li>
 </ul>
 </div>
 </section>
-<section id="jeu-de-données-des-exemples" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Jeu de données des exemples</h2>
+<section id="example-dataset" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Example dataset</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(doremifasol)</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(dplyr)</span>
@@ -464,7 +464,7 @@
 <span id="cb1-5"><a href="#cb1-5"></a></span>
 <span id="cb1-6"><a href="#cb1-6"></a>df <span class="ot">&lt;-</span> <span class="fu">telechargerDonnees</span>(<span class="st">"FILOSOFI_DISP_IRIS"</span>, <span class="at">date =</span> <span class="dv">2017</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb1-7"><a href="#cb1-7"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a>  <span class="fu">sample_frac</span>(<span class="fl">0.1</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-8"><a href="#cb1-8"></a>  <span class="fu">sample_frac</span>(<span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -475,11 +475,11 @@
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>Inspiration pour ces slides :</p>
+<p>Inspiration for these slides:</p>
 <ul>
-<li>Documentation collaborative <a href="https://www.book.utilitr.org/"><code>utilitR</code></a> ;</li>
-<li>Manuel <a href="https://ggplot2-book.org"><code>ggplot</code></a> ;</li>
-<li>Cours de <a href="https://larmarange.github.io/guide-R/analyses/ggplot2.html">Joseph Larmarange</a></li>
+<li>Collaborative documentation <a href="https://www.book.utilitr.org/"><code>utilitR</code></a>;</li>
+<li><a href="https://ggplot2-book.org"><code>ggplot</code> manual</a>;</li>
+<li>Course by <a href="https://larmarange.github.io/guide-R/analyses/ggplot2.html">Joseph Larmarange</a></li>
 </ul>
 </div>
 </div>
@@ -487,27 +487,27 @@
 </section>
 <section id="ggplot2" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2><code>ggplot2</code></h2>
-<p><strong>Initialise une figure associée à un jeu de données</strong></p>
+<p><strong>Initialize a figure associated with a dataset</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> DISP_MED17, <span class="at">y =</span> DISP_D917))</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> DISP_MED17, <span class="at">y =</span> DISP_D917))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="ggplot_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
 <section id="ggplot2-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2><code>ggplot2</code></h2>
-<p><strong>Ajoute des couches (<code>+</code>) avec les fonctions <code>geom_*</code></strong></p>
+<p><strong>Add layers (<code>+</code>) with <code>geom_*</code> functions</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">ggplot</span>(df) <span class="sc">+</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> DISP_MED17, <span class="at">y =</span> DISP_D917))</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> DISP_MED17, <span class="at">y =</span> DISP_D917))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="ggplot_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
 <section id="ggplot2-2" class="slide level2 smaller" data-background-image="background.svg" data-background-size="contain">
 <h2><code>ggplot2</code></h2>
-<p><strong>Paramétrise les couches avec <code>aes</code></strong></p>
+<p><strong>Parameterize layers with <code>aes</code></strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4" data-code-line-numbers="2-3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">ggplot</span>(df) <span class="sc">+</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> DISP_MED17, <span class="at">y =</span> DISP_D917, <span class="at">color =</span> DISP_Q117), <span class="at">shape =</span> <span class="dv">3</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> DISP_MED17, <span class="at">y =</span> DISP_D917, <span class="at">color =</span> DISP_Q117), <span class="at">shape =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="ggplot_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"><div class="callout callout-note callout-titled callout-style-default">
@@ -519,10 +519,10 @@
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>Le contrôle de l’esthétique d’une couche <code>geom_</code> se fait :</p>
+<p>Aesthetic control of a <code>geom_</code> layer is done through:</p>
 <ul>
-<li><code>aes</code>: paramètres variables de la couche liés à une variable ;</li>
-<li>hors <code>aes</code>: paramètres qui s’appliquent uniformément sur la couche</li>
+<li><code>aes</code>: variable parameters of the layer linked to a variable;</li>
+<li>outside <code>aes</code>: parameters that apply uniformly to the layer</li>
 </ul>
 </div>
 </div>
@@ -530,30 +530,30 @@
 </section>
 <section id="ggplot2-3" class="slide level2" data-background-image="background.svg" data-background-size="contain">
 <h2><code>ggplot2</code></h2>
-<p><strong>Ajoute des couches (<code>+</code>) avec les fonctions <code>geom_*</code></strong></p>
+<p><strong>Add layers (<code>+</code>) with <code>geom_*</code> functions</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> DISP_MED17, <span class="at">y =</span> DISP_D917)) <span class="sc">+</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> DISP_Q117), <span class="at">shape =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">geom_smooth</span>(<span class="at">color =</span> <span class="st">"red"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">geom_smooth</span>(<span class="at">color =</span> <span class="st">"red"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="ggplot_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
 <section id="ggplot2-4" class="slide level2 smaller" data-background-image="background.svg" data-background-size="contain">
 <h2><code>ggplot2</code></h2>
-<p><strong>Modifier les échelles avec les fonctions <code>scale_</code></strong></p>
+<p><strong>Modify scales with <code>scale_</code> functions</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6" data-code-line-numbers="4-6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> DISP_MED17, <span class="at">y =</span> DISP_D917)) <span class="sc">+</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> DISP_Q117), <span class="at">shape =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">geom_smooth</span>(<span class="at">color =</span> <span class="st">"red"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
 <span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> <span class="fu">unit_format</span>(<span class="at">unit =</span> <span class="st">"k"</span>, <span class="at">scale=</span><span class="fl">1e-3</span>)) <span class="sc">+</span></span>
 <span id="cb6-5"><a href="#cb6-5"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">trans=</span><span class="st">'log'</span>, <span class="at">labels =</span> <span class="fu">unit_format</span>(<span class="at">unit =</span> <span class="st">"k"</span>, <span class="at">scale=</span><span class="fl">1e-3</span>)) <span class="sc">+</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a>  <span class="fu">scale_color_viridis_c</span>()</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-6"><a href="#cb6-6"></a>  <span class="fu">scale_color_viridis_c</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="ggplot_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
 <section id="ggplot2-5" class="slide level2 smaller" data-background-image="background.svg" data-background-size="contain">
 <h2><code>ggplot2</code></h2>
-<p><strong>Modifier les échelles avec les fonctions <code>scale_</code></strong></p>
+<p><strong>Modify scales with <code>scale_</code> functions</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7" data-code-line-numbers="5-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">quartile =</span> <span class="fu">factor</span>(<span class="fu">ntile</span>(DISP_Q117, <span class="dv">4</span>)))</span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> DISP_MED17, <span class="at">y =</span> DISP_D917)) <span class="sc">+</span></span>
@@ -561,13 +561,13 @@
 <span id="cb7-4"><a href="#cb7-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">color =</span> <span class="st">"red"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
 <span id="cb7-5"><a href="#cb7-5"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> <span class="fu">unit_format</span>(<span class="at">unit =</span> <span class="st">"k"</span>, <span class="at">scale=</span><span class="fl">1e-3</span>)) <span class="sc">+</span></span>
 <span id="cb7-6"><a href="#cb7-6"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">trans=</span><span class="st">'log'</span>, <span class="at">labels =</span> <span class="fu">unit_format</span>(<span class="at">unit =</span> <span class="st">"k"</span>, <span class="at">scale=</span><span class="fl">1e-3</span>)) <span class="sc">+</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">option =</span> <span class="st">"turbo"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-7"><a href="#cb7-7"></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">option =</span> <span class="st">"turbo"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="ggplot_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
 <section id="ggplot2-6" class="slide level2 smaller" data-background-image="background.svg" data-background-size="contain">
 <h2><code>ggplot2</code></h2>
-<p><strong>Modifier l’esthétique, à la fin seulement</strong></p>
+<p><strong>Modify aesthetics, only at the end</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8" data-code-line-numbers="8-10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> DISP_MED17, <span class="at">y =</span> DISP_D917)) <span class="sc">+</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> quartile), <span class="at">shape =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
@@ -577,13 +577,13 @@
 <span id="cb8-6"><a href="#cb8-6"></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">option =</span> <span class="st">"turbo"</span>)</span>
 <span id="cb8-7"><a href="#cb8-7"></a></span>
 <span id="cb8-8"><a href="#cb8-8"></a>p <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb8-9"><a href="#cb8-9"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Revenu médian"</span>, <span class="at">y =</span> <span class="st">"9e décile"</span>, <span class="at">color =</span> <span class="st">"Quartile"</span>) <span class="sc">+</span></span>
-<span id="cb8-10"><a href="#cb8-10"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-9"><a href="#cb8-9"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Median income"</span>, <span class="at">y =</span> <span class="st">"9th decile"</span>, <span class="at">color =</span> <span class="st">"Quartile"</span>) <span class="sc">+</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 
 <img data-src="ggplot_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"><div class="footer footer-default">
-<p>Introduction aux méthodes quantitatives avec <i class="fa-brands fa-r-project" aria-label="r-project"></i>, École Normale Supérieure (<a href="../">retour page principale</a>)</p>
+<p>Introduction to Quantitative Methods with <i class="fa-brands fa-r-project" aria-label="r-project"></i>, École Normale Supérieure (<a href="../">back to main page</a>)</p>
 </div>
 </section>
     </div>
@@ -888,12 +888,12 @@
         // flash "checked"
         button.classList.add('code-copy-button-checked');
         var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copié");
+        button.setAttribute("title", "Copied!");
         let tooltip;
         if (window.bootstrap) {
           button.setAttribute("data-bs-toggle", "tooltip");
           button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copié");
+          button.setAttribute("data-bs-title", "Copied!");
           tooltip = new bootstrap.Tooltip(button, 
             { trigger: "manual", 
               customClass: "code-copy-button-tooltip",

@@ -4,9 +4,8 @@
     "items": [
       "/cards/introduction/index.html",
       "/cards/wrangling/index.html",
+      "/cards/stats/index.html",
       "/cards/ggplot/index.html",
-      "/cards/geospatial-wrangling/index.html",
-      "/cards/cartography/index.html",
       "/cards/quarto/index.html"
     ]
   }
