@@ -12,6 +12,6 @@ categories:
   - Introduction
 website: /slides/ggplot.html
 exercise: /exercises/ggplot.html
-order: 3
+order: 4
 ---
 

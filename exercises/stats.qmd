@@ -1,0 +1,85 @@
+---
+title: "Statistics"
+echo: true
+number-sections: true
+---
+
+::: {.badge}
+<a href="https://datalab.sspcloud.fr/launcher/ide/rstudio?name=BoS-Lesotho-rstudio&autoLaunch=false&networking.user.enabled=true" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Test%20via%20SSP%20cloud%20-%20SSPCloud?logo=R&labelColor=black&color=%231965b8" alt="Onyxia"></a><br>
+:::
+
+<details>
+<summary>
+Check out the _slides_ below or [click here](/slides/stats.qmd)
+to view the slides in full screen.
+</summary>
+``` {.yaml code-preview="/slides/stats.qmd"}
+```
+
+</details>
+
+blabla lorem ips
+
+::: {.callout-note}
+This practical session is less guided than usual in order to give you more freedom
+to explore and produce a document.
+:::
+
+## Initializing the document
+
+::: {.callout-tip}
+## Exercice 1: Creating the file
+
+1. Click on `File > New file > Quarto document`:
+    + Provide a title and an author for the report
+    + Choose `HTML` as the output format
+    + Uncheck the `Use visual markdown editor` option
+2. Save the file under the name `report.qmd`.
+3. In the file _header_,
+modify the publication metadata (title, author, date, etc.)
+using some of the options from [this page](https://quarto.org/docs/reference/formats/html.html).
+5. Write a first sentence in the body of the document using
+one or two elements of `Markdown` syntax for formatting.
+For example, make part of the text bold. 
+6. Add a level-2 heading (two `#`) to create an `About` section
+and write one or two sentences in it.
+6. Render the document by clicking on the `Render` button:
+
+![Source: [Hello Quarto! by `Posit`](https://quarto.org/docs/get-started/hello/rstudio.html#rendering) ](https://quarto.org/docs/get-started/hello/images/rstudio-render.png) 
+
+:::
+
+
+::: {.callout-tip}
+## Exercice 2: Inserting `R` outputs
+
+1. Choose one of the chapters we previously worked on
+for which we produced a graph or a map.
+Reuse the example code from the solution (data import and visualizations)
+and insert it into the document.
+
+2. Compile the document. If there are errors, read them carefully and fix them
+in order to obtain a reproducible document.
+
+3. Use the `GT` package to create a nice table,
+for example a descriptive statistics table (a mean, for instance).
+:::
+
+
+::: {.callout-tip}
+## Exercice 3: Styling
+
+Customize the output to obtain an aesthetically pleasing document.
+To do so, you may use a template.
+
+:::
+
+
+::: {.callout-note}
+On a `Mac` {{< fa brands apple >}}, some useful characters
+are more difficult to type. For example, `|`
+can be obtained using the following shortcut:
+<kbd>Shift</kbd> + <kbd>Option</kbd> + <kbd>L</kbd>
+:::
+
+

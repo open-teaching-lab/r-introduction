@@ -11,6 +11,6 @@ categories:
   - Introduction
 website: /slides/cartography.html
 exercise: /exercises/cartography.html
-order: 5
+order: 6
 ---
 
