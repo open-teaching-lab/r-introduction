@@ -121,6 +121,8 @@ We work on a `tibble` (augmented _dataframe_)
 ```{r importing and preparing data}
 #| eval: true
 #| echo: false
+#| warning: false
+#| message: false
 install.packages("eurostat")
 library(eurostat)
 library(dplyr)
