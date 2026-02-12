@@ -3,6 +3,7 @@ project:
   render:
     - /slides/introduction.qmd
     - /slides/wrangling.qmd
+    - /slides/stats.qmd
     - /slides/ggplot.qmd
     - /slides/geospatial.qmd
     - /slides/cartography.qmd
@@ -15,22 +16,22 @@ project:
     - "CNAME"
 
 website:
-  title: "Introduction aux méthodes quantitatives avec {{< fa brands r-project >}}"
+  title: "Introduction to quantitative methods with {{< fa brands r-project >}}"
   navbar:
     left:
       - href: index.qmd
         text: Home
       - href: exercises/r-base.html
         text: Introduction
-      - text: "Manipuler des données"
+      - text: "Manipulate data"
         menu:
           - exercises/r-wrangling.qmd
           - exercises/geospatial-wrangling.qmd
-      - text: "Visualiser"
+      - text: "Visualize"
         menu:
           - exercises/ggplot.qmd
           - exercises/cartography.qmd
-      - text: "Communiquer"
+      - text: "Communicate"
         menu:
           - exercises/quarto.qmd
       - text: "Evaluation"
@@ -50,7 +51,8 @@ format:
     code-annotations: hover
     code-link: true
 
-author: NC
+author: Clara Baudry, Nathan Randriamanana
+
 
 
 #knitr:
