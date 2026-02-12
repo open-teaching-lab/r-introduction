@@ -119,7 +119,7 @@ focus on two types:
 
 In practice, the former are a special case of the latter. Unlike other languages,
 {{< fa brands r-project >}} doesn't attempt to automatically constrain whole numbers to be
-integers (_integers_). This is convenient but on large data volumes it can
+integers. This is convenient but on large data volumes it can
 be problematic because _doubles_ are heavier than _ints_. 
 
 Generally, we use the `class` function to display the type of a {{< fa brands r-project >}} object and
@@ -151,7 +151,7 @@ as.numeric(
 ```
 :::
 
-_Floats_ can also be written in scientific notation:
+_Doubles_ can also be written in scientific notation:
 ```{r}
 #| echo: true
 2e3
@@ -163,7 +163,7 @@ class(2e3)
 ![](img/verybadtrip.gif){fig-align="center"}
 
 Like any computer language, {{< fa brands r-project >}} is first and foremost
-a calculator. We're saved, we can therefore do additions:
+a calculator. We can therefore do additions:
 ```{r}
 #| echo: true
 # Addition
@@ -279,12 +279,12 @@ c(1,20,2) - c(1,20)
 
 ## Character strings (_characters_) {#characters}
 
-Character strings (or *strings*) are used to store textual information.
+Character *strings* are used to store textual information.
 More precisely, they can store any [Unicode](https://en.wikipedia.org/wiki/Unicode) character, which includes letters from different languages, but also punctuation, numbers, smileys, etc.
 
 ### Creating a _string_
 
-To create a character string (_string_), we
+To create a character _string_, we
 can use either quotes or
 apostrophes interchangeably. 
 ```{r}
@@ -300,7 +300,7 @@ Be careful about mixing the two!
 ```{r}
 #| echo: true
 #| error: true
-print('the apostrophe, what a catastrophe')
+print('it's the apostrophe, what a catastrophe')
 ```
 
 The second apostrophe is understood as the end of the _string_,
@@ -309,7 +309,7 @@ and {{< fa brands r-project >}} doesn't know how to interpret the rest of the se
 We must therefore vary as needed:
 ```{r}
 #| echo: true
-"the apostrophe, no problem" # <1>
+"it's the apostrophe, no problem"
 ```
 1. This time, the apostrophe `'` is properly nested within the quotes that
 delimit our _string_.
@@ -327,7 +327,7 @@ characters of this sort by escaping them with backslashes `\`:
 ```{r}
 #| echo: true
 "quotation marks, \"no problem\"" # <1>
-'the apostrophe, no problem' # <1>
+'it\'s the apostrophe, no problem' # <1>
 ```
 1. `\` allows {{< fa brands r-project >}} to understand that the apostrophe
 or quotation mark is part of the character string and not its delimiter.
@@ -486,11 +486,10 @@ However we'll see in the next chapters
 how to integrate this principle into
 a more general sequence of operations thanks to the [`dplyr`](https://dplyr.tidyverse.org/reference/filter.html) package.
 
-## Factors (_factors_) {#factors}
+## Factors {#factors}
 
-Factors (_factors_) are used to represent
-__categorical variables__,
-i.e., variables that take a finite and predetermined number of levels or categories.
+Factors are used to represent __categorical variables__,
+i.e. variables that take a finite and predetermined number of levels or categories.
 
 To convert a numeric or text vector to a factor, we use
 the `factor` function:
@@ -591,7 +590,7 @@ We must therefore always pay close attention that the variable type is indeed wh
 #| echo: true
 x <- 3
 x <- "blabla"
-class(x) #<1>
+class(x) # <1>
 ```
 1. `x` is no longer a _numeric_ but a _character_. Watch out for upcoming operations on `x`!
 :::
@@ -674,7 +673,7 @@ all values except certain ones. For this, we use negative indices
 x[-3] # <1>
 x[c(-3, -1)] # <2>
 ```
-1. We select all data except the first element
+1. We select all data except the third element
 2. We select all data except the first and third elements (order doesn't matter)
 
 However, it's not good practice to use 
@@ -783,6 +782,7 @@ x <- 3
 x <- "test"
 x <- 3.5
 ```
+
 ```{r}
 #| output: false
 #| code-fold: true
@@ -816,26 +816,7 @@ nchar(paste(x1, x2, x3, sep = ""))
 :::{.callout-tip}
 ## Exercise 4
 
-Municipality codes are standardized identifiers,
-specific to each municipality (which differentiates them from
-postal codes). They come from
-the [official code](https://www.insee.fr/fr/information/6800675) that
-we'll discover later?
-
-[^cognote]: The rest of the course will be an opportunity to amply use this dataset. 
-
-<details>
-<summary>
-Help if you don't see where the problem is
-</summary>
-Test on the first departments, for example `02350`.
-</details>
-:::
-
-:::{.callout-tip}
-## Exercise 5
-
-Here's a list of municipality codes from the [Official Geographic Code (COG)]((https://www.insee.fr/fr/information/6800675))
+Here's a list of municipality codes from the [French Official Geographic Code]((https://www.insee.fr/fr/information/6800675))
 ```{r}
 #| echo: true
 municipality_list <- c(
@@ -866,7 +847,7 @@ length(
 :::
 
 ::: {.callout-tip}
-## Exercise 6
+## Exercise 5
 
 Remove superfluous spaces at the beginning and end of the following string:
 ```{r}
@@ -874,6 +855,7 @@ Remove superfluous spaces at the beginning and end of the following string:
 #| output: false
 a <- "    A very badly formatted string.         "
 ```
+
 ```{r}
 #| code-fold: true
 #| code-summary: "Solution"
@@ -924,21 +906,29 @@ to more flexible types, more useful for data analysis where
 variables are of diverse types. 
 
 :::{.callout-tip}
-## Exercise 7
+## Exercise 6
 
 Given a matrix:
 ```{r}
 #| echo: true
 X <- matrix(letters[1:20], nrow = 4, ncol = 5)
 ```
+
+1. Select the leftmost element of our matrix (first row, first column)
+2. Select the entire first row
+3. Select the entire first column
+4. Select elements at the intersection of:
+    + 2nd and 3rd rows
+    + 1st and 3rd columns
+
 ```{r}
 #| code-fold: true
 #| code-summary: "Solution"
 #| output: false
 X[1,1] # <1>
-X[1,]  # <2>
-X[,1]  # <3>
-X[2:3,c(1,3)] #<4>
+X[1,] # <2>
+X[,1] # <3>
+X[2:3,c(1,3)] # <4>
 ```
 1. Select the leftmost element of our matrix (first row, first column)
 2. Select the entire first row
@@ -967,7 +957,7 @@ use a special type of list: the **_dataframe_**.
 ![Proposed illustration of the list principle with `R` by [Dall-E-2](https://openai.com/dall-e-2)](img/boites.png){width=50% fig-align="center"}
 
 :::{.callout-tip}
-## Exercise 8
+## Exercise 7
 
 Here's a list illustrating the principle of storing
 heterogeneous data in the same object:
@@ -995,7 +985,7 @@ of your `municipalities` element
 #| code-summary: "Solution"
 #| output: false
 
-#Question 1: display the list
+# Question 1: display the list
 my_list
 # Question 2: Access the second element of the list
 my_list[[2]]
@@ -1006,7 +996,7 @@ my_list[['municipalities']] <- c(
   )
 my_list[['municipalities']]  
 # Question 4: perform an operation 
-my_list[['departments']] <- substr(my_list[['municipalities']] , start = 1, stop = 2)
+my_list[['departments']] <- substr(my_list[['municipalities']], start = 1, stop = 2)
 ```
 
 :::
@@ -1016,7 +1006,7 @@ operations on each element of our list.
 This is called looping over our list.
 
 :::{.callout-tip}
-## Exercise 9
+## Exercise 8
 
 In this exercise, we'll discover how to apply the same function
 to our list's elements using `lapply`.
@@ -1030,11 +1020,12 @@ to our list's elements using `lapply`.
 #| output: false
 
 # Question 1
-list_length <- length(my_list)
+length(my_list[[1]])
 # Question 2
-lapply(my_list, length)
+list_length <- length(my_list)
+# Question 3
 as.numeric(
-    lapply(my_list, function(l) typeof(l) == "double")
+  lapply(my_list, function(l) typeof(l) == "double")
 )
 ```
 
@@ -1055,7 +1046,7 @@ lapply(my_number_list, sum)
 ## _Dataframes_
 
 This is the central object of data analysis with {{< fa brands r-project >}}. 
-These objects indeed allow representing in table form (i.e., a two-dimensional object) data of both quantitative nature (numeric variables) and qualitative (character or factor type variables).
+These objects indeed allow representing in table form (i.e. a two-dimensional object) data of both quantitative nature (numeric variables) and qualitative (character or factor type variables).
 
 ![Illustration of the _dataframe_ principle (borrowed from H. Wickham)](https://d33wubrfki0l68.cloudfront.net/6f1ddb544fc5c69a2478e444ab8112fb0eea23f8/91adc/images/tidy-1.png)
 
@@ -1111,7 +1102,7 @@ Therefore, `data.frame`s borrow their characteristics sometimes from lists,
 sometimes from matrices as the following exercise shows:
 
 ::: {.callout-tip}
-## Exercise 10
+## Exercise 9
 
 - Check the dimension of dataframe `df`
 - Count the number of rows and columns of `df`
@@ -1151,7 +1142,7 @@ class(df$var1)
 ```
 
 ::: {.callout-tip}
-## Exercise 11
+## Exercise 10
 
 - Create a `var4` column in our dataset equal to the square of `var1`
 - Create a `var5` column in our dataset concatenating the first two
