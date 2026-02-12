@@ -13,7 +13,7 @@
   <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Clara Baudry, Nathan Randriamanana">
-  <title>Introduction to quantitative methods with  - Introduction to Quantitative Methods with </title>
+  <title>Introduction to quantitative methods with </title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -31,6 +31,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link rel="stylesheet" href="_extensions/InseeFrLab/onyxia/logo.css">
@@ -326,8 +391,8 @@
     }
   </style>
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<meta name="twitter:title" content="Introduction to quantitative methods with  - Introduction to Quantitative Methods with ">
-<meta name="twitter:description" content="Chapter 6: Introduction to Reproducible Publications with quarto">
+<meta name="twitter:title" content="Introduction to quantitative methods with ">
+<meta name="twitter:description" content="Chapter 3: Describe and infer data">
 <meta name="twitter:image" content="https://r-intro.openteachinglab.io/cards/version-light/baby.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -336,8 +401,8 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="_extensions/InseeFrLab/onyxia/background.svg" data-background-size="contain" class="quarto-title-block center">
-  <h1 class="title">Introduction to Quantitative Methods with <i class="fa-brands fa-r-project" aria-label="r-project"></i></h1>
-  <p class="subtitle"></p><p><strong><span class="orange">Chapter 6: Introduction to Reproducible Publications with <code>quarto</code></span></strong></p><p></p>
+  <h1 class="title">Introduction to quantitative methods with <i class="fa-brands fa-r-project" aria-label="r-project"></i></h1>
+  <p class="subtitle"></p><p><strong><span class="orange">Chapter 3: Describe and infer data</span></strong></p><p></p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -348,8 +413,8 @@
 </div>
 
 </section>
-<section id="introduction" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Introduction</h2>
+<section id="introductory-chapter" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Introductory Chapter</h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -360,99 +425,381 @@
 </div>
 <div class="callout-content">
 <ul>
-<li>Exercises associated with this chapter <a href="../exercises/quarto.html">here</a></li>
+<li>Exercises associated with this chapter <a href="../exercises/stats.html">here</a></li>
 </ul>
 </div>
 </div>
 </div>
 
-<img data-src="../cards/quarto/scroll.png" class="r-stretch quarto-figure-center"><ul>
+<img data-src="../cards/stats/teacher_stats.png" class="r-stretch quarto-figure-center"><ul>
 <li><a href="../">Back to the main page</a></li>
 </ul>
 </section>
-<section id="challenges" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Challenges</h2>
+<section id="course-outline" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Course outline</h2>
 <ul>
-<li>Produce <span class="orange"><strong>reproducible studies</strong></span> by integrating code and text in the same document</li>
+<li><span class="emoji" data-emoji="one">1️⃣</span> Descriptive statistics and data analysis strategies</li>
+<li><span class="emoji" data-emoji="two">2️⃣</span> Inferential statistics through survey use cases</li>
 </ul>
-<div class="fragment">
+</section>
+<section>
+<section id="the-logic-of-data-aggregation" class="title-slide slide level1 center" data-background-image="background.svg" data-background-size="contain">
+<h1><span class="emoji" data-emoji="one">1️⃣</span> The logic of data aggregation</h1>
+
+</section>
+<section id="the-logic-of-data-aggregation-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>The logic of data aggregation</h2>
+<p>The operations we practiced are part of a standard industry pattern called <a href="https://yundai-rbootcamp.share.connect.posit.cloud/split-apply-combine.html"><strong>Split-Apply-Combine</strong></a>. It is the most robust way to solve complex data problems by decomposing them.</p>
 <ul>
-<li>The complete generation of the study is contained in a <span class="orange"><strong>single project</strong></span></li>
+<li><strong>Split</strong>: Break a large dataset into manageable, independent pieces (e.g., by strata, region, or gender).</li>
+<li><strong>Apply</strong>: Operate on each piece independently (calculate a mean, fit a model, or generate a sequence).</li>
+<li><strong>Combine</strong>: Reassemble the results into a structured output (like a summary table).</li>
 </ul>
+</section>
+<section id="from-concept-to-code" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>From Concept to Code</h2>
+<p>In the <code>tidyverse</code>, this strategy is mapped to specific, highly optimized functions:</p>
+<ul>
+<li><strong><code>group_by()</code></strong>: The <strong>Split</strong> operator. It partitions the dataset into logical subsets.</li>
+<li><strong><code>summarise()</code></strong>: The <strong>Apply &amp; Combine</strong> operator. It reduces many rows into a single row of statistical indicators.</li>
+<li><strong><code>across()</code></strong>: The <strong>Scaling</strong> operator. It ensures that the exact same statistical treatment is applied consistently across multiple columns.</li>
+</ul>
+</section>
+<section id="practical-aggregation" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Practical Aggregation</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># Standard descriptive pipeline</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>  <span class="fu">group_by</span>(category) <span class="sc">%&gt;%</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb1-7"><a href="#cb1-7"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb1-8"><a href="#cb1-8"></a>    <span class="fu">across</span>(<span class="fu">c</span>(income, age), <span class="fu">list</span>(<span class="at">avg =</span> <span class="sc">~</span><span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">med =</span> <span class="sc">~</span><span class="fu">median</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)))</span>
+<span id="cb1-9"><a href="#cb1-9"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="fragment">
-<ul>
-<li><span class="orange"><strong>Limit the risk of errors</strong></span> due to manual actions</li>
-</ul>
+<p><strong>Why this matters for statisticians ?</strong></p>
 </div>
-<div class="fragment">
-<ul>
-<li>Native management of <span class="orange"><strong>different formats</strong></span> for the final document (pdf, html, odt, etc.)</li>
-</ul>
+<div class="callout-content">
+<p>Standardization is the bedrock of valid statistical reporting.</p>
+<ol type="1">
+<li>across() ensures that the same treatment (handling of NAs, rounding, or specific estimators) is applied identically to every variable.</li>
+<li>This workflow creates a clear link between raw data and final indicators, which is essential for auditability.</li>
+</ol>
+</div>
+</div>
 </div>
 </section>
-<section id="r-markdown" class="slide level2 smaller" data-background-image="background.svg" data-background-size="contain">
-<h2><code>R Markdown</code></h2>
-<div>
+<section id="a-zoom-on-summarise" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>A zoom on <code>summarise()</code></h2>
+<p>The <code>summarise()</code> function is the primary tool for data reduction. It transforms a detailed table into a concise summary of statistical indicators.</p>
 <ul>
-<li class="fragment"><code>R Markdown</code> is an <code>R</code> <em>package</em> that allows linking
+<li><strong>Aggregation Logic</strong>: It collapses multiple rows into a single result per group.</li>
+<li><strong>Versatility</strong>: You can calculate several statistics at once (Mean, Median, Sum, etc.).</li>
+<li><strong>Functional Chain</strong>: It is almost always paired with <code>group_by()</code> to provide comparative insights across categories.</li>
+</ul>
+</section>
+<section id="common-statistical-functions" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Common Statistical Functions</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Category</th>
+<th style="text-align: left;">R Functions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Central Tendency</strong></td>
+<td style="text-align: left;"><code>mean()</code>, <code>median()</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Dispersion</strong></td>
+<td style="text-align: left;"><code>sd()</code>, <code>var()</code>, <code>IQR()</code>, <code>min()</code>, <code>max()</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Position</strong></td>
+<td style="text-align: left;"><code>quantile(x, probs = 0.75)</code>, <code>first()</code>, <code>last()</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Count</strong></td>
+<td style="text-align: left;"><code>n()</code> (observations), <code>n_distinct()</code> (unique values)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="statistical-estimation" class="slide level2 smaller scrollable" data-background-image="background.svg" data-background-size="contain">
+<h2>Statistical estimation</h2>
+<p>The power of <code>summarise()</code> lies in its ability to combine multiple estimators within a single reduction step. You can use standard R functions, library-specific tools, or even user-defined functions.</p>
+<h3 class="smaller scrollable" data-background-image="background.svg" data-background-size="contain" id="summarize-core-estimators-reference">summarize() core estimators reference</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Statistic</th>
+<th style="text-align: center;">R Function</th>
+<th style="text-align: left;">Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Mean</strong></td>
+<td style="text-align: center;"><code>mean()</code></td>
+<td style="text-align: left;">Central tendency (sensitive to outliers)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Median</strong></td>
+<td style="text-align: center;"><code>median()</code></td>
+<td style="text-align: left;">Robust central tendency</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Standard Deviation</strong></td>
+<td style="text-align: center;"><code>sd()</code></td>
+<td style="text-align: left;">Dispersion/Spread</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Extrema</strong></td>
+<td style="text-align: center;"><code>min()</code>, <code>max()</code></td>
+<td style="text-align: left;">Range of the distribution</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Position</strong></td>
+<td style="text-align: center;"><code>first()</code>, <code>last()</code></td>
+<td style="text-align: left;">Boundary observations</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Count</strong></td>
+<td style="text-align: center;"><code>n()</code></td>
+<td style="text-align: left;">Sample size (<span class="math inline">\(n\)</span>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Uniqueness</strong></td>
+<td style="text-align: center;"><code>n_distinct()</code></td>
+<td style="text-align: left;">Cardinality check</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Summation</strong></td>
+<td style="text-align: center;"><code>sum()</code>, <code>cumsum()</code></td>
+<td style="text-align: left;">Total and cumulative flows</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="summarize-example-of-practical-implementation" class="slide level2 smaller scrollable" data-background-image="background.svg" data-background-size="contain">
+<h2>summarize() example of practical implementation</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># Summary of the entire table</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb2-6"><a href="#cb2-6"></a>    <span class="at">avg_income =</span> <span class="fu">mean</span>(income, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-7"><a href="#cb2-7"></a>    <span class="at">total_obs =</span> <span class="fu">n</span>()</span>
+<span id="cb2-8"><a href="#cb2-8"></a>  )</span>
+<span id="cb2-9"><a href="#cb2-9"></a></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="co"># Strategic aggregation by group</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a>  <span class="fu">group_by</span>(education_level) <span class="sc">%&gt;%</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb2-14"><a href="#cb2-14"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb2-15"><a href="#cb2-15"></a>    <span class="at">med_age =</span> <span class="fu">median</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-16"><a href="#cb2-16"></a>    <span class="at">max_seniority =</span> <span class="fu">max</span>(seniority, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-17"><a href="#cb2-17"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip: Missing Values</strong></p>
+</div>
+<div class="callout-content">
+<p>In R, most statistical functions return NA if a single missing value is present. Always include na.rm = TRUE to ensure your summary is computed on the available data.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="mutate-vs-summarise" class="slide level2 smaller scrollable" data-background-image="background.svg" data-background-size="contain">
+<h2><code>mutate()</code> vs <code>summarise()</code></h2>
+<p>Both functions create new variables, but they operate on different “dimensions” of your data.</p>
+<h3 data-background-image="background.svg" data-background-size="contain" id="the-key-difference">The key difference</h3>
+<table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Function</th>
+<th style="text-align: left;">Action</th>
+<th style="text-align: left;">Resulting row count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong><code>mutate()</code></strong></td>
+<td style="text-align: left;"><strong>Transformation</strong></td>
+<td style="text-align: left;">Remains <strong>unchanged</strong> (<span class="math inline">\(n = N\)</span>).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong><code>summarise()</code></strong></td>
+<td style="text-align: left;"><strong>Aggregation</strong></td>
+<td style="text-align: left;">Reduced to <strong>one row</strong> per group (<span class="math inline">\(n = G\)</span>).</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="mutate-vs-summarise-1" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2><code>mutate()</code> vs <code>summarise()</code></h2>
+<h3 class="smaller scrollable" data-background-image="background.svg" data-background-size="contain" id="which-one-should-i-use">Which one should I use?</h3>
+<p>A simple rule of thumb:</p>
 <ul>
-<li class="fragment"><span class="orange"><strong>Text</strong></span> in <code>Markdown</code> format</li>
-<li class="fragment"><span class="orange"><strong>Code</strong></span> in <code>R</code> that can be executed and whose outputs can be integrated into the text</li>
+<li><strong>Use <code>mutate()</code></strong> if you want to keep the individual granularity.
+<ul>
+<li><em>Example</em>: Calculating the tax amount for each household or the log of income. Each person stays in the table.</li>
+</ul></li>
+<li><strong>Use <code>summarise()</code></strong> if you want to move to a higher level of analysis.
+<ul>
+<li><em>Example</em>: Calculating the average income per region. Individual households “disappear” to form the regional indicator.</li>
 </ul></li>
 </ul>
-</div>
-<div class="fragment">
+<h3 class="smaller scrollable" data-background-image="background.svg" data-background-size="contain" id="the-hybrid-case-grouped-mutate">The hybrid case: grouped mutate</h3>
+<p>Statisticians frequently use <code>group_by() %&gt;% mutate()</code> to perform <strong>standardization</strong> or <strong>relative positioning</strong> without losing the individual granularity.</p>
 <ul>
-<li><span class="orange"><strong>Separation of content and form</strong></span> of the document</li>
+<li><strong><code>summarise()</code></strong>: You calculate the mean of the group. The individuals are gone.</li>
+<li><strong><code>mutate()</code></strong>: You calculate the mean of the group and <em>broadcast</em> it back to every individual in that group.</li>
 </ul>
-<div>
+</section></section>
+<section>
+<section id="the-specificity-of-survey-data" class="title-slide slide level1 scrollable center" data-background-image="background.svg" data-background-size="contain">
+<h1><span class="emoji" data-emoji="two">2️⃣</span> The specificity of survey data</h1>
+
+</section>
+<section id="the-specificity-of-survey-data-1" class="slide level2 smaller scrollable" data-background-image="background.svg" data-background-size="contain">
+<h2>The specificity of survey data</h2>
 <ul>
-<li class="fragment">A document is <span class="orange"><strong>compiled</strong></span> in two steps
+<li><strong>Granular nature</strong>: One observation is not a single individual; it represents a specific portion of the target population.</li>
+<li><strong><i class="fa-solid fa-scale-balanced" aria-label="scale-balanced"></i> Sampling weights</strong>: Essential to restore the representativeness of the target population.</li>
+<li><strong>The bias risk</strong>: Standard arithmetic functions (<code>mean()</code>, <code>sd()</code>) assume equal probability. On weighted data, they produce <strong>scientifically biased results</strong>.</li>
+<li><strong>Horvitz-Thompson</strong>: Every observation <span class="math inline">\(i\)</span> must be weighted by the inverse of its inclusion probability: <span class="math inline">\(w_i = 1/\pi_i\)</span>. <span class="math display">\[\hat{Y}_{HT} = \sum_{s \in S}\frac{y_s}{\pi_s}\]</span></li>
+</ul>
+</section>
+<section id="the-specificity-of-survey-data-2" class="slide level2 scrollable" data-background-image="background.svg" data-background-size="contain">
+<h2>The specificity of survey data</h2>
 <ul>
-<li class="fragment"><span class="green2"><strong><em>knit</em></strong></span>: the <code>knitr</code> package transforms the text and <code>R</code> outputs into a standard <code>Markdown</code> document</li>
-<li class="fragment"><span class="green2"><strong><em>convert</em></strong></span>: the <code>pandoc</code> software transforms the <code>.md</code> document into a standard output format (html, pdf, etc.)</li>
+<li><strong>The weighting challenge</strong>: Using weights is not a default behavior in R; standard functions often fail to represent the distribution correctly.</li>
+<li><strong>CDF Complexity</strong>: Granularity makes it difficult to estimate the <strong>Cumulative Distribution Function (CDF)</strong>, which is the backbone of:
+<ul>
+<li><strong>Quantiles</strong> (Median, Deciles).</li>
+<li><strong>Inequality Indices</strong> (Gini, Atkinson).</li>
 </ul></li>
 </ul>
+</section>
+<section id="point-estimates-with-hmisc" class="slide level2 smaller scrollable" data-background-image="background.svg" data-background-size="contain">
+<h2>Point Estimates with <code>Hmisc</code></h2>
+<p>The <code>Hmisc</code> package provides the simplest toolkit for calculating standard weighted indicators (Mean, Variance, Quantile, Rank).</p>
+<ul>
+<li><strong>Optimized for <code>dplyr</code></strong>: These functions are designed to fit perfectly within a <code>summarise()</code> pipeline.</li>
+<li><strong>Naming Logic</strong>: Functions carry the same name as Base R, prefixed with <code>wtd.</code> (weighted).</li>
+<li><strong>The <code>weights</code> Argument</strong>: Unlike standard functions, you must explicitly pass your weight variable.</li>
+</ul>
+</section>
+<section id="at-least-two-ways-to-use-hmisc" class="slide level2 smaller scrollable" data-background-image="background.svg" data-background-size="contain">
+<h2>At least two ways to use <code>Hmisc</code></h2>
+<h3 class="smaller scrollable" data-background-image="background.svg" data-background-size="contain" id="the-base-r-approach-with">The Base R approach (<code>with</code>)</h3>
+<p>Ideal for quick, one-off calculations on a specific variable.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(Hmisc)</span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co"># Basic weighted statistics</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="fu">with</span>(t, <span class="fu">wtd.mean</span>(y, <span class="at">weights =</span> p))     <span class="co"># Mean</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="fu">with</span>(t, <span class="fu">wtd.std</span>(y, <span class="at">weights =</span> p))      <span class="co"># Standard Deviation</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="fu">with</span>(t, <span class="fu">wtd.quantile</span>(y, <span class="at">weights =</span> p, <span class="at">probs =</span> <span class="fl">0.5</span>, <span class="at">type =</span> <span class="st">'quantile'</span>)) <span class="co"># Median</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h3 class="smaller scrollable" data-background-image="background.svg" data-background-size="contain" id="the-tidyverse-approach-summarise">The Tidyverse approach (summarise)</h3>
+<p>Best for producing comparative tables across different population groups.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Result: A tibble with the median for each category</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>stat_table <span class="ot">&lt;-</span> t <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">group_by</span>(categorie) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb4-5"><a href="#cb4-5"></a>    <span class="at">mediane =</span> <span class="fu">wtd.quantile</span>(y, <span class="at">weights =</span> p, <span class="at">probs =</span> <span class="fl">0.5</span>, <span class="at">type =</span> <span class="st">'quantile'</span>)</span>
+<span id="cb4-6"><a href="#cb4-6"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="estimating-value-and-variance" class="slide level2 smaller scrollable" data-background-image="background.svg" data-background-size="contain">
+<h2>Estimating value and variance</h2>
+<p>Any estimate based on survey data is surrounded by <strong>uncertainty</strong>. Sampling theory provides the mathematical framework to quantify this margin of error.</p>
+<ul>
+<li><strong>The challenge</strong>: To calculate the correct variance, one needs the point estimate <em>and</em> the details of the sampling design.</li>
+<li><strong>The tool</strong>: The <strong><code>survey</code></strong> package is the industry standard in R. It handles both simple and complex sampling plans.</li>
+</ul>
+</section>
+<section id="accessing-variance-information" class="slide level2 smaller scrollable" data-background-image="background.svg" data-background-size="contain">
+<h2>Accessing variance information</h2>
+<p>In practice, calculating the true variance can be difficult due to data availability:</p>
+<ol type="1">
+<li><strong>Standard approach</strong>: Requires variables for <strong>stratification</strong> and <strong>clustering</strong>. These are often confidential and removed from public datasets.</li>
+<li><strong>Replicate weights approach</strong>: Some producers provide “replicate weights” (e.g., Bootstrap or Jackknife weights).
+<ul>
+<li><em>Examples</em>: Common in US data (SCF), or specific European/Insee surveys (HFCS, HVP).</li>
+<li><em>Benefit</em>: Allows for valid variance estimation even without knowing the internal strata.</li>
+</ul></li>
+</ol>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Why use the <code>survey</code> package?</strong></p>
+</div>
+<div class="callout-content">
+<p>It is specifically designed to handle both approaches. Whether you have the stratification variables or replicate weights, <code>survey</code> ensures your <strong>standard errors</strong> and <strong>confidence intervals</strong> are scientifically valid.</p>
+</div>
 </div>
 </div>
 </section>
-<section id="quarto" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2><code>Quarto</code></h2>
-<ul>
-<li><code>Quarto</code> is the successor to <code>R Markdown</code></li>
-</ul>
-<div class="fragment">
-<ul>
-<li><code>Quarto</code> supports <span class="orange"><strong>different computation engines</strong></span> (knitr, Jupyter, Observable…) which makes it natively <span class="orange"><strong>multi-language</strong></span> (R, Python, JavaScript…)</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li>The functioning of both systems remains very similar</li>
-</ul>
-</div>
+<section id="national-production-and-advanced-variance" class="slide level2 smaller scrollable" data-background-image="background.svg" data-background-size="contain">
+<h2>National production and advanced variance</h2>
+<p>In a professional or national statistical context, estimating variance must reflect the entire data processing chain, not just the initial sampling.</p>
 </section>
-<section id="anatomy-of-a-reproducible-document" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Anatomy of a Reproducible Document</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="https://inseefrlab.github.io/formation-bonnes-pratiques-git-R/slides/img/qmd.png" height="500"></p>
-</figure>
-</div>
-</section>
-<section id="additional-resources" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>Additional Resources</h2>
+<section id="the-challenge-of-real-world-variance" class="slide level2 smaller scrollable" data-background-image="background.svg" data-background-size="contain">
+<h2>The challenge of “real-world” variance</h2>
+<p>General tools often overlook two critical steps that significantly impact the final precision of indicators:</p>
 <ul>
-<li>The <a href="https://rmarkdown.rstudio.com/lesson-1.html">official <code>R Markdown</code> documentation</a></li>
-<li>The <a href="https://www.book.utilitr.org/rmarkdown.html"><code>UtilitR</code> guide on <code>R Markdown</code></a></li>
-<li>The <a href="https://quarto.org/">official <code>quarto</code> documentation</a></li>
+<li><strong>Total non-response</strong>: The uncertainty added when adjusting weights to compensate for missing participants.</li>
+<li><strong>Calibration (Calage)</strong>: Re-weighting the sample to match known population totals (census), which mathematically alters the variance.</li>
 </ul>
+</section>
+<section id="the-case-of-france-gustave" class="slide level2 smaller scrollable" data-background-image="background.svg" data-background-size="contain">
+<h2>The case of France: <code>gustave</code></h2>
+<p>To address these specificities, <strong>Insee</strong> (the French National Statistical Institute) developed the <strong><code>gustave</code></strong> package. It is now the internal standard for official French statistics.</p>
+<ul>
+<li><strong>Objective</strong>: Account for the impact of non-response and calibration on precision.</li>
+<li><strong>Key function</strong>: <code>qvar()</code>, which allows for variance estimation tailored to the sophisticated treatments applied to national surveys.</li>
+</ul>
+</section>
+<section id="best-practices-for-survey-analysis" class="slide level2 smaller scrollable" data-background-image="background.svg" data-background-size="contain">
+<h2>Best practices for survey analysis</h2>
+<p>Survey estimation is primarily about using weights correctly to reflect the national population. For most descriptive tasks, the <code>Hmisc</code> package is more than enough.</p>
+<p>However, if you need to calculate <strong>precision</strong> (e.g., to build confidence intervals for a report on poverty or health), you face two practical scenarios:</p>
+<ul>
+<li><p><strong>Scenario 1: Using replicate weights</strong> If your dataset includes replicate weights (which summarize the entire sampling process), the <strong><code>survey</code></strong> package is your best tool. This is common in many international datasets.</p></li>
+<li><p><strong>Scenario 2: Analytical variance estimation</strong> If you need to estimate variance analytically based on the specific sampling design (as is the standard for <strong>Insee</strong> surveys in France or complex national surveys), the <strong><code>gustave</code></strong> package is the most suitable choice.</p></li>
+</ul>
+</section>
+<section id="summary-of-recommendations" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Summary of recommendations</h2>
+<ol type="1">
+<li><strong>Keep it simple</strong> for exploration: use <code>Hmisc</code> for quick weighted means and medians.</li>
+<li><strong>Be rigorous</strong> for final results: always provide a confidence interval using <code>survey</code> or <code>gustave</code>.</li>
+<li><strong>Check your metadata</strong>: before starting, verify if your dataset provides “replicate weights” or “strata/cluster” variables to choose the right package.</li>
+</ol>
 
 <div class="footer footer-default">
-<p>Introduction to Quantitative Methods with <i class="fa-brands fa-r-project" aria-label="r-project"></i>, École Normale Supérieure (<a href="../">back to main page</a>)</p>
+<p>Introduction to quantitative methods with <i class="fa-brands fa-r-project" aria-label="r-project"></i>, Lesotho Bureau of Statistics (<a href="../">back to main page</a>)</p>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 

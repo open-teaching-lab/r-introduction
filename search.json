@@ -67,7 +67,7 @@
     "href": "exercises/r-base.html#dataframes",
     "title": "Discovering basic  objects",
     "section": "7.3 Dataframes",
-    "text": "7.3 Dataframes\nThis is the central object of data analysis with . These objects indeed allow representing in table form (i.e., a two-dimensional object) data of both quantitative nature (numeric variables) and qualitative (character or factor type variables).\n\n\n\nIllustration of the dataframe principle (borrowed from H. Wickham)\n\n\nHere’s for example a dataframe:\n\n# Creating the data.frame df\ndf &lt;- data.frame(\n  var1 = 1:10,\n  var2 = letters[1:10],\n  var3 = rep(c(TRUE, FALSE), times = 5)\n)\n\nIts internal structure can be verified with the str function:\n\nstr(df)\n\n'data.frame':   10 obs. of  3 variables:\n $ var1: int  1 2 3 4 5 6 7 8 9 10\n $ var2: chr  \"a\" \"b\" \"c\" \"d\" ...\n $ var3: logi  TRUE FALSE TRUE FALSE TRUE FALSE ...\n\n\nWhen working with R, one of the functions we use most is head. It displays the first \\(n\\) rows of our dataset:\n\nhead(df)\n\n  var1 var2  var3\n1    1    a  TRUE\n2    2    b FALSE\n3    3    c  TRUE\n4    4    d FALSE\n5    5    e  TRUE\n6    6    f FALSE\n\n\n\n\n\n\n\n\nWarning\n\n\n\nIt’s also possible to use RStudio’s viewer to display datasets.\nBe careful however, this viewer can encounter performance problems and crash your R session when the dataset starts to be of considerable size.\nI recommend rather using head or selecting rows randomly with sample:\n\ndf[sample(nrow(df), 3), ]\n\n  var1 var2  var3\n2    2    b FALSE\n3    3    c  TRUE\n8    8    h FALSE\n\n\n\n\nFrom a structural point of view, a data.frame is actually a list whose all elements have the same length: this is what allows representing it in the form of a two-dimensional table.\n\nis.list(df)\n\n[1] TRUE\n\nlapply(df, length)\n\n$var1\n[1] 10\n\n$var2\n[1] 10\n\n$var3\n[1] 10\n\n\nTherefore, data.frames borrow their characteristics sometimes from lists, sometimes from matrices as the following exercise shows:\n\n\n\n\n\n\nExercise 10\n\n\n\n\nCheck the dimension of dataframe df\nCount the number of rows and columns of df\nCheck the length (length) of df. Is this the behavior of a matrix or a list?\nExtract the element at the 2nd row, 3rd column of df. Is this the indexing behavior of a matrix or a list?\nRetrieve the 3rd row of variables var1 and var2.\n\n\n\nSolution\ndim(df)\nnrow(df)\nncol(df)\nlength(df) #like a list\ndf[3, c(\"var1\",\"var2\")]\n\n\n\n\nThe interest of using a data.frame is that we can easily update our data during statistical analysis. The most classic operations, which we’ll come back to in the next chapter, are\n\nCreate a new column from pre-existing columns;\nSelect a subsample of data corresponding to certain observed values.\n\nThere are several ways to refer to an already existing column of a dataframe. The simplest is to use the structure dataframe$column. This will give us a vector and we fall back on this format we already know:\n\nclass(df$var1)\n\n[1] \"integer\"\n\n\n\n\n\n\n\n\nExercise 11\n\n\n\n\nCreate a var4 column in our dataset equal to the square of var1\nCreate a var5 column in our dataset concatenating the first two variables generalizing the schema 1=a.\nCreate a df_small1 dataframe for rows where the logical condition var3 is verified\nCreate a df_small2 dataframe for rows where var1 is even (see above the example on Euclidean division for the model)\n\n\n\nThe next chapter will allow us to go much further thanks to the tidyverse ecosystem and particularly its flagship package dplyr. Without this set of packages greatly facilitating statistical analysis,  wouldn’t have become one of the two flagship languages of statistics."
+    "text": "7.3 Dataframes\nThis is the central object of data analysis with . These objects indeed allow representing in table form (i.e., a two-dimensional object) data of both quantitative nature (numeric variables) and qualitative (character or factor type variables).\n\n\n\nIllustration of the dataframe principle (borrowed from H. Wickham)\n\n\nHere’s for example a dataframe:\n\n# Creating the data.frame df\ndf &lt;- data.frame(\n  var1 = 1:10,\n  var2 = letters[1:10],\n  var3 = rep(c(TRUE, FALSE), times = 5)\n)\n\nIts internal structure can be verified with the str function:\n\nstr(df)\n\n'data.frame':   10 obs. of  3 variables:\n $ var1: int  1 2 3 4 5 6 7 8 9 10\n $ var2: chr  \"a\" \"b\" \"c\" \"d\" ...\n $ var3: logi  TRUE FALSE TRUE FALSE TRUE FALSE ...\n\n\nWhen working with R, one of the functions we use most is head. It displays the first \\(n\\) rows of our dataset:\n\nhead(df)\n\n  var1 var2  var3\n1    1    a  TRUE\n2    2    b FALSE\n3    3    c  TRUE\n4    4    d FALSE\n5    5    e  TRUE\n6    6    f FALSE\n\n\n\n\n\n\n\n\nWarning\n\n\n\nIt’s also possible to use RStudio’s viewer to display datasets.\nBe careful however, this viewer can encounter performance problems and crash your R session when the dataset starts to be of considerable size.\nI recommend rather using head or selecting rows randomly with sample:\n\ndf[sample(nrow(df), 3), ]\n\n   var1 var2  var3\n3     3    c  TRUE\n10   10    j FALSE\n2     2    b FALSE\n\n\n\n\nFrom a structural point of view, a data.frame is actually a list whose all elements have the same length: this is what allows representing it in the form of a two-dimensional table.\n\nis.list(df)\n\n[1] TRUE\n\nlapply(df, length)\n\n$var1\n[1] 10\n\n$var2\n[1] 10\n\n$var3\n[1] 10\n\n\nTherefore, data.frames borrow their characteristics sometimes from lists, sometimes from matrices as the following exercise shows:\n\n\n\n\n\n\nExercise 10\n\n\n\n\nCheck the dimension of dataframe df\nCount the number of rows and columns of df\nCheck the length (length) of df. Is this the behavior of a matrix or a list?\nExtract the element at the 2nd row, 3rd column of df. Is this the indexing behavior of a matrix or a list?\nRetrieve the 3rd row of variables var1 and var2.\n\n\n\nSolution\ndim(df)\nnrow(df)\nncol(df)\nlength(df) #like a list\ndf[3, c(\"var1\",\"var2\")]\n\n\n\n\nThe interest of using a data.frame is that we can easily update our data during statistical analysis. The most classic operations, which we’ll come back to in the next chapter, are\n\nCreate a new column from pre-existing columns;\nSelect a subsample of data corresponding to certain observed values.\n\nThere are several ways to refer to an already existing column of a dataframe. The simplest is to use the structure dataframe$column. This will give us a vector and we fall back on this format we already know:\n\nclass(df$var1)\n\n[1] \"integer\"\n\n\n\n\n\n\n\n\nExercise 11\n\n\n\n\nCreate a var4 column in our dataset equal to the square of var1\nCreate a var5 column in our dataset concatenating the first two variables generalizing the schema 1=a.\nCreate a df_small1 dataframe for rows where the logical condition var3 is verified\nCreate a df_small2 dataframe for rows where var1 is even (see above the example on Euclidean division for the model)\n\n\n\nThe next chapter will allow us to go much further thanks to the tidyverse ecosystem and particularly its flagship package dplyr. Without this set of packages greatly facilitating statistical analysis,  wouldn’t have become one of the two flagship languages of statistics."
   },
   {
     "objectID": "exercises/r-base.html#footnotes",
@@ -130,7 +130,7 @@
     "href": "index.html",
     "title": "Introduction to quantitative methods with ",
     "section": "",
-    "text": "Introduction to quantitative methods with \nThis course is based on the course of Lino Galiana for the Department of Social Sciences at ENS Ulm.\nA course to become familiar with  through hands-on practice using open data.\n\n\n\n  \n     \n      \n          \n            \n          \n          \n            Importing and manipulating data with \n            \n              \nIntroduction to \nand to RStudio\n\n\n              \n                NC \n                Sep 1, 2023\n              \n            \n            \n                \n                  Exercice ✏️\n                \n                \n                  Slides 🧑‍🏫\n                \n            \n          \n        \n      \n     \n  \n  \n     \n      \n          \n            \n          \n          \n            Manipuler des données avec le tidyverse\n            \n              \nIntroduction to the tidyverse\nto import and manipulate data with \n\n\n              \n                NC \n                Sep 1, 2023\n              \n            \n            \n                \n                  Exercice ✏️\n                \n                \n                  Slides 🧑‍🏫\n                \n            \n          \n        \n      \n     \n  \n  \n     \n      \n          \n            \n          \n          \n            Statistical analysis\n            \n              \nBasic and intermediate statistical analysis with \n\n\n              \n                NC \n                Feb 1, 2026\n              \n            \n            \n                \n                  Exercice ✏️\n                \n                \n                  Slides 🧑‍🏫\n                \n            \n          \n        \n      \n     \n  \n  \n     \n      \n          \n            \n          \n          \n            Create data visualizations with ggplot2\n            \n              \nIntroduction to ggplot2,\nto create plots with\n\n\n\n              \n                NC \n                Sep 1, 2023\n              \n            \n            \n                \n                  Exercice ✏️\n                \n                \n                  Slides 🧑‍🏫\n                \n            \n          \n        \n      \n     \n  \n  \n     \n      \n          \n            \n          \n          \n            Reproducible report generation with quarto\n            \n              \nIntroduction to quarto,\nto generate reports with\n\n\n\n              \n                NC \n                Nov 2, 2023\n              \n            \n            \n                \n                  Exercice ✏️\n                \n                \n                  Slides 🧑‍🏫\n                \n            \n          \n        \n      \n     \n  \n\n\nNo matching items"
+    "text": "Introduction to quantitative methods with \nThis course is based on the course of Lino Galiana for the Department of Social Sciences at ENS Ulm.\nA course to become familiar with  through hands-on practice using open data.\n\n\n\n  \n     \n      \n          \n            \n          \n          \n            Importing and manipulating data with \n            \n              \nIntroduction to \nand to RStudio\n\n\n              \n                Clara Baudry, Nathan Randriamanana\n                Feb 16, 2026\n              \n            \n            \n                \n                  Exercice ✏️\n                \n                \n                  Slides 🧑‍🏫\n                \n            \n          \n        \n      \n     \n  \n  \n     \n      \n          \n            \n          \n          \n            Manipulate data with the tidyverse\n            \n              \nIntroduction to the tidyverse\nto import and manipulate data with \n\n\n              \n                Clara Baudry, Nathan Randriamanana\n                Feb 17, 2026\n              \n            \n            \n                \n                  Exercice ✏️\n                \n                \n                  Slides 🧑‍🏫\n                \n            \n          \n        \n      \n     \n  \n  \n     \n      \n          \n            \n          \n          \n            Statistical analysis\n            \n              \nBasic and intermediate statistical analysis with \n\n\n              \n                Clara Baudry, Nathan Randriamanana\n                Feb 17, 2026\n              \n            \n            \n                \n                  Exercice ✏️\n                \n                \n                  Slides 🧑‍🏫\n                \n            \n          \n        \n      \n     \n  \n  \n     \n      \n          \n            \n          \n          \n            Create data visualizations with ggplot2\n            \n              \nIntroduction to ggplot2,\nto create plots with\n\n\n\n              \n                Clara Baudry, Nathan Randriamanana\n                Feb 18, 2026\n              \n            \n            \n                \n                  Exercice ✏️\n                \n                \n                  Slides 🧑‍🏫\n                \n            \n          \n        \n      \n     \n  \n  \n     \n      \n          \n            \n          \n          \n            Reproducible report generation with quarto\n            \n              \nIntroduction to quarto,\nto generate reports with\n\n\n\n              \n                Clara Baudry, Nathan Randriamanana\n                Feb 19, 2026\n              \n            \n            \n                \n                  Exercice ✏️\n                \n                \n                  Slides 🧑‍🏫\n                \n            \n          \n        \n      \n     \n  \n\n\nNo matching items"
   },
   {
     "objectID": "slides/ggplot.html#introduction",
@@ -201,6 +201,139 @@
     "title": "Introduction to Quantitative Methods with ",
     "section": "ggplot2",
     "text": "ggplot2\nModify aesthetics, only at the end\n\np &lt;- ggplot(df, aes(x = DISP_MED17, y = DISP_D917)) +\n  geom_point(aes(color = quartile), shape = 3) +\n  geom_smooth(color = \"red\", alpha = 0.7, se = FALSE) +\n  scale_x_continuous(labels = unit_format(unit = \"k\", scale=1e-3)) +\n  scale_y_continuous(trans='log', labels = unit_format(unit = \"k\", scale=1e-3)) +\n  scale_color_viridis_d(option = \"turbo\")\n\np + theme_bw() +\n  labs(x = \"Median income\", y = \"9th decile\", color = \"Quartile\") +\n  theme(legend.position = \"bottom\")\n\n\n\n\nIntroduction to Quantitative Methods with , École Normale Supérieure (back to main page)"
+  },
+  {
+    "objectID": "slides/wrangling.html#introductory-chapter",
+    "href": "slides/wrangling.html#introductory-chapter",
+    "title": "Introduction to Quantitative Methods with ",
+    "section": "Introductory Chapter",
+    "text": "Introductory Chapter\n\n\n\n\n\n\nNote\n\n\n\nExercises associated with this chapter here\n\n\n\n\n\n\nBack to the main page"
+  },
+  {
+    "objectID": "slides/wrangling.html#introduction",
+    "href": "slides/wrangling.html#introduction",
+    "title": "Introduction to Quantitative Methods with ",
+    "section": "Introduction",
+    "text": "Introduction\n\n centered around the dataframe\n\n\n\nBut manipulations sometimes a bit cumbersome:\n\ndf$var: a bit heavy\ndf[,]: a bit too modeled on matrices\n\n\n\n\n\nTextual data: a perfectible base\n\nConvoluted outputs\nMissing functionalities compared to Python"
+  },
+  {
+    "objectID": "slides/wrangling.html#the-answer-the-tidyverse",
+    "href": "slides/wrangling.html#the-answer-the-tidyverse",
+    "title": "Introduction to Quantitative Methods with ",
+    "section": "The answer: the tidyverse!",
+    "text": "The answer: the tidyverse!\n\nThe tidyverse ecosystem"
+  },
+  {
+    "objectID": "slides/wrangling.html#the-answer-the-tidyverse-1",
+    "href": "slides/wrangling.html#the-answer-the-tidyverse-1",
+    "title": "Introduction to Quantitative Methods with ",
+    "section": "The answer: the tidyverse!",
+    "text": "The answer: the tidyverse!\nA set of packages developed by RStudio that facilitates:\n\nReading (readr) and manipulating databases (dplyr)\nExploiting textual data (stringr), temporal (lubridate) or categorical (forcats)\nCreating graphics (ggplot2)\nProgramming from dataframes (purrr)\nAnd many other things…"
+  },
+  {
+    "objectID": "slides/wrangling.html#the-tidy-data-concept",
+    "href": "slides/wrangling.html#the-tidy-data-concept",
+    "title": "Introduction to Quantitative Methods with ",
+    "section": "The tidy data concept",
+    "text": "The tidy data concept\n\nEach variable has its own column;\nEach observation has its own row;\nA value, materializing an observation of a variable, is found in a single cell.\n\n\n\n\n\n\n\nNote\n\n\nConcept popularized by Hadley Wickham."
+  },
+  {
+    "objectID": "slides/wrangling.html#readr",
+    "href": "slides/wrangling.html#readr",
+    "title": "Introduction to Quantitative Methods with ",
+    "section": "readr",
+    "text": "readr\n\n\nThe package for reading flat files (.csv, .txt…)\nAllows obtaining a tibble, the augmented dataframe of the tidyverse"
+  },
+  {
+    "objectID": "slides/wrangling.html#dplyr",
+    "href": "slides/wrangling.html#dplyr",
+    "title": "Introduction to Quantitative Methods with ",
+    "section": "dplyr",
+    "text": "dplyr\n\n\nThe central package of the data manipulation ecosystem;\nData manipulation and descriptive statistics;"
+  },
+  {
+    "objectID": "slides/wrangling.html#dplyr-1",
+    "href": "slides/wrangling.html#dplyr-1",
+    "title": "Introduction to Quantitative Methods with ",
+    "section": "dplyr",
+    "text": "dplyr\nMain verbs\nWe work on a tibble (augmented dataframe)\n\nselect(): select variables by their name;\nrename(): rename variables;\nfilter(): select observations according to one or more conditions;\narrange(): sort the table according to one or more variables;\nmutate(): add variables that are functions of other variables;\nsummarise(): calculate a statistic from data;\ngroup_by(): perform operations by group."
+  },
+  {
+    "objectID": "slides/wrangling.html#dplyr-2",
+    "href": "slides/wrangling.html#dplyr-2",
+    "title": "Introduction to Quantitative Methods with ",
+    "section": "dplyr",
+    "text": "dplyr\nData manipulation\n\n\nThe following package(s) will be installed:\n- eurostat [4.0.0]\nThese packages will be installed into \"/__w/r-introduction/r-introduction/renv/library/R-4.5/x86_64-pc-linux-gnu\".\n\n# Installing packages --------------------------------------------------------\n- Installing eurostat ...                       OK [linked from cache]\nSuccessfully installed 1 package in 6.4 milliseconds.\n\n\nWe chain sequences with pipes (%&gt;%)\n\nlibrary(dplyr)\n\npop_by_age %&gt;%\n1  as_tibble() %&gt;%\n2  filter(sex == \"F\") %&gt;%\n3  mutate(x = paste0(age, \"_\", sex))\n\n\n1\n\nWe convert the standard dataframe to tibble\n\n2\n\nWe keep only gas stations (values B316 of TYPEQU)\n\n3\n\nWe create a new column by referencing existing ones (without quotes!)\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nMore details in utilitR"
+  },
+  {
+    "objectID": "slides/wrangling.html#dplyr-3",
+    "href": "slides/wrangling.html#dplyr-3",
+    "title": "Introduction to Quantitative Methods with ",
+    "section": "dplyr",
+    "text": "dplyr\nAggregated statistics\n\nsplit-apply-combine logic with groupby\n\n\n\nIllustration of split-apply-combine\n\n\n\n\nlibrary(dplyr)\n\npop_by_age %&gt;%\n1  as_tibble() %&gt;%\n2  filter(TIME_PERIOD == \"2025-01-01\") %&gt;%\n3  group_by(geo) %&gt;%\n4  summarise(pop_by_country_2025 = sum(values, na.rm = TRUE))\n\n\n1\n\nWe convert the standard dataframe to tibble\n\n2\n\nWe keep only gas stations (values 2025-01-01 of TIME_PERIOD)\n\n3\n\nWe define geo as a stratification variable to define groups\n\n4\n\nWe summarize the data by summing gas stations in each group"
+  },
+  {
+    "objectID": "slides/wrangling.html#ggplot",
+    "href": "slides/wrangling.html#ggplot",
+    "title": "Introduction to Quantitative Methods with ",
+    "section": "ggplot",
+    "text": "ggplot\n\n\nThe essential package for making graphics ❤️;\nCoherent and flexible approach based on the grammar of graphics\n\nSubject of a dedicated chapter"
+  },
+  {
+    "objectID": "slides/wrangling.html#stringr-forcats-and-lubridate",
+    "href": "slides/wrangling.html#stringr-forcats-and-lubridate",
+    "title": "Introduction to Quantitative Methods with ",
+    "section": "stringr, forcats and lubridate",
+    "text": "stringr, forcats and lubridate\n\n  \n\n\nMany functions facilitating manipulation:\n\nTextual data: stringr\nCategorical data: forcats\nTemporal data: lubridate"
+  },
+  {
+    "objectID": "slides/wrangling.html#general-information",
+    "href": "slides/wrangling.html#general-information",
+    "title": "Introduction to Quantitative Methods with ",
+    "section": "General Information",
+    "text": "General Information\n\nData can be stored in many different formats\n\nDifferent standards\nDifferent ways of importing\n\n\n\n\nLimited  functionalities:\n\nSpecialized packages for certain formats\nObjective: flatten information into a dataframe\n\n\n\n\n\n\n\n\nNote\n\n\nWe’ll see geographic formats, and their challenges, later"
+  },
+  {
+    "objectID": "slides/wrangling.html#csv",
+    "href": "slides/wrangling.html#csv",
+    "title": "Introduction to Quantitative Methods with ",
+    "section": "CSV",
+    "text": "CSV\n\nFlat file format with delimited columns:\n\nStandard: , as delimiter, . as decimal;\nEuropean variant 😮‍💨: ; as delimiter, , as decimal\n\nUniversal format, simple to use (some limitations)\n\n\nviewof info_csv = Inputs.radio(\n  [\"Raw file\", \"File after import\"], {value: \"Raw file\"}\n)\n\n\n\n\n\n\n\ninfo_csv == \"Raw file\" ? html`&lt;div&gt;${md_csv}&lt;div&gt;` : html`&lt;div&gt;${df_csv}&lt;div&gt;`\n\n\n\n\n\n\n\ndf_csv = Inputs.table(\n  d3.csvParse(raw_csv)\n)\nmd_csv = md`\n\\`\\`\\`\n${raw_csv}\n\\`\\`\\`\n`\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nraw_csv = `DEP,REG,CHEFLIEU,TNCC,NCC,NCCENR,LIBELLE\n01,84,01053,5,AIN,Ain,Ain\n02,32,02408,5,AISNE,Aisne,Aisne\n03,84,03190,5,ALLIER,Allier,Allier\n04,93,04070,4,ALPES DE HAUTE PROVENCE,Alpes-de-Haute-Provence,Alpes-de-Haute-Provence\n05,93,05061,4,HAUTES ALPES,Hautes-Alpes,Hautes-Alpes\n06,93,06088,4,ALPES MARITIMES,Alpes-Maritimes,Alpes-Maritimes\n`"
+  },
+  {
+    "objectID": "slides/wrangling.html#csv-1",
+    "href": "slides/wrangling.html#csv-1",
+    "title": "Introduction to Quantitative Methods with ",
+    "section": "CSV",
+    "text": "CSV\n\nReading with the read_csv function from the readr package!\n\n\n1library(readr)\n2read_csv(\"data_folder/file_name.csv\")\n\n\n1\n\nWe import the readr library to have access to the read_csv function\n\n2\n\nWe use read_csv to read data stored in the relative path data_folder/file_name.csv\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nCSV with ; delimiter: read_csv2 function.\nMore exotic flat formats (.txt for example): read_delim\n\nMore details in the utilitR documentation"
+  },
+  {
+    "objectID": "slides/wrangling.html#json",
+    "href": "slides/wrangling.html#json",
+    "title": "Introduction to Quantitative Methods with ",
+    "section": "JSON",
+    "text": "JSON\n\nThe web format, especially for APIs\n\nAPI: we’ll see that later\n\n\n\nviewof info_json = Inputs.radio(\n  [\"Raw file\", \"File after import\"], {value: \"Raw file\"}\n)\n\n\n\n\n\n\n\ninfo_json == \"Raw file\" ? html`&lt;div&gt;${md_json}&lt;div&gt;` : html`&lt;div&gt;${df_json}&lt;div&gt;`\n\n\n\n\n\n\n\njson_string = `[\n  {\"DEP\": \"01\", \"REG\": \"84\", \"CHEFLIEU\": \"01053\", \"TNCC\": \"5\", \"NCC\": \"AIN\", \"NCCENR\": \"Ain\", \"LIBELLE\": \"Ain\"},\n  {\"DEP\": \"02\", \"REG\": \"32\", \"CHEFLIEU\": \"02408\", \"TNCC\": \"5\", \"NCC\": \"AISNE\", \"NCCENR\": \"Aisne\", \"LIBELLE\": \"Aisne\"},\n  {\"DEP\": \"03\", \"REG\": \"84\", \"CHEFLIEU\": \"03190\", \"TNCC\": \"5\", \"NCC\": \"ALLIER\", \"NCCENR\": \"Allier\", \"LIBELLE\": \"Allier\"},\n  {\"DEP\": \"04\", \"REG\": \"93\", \"CHEFLIEU\": \"04070\", \"TNCC\": \"4\", \"NCC\": \"ALPES DE HAUTE PROVENCE\", \"NCCENR\": \"Alpes-de-Haute-Provence\", \"LIBELLE\": \"Alpes-de-Haute-Provence\"},\n  {\"DEP\": \"05\", \"REG\": \"93\", \"CHEFLIEU\": \"05061\", \"TNCC\": \"4\", \"NCC\": \"HAUTES ALPES\", \"NCCENR\": \"Hautes-Alpes\", \"LIBELLE\": \"Hautes-Alpes\"},\n  {\"DEP\": \"06\", \"REG\": \"93\", \"CHEFLIEU\": \"06088\", \"TNCC\": \"4\", \"NCC\": \"ALPES MARITIMES\", \"NCCENR\": \"Alpes-Maritimes\", \"LIBELLE\": \"Alpes-Maritimes\"}\n]`\nraw_json = [\n  {\"DEP\": \"01\", \"REG\": \"84\", \"CHEFLIEU\": \"01053\", \"TNCC\": \"5\", \"NCC\": \"AIN\", \"NCCENR\": \"Ain\", \"LIBELLE\": \"Ain\"},\n  {\"DEP\": \"02\", \"REG\": \"32\", \"CHEFLIEU\": \"02408\", \"TNCC\": \"5\", \"NCC\": \"AISNE\", \"NCCENR\": \"Aisne\", \"LIBELLE\": \"Aisne\"},\n  {\"DEP\": \"03\", \"REG\": \"84\", \"CHEFLIEU\": \"03190\", \"TNCC\": \"5\", \"NCC\": \"ALLIER\", \"NCCENR\": \"Allier\", \"LIBELLE\": \"Allier\"},\n  {\"DEP\": \"04\", \"REG\": \"93\", \"CHEFLIEU\": \"04070\", \"TNCC\": \"4\", \"NCC\": \"ALPES DE HAUTE PROVENCE\", \"NCCENR\": \"Alpes-de-Haute-Provence\", \"LIBELLE\": \"Alpes-de-Haute-Provence\"},\n  {\"DEP\": \"05\", \"REG\": \"93\", \"CHEFLIEU\": \"05061\", \"TNCC\": \"4\", \"NCC\": \"HAUTES ALPES\", \"NCCENR\": \"Hautes-Alpes\", \"LIBELLE\": \"Hautes-Alpes\"},\n  {\"DEP\": \"06\", \"REG\": \"93\", \"CHEFLIEU\": \"06088\", \"TNCC\": \"4\", \"NCC\": \"ALPES MARITIMES\", \"NCCENR\": \"Alpes-Maritimes\", \"LIBELLE\": \"Alpes-Maritimes\"}\n]\nmd_json = md`\n\\`\\`\\`\n${json_string}\n\\`\\`\\`\n`\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndf_json = Inputs.table(raw_json)"
+  },
+  {
+    "objectID": "slides/wrangling.html#json-1",
+    "href": "slides/wrangling.html#json-1",
+    "title": "Introduction to Quantitative Methods with ",
+    "section": "JSON",
+    "text": "JSON\n\nImported as a hierarchical list\nObjective: transform this information into a tidy dataframe\n\nNot always easy!\n\n\n\n1library(jsonlite)\n2df &lt;- fromJSON(file=\"data_folder/file_name.json\")\n\n\n1\n\nWe import the jsonlite library to have access to the fromJSON function\n\n2\n\nWe use fromJSON to read data stored in the relative path data_folder/file_name.json"
+  },
+  {
+    "objectID": "slides/wrangling.html#excel-formats",
+    "href": "slides/wrangling.html#excel-formats",
+    "title": "Introduction to Quantitative Methods with ",
+    "section": "Excel formats",
+    "text": "Excel formats\n\nProprietary format\nMixes formatting and raw data\n\nNot appropriate for data analysis\nDangerous for reproducibility and transparency\n\nMore details on utilitR"
+  },
+  {
+    "objectID": "slides/wrangling.html#the-magrittr-pipe-1",
+    "href": "slides/wrangling.html#the-magrittr-pipe-1",
+    "title": "Introduction to Quantitative Methods with ",
+    "section": "The magrittr pipe (%>%)",
+    "text": "The magrittr pipe (%&gt;%)\nA way to chain operations\n\n\nNested functionsWith the pipe\n\n\n\n\n# A tibble: 48 × 2\n   geo   pop_by_country_2025\n   &lt;chr&gt;               &lt;dbl&gt;\n 1 AD                1938528\n 2 AL               66085816\n 3 AM               41834200\n 4 AT              523911792\n 5 AZ              180389320\n 6 BE              677625197\n 7 BG              529118397\n 8 BY              123719805\n 9 CH              462691936\n10 CY               26631335\n# ℹ 38 more rows\n\n\n\n\n\n\n# A tibble: 35 × 2\n   geo   pop_by_country_2025\n   &lt;chr&gt;               &lt;dbl&gt;\n 1 AL                2362991\n 2 AT                9195525\n 3 AZ               10223305\n 4 BE               11880328\n 5 BG                6436921\n 6 CH                9048831\n 7 CY                 982819\n 8 CZ               10908523\n 9 DE               83559239\n10 DK                5991469\n# ℹ 25 more rows\n\n\n\n\n\n\n\nIntroduction to Quantitative Methods with , École Normale Supérieure (back to main page)"
   },
   {
     "objectID": "slides/introduction.html#introductory-chapter",
@@ -574,144 +707,158 @@
     "text": "We want YOU to lead the innovation\n\n\nCreate your space: Don’t just code alone. Start a Slack channel, a Teams group, or an internal forum to help each other.\nOnyxia is a helper, not a cage: It is a facilitator based on open standards. Your code remains yours and stays portable.\nContinuous Exchange: For those inspired to lead or teach others, we will offer one day of remote follow-up to exchange ideas, troubleshoot together, and help you kickstart your internal community.\n\n\n\n\n\n\n\nTake the lead\n\n\nThe best way to learn is to teach others. Build your BoS community today and we will help you become the next generation of instructors."
   },
   {
-    "objectID": "slides/wrangling.html#introductory-chapter",
-    "href": "slides/wrangling.html#introductory-chapter",
-    "title": "Introduction to Quantitative Methods with ",
+    "objectID": "slides/stats.html#introductory-chapter",
+    "href": "slides/stats.html#introductory-chapter",
+    "title": "Introduction to quantitative methods with ",
     "section": "Introductory Chapter",
     "text": "Introductory Chapter\n\n\n\n\n\n\nNote\n\n\n\nExercises associated with this chapter here\n\n\n\n\n\n\nBack to the main page"
   },
   {
-    "objectID": "slides/wrangling.html#introduction",
-    "href": "slides/wrangling.html#introduction",
-    "title": "Introduction to Quantitative Methods with ",
-    "section": "Introduction",
-    "text": "Introduction\n\n centered around the dataframe\n\n\n\nBut manipulations sometimes a bit cumbersome:\n\ndf$var: a bit heavy\ndf[,]: a bit too modeled on matrices\n\n\n\n\n\nTextual data: a perfectible base\n\nConvoluted outputs\nMissing functionalities compared to Python"
+    "objectID": "slides/stats.html#course-outline",
+    "href": "slides/stats.html#course-outline",
+    "title": "Introduction to quantitative methods with ",
+    "section": "Course outline",
+    "text": "Course outline\n\n1️⃣ Descriptive statistics and data analysis strategies\n2️⃣ Inferential statistics through survey use cases"
   },
   {
-    "objectID": "slides/wrangling.html#the-answer-the-tidyverse",
-    "href": "slides/wrangling.html#the-answer-the-tidyverse",
-    "title": "Introduction to Quantitative Methods with ",
-    "section": "The answer: the tidyverse!",
-    "text": "The answer: the tidyverse!\n\nThe tidyverse ecosystem"
+    "objectID": "slides/stats.html#the-logic-of-data-aggregation-1",
+    "href": "slides/stats.html#the-logic-of-data-aggregation-1",
+    "title": "Introduction to quantitative methods with ",
+    "section": "The logic of data aggregation",
+    "text": "The logic of data aggregation\nThe operations we practiced are part of a standard industry pattern called Split-Apply-Combine. It is the most robust way to solve complex data problems by decomposing them.\n\nSplit: Break a large dataset into manageable, independent pieces (e.g., by strata, region, or gender).\nApply: Operate on each piece independently (calculate a mean, fit a model, or generate a sequence).\nCombine: Reassemble the results into a structured output (like a summary table)."
   },
   {
-    "objectID": "slides/wrangling.html#the-answer-the-tidyverse-1",
-    "href": "slides/wrangling.html#the-answer-the-tidyverse-1",
-    "title": "Introduction to Quantitative Methods with ",
-    "section": "The answer: the tidyverse!",
-    "text": "The answer: the tidyverse!\nA set of packages developed by RStudio that facilitates:\n\nReading (readr) and manipulating databases (dplyr)\nExploiting textual data (stringr), temporal (lubridate) or categorical (forcats)\nCreating graphics (ggplot2)\nProgramming from dataframes (purrr)\nAnd many other things…"
+    "objectID": "slides/stats.html#from-concept-to-code",
+    "href": "slides/stats.html#from-concept-to-code",
+    "title": "Introduction to quantitative methods with ",
+    "section": "From Concept to Code",
+    "text": "From Concept to Code\nIn the tidyverse, this strategy is mapped to specific, highly optimized functions:\n\ngroup_by(): The Split operator. It partitions the dataset into logical subsets.\nsummarise(): The Apply & Combine operator. It reduces many rows into a single row of statistical indicators.\nacross(): The Scaling operator. It ensures that the exact same statistical treatment is applied consistently across multiple columns."
   },
   {
-    "objectID": "slides/wrangling.html#the-tidy-data-concept",
-    "href": "slides/wrangling.html#the-tidy-data-concept",
-    "title": "Introduction to Quantitative Methods with ",
-    "section": "The tidy data concept",
-    "text": "The tidy data concept\n\nEach variable has its own column;\nEach observation has its own row;\nA value, materializing an observation of a variable, is found in a single cell.\n\n\n\n\n\n\n\nNote\n\n\nConcept popularized by Hadley Wickham."
+    "objectID": "slides/stats.html#practical-aggregation",
+    "href": "slides/stats.html#practical-aggregation",
+    "title": "Introduction to quantitative methods with ",
+    "section": "Practical Aggregation",
+    "text": "Practical Aggregation\nlibrary(dplyr)\n\n# Standard descriptive pipeline\ndata %&gt;%\n  group_by(category) %&gt;%\n  summarise(\n    n = n(),\n    across(c(income, age), list(avg = ~mean(.x, na.rm = TRUE), med = ~median(.x, na.rm = TRUE)))\n  )\n\n\n\n\n\n\nWhy this matters for statisticians ?\n\n\nStandardization is the bedrock of valid statistical reporting.\n\nacross() ensures that the same treatment (handling of NAs, rounding, or specific estimators) is applied identically to every variable.\nThis workflow creates a clear link between raw data and final indicators, which is essential for auditability."
   },
   {
-    "objectID": "slides/wrangling.html#readr",
-    "href": "slides/wrangling.html#readr",
-    "title": "Introduction to Quantitative Methods with ",
-    "section": "readr",
-    "text": "readr\n\n\nThe package for reading flat files (.csv, .txt…)\nAllows obtaining a tibble, the augmented dataframe of the tidyverse"
+    "objectID": "slides/stats.html#a-zoom-on-summarise",
+    "href": "slides/stats.html#a-zoom-on-summarise",
+    "title": "Introduction to quantitative methods with ",
+    "section": "A zoom on summarise()",
+    "text": "A zoom on summarise()\nThe summarise() function is the primary tool for data reduction. It transforms a detailed table into a concise summary of statistical indicators.\n\nAggregation Logic: It collapses multiple rows into a single result per group.\nVersatility: You can calculate several statistics at once (Mean, Median, Sum, etc.).\nFunctional Chain: It is almost always paired with group_by() to provide comparative insights across categories."
   },
   {
-    "objectID": "slides/wrangling.html#dplyr",
-    "href": "slides/wrangling.html#dplyr",
-    "title": "Introduction to Quantitative Methods with ",
-    "section": "dplyr",
-    "text": "dplyr\n\n\nThe central package of the data manipulation ecosystem;\nData manipulation and descriptive statistics;"
+    "objectID": "slides/stats.html#common-statistical-functions",
+    "href": "slides/stats.html#common-statistical-functions",
+    "title": "Introduction to quantitative methods with ",
+    "section": "Common Statistical Functions",
+    "text": "Common Statistical Functions\n\n\n\nCategory\nR Functions\n\n\n\n\nCentral Tendency\nmean(), median()\n\n\nDispersion\nsd(), var(), IQR(), min(), max()\n\n\nPosition\nquantile(x, probs = 0.75), first(), last()\n\n\nCount\nn() (observations), n_distinct() (unique values)"
   },
   {
-    "objectID": "slides/wrangling.html#dplyr-1",
-    "href": "slides/wrangling.html#dplyr-1",
-    "title": "Introduction to Quantitative Methods with ",
-    "section": "dplyr",
-    "text": "dplyr\nMain verbs\nWe work on a tibble (augmented dataframe)\n\nselect(): select variables by their name;\nrename(): rename variables;\nfilter(): select observations according to one or more conditions;\narrange(): sort the table according to one or more variables;\nmutate(): add variables that are functions of other variables;\nsummarise(): calculate a statistic from data;\ngroup_by(): perform operations by group."
+    "objectID": "slides/stats.html#statistical-estimation",
+    "href": "slides/stats.html#statistical-estimation",
+    "title": "Introduction to quantitative methods with ",
+    "section": "Statistical estimation",
+    "text": "Statistical estimation\nThe power of summarise() lies in its ability to combine multiple estimators within a single reduction step. You can use standard R functions, library-specific tools, or even user-defined functions.\nsummarize() core estimators reference\n\n\n\nStatistic\nR Function\nUse Case\n\n\n\n\nMean\nmean()\nCentral tendency (sensitive to outliers)\n\n\nMedian\nmedian()\nRobust central tendency\n\n\nStandard Deviation\nsd()\nDispersion/Spread\n\n\nExtrema\nmin(), max()\nRange of the distribution\n\n\nPosition\nfirst(), last()\nBoundary observations\n\n\nCount\nn()\nSample size (\\(n\\))\n\n\nUniqueness\nn_distinct()\nCardinality check\n\n\nSummation\nsum(), cumsum()\nTotal and cumulative flows"
   },
   {
-    "objectID": "slides/wrangling.html#dplyr-2",
-    "href": "slides/wrangling.html#dplyr-2",
-    "title": "Introduction to Quantitative Methods with ",
-    "section": "dplyr",
-    "text": "dplyr\nData manipulation\n\n\nThe following package(s) will be installed:\n- eurostat [4.0.0]\nThese packages will be installed into \"/__w/r-introduction/r-introduction/renv/library/R-4.5/x86_64-pc-linux-gnu\".\n\n# Installing packages --------------------------------------------------------\n- Installing eurostat ...                       OK [linked from cache]\nSuccessfully installed 1 package in 10 milliseconds.\n\n\nWe chain sequences with pipes (%&gt;%)\n\nlibrary(dplyr)\n\npop_by_age %&gt;%\n1  as_tibble() %&gt;%\n2  filter(sex == \"F\") %&gt;%\n3  mutate(x = paste0(age, \"_\", sex))\n\n\n1\n\nWe convert the standard dataframe to tibble\n\n2\n\nWe keep only gas stations (values B316 of TYPEQU)\n\n3\n\nWe create a new column by referencing existing ones (without quotes!)\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nMore details in utilitR"
+    "objectID": "slides/stats.html#summarize-example-of-practical-implementation",
+    "href": "slides/stats.html#summarize-example-of-practical-implementation",
+    "title": "Introduction to quantitative methods with ",
+    "section": "summarize() example of practical implementation",
+    "text": "summarize() example of practical implementation\nlibrary(dplyr)\n\n# Summary of the entire table\ndata %&gt;%\n  summarise(\n    avg_income = mean(income, na.rm = TRUE),\n    total_obs = n()\n  )\n\n# Strategic aggregation by group\ndata %&gt;%\n  group_by(education_level) %&gt;%\n  summarise(\n    n = n(),\n    med_age = median(age, na.rm = TRUE),\n    max_seniority = max(seniority, na.rm = TRUE)\n  )\n\n\n\n\n\n\nTip: Missing Values\n\n\nIn R, most statistical functions return NA if a single missing value is present. Always include na.rm = TRUE to ensure your summary is computed on the available data."
   },
   {
-    "objectID": "slides/wrangling.html#dplyr-3",
-    "href": "slides/wrangling.html#dplyr-3",
-    "title": "Introduction to Quantitative Methods with ",
-    "section": "dplyr",
-    "text": "dplyr\nAggregated statistics\n\nsplit-apply-combine logic with groupby\n\n\n\nIllustration of split-apply-combine\n\n\n\n\nlibrary(dplyr)\n\npop_by_age %&gt;%\n1  as_tibble() %&gt;%\n2  filter(TIME_PERIOD == \"2025-01-01\") %&gt;%\n3  group_by(geo) %&gt;%\n4  summarise(pop_by_country_2025 = sum(values, na.rm = TRUE))\n\n\n1\n\nWe convert the standard dataframe to tibble\n\n2\n\nWe keep only gas stations (values 2025-01-01 of TIME_PERIOD)\n\n3\n\nWe define geo as a stratification variable to define groups\n\n4\n\nWe summarize the data by summing gas stations in each group"
+    "objectID": "slides/stats.html#mutate-vs-summarise",
+    "href": "slides/stats.html#mutate-vs-summarise",
+    "title": "Introduction to quantitative methods with ",
+    "section": "mutate() vs summarise()",
+    "text": "mutate() vs summarise()\nBoth functions create new variables, but they operate on different “dimensions” of your data.\nThe key difference\n\n\n\n\n\n\n\n\nFunction\nAction\nResulting row count\n\n\n\n\nmutate()\nTransformation\nRemains unchanged (\\(n = N\\)).\n\n\nsummarise()\nAggregation\nReduced to one row per group (\\(n = G\\))."
   },
   {
-    "objectID": "slides/wrangling.html#ggplot",
-    "href": "slides/wrangling.html#ggplot",
-    "title": "Introduction to Quantitative Methods with ",
-    "section": "ggplot",
-    "text": "ggplot\n\n\nThe essential package for making graphics ❤️;\nCoherent and flexible approach based on the grammar of graphics\n\nSubject of a dedicated chapter"
+    "objectID": "slides/stats.html#mutate-vs-summarise-1",
+    "href": "slides/stats.html#mutate-vs-summarise-1",
+    "title": "Introduction to quantitative methods with ",
+    "section": "mutate() vs summarise()",
+    "text": "mutate() vs summarise()\nWhich one should I use?\nA simple rule of thumb:\n\nUse mutate() if you want to keep the individual granularity.\n\nExample: Calculating the tax amount for each household or the log of income. Each person stays in the table.\n\nUse summarise() if you want to move to a higher level of analysis.\n\nExample: Calculating the average income per region. Individual households “disappear” to form the regional indicator.\n\n\nThe hybrid case: grouped mutate\nStatisticians frequently use group_by() %&gt;% mutate() to perform standardization or relative positioning without losing the individual granularity.\n\nsummarise(): You calculate the mean of the group. The individuals are gone.\nmutate(): You calculate the mean of the group and broadcast it back to every individual in that group."
   },
   {
-    "objectID": "slides/wrangling.html#stringr-forcats-and-lubridate",
-    "href": "slides/wrangling.html#stringr-forcats-and-lubridate",
-    "title": "Introduction to Quantitative Methods with ",
-    "section": "stringr, forcats and lubridate",
-    "text": "stringr, forcats and lubridate\n\n  \n\n\nMany functions facilitating manipulation:\n\nTextual data: stringr\nCategorical data: forcats\nTemporal data: lubridate"
+    "objectID": "slides/stats.html#the-specificity-of-survey-data-1",
+    "href": "slides/stats.html#the-specificity-of-survey-data-1",
+    "title": "Introduction to quantitative methods with ",
+    "section": "The specificity of survey data",
+    "text": "The specificity of survey data\n\nGranular nature: One observation is not a single individual; it represents a specific portion of the target population.\n Sampling weights: Essential to restore the representativeness of the target population.\nThe bias risk: Standard arithmetic functions (mean(), sd()) assume equal probability. On weighted data, they produce scientifically biased results.\nHorvitz-Thompson: Every observation \\(i\\) must be weighted by the inverse of its inclusion probability: \\(w_i = 1/\\pi_i\\). \\[\\hat{Y}_{HT} = \\sum_{s \\in S}\\frac{y_s}{\\pi_s}\\]"
   },
   {
-    "objectID": "slides/wrangling.html#general-information",
-    "href": "slides/wrangling.html#general-information",
-    "title": "Introduction to Quantitative Methods with ",
-    "section": "General Information",
-    "text": "General Information\n\nData can be stored in many different formats\n\nDifferent standards\nDifferent ways of importing\n\n\n\n\nLimited  functionalities:\n\nSpecialized packages for certain formats\nObjective: flatten information into a dataframe\n\n\n\n\n\n\n\n\nNote\n\n\nWe’ll see geographic formats, and their challenges, later"
+    "objectID": "slides/stats.html#the-specificity-of-survey-data-2",
+    "href": "slides/stats.html#the-specificity-of-survey-data-2",
+    "title": "Introduction to quantitative methods with ",
+    "section": "The specificity of survey data",
+    "text": "The specificity of survey data\n\nThe weighting challenge: Using weights is not a default behavior in R; standard functions often fail to represent the distribution correctly.\nCDF Complexity: Granularity makes it difficult to estimate the Cumulative Distribution Function (CDF), which is the backbone of:\n\nQuantiles (Median, Deciles).\nInequality Indices (Gini, Atkinson)."
   },
   {
-    "objectID": "slides/wrangling.html#csv",
-    "href": "slides/wrangling.html#csv",
-    "title": "Introduction to Quantitative Methods with ",
-    "section": "CSV",
-    "text": "CSV\n\nFlat file format with delimited columns:\n\nStandard: , as delimiter, . as decimal;\nEuropean variant 😮‍💨: ; as delimiter, , as decimal\n\nUniversal format, simple to use (some limitations)\n\n\nviewof info_csv = Inputs.radio(\n  [\"Raw file\", \"File after import\"], {value: \"Raw file\"}\n)\n\n\n\n\n\n\n\ninfo_csv == \"Raw file\" ? html`&lt;div&gt;${md_csv}&lt;div&gt;` : html`&lt;div&gt;${df_csv}&lt;div&gt;`\n\n\n\n\n\n\n\ndf_csv = Inputs.table(\n  d3.csvParse(raw_csv)\n)\nmd_csv = md`\n\\`\\`\\`\n${raw_csv}\n\\`\\`\\`\n`\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nraw_csv = `DEP,REG,CHEFLIEU,TNCC,NCC,NCCENR,LIBELLE\n01,84,01053,5,AIN,Ain,Ain\n02,32,02408,5,AISNE,Aisne,Aisne\n03,84,03190,5,ALLIER,Allier,Allier\n04,93,04070,4,ALPES DE HAUTE PROVENCE,Alpes-de-Haute-Provence,Alpes-de-Haute-Provence\n05,93,05061,4,HAUTES ALPES,Hautes-Alpes,Hautes-Alpes\n06,93,06088,4,ALPES MARITIMES,Alpes-Maritimes,Alpes-Maritimes\n`"
+    "objectID": "slides/stats.html#point-estimates-with-hmisc",
+    "href": "slides/stats.html#point-estimates-with-hmisc",
+    "title": "Introduction to quantitative methods with ",
+    "section": "Point Estimates with Hmisc",
+    "text": "Point Estimates with Hmisc\nThe Hmisc package provides the simplest toolkit for calculating standard weighted indicators (Mean, Variance, Quantile, Rank).\n\nOptimized for dplyr: These functions are designed to fit perfectly within a summarise() pipeline.\nNaming Logic: Functions carry the same name as Base R, prefixed with wtd. (weighted).\nThe weights Argument: Unlike standard functions, you must explicitly pass your weight variable."
   },
   {
-    "objectID": "slides/wrangling.html#csv-1",
-    "href": "slides/wrangling.html#csv-1",
-    "title": "Introduction to Quantitative Methods with ",
-    "section": "CSV",
-    "text": "CSV\n\nReading with the read_csv function from the readr package!\n\n\n1library(readr)\n2read_csv(\"data_folder/file_name.csv\")\n\n\n1\n\nWe import the readr library to have access to the read_csv function\n\n2\n\nWe use read_csv to read data stored in the relative path data_folder/file_name.csv\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nCSV with ; delimiter: read_csv2 function.\nMore exotic flat formats (.txt for example): read_delim\n\nMore details in the utilitR documentation"
+    "objectID": "slides/stats.html#at-least-two-ways-to-use-hmisc",
+    "href": "slides/stats.html#at-least-two-ways-to-use-hmisc",
+    "title": "Introduction to quantitative methods with ",
+    "section": "At least two ways to use Hmisc",
+    "text": "At least two ways to use Hmisc\nThe Base R approach (with)\nIdeal for quick, one-off calculations on a specific variable.\nlibrary(Hmisc)\n\n# Basic weighted statistics\nwith(t, wtd.mean(y, weights = p))     # Mean\nwith(t, wtd.std(y, weights = p))      # Standard Deviation\nwith(t, wtd.quantile(y, weights = p, probs = 0.5, type = 'quantile')) # Median\nThe Tidyverse approach (summarise)\nBest for producing comparative tables across different population groups.\n# Result: A tibble with the median for each category\nstat_table &lt;- t %&gt;%\n  group_by(categorie) %&gt;%\n  summarise(\n    mediane = wtd.quantile(y, weights = p, probs = 0.5, type = 'quantile')\n  )"
   },
   {
-    "objectID": "slides/wrangling.html#json",
-    "href": "slides/wrangling.html#json",
-    "title": "Introduction to Quantitative Methods with ",
-    "section": "JSON",
-    "text": "JSON\n\nThe web format, especially for APIs\n\nAPI: we’ll see that later\n\n\n\nviewof info_json = Inputs.radio(\n  [\"Raw file\", \"File after import\"], {value: \"Raw file\"}\n)\n\n\n\n\n\n\n\ninfo_json == \"Raw file\" ? html`&lt;div&gt;${md_json}&lt;div&gt;` : html`&lt;div&gt;${df_json}&lt;div&gt;`\n\n\n\n\n\n\n\njson_string = `[\n  {\"DEP\": \"01\", \"REG\": \"84\", \"CHEFLIEU\": \"01053\", \"TNCC\": \"5\", \"NCC\": \"AIN\", \"NCCENR\": \"Ain\", \"LIBELLE\": \"Ain\"},\n  {\"DEP\": \"02\", \"REG\": \"32\", \"CHEFLIEU\": \"02408\", \"TNCC\": \"5\", \"NCC\": \"AISNE\", \"NCCENR\": \"Aisne\", \"LIBELLE\": \"Aisne\"},\n  {\"DEP\": \"03\", \"REG\": \"84\", \"CHEFLIEU\": \"03190\", \"TNCC\": \"5\", \"NCC\": \"ALLIER\", \"NCCENR\": \"Allier\", \"LIBELLE\": \"Allier\"},\n  {\"DEP\": \"04\", \"REG\": \"93\", \"CHEFLIEU\": \"04070\", \"TNCC\": \"4\", \"NCC\": \"ALPES DE HAUTE PROVENCE\", \"NCCENR\": \"Alpes-de-Haute-Provence\", \"LIBELLE\": \"Alpes-de-Haute-Provence\"},\n  {\"DEP\": \"05\", \"REG\": \"93\", \"CHEFLIEU\": \"05061\", \"TNCC\": \"4\", \"NCC\": \"HAUTES ALPES\", \"NCCENR\": \"Hautes-Alpes\", \"LIBELLE\": \"Hautes-Alpes\"},\n  {\"DEP\": \"06\", \"REG\": \"93\", \"CHEFLIEU\": \"06088\", \"TNCC\": \"4\", \"NCC\": \"ALPES MARITIMES\", \"NCCENR\": \"Alpes-Maritimes\", \"LIBELLE\": \"Alpes-Maritimes\"}\n]`\nraw_json = [\n  {\"DEP\": \"01\", \"REG\": \"84\", \"CHEFLIEU\": \"01053\", \"TNCC\": \"5\", \"NCC\": \"AIN\", \"NCCENR\": \"Ain\", \"LIBELLE\": \"Ain\"},\n  {\"DEP\": \"02\", \"REG\": \"32\", \"CHEFLIEU\": \"02408\", \"TNCC\": \"5\", \"NCC\": \"AISNE\", \"NCCENR\": \"Aisne\", \"LIBELLE\": \"Aisne\"},\n  {\"DEP\": \"03\", \"REG\": \"84\", \"CHEFLIEU\": \"03190\", \"TNCC\": \"5\", \"NCC\": \"ALLIER\", \"NCCENR\": \"Allier\", \"LIBELLE\": \"Allier\"},\n  {\"DEP\": \"04\", \"REG\": \"93\", \"CHEFLIEU\": \"04070\", \"TNCC\": \"4\", \"NCC\": \"ALPES DE HAUTE PROVENCE\", \"NCCENR\": \"Alpes-de-Haute-Provence\", \"LIBELLE\": \"Alpes-de-Haute-Provence\"},\n  {\"DEP\": \"05\", \"REG\": \"93\", \"CHEFLIEU\": \"05061\", \"TNCC\": \"4\", \"NCC\": \"HAUTES ALPES\", \"NCCENR\": \"Hautes-Alpes\", \"LIBELLE\": \"Hautes-Alpes\"},\n  {\"DEP\": \"06\", \"REG\": \"93\", \"CHEFLIEU\": \"06088\", \"TNCC\": \"4\", \"NCC\": \"ALPES MARITIMES\", \"NCCENR\": \"Alpes-Maritimes\", \"LIBELLE\": \"Alpes-Maritimes\"}\n]\nmd_json = md`\n\\`\\`\\`\n${json_string}\n\\`\\`\\`\n`\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndf_json = Inputs.table(raw_json)"
+    "objectID": "slides/stats.html#estimating-value-and-variance",
+    "href": "slides/stats.html#estimating-value-and-variance",
+    "title": "Introduction to quantitative methods with ",
+    "section": "Estimating value and variance",
+    "text": "Estimating value and variance\nAny estimate based on survey data is surrounded by uncertainty. Sampling theory provides the mathematical framework to quantify this margin of error.\n\nThe challenge: To calculate the correct variance, one needs the point estimate and the details of the sampling design.\nThe tool: The survey package is the industry standard in R. It handles both simple and complex sampling plans."
   },
   {
-    "objectID": "slides/wrangling.html#json-1",
-    "href": "slides/wrangling.html#json-1",
-    "title": "Introduction to Quantitative Methods with ",
-    "section": "JSON",
-    "text": "JSON\n\nImported as a hierarchical list\nObjective: transform this information into a tidy dataframe\n\nNot always easy!\n\n\n\n1library(jsonlite)\n2df &lt;- fromJSON(file=\"data_folder/file_name.json\")\n\n\n1\n\nWe import the jsonlite library to have access to the fromJSON function\n\n2\n\nWe use fromJSON to read data stored in the relative path data_folder/file_name.json"
+    "objectID": "slides/stats.html#accessing-variance-information",
+    "href": "slides/stats.html#accessing-variance-information",
+    "title": "Introduction to quantitative methods with ",
+    "section": "Accessing variance information",
+    "text": "Accessing variance information\nIn practice, calculating the true variance can be difficult due to data availability:\n\nStandard approach: Requires variables for stratification and clustering. These are often confidential and removed from public datasets.\nReplicate weights approach: Some producers provide “replicate weights” (e.g., Bootstrap or Jackknife weights).\n\nExamples: Common in US data (SCF), or specific European/Insee surveys (HFCS, HVP).\nBenefit: Allows for valid variance estimation even without knowing the internal strata.\n\n\n\n\n\n\n\n\nWhy use the survey package?\n\n\nIt is specifically designed to handle both approaches. Whether you have the stratification variables or replicate weights, survey ensures your standard errors and confidence intervals are scientifically valid."
   },
   {
-    "objectID": "slides/wrangling.html#excel-formats",
-    "href": "slides/wrangling.html#excel-formats",
-    "title": "Introduction to Quantitative Methods with ",
-    "section": "Excel formats",
-    "text": "Excel formats"
+    "objectID": "slides/stats.html#national-production-and-advanced-variance",
+    "href": "slides/stats.html#national-production-and-advanced-variance",
+    "title": "Introduction to quantitative methods with ",
+    "section": "National production and advanced variance",
+    "text": "National production and advanced variance\nIn a professional or national statistical context, estimating variance must reflect the entire data processing chain, not just the initial sampling."
   },
   {
-    "objectID": "slides/wrangling.html#excel-formats-1",
-    "href": "slides/wrangling.html#excel-formats-1",
-    "title": "Introduction to Quantitative Methods with ",
-    "section": "Excel formats",
-    "text": "Excel formats\n\nProprietary format\nMixes formatting and raw data\n\nNot appropriate for data analysis\nDangerous for reproducibility and transparency\n\nMore details on utilitR"
+    "objectID": "slides/stats.html#the-challenge-of-real-world-variance",
+    "href": "slides/stats.html#the-challenge-of-real-world-variance",
+    "title": "Introduction to quantitative methods with ",
+    "section": "The challenge of “real-world” variance",
+    "text": "The challenge of “real-world” variance\nGeneral tools often overlook two critical steps that significantly impact the final precision of indicators:\n\nTotal non-response: The uncertainty added when adjusting weights to compensate for missing participants.\nCalibration (Calage): Re-weighting the sample to match known population totals (census), which mathematically alters the variance."
   },
   {
-    "objectID": "slides/wrangling.html#the-magrittr-pipe-1",
-    "href": "slides/wrangling.html#the-magrittr-pipe-1",
-    "title": "Introduction to Quantitative Methods with ",
-    "section": "The magrittr pipe (%>%)",
-    "text": "The magrittr pipe (%&gt;%)\nA way to chain operations\n\n\nNested functionsWith the pipe\n\n\n\n\n# A tibble: 48 × 2\n   geo   pop_by_country_2025\n   &lt;chr&gt;               &lt;dbl&gt;\n 1 AD                1938528\n 2 AL               66085816\n 3 AM               41834200\n 4 AT              523911792\n 5 AZ              180389320\n 6 BE              677625197\n 7 BG              529118397\n 8 BY              123719805\n 9 CH              462691936\n10 CY               26631335\n# ℹ 38 more rows\n\n\n\n\n\n\n# A tibble: 34 × 2\n   geo   pop_by_country_2025\n   &lt;chr&gt;               &lt;dbl&gt;\n 1 AL                2362991\n 2 AT                9195525\n 3 AZ               10223305\n 4 BE               11880328\n 5 BG                6436921\n 6 CH                9048831\n 7 CY                 982819\n 8 CZ               10908523\n 9 DE               83559239\n10 DK                5991469\n# ℹ 24 more rows\n\n\n\n\n\n\n\nIntroduction to Quantitative Methods with , École Normale Supérieure (back to main page)"
+    "objectID": "slides/stats.html#the-case-of-france-gustave",
+    "href": "slides/stats.html#the-case-of-france-gustave",
+    "title": "Introduction to quantitative methods with ",
+    "section": "The case of France: gustave",
+    "text": "The case of France: gustave\nTo address these specificities, Insee (the French National Statistical Institute) developed the gustave package. It is now the internal standard for official French statistics.\n\nObjective: Account for the impact of non-response and calibration on precision.\nKey function: qvar(), which allows for variance estimation tailored to the sophisticated treatments applied to national surveys."
+  },
+  {
+    "objectID": "slides/stats.html#best-practices-for-survey-analysis",
+    "href": "slides/stats.html#best-practices-for-survey-analysis",
+    "title": "Introduction to quantitative methods with ",
+    "section": "Best practices for survey analysis",
+    "text": "Best practices for survey analysis\nSurvey estimation is primarily about using weights correctly to reflect the national population. For most descriptive tasks, the Hmisc package is more than enough.\nHowever, if you need to calculate precision (e.g., to build confidence intervals for a report on poverty or health), you face two practical scenarios:\n\nScenario 1: Using replicate weights If your dataset includes replicate weights (which summarize the entire sampling process), the survey package is your best tool. This is common in many international datasets.\nScenario 2: Analytical variance estimation If you need to estimate variance analytically based on the specific sampling design (as is the standard for Insee surveys in France or complex national surveys), the gustave package is the most suitable choice."
+  },
+  {
+    "objectID": "slides/stats.html#summary-of-recommendations",
+    "href": "slides/stats.html#summary-of-recommendations",
+    "title": "Introduction to quantitative methods with ",
+    "section": "Summary of recommendations",
+    "text": "Summary of recommendations\n\nKeep it simple for exploration: use Hmisc for quick weighted means and medians.\nBe rigorous for final results: always provide a confidence interval using survey or gustave.\nCheck your metadata: before starting, verify if your dataset provides “replicate weights” or “strata/cluster” variables to choose the right package.\n\n\n\nIntroduction to quantitative methods with , Lesotho Bureau of Statistics (back to main page)"
   },
   {
     "objectID": "slides/quarto.html#introduction",
