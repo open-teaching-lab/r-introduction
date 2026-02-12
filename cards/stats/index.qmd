@@ -1,10 +1,10 @@
 ---
 image: teacher_stats.png
-title: Analyse and infer data with <i class="fa-brands fa-r-project"></i>
+title: Statistical analysis
 date: "2026-02-17"
 description: |
   <br>
-  Introduction to descriptive and inferential statistics with <i class="fa-brands fa-r-project"></i>. The case of survey data
+  Basic and intermediate statistical analysis with <i class="fa-brands fa-r-project"></i>
   <br>
 categories:
   - Introduction
