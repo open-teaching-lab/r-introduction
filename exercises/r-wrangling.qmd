@@ -23,9 +23,6 @@ we will learn to import and
 manipulate data with
 {{< fa brands r-project >}}. 
 
-If you're interested in `Python` {{< fa brands python >}},
-a very similar version of this tutorial is available in [my ENSAE course](https://pythonds.linogaliana.fr/content/manipulation/02b_pandas_TP.html).
-
 ::: {.callout-note}
 
 Some code examples include annotations on the side,
@@ -173,16 +170,40 @@ url <- "https://koumoul.com/s/data-fair/api/v1/datasets/igt-pouvoir-de-rechauffe
 ```
 
 1. Use the `readr` _package_ to import this data. Name this object `emissions`[^nomdf]
-2. Display the first lines with `head` and observe the display difference with, for example,
-this `dataframe`:
 ```{r}
-#| echo: true
+#| code-fold: true
+#| code-summary: "Solution"
+#| output: false
 library(readr)
 emissions <- read_csv(url)
+```
+2. Display the first lines with `head` and observe the display difference with, for example, this `dataframe`:
+
+```{r}
+df <- data.frame(
+  var1 = 1:10,
+  var2 = letters[1:10],
+  var3 = rep(c(TRUE, FALSE), times = 5)
+)
+```
+
+
+```{r}
+#| code-fold: true
+#| code-summary: "Solution"
+#| output: false
+head(emissions)
+head(df)
 ```
 
 3. Display the class of `emissions`. Do you now understand why this object is
 slightly different from a base dataframe?
+```{r}
+#| code-fold: true
+#| code-summary: "Solution"
+#| output: false
+class(emissions)
+```
 4. Use appropriate functions for the first 10 values, the last 15 and a random sample of 10 values using the [appropriate function from the `dplyr` package](https://dplyr.tidyverse.org/reference/sample_n.html)
 
 <details>
