@@ -1,7 +1,7 @@
 ---
 image: drawing.png
 title: Create data visualizations with <code>ggplot2</code>
-date: "2023-09-01"
+date: "2026-02-18"
 description: |
   <br>
   Introduction to <code>ggplot2</code>,

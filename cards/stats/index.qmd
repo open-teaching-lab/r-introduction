@@ -1,16 +1,15 @@
 ---
-image: baby.png
-title: Importing and manipulating data with <i class="fa-brands fa-r-project"></i>
-date: "2023-09-01"
+image: teacher_stats.png
+title: Analyse and infer data with <i class="fa-brands fa-r-project"></i>
+date: "2026-02-17"
 description: |
   <br>
-  Introduction to R <i class="fa-brands fa-r-project"></i>
-  and to <code>RStudio</code>
+  Introduction to descriptive and inferential statistics with <i class="fa-brands fa-r-project"></i>. The case of survey data
   <br>
 categories:
   - Introduction
-website: /slides/introduction.html
-exercise: /exercises/r-base.html
+website: /slides/stats.html
+exercise: /exercises/stats.html
 order: 3
 ---
 

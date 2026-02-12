@@ -344,10 +344,6 @@ df <- fromJSON(file="data_folder/file_name.json") # <2>
 
 ## Excel formats
 
-{{< iconify face-vomiting size=10x >}}
-
-## Excel formats
-
 - Proprietary format
 
 - Mixes formatting and raw data

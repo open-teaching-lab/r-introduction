@@ -1,7 +1,7 @@
 ---
 image: kidmatrix.png
-title: Manipuler des données avec le <code>tidyverse</code>
-date: "2023-09-01"
+title: Manipulate data with the <code>tidyverse</code>
+date: "2026-02-17"
 description: |
   <br>
   Introduction to the <code>tidyverse</code>
