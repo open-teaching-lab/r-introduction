@@ -194,7 +194,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#initializing-the-document" id="toc-initializing-the-document" class="nav-link active" data-scroll-target="#initializing-the-document"><span class="header-section-number">1</span> Initializing the document</a></li>
+  <li><a href="#warm-up-basic-statistical-analysis-running" id="toc-warm-up-basic-statistical-analysis-running" class="nav-link active" data-scroll-target="#warm-up-basic-statistical-analysis-running"><span class="header-section-number">1</span> Warm-up: basic statistical analysis :running:</a>
+  <ul class="collapse">
+  <li><a href="#exercise-6-optional-validate-interpretations-with-statistical-tests" id="toc-exercise-6-optional-validate-interpretations-with-statistical-tests" class="nav-link" data-scroll-target="#exercise-6-optional-validate-interpretations-with-statistical-tests"><span class="header-section-number">1.1</span> Exercise 6 (optional) – Validate interpretations with statistical tests</a></li>
+  </ul></li>
+  <li><a href="#conducting-a-survey-analysis-weight_lifting" id="toc-conducting-a-survey-analysis-weight_lifting" class="nav-link" data-scroll-target="#conducting-a-survey-analysis-weight_lifting"><span class="header-section-number">2</span> Conducting a survey analysis :weight_lifting:</a>
+  <ul class="collapse">
+  <li><a href="#exercise-2-weighted-average-co₂-per-region" id="toc-exercise-2-weighted-average-co₂-per-region" class="nav-link" data-scroll-target="#exercise-2-weighted-average-co₂-per-region"><span class="header-section-number">2.1</span> Exercise 2 – Weighted average CO₂ per region</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -233,7 +240,9 @@ Check out the <em>slides</em> below or <a href="../slides/stats.html">click here
 </summary>
 <div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><iframe class="sourceCode yaml code-with-copy" src="/slides/stats.html"></iframe></div>
 </details>
-<p>blabla lorem ips</p>
+<p>In this third practical tutorial, we will learn to conduct statistical analysis with <i class="fa-brands fa-r-project" aria-label="r-project"></i>.</p>
+<p>Two topics will be deepen in this tutorial: 1. Data aggregation and descriptive statistics 2. Inferential statistics, illustrated through the use case of survey data</p>
+<p>Rather than providing a formal overview of classical inferential statistical techniques, this tutorial adopts an applied approach. We will explore these methods through a concrete and widely used case in official statistics: survey data analysis.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -244,70 +253,138 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This practical session is less guided than usual in order to give you more freedom to explore and produce a document.</p>
+<p>As you have already computed your first descriptive statistics in the previous practical session, this session will be less guided than usual. The objective is to give you more autonomy and allow you to practice your newly acquired skills in a different context.</p>
 </div>
 </div>
-<section id="initializing-the-document" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="initializing-the-document"><span class="header-section-number">1</span> Initializing the document</h2>
+<section id="warm-up-basic-statistical-analysis-running" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Warm-up: basic statistical analysis :running:</h1>
+<p>Let’s begin gradually. The exercises will become progressively more technical, but we will move forward step by step.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercice 1: Creating the file
+Exercise 1: Set up your environment
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ol type="1">
-<li>Click on <code>File &gt; New file &gt; Quarto document</code>:
+<p>Install and load the packages dplyr, tidyr, and stringr.</p>
+<details>
+<summary>
+Hint (click to expand)
+</summary>
+If you do not remember how to proceed, refer to the <a href="https://r-intro.openteachinglab.io/exercises/r-wrangling.html#preliminary-steps-installing-packages">preliminary steps</a> section from the previous session.
+</details>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 2: Import data
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Here’s the URL where the data is available</p>
+<p>url &lt;- “https://raw.githubusercontent.com/zief0002/miniature-garbanzo/main/data/gapminder.csv”</p>
+<p><strong>Variable definitions</strong>: To understand each column and its meaning, check out the <a href="https://zief0002.github.io/miniature-garbanzo/codebooks/gapminder.html">Gapminder codebook</a></p>
+Read the data into R, display it, and get a first overview of its structure and contents.
+<details>
+<summary>
+Hint (click to expand)
+</summary>
+If needed, refer to the <a href="https://r-intro.openteachinglab.io/exercises/r-wrangling.html#importing-data">importing data section</a> from the last practical session.
+</details>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 3: EDA - quick data cleaning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Explore the Gapminder dataset carefully and prepare it for descriptive analysis. Focus on data quality, potential inconsistencies, and useful derived variables.</p>
+<p>Consider questions such as:</p>
 <ul>
-<li>Provide a title and an author for the report</li>
-<li>Choose <code>HTML</code> as the output format</li>
-<li>Uncheck the <code>Use visual markdown editor</code> option</li>
-</ul></li>
-<li>Save the file under the name <code>report.qmd</code>.</li>
-<li>In the file <em>header</em>, modify the publication metadata (title, author, date, etc.) using some of the options from <a href="https://quarto.org/docs/reference/formats/html.html">this page</a>.</li>
-<li>Write a first sentence in the body of the document using one or two elements of <code>Markdown</code> syntax for formatting. For example, make part of the text bold.</li>
-<li>Add a level-2 heading (two <code>#</code>) to create an <code>About</code> section and write one or two sentences in it.</li>
-<li>Render the document by clicking on the <code>Render</code> button:</li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://quarto.org/docs/get-started/hello/images/rstudio-render.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Source: <a href="https://quarto.org/docs/get-started/hello/rstudio.html#rendering">Hello Quarto! by <code>Posit</code></a></figcaption>
-</figure>
+<li>Are the column types appropriate? Do any numeric columns need to be converted, or factor/character columns recoded?</li>
+<li>Are there missing values or unexpected duplicates? How would you handle them?</li>
+<li>Are there variables that could be transformed or combined to create new indicators (e.g., per capita measures, ratios, log-transformations)?</li>
+<li>Are there outliers or extreme values that should be noted before further analysis?</li>
+<li>Summarize your observations in a few lines: e.g., key statistics, potential issues, and any transformations you applied.</li>
+</ul>
+<details>
+<summary>
+Hint (click to expand)
+</summary>
+Useful functions include glimpse(), str(), summary(), n_distinct(), duplicated(), mutate(), and filter(). Keep your exploration focused and concise aim for about 15–20 minutes of work.
+</details>
+<div class="cell">
+<details>
+<summary>Solution question 3: an example of quick EDA and cleaning</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Import data</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/zief0002/miniature-garbanzo/main/data/gapminder.csv"</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>gapminder <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(url)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Inspect structure</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(gapminder)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(gapminder)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(gapminder)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Check duplicates and missing values</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Are there any duplicate rows?</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">duplicated</span>(gapminder))</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Missing values per column</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(gapminder))</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Number of unique values in key columns</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="fu">n_distinct</span>(gapminder<span class="sc">$</span>country)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="fu">n_distinct</span>(gapminder<span class="sc">$</span>region)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="fu">n_distinct</span>(gapminder<span class="sc">$</span>income_level)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="fu">n_distinct</span>(gapminder<span class="sc">$</span>year)  <span class="co"># if year column exists</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Create some derived variables</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>gapminder <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">co2_per_capita =</span> co2 <span class="sc">/</span> population,  <span class="co"># emissions per person</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">log_income =</span> <span class="fu">log</span>(income)            <span class="co"># log transformation of income</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Quick descriptive summary</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_countries =</span> <span class="fu">n_distinct</span>(country),</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_income =</span> <span class="fu">mean</span>(income, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">median_income =</span> <span class="fu">median</span>(income, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_co2 =</span> <span class="fu">mean</span>(co2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_co2_pc =</span> <span class="fu">mean</span>(co2_per_capita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_life_exp =</span> <span class="fu">max</span>(life_exp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. Optional: Inspect top countries by CO2 per capita</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(co2_per_capita)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(country, region, co2_per_capita, population) <span class="sc">%&gt;%</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="co"># 8. Optional: Look at regions with highest average income</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region) <span class="sc">%&gt;%</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_income =</span> <span class="fu">mean</span>(income, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mean_income))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Exercice 2: Inserting <code>R</code> outputs
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li><p>Choose one of the chapters we previously worked on for which we produced a graph or a map. Reuse the example code from the solution (data import and visualizations) and insert it into the document.</p></li>
-<li><p>Compile the document. If there are errors, read them carefully and fix them in order to obtain a reproducible document.</p></li>
-<li><p>Use the <code>GT</code> package to create a nice table, for example a descriptive statistics table (a mean, for instance).</p></li>
-</ol>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Exercice 3: Styling
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Customize the output to obtain an aesthetically pleasing document. To do so, you may use a template.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -320,11 +397,575 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>On a <code>Mac</code> <i class="fa-brands fa-apple" aria-label="apple"></i>, some useful characters are more difficult to type. For example, <code>|</code> can be obtained using the following shortcut: <kbd>Shift</kbd> + <kbd>Option</kbd> + <kbd>L</kbd></p>
+<p>Unlike the very similar exercise from the previous session, there is no single “correct” solution. What matters most here is the methodology, the reasoning, and your ability to use the tools (dplyr, tidyr, etc.) effectively.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 4.a – CO₂ and income by region
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Explore how average income and CO₂ emissions per capita vary across regions.</p>
+<p>Consider questions such as: 1. Which regions have high income but low emissions, or low income but high emissions? 2. Are there regional patterns in life expectancy and population that align with income and CO₂? 3. What might these patterns imply about development, energy use, and environmental impact?</p>
+<details>
+<summary>
+Hint (click to expand)
+</summary>
+Use group_by(region) and summarise(); create derived variables like co2_per_capita and log_income for better comparison.
+</details>
+<div class="cell">
+<details>
+<summary>Solution exercise 4.a: CO₂ and income by region</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Import Gapminder dataset</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/zief0002/miniature-garbanzo/main/data/gapminder.csv"</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>gapminder <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(url)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create derived variables</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>gapminder <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">co2_per_capita =</span> co2 <span class="sc">/</span> population,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">log_income =</span> <span class="fu">log</span>(income)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate by region</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>region_summary <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region) <span class="sc">%&gt;%</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_income =</span> <span class="fu">mean</span>(income, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_co2_pc =</span> <span class="fu">mean</span>(co2_per_capita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_life_exp =</span> <span class="fu">mean</span>(life_exp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_population =</span> <span class="fu">sum</span>(population, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mean_income))</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>region_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 4.b – population and income levels
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Investigate the relationship between population size and income levels.</p>
+<p>Questions to explore: 1. Identify the most populous countries in each income level. 2. Compare their average income and life expectancy. 3. Are there countries with high population but low income, or high income but small population? 4. What insights can you draw about development challenges or resource allocation?</p>
+<details>
+<summary>
+Hint (click to expand)
+</summary>
+Combine group_by(income_level), arrange(desc(population)), filter() and summarise() to explore patterns.
+</details>
+<div class="cell">
+<details>
+<summary>Solution Exercise 4.b: Population and Income Levels</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Most populous countries per income level</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>pop_by_income <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(income_level) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(population)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span>  <span class="co"># top 5 per income level</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(country, population, income, life_exp)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>pop_by_income</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 4.c – Outliers and cross-country comparisons
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Focus on outliers within regions or income levels.</p>
+<p>Consider: 1. Which countries have extremely high or low CO₂ per capita for their income level? 2. Are there countries with similar income but very different emissions, or similar emissions but very different populations? 3. How could these differences be explained (e.g., industrialization, geography, energy sources)?</p>
+<details>
+<summary>
+Hint (click to expand)
+</summary>
+Look for arrange(desc(co2_per_capita)), filter() and compare subsets of countries.
+</details>
+<div class="cell">
+<details>
+<summary>Solution Exercise 4.c: Outliers and Cross-Country Comparisons</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Outliers in CO₂ per capita within income levels</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>outliers <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(income_level) <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(co2_per_capita <span class="sc">==</span> <span class="fu">max</span>(co2_per_capita) <span class="sc">|</span> co2_per_capita <span class="sc">==</span> <span class="fu">min</span>(co2_per_capita)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(country, income_level, co2_per_capita, income, population)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>outliers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 4.d – Correlations and relationships by region
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Explore relationships between income, CO₂ emissions, life expectancy, and population within each region.</p>
+<p>Questions to explore: 1. Are correlations between income and CO₂ emissions consistent across regions? 2. Are wealthier regions always emitting more CO₂ per capita? Are there exceptions? 3. How does population size relate to income and CO₂ within regions?</p>
+<details>
+<summary>
+Hint (click to expand)
+</summary>
+Use group_by(region) %&gt;% summarise() for aggregate stats, and visualize with ggplot2 to spot trends and correlations.
+</details>
+<div class="cell">
+<details>
+<summary>Solution Exercise 4.d: Correlations and Relationships by Region</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simple correlations per region</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>region_corr <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region) <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">corr_income_co2 =</span> <span class="fu">cor</span>(income, co2_per_capita, <span class="at">use =</span> <span class="st">"complete.obs"</span>),</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">corr_income_life =</span> <span class="fu">cor</span>(income, life_exp, <span class="at">use =</span> <span class="st">"complete.obs"</span>),</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">corr_co2_life =</span> <span class="fu">cor</span>(co2_per_capita, life_exp, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>region_corr</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional visualization: scatter plot of CO₂ per capita vs income</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(<span class="at">x =</span> income, <span class="at">y =</span> co2_per_capita, <span class="at">color =</span> region)) <span class="sc">+</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span> <span class="co"># log scale for better spread</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Income (log scale)"</span>, <span class="at">y =</span> <span class="st">"CO₂ per capita"</span>, <span class="at">title =</span> <span class="st">"CO₂ vs Income by Region"</span>) <span class="sc">+</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 5 – Finding “Champions” by Domain
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let’s identify the countries or regions that stand out in different dimensions. For example, Africa has some of the largest populations; which countries lead in CO₂ emissions, income, or life expectancy?</p>
+<p>Questions to explore:</p>
+<ol type="1">
+<li>Reshape and aggregate:</li>
+</ol>
+<ul>
+<li>Convert the Gapminder dataset to a long format for CO₂ emissions, income, and life expectancy, keeping country and region as the analysis level.</li>
+<li>Aggregate or sum the values by variable of interest for each country or region.</li>
+</ul>
+<ol start="2" type="1">
+<li>Graphical representation:</li>
+</ol>
+<ul>
+<li>Produce a barplot or other visualizations to identify the top performers in each domain (population, CO₂ per capita, income, life expectancy).</li>
+</ul>
+<ol start="3" type="1">
+<li>Champion identification:</li>
+</ol>
+<ul>
+<li>For each region, identify the country with the highest value in each key metric (CO₂ per capita, income, life expectancy, population).</li>
+<li>Compare patterns across regions: do some regions excel in certain dimensions while lagging in others?</li>
+</ul>
+<details>
+<summary>
+Hint (click to expand)
+</summary>
+<p>Use pivot_longer() to convert the dataset into long format if you want a single variable column for CO₂, income, and life expectancy.</p>
+<p>Use group_by(country, variable) and summarise() to calculate totals or averages.</p>
+<p>Use arrange(desc(value)) to rank countries within each variable or region.</p>
+<p>Visualize with ggplot2 using geom_bar(stat=“identity”) or geom_col().</p>
+<p>You can also create a summary table of champions per region using slice_max() or top_n().</p>
+</details>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 5 Bonus – Identify the least polluting region
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Now that you have explored “champions” at the country level, let’s look at regions.</p>
+<p>Task: - Aggregate CO₂ emissions per region. You can use either total CO₂ or CO₂ per capita. - Identify the region with the lowest pollution.</p>
+<p>Optionally, visualize all regions to see how they compare.</p>
+<p>Interpret the results: does the least polluting region have a small population, low income, or other characteristics that might explain its low emissions?</p>
+<div class="cell">
+<details>
+<summary>Solution Exercise 5 Bonus: Least Polluting Region</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Import Gapminder dataset</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/zief0002/miniature-garbanzo/main/data/gapminder.csv"</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>gapminder <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(url)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Derived CO₂ metrics</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>gapminder <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">co2_per_capita =</span> co2 <span class="sc">/</span> population,</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">co2_total =</span> co2_per_capita <span class="sc">*</span> population</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate by region</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>region_co2 <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region) <span class="sc">%&gt;%</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_co2 =</span> <span class="fu">sum</span>(co2_total, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_co2_pc =</span> <span class="fu">mean</span>(co2_per_capita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(mean_co2_pc)</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>region_co2</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Least polluting region</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>least_polluting_region <span class="ot">&lt;-</span> region_co2 <span class="sc">%&gt;%</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_min</span>(<span class="at">order_by =</span> mean_co2_pc, <span class="at">n =</span> <span class="dv">1</span>)</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>least_polluting_region</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional visualization</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(region_co2, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(region, mean_co2_pc), <span class="at">y =</span> mean_co2_pc, <span class="at">fill =</span> region)) <span class="sc">+</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Average CO₂ per Capita by Region"</span>,</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Region"</span>,</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Mean CO₂ per Capita"</span></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+</div>
+<p>::: {.callout-tip}</p>
+<section id="exercise-6-optional-validate-interpretations-with-statistical-tests" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="exercise-6-optional-validate-interpretations-with-statistical-tests"><span class="header-section-number">1.1</span> Exercise 6 (optional) – Validate interpretations with statistical tests</h2>
+<p>For those who want to go further, test some of the patterns you observed in previous exercises.</p>
+<p>Task suggestions:</p>
+<ul>
+<li><strong>Income vs CO₂ per capita</strong>: Do high-income countries emit more CO₂ per capita than low-income countries?</li>
+<li><strong>Life expectancy vs income level</strong>: Are wealthier countries living longer?</li>
+<li><strong>Correlations</strong>: Check whether CO₂ per capita is correlated with income or population.</li>
+</ul>
+<details>
+<summary>
+Hints (click to expand)
+</summary>
+<ul>
+<li>Group countries by income_level or region.<br>
+</li>
+<li>Visualize distributions with boxplots.<br>
+</li>
+<li>Choose parametric (t-test, ANOVA) or non-parametric (Wilcoxon, Kruskal-Wallis) tests based on distribution.<br>
+</li>
+<li>Use cor.test() to check correlations.<br>
+</li>
+<li>Interpret p-values and confidence intervals in context.</li>
+</ul>
+</details>
+<div class="cell">
+<details>
+<summary>Solution Exercise 6 (optional): Statistical tests</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Import Gapminder dataset</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/zief0002/miniature-garbanzo/main/data/gapminder.csv"</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>gap <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(url) <span class="sc">%&gt;%</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">co2_per_capita =</span> co2 <span class="sc">/</span> population</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1: CO₂ per capita by income_level</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>gap <span class="sc">%&gt;%</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(income_level) <span class="sc">%&gt;%</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_co2_pc =</span> <span class="fu">mean</span>(co2_per_capita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_co2_pc =</span> <span class="fu">sd</span>(co2_per_capita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Visual inspection</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gap, <span class="fu">aes</span>(<span class="at">x =</span> income_level, <span class="at">y =</span> co2_per_capita)) <span class="sc">+</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"CO₂ per Capita by Income Level"</span>) <span class="sc">+</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<details>
+<summary>Solution Exercise 6 (optional): Statistical tests</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># T-test between Level 1 and Level 4 income countries (example)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>t_test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  co2_per_capita <span class="sc">~</span> income_level,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> gap <span class="sc">%&gt;%</span> <span class="fu">filter</span>(income_level <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Level 1"</span>,<span class="st">"Level 4"</span>))</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>t_test_result</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 2: Correlation between income and CO₂ per capita</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>cor_test <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(gap<span class="sc">$</span>income, gap<span class="sc">$</span>co2_per_capita, <span class="at">method =</span> <span class="st">"spearman"</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>cor_test</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 3: ANOVA for CO₂ per capita across all income levels</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>anova_result <span class="ot">&lt;-</span> <span class="fu">aov</span>(co2_per_capita <span class="sc">~</span> income_level, <span class="at">data =</span> gap)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(anova_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+<section id="conducting-a-survey-analysis-weight_lifting" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Conducting a survey analysis :weight_lifting:</h1>
+<p>In this section, the goal is not to master every survey package in R.</p>
+<p>Instead, we focus on exploring some specific contexts and getting comfortable with the Hmisc library, which allows us to compute weighted statistics easily. Once you have the fundamentals, you’ll be able to explore documentation on your own and experiment with the many tools available. :mortar_board: :rocket:</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 1 – Simulate a partial survey
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>From the Gapminder dataset, randomly remove ~30% of CO₂ values to simulate a survey with missing data.</li>
+<li>Add a weight variable proportional to the population.</li>
+<li>Inspect the dataset to check the missing values and verify your weights.</li>
+</ol>
+<details>
+<summary>
+Hint
+</summary>
+<ul>
+<li>Use sample() to randomly select rows to set as NA.</li>
+<li>Check missing values with colSums(is.na(…)).</li>
+<li>Create weights with mutate(weight = population / sum(population, na.rm = TRUE)).</li>
+<li>Use str() or glimpse() to verify your table structure.</li>
+</ul>
+</details>
+<div class="cell">
+<details>
+<summary>Solution Exercise 1: Simulate survey and weights</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Gapminder</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/zief0002/miniature-garbanzo/main/data/gapminder.csv"</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(url)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate missing CO₂ values (~30%)</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>survey_data<span class="sc">$</span>co2[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(survey_data), <span class="dv">30</span>)] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Add weights proportional to population</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> survey_data <span class="sc">%&gt;%</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">weight =</span> population <span class="sc">/</span> <span class="fu">sum</span>(population, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(survey_data))</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(survey_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+</div>
+<p>::: {.callout-tip}</p>
+<section id="exercise-2-weighted-average-co₂-per-region" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="exercise-2-weighted-average-co₂-per-region"><span class="header-section-number">2.1</span> Exercise 2 – Weighted average CO₂ per region</h2>
+<ul>
+<li>Compute the weighted mean CO₂ per capita per region using Hmisc::wtd.mean.</li>
+<li>Compare weighted vs unweighted means.</li>
+</ul>
+<details>
+<summary>
+Hint
+</summary>
+<ul>
+<li>Use group_by(region) + summarise().</li>
+<li>Use wtd.mean(co2_per_capita, weights = weight, na.rm = TRUE) for weighted mean.</li>
+<li>For unweighted mean, simply mean(co2_per_capita, na.rm = TRUE).</li>
+</ul>
+<div class="cell">
+<details>
+<summary>Solution Exercise 2: Weighted CO2 per region</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Hmisc)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> survey_data <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">co2_per_capita =</span> co2 <span class="sc">/</span> population)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>weighted_region <span class="ot">&lt;-</span> survey_data <span class="sc">%&gt;%</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region) <span class="sc">%&gt;%</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">weighted_mean =</span> <span class="fu">wtd.mean</span>(co2_per_capita, <span class="at">weights =</span> weight, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">unweighted_mean =</span> <span class="fu">mean</span>(co2_per_capita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>weighted_region</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>:::</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 3 – Median CO₂ per income level
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Calculate the weighted median CO₂ per capita by income_level.</li>
+<li>Compare weighted median with the unweighted median.</li>
+</ul>
+<details>
+<summary>
+Hint
+</summary>
+<ul>
+<li>Hmisc::wtd.quantile() can compute weighted medians (probs = 0.5).</li>
+<li>Use group_by(income_level) + summarise().</li>
+<li>Remember na.rm = TRUE for missing values.</li>
+</ul>
+</details>
+<div class="cell">
+<details>
+<summary>Solution Exercise 3: Weighted median by income level</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>median_income <span class="ot">&lt;-</span> survey_data <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(income_level) <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">weighted_median =</span> <span class="fu">wtd.quantile</span>(co2_per_capita, <span class="at">weights =</span> weight, <span class="at">probs =</span> <span class="fl">0.5</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">unweighted_median =</span> <span class="fu">median</span>(co2_per_capita, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>median_income</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 4 – Bootstrap estimation of mean CO₂
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Perform a simple bootstrap on the survey sample to estimate the variability of weighted mean CO₂ per region.</li>
+<li>Repeat 100 times, then summarize the mean ± standard deviation.</li>
+</ul>
+<details>
+<summary>
+Hint
+</summary>
+<ul>
+<li>Use sample_n(…, replace = TRUE) to resample rows.</li>
+<li>Compute weighted mean for each resample.</li>
+<li>Summarize results with mean() and sd().</li>
+</ul>
+</details>
+<div class="cell">
+<details>
+<summary>Solution Exercise 4: Bootstrap weighted mean CO2</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>bootstrap_means <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="sc">~</span>{</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  sample_data <span class="ot">&lt;-</span> survey_data <span class="sc">%&gt;%</span> <span class="fu">sample_n</span>(<span class="fu">nrow</span>(survey_data), <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wtd.mean</span>(sample_data<span class="sc">$</span>co2_per_capita, <span class="at">weights =</span> sample_data<span class="sc">$</span>weight, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>mean_boot <span class="ot">&lt;-</span> <span class="fu">mean</span>(bootstrap_means)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>sd_boot <span class="ot">&lt;-</span> <span class="fu">sd</span>(bootstrap_means)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>mean_boot</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>sd_boot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 5 (Bonus) – Least polluting region with survey weights
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Using your weighted survey data, identify the region with the lowest weighted CO₂ per capita.</li>
+<li>Visualize all regions with a barplot and highlight the least polluting one.</li>
+</ul>
+<details>
+<summary>
+Hint
+</summary>
+<ul>
+<li>Aggregate by region with summarise().</li>
+<li>Use wtd.mean() for weighted averages.</li>
+<li>Use slice_min() to select the region with lowest mean.</li>
+<li>Use ggplot2 for visualization.</li>
+</ul>
+</details>
+<div class="cell">
+<details>
+<summary>Solution Exercise 5 Bonus: Least polluting region with weights</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>region_weighted <span class="ot">&lt;-</span> survey_data <span class="sc">%&gt;%</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region) <span class="sc">%&gt;%</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">weighted_mean =</span> <span class="fu">wtd.mean</span>(co2_per_capita, <span class="at">weights =</span> weight, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(weighted_mean)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Least polluting region</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>least_polluting <span class="ot">&lt;-</span> region_weighted <span class="sc">%&gt;%</span> <span class="fu">slice_min</span>(<span class="at">order_by =</span> weighted_mean, <span class="at">n =</span> <span class="dv">1</span>)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>least_polluting</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualization</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(region_weighted, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(region, weighted_mean), <span class="at">y =</span> weighted_mean, <span class="at">fill =</span> region)) <span class="sc">+</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Weighted Mean CO₂ per Capita by Region"</span>,</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Region"</span>, <span class="at">y =</span> <span class="st">"Weighted CO₂ per Capita"</span>) <span class="sc">+</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </div>
 </div>
 
 
+</details></section>
 </section>
 
 </main> <!-- /main -->
