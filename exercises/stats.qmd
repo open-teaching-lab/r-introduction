@@ -18,68 +18,639 @@ to view the slides in full screen.
 
 </details>
 
-blabla lorem ips
+In this third practical tutorial, we will learn to conduct statistical analysis with {{< fa brands r-project >}}. 
+
+Two topics will be deepen in this tutorial:
+1. Data aggregation and descriptive statistics
+2. Inferential statistics, illustrated through the use case of survey data
+
+Rather than providing a formal overview of classical inferential statistical techniques, this tutorial adopts an applied approach. We will explore these methods through a concrete and widely used case in official statistics: survey data analysis.
 
 ::: {.callout-note}
-This practical session is less guided than usual in order to give you more freedom
-to explore and produce a document.
+As you have already computed your first descriptive statistics in the previous practical session, this session will be less guided than usual. The objective is to give you more autonomy and allow you to practice your newly acquired skills in a different context.
 :::
 
-## Initializing the document
+# Warm-up: basic statistical analysis :running:
+
+Let’s begin gradually. The exercises will become progressively more technical, but we will move forward step by step.
 
 ::: {.callout-tip}
-## Exercice 1: Creating the file
+## Exercise 1: Set up your environment
 
-1. Click on `File > New file > Quarto document`:
-    + Provide a title and an author for the report
-    + Choose `HTML` as the output format
-    + Uncheck the `Use visual markdown editor` option
-2. Save the file under the name `report.qmd`.
-3. In the file _header_,
-modify the publication metadata (title, author, date, etc.)
-using some of the options from [this page](https://quarto.org/docs/reference/formats/html.html).
-5. Write a first sentence in the body of the document using
-one or two elements of `Markdown` syntax for formatting.
-For example, make part of the text bold. 
-6. Add a level-2 heading (two `#`) to create an `About` section
-and write one or two sentences in it.
-6. Render the document by clicking on the `Render` button:
+Install and load the packages dplyr, tidyr, and stringr.
 
-![Source: [Hello Quarto! by `Posit`](https://quarto.org/docs/get-started/hello/rstudio.html#rendering) ](https://quarto.org/docs/get-started/hello/images/rstudio-render.png) 
-
+<details> <summary>Hint (click to expand)</summary>
+If you do not remember how to proceed, refer to the [preliminary steps](https://r-intro.openteachinglab.io/exercises/r-wrangling.html#preliminary-steps-installing-packages) section from the previous session.
+</details>
 :::
-
 
 ::: {.callout-tip}
-## Exercice 2: Inserting `R` outputs
+## Exercise 2: Import data
 
-1. Choose one of the chapters we previously worked on
-for which we produced a graph or a map.
-Reuse the example code from the solution (data import and visualizations)
-and insert it into the document.
+Here’s the URL where the data is available
 
-2. Compile the document. If there are errors, read them carefully and fix them
-in order to obtain a reproducible document.
+url <- "https://raw.githubusercontent.com/zief0002/miniature-garbanzo/main/data/gapminder.csv"
 
-3. Use the `GT` package to create a nice table,
-for example a descriptive statistics table (a mean, for instance).
+**Variable definitions**: To understand each column and its meaning, check out the [Gapminder codebook](https://zief0002.github.io/miniature-garbanzo/codebooks/gapminder.html)
+
+Read the data into R, display it, and get a first overview of its structure and contents.
+<details> <summary>Hint (click to expand)</summary>
+If needed, refer to the [importing data section](https://r-intro.openteachinglab.io/exercises/r-wrangling.html#importing-data) from the last practical session.
+</details>
 :::
-
 
 ::: {.callout-tip}
-## Exercice 3: Styling
+## Exercise 3: EDA - quick data cleaning
 
-Customize the output to obtain an aesthetically pleasing document.
-To do so, you may use a template.
+Explore the Gapminder dataset carefully and prepare it for descriptive analysis.
+Focus on data quality, potential inconsistencies, and useful derived variables.
+
+Consider questions such as:
+
+- Are the column types appropriate? Do any numeric columns need to be converted, or factor/character columns recoded?
+- Are there missing values or unexpected duplicates? How would you handle them?
+- Are there variables that could be transformed or combined to create new indicators (e.g., per capita measures, ratios, log-transformations)?
+- Are there outliers or extreme values that should be noted before further analysis?
+- Summarize your observations in a few lines: e.g., key statistics, potential issues, and any transformations you applied.
+
+<details> <summary>Hint (click to expand)</summary> 
+Useful functions include glimpse(), str(), summary(), n_distinct(), duplicated(), mutate(), and filter(). Keep your exploration focused and concise aim for about 15–20 minutes of work.
+</details>
+
+```{r}
+#| output: false
+#| code-fold: true
+#| code-summary: "Solution question 3: an example of quick EDA and cleaning"
+
+library(dplyr)
+library(ggplot2)
+library(readr)
+
+# 1. Import data
+url <- "https://raw.githubusercontent.com/zief0002/miniature-garbanzo/main/data/gapminder.csv"
+gapminder <- read_csv(url)
+
+# 2. Inspect structure
+glimpse(gapminder)
+str(gapminder)
+summary(gapminder)
+
+# 3. Check duplicates and missing values
+# Are there any duplicate rows?
+sum(duplicated(gapminder))
+
+# Missing values per column
+colSums(is.na(gapminder))
+
+# 4. Number of unique values in key columns
+n_distinct(gapminder$country)
+n_distinct(gapminder$region)
+n_distinct(gapminder$income_level)
+n_distinct(gapminder$year)  # if year column exists
+
+# 5. Create some derived variables
+gapminder <- gapminder %>%
+  mutate(
+    co2_per_capita = co2 / population,  # emissions per person
+    log_income = log(income)            # log transformation of income
+  )
+
+# 6. Quick descriptive summary
+gapminder %>%
+  summarise(
+    total_countries = n_distinct(country),
+    mean_income = mean(income, na.rm = TRUE),
+    median_income = median(income, na.rm = TRUE),
+    mean_co2 = mean(co2, na.rm = TRUE),
+    mean_co2_pc = mean(co2_per_capita, na.rm = TRUE),
+    max_life_exp = max(life_exp, na.rm = TRUE)
+  )
+
+# 7. Optional: Inspect top countries by CO2 per capita
+gapminder %>%
+  arrange(desc(co2_per_capita)) %>%
+  select(country, region, co2_per_capita, population) %>%
+  head(10)
+
+# 8. Optional: Look at regions with highest average income
+gapminder %>%
+  group_by(region) %>%
+  summarise(mean_income = mean(income, na.rm = TRUE)) %>%
+  arrange(desc(mean_income))
+
+```
 
 :::
-
 
 ::: {.callout-note}
-On a `Mac` {{< fa brands apple >}}, some useful characters
-are more difficult to type. For example, `|`
-can be obtained using the following shortcut:
-<kbd>Shift</kbd> + <kbd>Option</kbd> + <kbd>L</kbd>
+Unlike the very similar exercise from the previous session, there is no single “correct” solution. What matters most here is the methodology, the reasoning, and your ability to use the tools (dplyr, tidyr, etc.) effectively.
+:::
+
+::: {.callout-tip}
+
+## Exercise 4.a – CO₂ and income by region
+
+Explore how average income and CO₂ emissions per capita vary across regions.
+
+Consider questions such as:
+1. Which regions have high income but low emissions, or low income but high emissions?
+2. Are there regional patterns in life expectancy and population that align with income and CO₂?
+3. What might these patterns imply about development, energy use, and environmental impact?
+
+<details> <summary>Hint (click to expand)</summary>
+Use group_by(region) and summarise(); create derived variables like co2_per_capita and log_income for better comparison.
+</details>
+
+```{r}
+#| output: false
+#| code-fold: true
+#| code-summary: "Solution exercise 4.a: CO₂ and income by region"
+
+library(dplyr)
+library(ggplot2)
+library(readr)
+
+# Import Gapminder dataset
+url <- "https://raw.githubusercontent.com/zief0002/miniature-garbanzo/main/data/gapminder.csv"
+gapminder <- read_csv(url)
+
+# Create derived variables
+gapminder <- gapminder %>%
+  mutate(
+    co2_per_capita = co2 / population,
+    log_income = log(income)
+  )
+
+# Aggregate by region
+region_summary <- gapminder %>%
+  group_by(region) %>%
+  summarise(
+    mean_income = mean(income, na.rm = TRUE),
+    mean_co2_pc = mean(co2_per_capita, na.rm = TRUE),
+    mean_life_exp = mean(life_exp, na.rm = TRUE),
+    total_population = sum(population, na.rm = TRUE)
+  ) %>%
+  arrange(desc(mean_income))
+
+region_summary
+```
+
+:::
+
+::: {.callout-tip}
+
+## Exercise 4.b – population and income levels
+
+Investigate the relationship between population size and income levels.
+
+Questions to explore:
+1. Identify the most populous countries in each income level.
+2. Compare their average income and life expectancy.
+3. Are there countries with high population but low income, or high income but small population?
+4. What insights can you draw about development challenges or resource allocation?
+
+<details> <summary>Hint (click to expand)</summary>
+Combine group_by(income_level), arrange(desc(population)), filter() and summarise() to explore patterns.
+</details>
+
+```{r}
+#| output: false
+#| code-fold: true
+#| code-summary: "Solution Exercise 4.b: Population and Income Levels"
+
+# Most populous countries per income level
+pop_by_income <- gapminder %>%
+  group_by(income_level) %>%
+  arrange(desc(population)) %>%
+  slice_head(n = 5) %>%  # top 5 per income level
+  select(country, population, income, life_exp)
+
+pop_by_income
+```
+:::
+
+::: {.callout-tip}
+
+## Exercise 4.c – Outliers and cross-country comparisons
+
+Focus on outliers within regions or income levels.
+
+Consider:
+1. Which countries have extremely high or low CO₂ per capita for their income level?
+2. Are there countries with similar income but very different emissions, or similar emissions but very different populations?
+3. How could these differences be explained (e.g., industrialization, geography, energy sources)?
+
+<details> <summary>Hint (click to expand)</summary>
+Look for arrange(desc(co2_per_capita)), filter() and compare subsets of countries.
+</details> 
+
+```{r}
+#| output: false
+#| code-fold: true
+#| code-summary: "Solution Exercise 4.c: Outliers and Cross-Country Comparisons"
+
+# Outliers in CO₂ per capita within income levels
+outliers <- gapminder %>%
+  group_by(income_level) %>%
+  filter(co2_per_capita == max(co2_per_capita) | co2_per_capita == min(co2_per_capita)) %>%
+  select(country, income_level, co2_per_capita, income, population)
+
+outliers
+```
+
+:::
+
+::: {.callout-tip}
+
+## Exercise 4.d – Correlations and relationships by region
+
+Explore relationships between income, CO₂ emissions, life expectancy, and population within each region.
+
+Questions to explore:
+1. Are correlations between income and CO₂ emissions consistent across regions?
+2. Are wealthier regions always emitting more CO₂ per capita? Are there exceptions?
+3. How does population size relate to income and CO₂ within regions?
+
+<details> <summary>Hint (click to expand)</summary>
+Use group_by(region) %>% summarise() for aggregate stats, and visualize with ggplot2 to spot trends and correlations.
+</details> 
+
+```{r}
+#| output: false
+#| code-fold: true
+#| code-summary: "Solution Exercise 4.d: Correlations and Relationships by Region"
+
+# Simple correlations per region
+region_corr <- gapminder %>%
+  group_by(region) %>%
+  summarise(
+    corr_income_co2 = cor(income, co2_per_capita, use = "complete.obs"),
+    corr_income_life = cor(income, life_exp, use = "complete.obs"),
+    corr_co2_life = cor(co2_per_capita, life_exp, use = "complete.obs")
+  )
+
+region_corr
+
+# Optional visualization: scatter plot of CO₂ per capita vs income
+ggplot(gapminder, aes(x = income, y = co2_per_capita, color = region)) +
+  geom_point(alpha = 0.7) +
+  scale_x_log10() + # log scale for better spread
+  labs(x = "Income (log scale)", y = "CO₂ per capita", title = "CO₂ vs Income by Region") +
+  theme_minimal()
+
+```
+:::
+
+::: {.callout-tip}
+
+## Exercise 5 – Finding “Champions” by Domain
+
+Let’s identify the countries or regions that stand out in different dimensions. For example, Africa has some of the largest populations; which countries lead in CO₂ emissions, income, or life expectancy?
+
+Questions to explore:
+
+1. Reshape and aggregate:
+  - Convert the Gapminder dataset to a long format for CO₂ emissions, income, and life expectancy, keeping country and region as the analysis level.
+  - Aggregate or sum the values by variable of interest for each country or region.
+2. Graphical representation:
+  - Produce a barplot or other visualizations to identify the top performers in each domain (population, CO₂ per capita, income, life expectancy).
+3. Champion identification:
+  - For each region, identify the country with the highest value in each key metric (CO₂ per capita, income, life expectancy, population).
+  - Compare patterns across regions: do some regions excel in certain dimensions while lagging in others?
+
+<details> <summary>Hint (click to expand)</summary>
+
+Use pivot_longer() to convert the dataset into long format if you want a single variable column for CO₂, income, and life expectancy.
+
+Use group_by(country, variable) and summarise() to calculate totals or averages.
+
+Use arrange(desc(value)) to rank countries within each variable or region.
+
+Visualize with ggplot2 using geom_bar(stat="identity") or geom_col().
+
+You can also create a summary table of champions per region using slice_max() or top_n().
+
+</details>
+
+:::
+
+::: {.callout-tip}
+
+## Exercise 5 Bonus – Identify the least polluting region
+
+Now that you have explored “champions” at the country level, let’s look at regions.
+
+Task:
+- Aggregate CO₂ emissions per region. You can use either total CO₂ or CO₂ per capita.
+- Identify the region with the lowest pollution.
+
+Optionally, visualize all regions to see how they compare.
+
+Interpret the results: does the least polluting region have a small population, low income, or other characteristics that might explain its low emissions?
+
+```{r}
+#| output: false
+#| code-fold: true
+#| code-summary: "Solution Exercise 5 Bonus: Least Polluting Region"
+
+library(dplyr)
+library(readr)
+library(ggplot2)
+
+# Import Gapminder dataset
+url <- "https://raw.githubusercontent.com/zief0002/miniature-garbanzo/main/data/gapminder.csv"
+gapminder <- read_csv(url)
+
+# Derived CO₂ metrics
+gapminder <- gapminder %>%
+  mutate(
+    co2_per_capita = co2 / population,
+    co2_total = co2_per_capita * population
+  )
+
+# Aggregate by region
+region_co2 <- gapminder %>%
+  group_by(region) %>%
+  summarise(
+    total_co2 = sum(co2_total, na.rm = TRUE),
+    mean_co2_pc = mean(co2_per_capita, na.rm = TRUE)
+  ) %>%
+  arrange(mean_co2_pc)
+
+region_co2
+
+# Least polluting region
+least_polluting_region <- region_co2 %>%
+  slice_min(order_by = mean_co2_pc, n = 1)
+
+least_polluting_region
+
+# Optional visualization
+ggplot(region_co2, aes(x = reorder(region, mean_co2_pc), y = mean_co2_pc, fill = region)) +
+  geom_col(show.legend = FALSE) +
+  coord_flip() +
+  labs(
+    title = "Average CO₂ per Capita by Region",
+    x = "Region",
+    y = "Mean CO₂ per Capita"
+  ) +
+  theme_minimal()
+```
+:::
+
+::: {.callout-tip}
+
+## Exercise 6 (optional) – Validate interpretations with statistical tests
+
+For those who want to go further, test some of the patterns you observed in previous exercises.
+
+Task suggestions:
+
+- **Income vs CO₂ per capita**: Do high-income countries emit more CO₂ per capita than low-income countries?
+- **Life expectancy vs income level**: Are wealthier countries living longer?
+- **Correlations**: Check whether CO₂ per capita is correlated with income or population.
+
+<details>
+<summary>Hints (click to expand)</summary>
+
+- Group countries by income_level or region.  
+- Visualize distributions with boxplots.  
+- Choose parametric (t-test, ANOVA) or non-parametric (Wilcoxon, Kruskal-Wallis) tests based on distribution.  
+- Use cor.test() to check correlations.  
+- Interpret p-values and confidence intervals in context.
+</details>
+
+```{r}
+#| output: false
+#| code-fold: true
+#| code-summary: "Solution Exercise 6 (optional): Statistical tests"
+
+library(dplyr)
+library(readr)
+library(ggplot2)
+
+# Import Gapminder dataset
+url <- "https://raw.githubusercontent.com/zief0002/miniature-garbanzo/main/data/gapminder.csv"
+gap <- read_csv(url) %>%
+  mutate(
+    co2_per_capita = co2 / population
+  )
+
+# Example 1: CO₂ per capita by income_level
+gap %>%
+  group_by(income_level) %>%
+  summarise(
+    mean_co2_pc = mean(co2_per_capita, na.rm = TRUE),
+    sd_co2_pc = sd(co2_per_capita, na.rm = TRUE)
+  )
+
+# Visual inspection
+ggplot(gap, aes(x = income_level, y = co2_per_capita)) +
+  geom_boxplot() +
+  labs(title = "CO₂ per Capita by Income Level") +
+  theme_minimal()
+
+# T-test between Level 1 and Level 4 income countries (example)
+t_test_result <- t.test(
+  co2_per_capita ~ income_level,
+  data = gap %>% filter(income_level %in% c("Level 1","Level 4"))
+)
+t_test_result
+
+# Example 2: Correlation between income and CO₂ per capita
+cor_test <- cor.test(gap$income, gap$co2_per_capita, method = "spearman")
+cor_test
+
+# Example 3: ANOVA for CO₂ per capita across all income levels
+anova_result <- aov(co2_per_capita ~ income_level, data = gap)
+summary(anova_result)
+```
+
+
+# Conducting a survey analysis :weight_lifting:
+
+In this section, the goal is not to master every survey package in R.
+
+Instead, we focus on exploring some specific contexts and getting comfortable with the Hmisc library, which allows us to compute weighted statistics easily.
+Once you have the fundamentals, you’ll be able to explore documentation on your own and experiment with the many tools available. :mortar_board: :rocket:
+
+::: {.callout-tip}
+
+## Exercise 1 – Simulate a partial survey
+
+1. From the Gapminder dataset, randomly remove ~30% of CO₂ values to simulate a survey with missing data.
+2. Add a weight variable proportional to the population.
+3. Inspect the dataset to check the missing values and verify your weights.
+
+<details> <summary>Hint</summary>
+
+- Use sample() to randomly select rows to set as NA.
+- Check missing values with colSums(is.na(...)).
+- Create weights with mutate(weight = population / sum(population, na.rm = TRUE)).
+- Use str() or glimpse() to verify your table structure.
+
+</details>
+
+```{r}
+#| output: false
+#| code-fold: true
+#| code-summary: "Solution Exercise 1: Simulate survey and weights"
+library(dplyr)
+library(readr)
+
+# Load Gapminder
+url <- "https://raw.githubusercontent.com/zief0002/miniature-garbanzo/main/data/gapminder.csv"
+survey_data <- read_csv(url)
+
+# Simulate missing CO₂ values (~30%)
+set.seed(123)
+survey_data$co2[sample(1:nrow(survey_data), 30)] <- NA
+
+# Add weights proportional to population
+survey_data <- survey_data %>%
+  mutate(weight = population / sum(population, na.rm = TRUE))
+
+# Inspect
+colSums(is.na(survey_data))
+str(survey_data)
+```
+:::
+
+::: {.callout-tip}
+
+## Exercise 2 – Weighted average CO₂ per region
+
+- Compute the weighted mean CO₂ per capita per region using Hmisc::wtd.mean.
+- Compare weighted vs unweighted means.
+
+<details> <summary>Hint</summary>
+
+- Use group_by(region) + summarise().
+- Use wtd.mean(co2_per_capita, weights = weight, na.rm = TRUE) for weighted mean.
+- For unweighted mean, simply mean(co2_per_capita, na.rm = TRUE).
+
+```{r}
+#| output: false
+#| code-fold: true
+#| code-summary: "Solution Exercise 2: Weighted CO2 per region"
+library(Hmisc)
+
+survey_data <- survey_data %>%
+  mutate(co2_per_capita = co2 / population)
+
+weighted_region <- survey_data %>%
+  group_by(region) %>%
+  summarise(
+    weighted_mean = wtd.mean(co2_per_capita, weights = weight, na.rm = TRUE),
+    unweighted_mean = mean(co2_per_capita, na.rm = TRUE)
+  )
+
+weighted_region
+```
+:::
+
+::: {.callout-tip}
+
+## Exercise 3 – Median CO₂ per income level
+
+- Calculate the weighted median CO₂ per capita by income_level.
+- Compare weighted median with the unweighted median.
+
+<details> <summary>Hint</summary>
+
+- Hmisc::wtd.quantile() can compute weighted medians (probs = 0.5).
+- Use group_by(income_level) + summarise().
+- Remember na.rm = TRUE for missing values.
+</details>
+
+```{r}
+#| output: false
+#| code-fold: true
+#| code-summary: "Solution Exercise 3: Weighted median by income level"
+
+median_income <- survey_data %>%
+  group_by(income_level) %>%
+  summarise(
+    weighted_median = wtd.quantile(co2_per_capita, weights = weight, probs = 0.5, na.rm = TRUE),
+    unweighted_median = median(co2_per_capita, na.rm = TRUE)
+  )
+
+median_income
+```
 :::
 
 
+::: {.callout-tip}
+
+## Exercise 4 – Bootstrap estimation of mean CO₂
+
+- Perform a simple bootstrap on the survey sample to estimate the variability of weighted mean CO₂ per region.
+- Repeat 100 times, then summarize the mean ± standard deviation.
+
+<details> <summary>Hint</summary>
+
+- Use sample_n(..., replace = TRUE) to resample rows.
+- Compute weighted mean for each resample.
+- Summarize results with mean() and sd().
+</details>
+
+```{r}
+#| output: false
+#| code-fold: true
+#| code-summary: "Solution Exercise 4: Bootstrap weighted mean CO2"
+set.seed(123)
+library(purrr)
+
+bootstrap_means <- map_dbl(1:100, ~{
+  sample_data <- survey_data %>% sample_n(nrow(survey_data), replace = TRUE)
+  wtd.mean(sample_data$co2_per_capita, weights = sample_data$weight, na.rm = TRUE)
+})
+
+mean_boot <- mean(bootstrap_means)
+sd_boot <- sd(bootstrap_means)
+
+mean_boot
+sd_boot
+```
+:::
+
+::: {.callout-tip}
+
+## Exercise 5 (Bonus) – Least polluting region with survey weights
+
+- Using your weighted survey data, identify the region with the lowest weighted CO₂ per capita.
+- Visualize all regions with a barplot and highlight the least polluting one.
+
+<details> <summary>Hint</summary>
+
+- Aggregate by region with summarise().
+- Use wtd.mean() for weighted averages.
+- Use slice_min() to select the region with lowest mean.
+- Use ggplot2 for visualization.
+</details>
+
+```{r}
+#| output: false
+#| code-fold: true
+#| code-summary: "Solution Exercise 5 Bonus: Least polluting region with weights"
+library(ggplot2)
+
+region_weighted <- survey_data %>%
+  group_by(region) %>%
+  summarise(weighted_mean = wtd.mean(co2_per_capita, weights = weight, na.rm = TRUE)) %>%
+  arrange(weighted_mean)
+
+# Least polluting region
+least_polluting <- region_weighted %>% slice_min(order_by = weighted_mean, n = 1)
+least_polluting
+
+# Visualization
+ggplot(region_weighted, aes(x = reorder(region, weighted_mean), y = weighted_mean, fill = region)) +
+  geom_col(show.legend = FALSE) +
+  coord_flip() +
+  labs(title = "Weighted Mean CO₂ per Capita by Region",
+       x = "Region", y = "Weighted CO₂ per Capita") +
+  theme_minimal()
+```
+
+:::
