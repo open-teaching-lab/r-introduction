@@ -194,14 +194,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#warm-up-basic-statistical-analysis-running" id="toc-warm-up-basic-statistical-analysis-running" class="nav-link active" data-scroll-target="#warm-up-basic-statistical-analysis-running"><span class="header-section-number">1</span> Warm-up: basic statistical analysis :running:</a>
-  <ul class="collapse">
-  <li><a href="#exercise-6-optional-validate-interpretations-with-statistical-tests" id="toc-exercise-6-optional-validate-interpretations-with-statistical-tests" class="nav-link" data-scroll-target="#exercise-6-optional-validate-interpretations-with-statistical-tests"><span class="header-section-number">1.1</span> Exercise 6 (optional) – Validate interpretations with statistical tests</a></li>
-  </ul></li>
-  <li><a href="#conducting-a-survey-analysis-weight_lifting" id="toc-conducting-a-survey-analysis-weight_lifting" class="nav-link" data-scroll-target="#conducting-a-survey-analysis-weight_lifting"><span class="header-section-number">2</span> Conducting a survey analysis :weight_lifting:</a>
-  <ul class="collapse">
-  <li><a href="#exercise-2-weighted-average-co₂-per-region" id="toc-exercise-2-weighted-average-co₂-per-region" class="nav-link" data-scroll-target="#exercise-2-weighted-average-co₂-per-region"><span class="header-section-number">2.1</span> Exercise 2 – Weighted average CO₂ per region</a></li>
-  </ul></li>
+  <li><a href="#warm-up-basic-statistical-analysis-running" id="toc-warm-up-basic-statistical-analysis-running" class="nav-link active" data-scroll-target="#warm-up-basic-statistical-analysis-running"><span class="header-section-number">1</span> Warm-up: basic statistical analysis :running:</a></li>
+  <li><a href="#conducting-a-survey-analysis-weight_lifting" id="toc-conducting-a-survey-analysis-weight_lifting" class="nav-link" data-scroll-target="#conducting-a-survey-analysis-weight_lifting"><span class="header-section-number">2</span> Conducting a survey analysis :weight_lifting:</a></li>
   </ul>
 </nav>
     </div>
@@ -666,9 +660,16 @@ Exercise 5 Bonus – Identify the least polluting region
 </div>
 </div>
 </div>
-<p>::: {.callout-tip}</p>
-<section id="exercise-6-optional-validate-interpretations-with-statistical-tests" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="exercise-6-optional-validate-interpretations-with-statistical-tests"><span class="header-section-number">1.1</span> Exercise 6 (optional) – Validate interpretations with statistical tests</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 6 (optional) – Validate interpretations with statistical tests
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>For those who want to go further, test some of the patterns you observed in previous exercises.</p>
 <p>Task suggestions:</p>
 <ul>
@@ -738,7 +739,8 @@ Hints (click to expand)
 <span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(anova_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section>
+</div>
+</div>
 </section>
 <section id="conducting-a-survey-analysis-weight_lifting" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Conducting a survey analysis :weight_lifting:</h1>
@@ -795,9 +797,16 @@ Hint
 </div>
 </div>
 </div>
-<p>::: {.callout-tip}</p>
-<section id="exercise-2-weighted-average-co₂-per-region" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="exercise-2-weighted-average-co₂-per-region"><span class="header-section-number">2.1</span> Exercise 2 – Weighted average CO₂ per region</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 2 – Weighted average CO₂ per region
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ul>
 <li>Compute the weighted mean CO₂ per capita per region using Hmisc::wtd.mean.</li>
 <li>Compare weighted vs unweighted means.</li>
@@ -811,6 +820,7 @@ Hint
 <li>Use wtd.mean(co2_per_capita, weights = weight, na.rm = TRUE) for weighted mean.</li>
 <li>For unweighted mean, simply mean(co2_per_capita, na.rm = TRUE).</li>
 </ul>
+</details>
 <div class="cell">
 <details>
 <summary>Solution Exercise 2: Weighted CO2 per region</summary>
@@ -829,7 +839,8 @@ Hint
 <span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>weighted_region</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>:::</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -965,7 +976,6 @@ Hint
 </div>
 
 
-</details></section>
 </section>
 
 </main> <!-- /main -->
