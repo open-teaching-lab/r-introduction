@@ -39,7 +39,7 @@ to explore and produce a document.
 ## Initializing the document
 
 ::: {.callout-tip}
-## Exercice 1: Creating the file
+## Exercise 1: Creating the file
 
 1. Click on `File > New file > Quarto document`:
     + Provide a title and an author for the report
@@ -62,7 +62,7 @@ and write one or two sentences in it.
 
 
 ::: {.callout-tip}
-## Exercice 2: Inserting `R` outputs
+## Exercise 2: Inserting `R` outputs
 
 1. Choose one of the chapters we previously worked on
 for which we produced a graph or a map.
@@ -78,7 +78,7 @@ for example a descriptive statistics table (a mean, for instance).
 
 
 ::: {.callout-tip}
-## Exercice 3: Styling
+## Exercise 3: Styling
 
 Customize the output to obtain an aesthetically pleasing document.
 To do so, you may use a template.
