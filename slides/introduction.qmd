@@ -304,6 +304,20 @@ __[We will be using `SSPCloud` 😍🐉☁️🇫🇷!]{.orange}__
 - The use of statistics for governance is not new (cf. [Desrosières](https://www.cairn.info/la-politique-des-grands-nombres--9782707165046.htm) or [Ian Hacking](https://en.wikipedia.org/wiki/The_Taming_of_Chance))...
 - ... but numbers now hold a central place in public debate and policy-making ([Supiot](https://www.fayard.fr/sciences-humaines/la-gouvernance-par-les-nombres-9782213681092), [Davies](https://www.theguardian.com/books/2018/sep/19/nervous-states-william-davies-review)).
 
+::: notes
+We are witnessing an intensification in the production of data.
+The digitalization of social, economic, and administrative activities has drastically reduced the cost of:
+data collection, storage, processing, dissemination
+This has resulted in exponential growth in the volume of available data.
+This is not simply “more data” — it represents a change in scale.
+
+The relationship between statistics and governance is not new.
+Since the eighteenth century, modern states have relied on: censuses, demographic statistics, fiscal records, economic indicators
+As sociologists like Alain Desrosières has shown, statistics are social and institutional constructions rather than neutral reflections of reality.
+Similarly, Ian Hacking explains how probability reshaped modern ways of thinking about uncertainty, risk, and society.
+Quantification has therefore been historically tied to the formation of the modern state.
+:::
+
 ## Data diversification (1/4)
 
 ### Classic tabular data {.nonincremental}
