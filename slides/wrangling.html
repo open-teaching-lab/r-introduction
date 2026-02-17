@@ -538,7 +538,7 @@ These packages will be installed into "/__w/r-introduction/r-introduction/renv/l
 
 # Installing packages --------------------------------------------------------
 - Installing eurostat 4.0.0 ...                 OK [linked from cache]
-Successfully installed 1 package in 5.6 milliseconds.</code></pre>
+Successfully installed 1 package in 6.3 milliseconds.</code></pre>
 </div>
 </div>
 <p>We chain sequences with <em>pipes</em> (<code>%&gt;%</code>)</p>
@@ -553,15 +553,15 @@ Successfully installed 1 package in 5.6 milliseconds.</code></pre>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-1" data-code-lines="4">We convert the standard <em>dataframe</em> to <code>tibble</code></span>
+<span data-code-lines="4" data-code-cell="annotated-cell-1" data-code-annotation="1">We convert the standard <em>dataframe</em> to <code>tibble</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-1" data-code-lines="5">We keep only gas stations (values <code>B316</code> of <code>TYPEQU</code>)</span>
+<span data-code-lines="5" data-code-cell="annotated-cell-1" data-code-annotation="2">We keep only gas stations (values <code>B316</code> of <code>TYPEQU</code>)</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-1" data-code-lines="6">We create a new column by referencing existing ones (without quotes!)</span>
+<span data-code-lines="6" data-code-cell="annotated-cell-1" data-code-annotation="3">We create a new column by referencing existing ones (without quotes!)</span>
 </dd>
 </dl>
 </div>
@@ -605,19 +605,19 @@ Illustration of <em>split-apply-combine</em>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-2" data-code-lines="4">We convert the standard <em>dataframe</em> to <code>tibble</code></span>
+<span data-code-lines="4" data-code-cell="annotated-cell-2" data-code-annotation="1">We convert the standard <em>dataframe</em> to <code>tibble</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-2" data-code-lines="5">We keep only gas stations (values <code>2025-01-01</code> of <code>TIME_PERIOD</code>)</span>
+<span data-code-lines="5" data-code-cell="annotated-cell-2" data-code-annotation="2">We keep only gas stations (values <code>2025-01-01</code> of <code>TIME_PERIOD</code>)</span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-2" data-code-lines="6">We define <code>geo</code> as a stratification variable to define groups</span>
+<span data-code-lines="6" data-code-cell="annotated-cell-2" data-code-annotation="3">We define <code>geo</code> as a stratification variable to define groups</span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-2" data-code-lines="7">We summarize the data by summing gas stations in each group</span>
+<span data-code-lines="7" data-code-cell="annotated-cell-2" data-code-annotation="4">We summarize the data by summing gas stations in each group</span>
 </dd>
 </dl>
 </div>
@@ -765,11 +765,11 @@ Illustration of <em>split-apply-combine</em>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-7" data-code-lines="1">We import the <code>readr</code> library to have access to the <code>read_csv</code> function</span>
+<span data-code-lines="1" data-code-cell="annotated-cell-7" data-code-annotation="1">We import the <code>readr</code> library to have access to the <code>read_csv</code> function</span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-7" data-code-lines="2">We use <code>read_csv</code> to read data stored in the relative path <code>data_folder/file_name.csv</code></span>
+<span data-code-lines="2" data-code-cell="annotated-cell-7" data-code-annotation="2">We use <code>read_csv</code> to read data stored in the relative path <code>data_folder/file_name.csv</code></span>
 </dd>
 </dl>
 </div>
@@ -887,11 +887,11 @@ Illustration of <em>split-apply-combine</em>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-12" data-code-lines="1">We import the <code>jsonlite</code> library to have access to the <code>fromJSON</code> function</span>
+<span data-code-lines="1" data-code-cell="annotated-cell-12" data-code-annotation="1">We import the <code>jsonlite</code> library to have access to the <code>fromJSON</code> function</span>
 </dd>
 <dt data-target-cell="annotated-cell-12" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-12" data-code-lines="2">We use <code>fromJSON</code> to read data stored in the relative path <code>data_folder/file_name.json</code></span>
+<span data-code-lines="2" data-code-cell="annotated-cell-12" data-code-annotation="2">We use <code>fromJSON</code> to read data stored in the relative path <code>data_folder/file_name.json</code></span>
 </dd>
 </dl>
 </div>
@@ -922,50 +922,32 @@ Illustration of <em>split-apply-combine</em>
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Nested functions</a></li><li><a href="#tabset-1-2">With the <em>pipe</em></a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 49 × 2
-   geo   pop_by_country_2025
-   &lt;chr&gt;               &lt;dbl&gt;
- 1 AD                1938528
- 2 AL               66085816
- 3 AM               41834200
- 4 AT              523911792
- 5 AZ              180389320
- 6 BE              677625197
- 7 BG              529118397
- 8 BY              123719805
- 9 CH              462691936
-10 CY               26631335
-# ℹ 39 more rows</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb10-2"><a href="#cb10-2"></a></span>
+<span id="cb10-3"><a href="#cb10-3"></a>df <span class="ot">&lt;-</span> <span class="fu">filter</span>(</span>
+<span id="cb10-4"><a href="#cb10-4"></a>  <span class="fu">as_tibble</span>(pop_by_age),</span>
+<span id="cb10-5"><a href="#cb10-5"></a>  TIME_PERIOD <span class="sc">==</span> <span class="st">"2025-01-01"</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a>)</span>
+<span id="cb10-7"><a href="#cb10-7"></a></span>
+<span id="cb10-8"><a href="#cb10-8"></a><span class="fu">summarise</span>(</span>
+<span id="cb10-9"><a href="#cb10-9"></a>  <span class="fu">group_by</span>(pop_by_age, geo),</span>
+<span id="cb10-10"><a href="#cb10-10"></a>  <span class="at">pop_by_country_2025 =</span> <span class="fu">sum</span>(values, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-11"><a href="#cb10-11"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-1-2">
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 40 × 2
-   geo   pop_by_country_2025
-   &lt;chr&gt;               &lt;dbl&gt;
- 1 AL                2362991
- 2 AT                9195525
- 3 AZ               10223305
- 4 BE               11880328
- 5 BG                6436921
- 6 CH                9048831
- 7 CY                 982819
- 8 CZ               10908523
- 9 DE               83559239
-10 DK                5991469
-# ℹ 30 more rows</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb11-2"><a href="#cb11-2"></a></span>
+<span id="cb11-3"><a href="#cb11-3"></a>pop_by_age <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a>  <span class="fu">filter</span>(TIME_PERIOD <span class="sc">==</span> <span class="st">"2025-01-01"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-6"><a href="#cb11-6"></a>  <span class="fu">group_by</span>(geo) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-7"><a href="#cb11-7"></a>  <span class="fu">summarise</span>(<span class="at">pop_by_country_2025 =</span> <span class="fu">sum</span>(values, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 
 <div class="footer footer-default">
-<p>Introduction to quantitative methods with <i class="fa-brands fa-r-project" aria-label="r-project"></i>, École Normale Supérieure (<a href="../">back to main page</a>)</p>
+<p>Introduction to quantitative methods with <i class="fa-brands fa-r-project" aria-label="r-project"></i>, Lesotho Bureau of Statistics (<a href="../">back to main page</a>)</p>
 </div>
 </section></section>
     </div>
