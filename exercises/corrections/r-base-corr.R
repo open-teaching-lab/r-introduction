@@ -76,3 +76,17 @@ ncol(df)
 length(df) #like a list
 df[3, c("var1","var2")]
 
+# Exercise 10 ------------------------------------------------------------------
+# Create a var4 column in our dataset equal to the square of var1
+df$var4 <- (df$var1)^2
+
+# Create a var5 column in our dataset concatenating the first two variables 
+# generalizing the schema 1=a.
+df$var5 <- paste(df$var1,df$var2,sep = "=")
+
+# Create a df_small1 dataframe for rows where the logical condition var3 is verified
+df_small <- df[df$var3,]
+  
+# Create a df_small2 dataframe for rows where var1 is even
+# (see above the example on Euclidean division for the model)
+df_small2 <- df[df$var1 %% 2 == 0,]
