@@ -304,7 +304,7 @@ figure1
 ```
 
 ::: {.callout-tip}
-## Exercice 3: produce a new figure
+## Exercise 3: produce a new figure
 
 Repeat the process for figure 2 (_"The 10 counters with the highest total counts"_), to create a similar chart.
 
@@ -394,7 +394,7 @@ figure2_lollipop
 
 
 ::: {.callout-tip}
-## Exercice 3 bis (optional): Produce a _lollipop_ chart
+## Exercise 3 bis (optional): Produce a _lollipop_ chart
 
 Redo exercise 2, but instead of a _barplot_, produce a _lollipop chart_.  
 ::: 
@@ -412,7 +412,7 @@ time data and involves a common operation in time series: changing the date form
 to allow aggregation at a larger time interval. 
 
 ::: {.callout-tip}
-## Exercice 4: monthly count barplot
+## Exercise 4: monthly count barplot
 
 1. Use the `format` function to create a `month` variable in the `YYYY-MM` format ;
 2. Compute the mean hourly counts for each month
@@ -500,7 +500,7 @@ Time series visualizations are more common for data with a temporal dimension.
 
 
 ::: {.callout-tip}
-## Exercice 5: Time series representation
+## Exercise 5: Time series representation
 
 1. Create a `day` variable converting timestamps to daily format (e.g. `2021-05-01`).
 
@@ -618,7 +618,7 @@ These visualizations rely on the web triptych: `HTML`, `CSS`, and `JavaScript`.
 but use R libraries that automatically generate the necessary code. 
 
 ::: {.callout-tip}
-## Exercice 6: interactive time series
+## Exercise 6: interactive time series
 
 1. Create a basic `Plotly` figure representing figure 4 as a time series without worrying about style.
 
@@ -737,7 +737,7 @@ fig
 ```
 
 ::: {.callout-tip}
-## Exercice 7: barplot with `Plotly`
+## Exercise 7: barplot with `Plotly`
 
 1. To order bars correctly, use `fct_reorder` from `forcats` on the dataframe from exercise 1;
 2. Use `Plotly` to create your figure;

@@ -465,7 +465,7 @@ cor_test
 anova_result <- aov(co2_per_capita ~ income_level, data = gap)
 summary(anova_result)
 ```
-
+:::
 
 # Conducting a survey analysis :weight_lifting:
 
@@ -528,6 +528,8 @@ str(survey_data)
 - Use group_by(region) + summarise().
 - Use wtd.mean(co2_per_capita, weights = weight, na.rm = TRUE) for weighted mean.
 - For unweighted mean, simply mean(co2_per_capita, na.rm = TRUE).
+
+</details>
 
 ```{r}
 #| output: false

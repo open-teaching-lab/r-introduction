@@ -74,6 +74,12 @@ code-annotations: hover
 - colleagues from [**INSEE**]{.orange}: National Institute of Statistics and Economic Studies 
 ![](https://www.insee.fr/static/img/logoInseeEn.svg){fig-align="center"}
 
+::: notes
+We are two statisticians from France, colleagues at INSEE — the French National Institute of Statistics and Economic Studies. We work at the headquarters in Paris, but INSEE also has offices across several regions in France. We’ve come to share practices and technical expertise, and to discuss with you as peers. This is meant as a workshop, a space for exchanging ideas and experiences. We will be talking a lot, but always as colleagues learning from each other.
+
+Like the BoS, INSEE — the French National Institute of Statistics and Economic Studies produces official statistics to inform public decision-making. It is responsible for producing, analyzing, and disseminating official statistics that guide public debate and decisions — concrete indicators that affect us all, such as GDP, inflation, unemployment, or public debt. But INSEE does more than just produce numbers: it coordinates the national statistical service, works across a wide range of areas demographics, health, defense, agriculture and also manages essential registries, such as those of companies or individuals, an important point for the rest of this presentation.
+:::
+
 ## All about us {.nonincremental auto-animate=true}
 
 ### Instructors 
@@ -82,13 +88,25 @@ code-annotations: hover
 
 [**Nathan Randriamanana**]{.orange}
 
+::: notes
+Hi, I’m Nathan Randriamanana, one of the two instructors for this week.
+I’m starting the courses today on my own, but don’t worry.
+:::
+
 ## All about us {.nonincremental auto-animate=true}
 
 ### Instructors 
 
 ![](https://cdn-icons-png.freepik.com/256/953/953789.png?semt=ais_white_label){fig-align="center"}
 
-[**New character unlocking tomorrow! :lock: :star_struck: :partying_face:**]{.orange}
+[**Clara is coming tomorrow! :lock: :star_struck: :partying_face:**]{.orange}
+
+::: notes
+Even though she's not here yet, Clara is coming tomorrow ! 
+So we’ll be delivering the full course together for the rest of the week.
+Ladies, you won’t be alone either
+:::
+
 
 ## [Who am I then ?](https://www.linkedin.com/in/nathan-randriamanana-69a1721b3/) {.nonincremental auto-animate=true}
 
@@ -97,6 +115,14 @@ code-annotations: hover
     + working now at the [**Business Statistics Directorate**]{.blue2}
     + [**SIRENE**](https://www.insee.fr/en/metadonnees/definition/c1135){.blue2} business register
 
+::: notes
+Hi, I’m Nathan Randriamanana. I’m a data scientist at INSEE. 
+
+Everyone now, what's a data scientist ?
+A data scientist works at the interface between statistics, programming, and domain knowledge. In general, we analyze data, build models, and sometimes use machine learning or computational methods to provide insights that help organizations make informed decisions.
+
+I’m a civil servant, which means I work as an official statistician for the government. I’m currently based in the Business Statistics Directorate, and part of my work involves managing the SIRENE business register, which tracks the full life cycle of companies in France from their creation, through modifications, to their closure, and sometimes even reactivation.
+:::
 
 ## [About my job](https://www.linkedin.com/in/nathan-randriamanana-69a1721b3/) {.smaller}
 
@@ -105,6 +131,17 @@ code-annotations: hover
     - **:billed_cap: Data Scientist**: Managing the end-to-end ML workflow for APE classification from model training and delivery to its integration into the production application.
 
 ![Example from presentation at the [Cloud Native Days France 2026](https://www.cloudnativedays.fr/) conference regarding cloud technologies](https://minio.lab.sspcloud.fr/nrandriamanana/portfolio/photo_cnd_codage.jpg)
+
+
+::: notes
+I wear two hats in my work at INSEE.
+
+First, as an Application Administrator 🎩, I act as the functional lead for the SIRENE business register. In this role, I bridge the gap between business needs and IT by writing functional specifications to maintain and improve the system.
+
+Second, as a Data Scientist 🧢, I manage the full machine learning workflow for APE classification — from training and testing the model to integrating it into our production system so it can be used for official statistics.
+
+This picture is from a presentation I gave at the Cloud Native Days France 2026 conference, where I shared some of these technical practices with the community.
+:::
 
 ## Socials {.nonincremental auto-animate=true}
 
@@ -126,6 +163,14 @@ code-annotations: hover
 
 ::::
 
+
+
+::: notes
+If you want to connect with me, you can find me on LinkedIn — here’s a QR code to make it easy.
+I also have a GitHub account, which I update from time to time with some of my projects.
+And don’t worry — if you don’t have time to scan the codes or if it doesn’t work, you’ll still have access to all the course materials.
+:::
+
 ## [About my courses](https://www.linkedin.com/in/nathan-randriamanana-69a1721b3/)
 
 You might also be interested in my other introductory courses: 
@@ -135,6 +180,11 @@ this is just the beginning ! :rocket:
 
 __Most importantly, check out the full training portal on the [Insee datalab](https://www.sspcloud.fr/catalog)__
 
+::: notes
+The INSEE Datalab portal is the main channel and the best place to start — it has all the official courses and resources.
+
+For those who are interested, I’ve also set up a small GitHub organization. This is optional and purely for personal use — it’s where I post my courses, and it’s just the beginning. You can explore, review, or even create your own courses there if you like.
+:::
 
 ## Getting to know each other {.nonincremental auto-animate=true}
 
@@ -143,6 +193,15 @@ __Most importantly, check out the full training portal on the [Insee datalab](ht
     - Any topics you are passionate about?
     - Any specific expectations?
 
+::: notes
+Let’s start with a quick round of introductions.
+I’d like to hear a bit about each of you — what you’re looking for in this course, any topics you’re passionate about, and any specific expectations.
+
+So, what I’d like to know is… <pause and let the list on the slide guide the discussion>
+
+We’ll go around the table quickly, and then we’ll get started with the content.
+:::
+
 ## Training roadmap
 
 - [**Day 1**]{.orange}: Setting the stage with hands-on R and fundamental data manipulation
@@ -150,6 +209,17 @@ __Most importantly, check out the full training portal on the [Insee datalab](ht
 - [**Day 3**]{.orange}: Descriptive and inferential statistics 🔎:game_die:
 - [**Day 4**]{.orange}: Data visualisation (ggplot2) :bar_chart:
 - [**Day 5**]{.orange}: Reporting with Quarto and final project :crown:
+
+::: notes
+Here’s the roadmap for the week:
+Day 1: we’ll set the stage with hands-on R and fundamental data manipulation, getting comfortable with the basics of working with data.
+Day 2: we’ll focus on data cleaning and transformation 🧹✨, which is essential before any analysis.
+Day 3: we’ll dive into descriptive and inferential statistics 🔎🎲, so you can summarize data and make informed conclusions.
+Day 4: we’ll cover data visualization with ggplot2 📊, to communicate insights effectively.
+Day 5: we’ll wrap up with reporting using Quarto and a final project 👑, giving you the chance to apply what you’ve learned and work more independently.
+
+We might occasionally run a bit over if we fall behind, but the idea is to follow this week-long marathon and gain as much hands-on experience as possible.
+:::
 
 ## Why are we doing this? {.nonincremental auto-animate=true}
 
@@ -172,10 +242,10 @@ __Most importantly, check out the full training portal on the [Insee datalab](ht
 ## 2. Strategic Stakes {.nonincremental auto-animate=true}
 
 - **Public fund stewardship & financial independence**:
-    - **Optimizing national budget**: Redirecting taxpayer money from recurring proprietary licenses toward internal expertise and innovation.
-    - **Cost-efficiency**: Scaling tools without proportional increases in software costs.
+    - **Optimizing national budget**: Redirecting taxpayer money from recurring proprietary licenses toward internal expertise and innovation. :money_with_wings:
+    - **Cost-efficiency**: Scaling tools without proportional increases in software costs. :chart_with_upwards_trend:
 - **Institutional Sovereignty**:
-    - **Full ownership**: Controlling our own statistical production chain without being tied to a vendor's "black-box" roadmap.
+    - **Full ownership**: Controlling our own statistical production chain without being tied to a vendor's "black-box" roadmap. :thinking:
 
 ## 2. Strategic Stakes {.nonincremental auto-animate=true}
 
@@ -233,6 +303,20 @@ __[We will be using `SSPCloud` 😍🐉☁️🇫🇷!]{.orange}__
     + Exponential growth in the volume of data generated.
 - The use of statistics for governance is not new (cf. [Desrosières](https://www.cairn.info/la-politique-des-grands-nombres--9782707165046.htm) or [Ian Hacking](https://en.wikipedia.org/wiki/The_Taming_of_Chance))...
 - ... but numbers now hold a central place in public debate and policy-making ([Supiot](https://www.fayard.fr/sciences-humaines/la-gouvernance-par-les-nombres-9782213681092), [Davies](https://www.theguardian.com/books/2018/sep/19/nervous-states-william-davies-review)).
+
+::: notes
+We are witnessing an intensification in the production of data.
+The digitalization of social, economic, and administrative activities has drastically reduced the cost of:
+data collection, storage, processing, dissemination
+This has resulted in exponential growth in the volume of available data.
+This is not simply “more data” — it represents a change in scale.
+
+The relationship between statistics and governance is not new.
+Since the eighteenth century, modern states have relied on: censuses, demographic statistics, fiscal records, economic indicators
+As sociologists like Alain Desrosières has shown, statistics are social and institutional constructions rather than neutral reflections of reality.
+Similarly, Ian Hacking explains how probability reshaped modern ways of thinking about uncertainty, risk, and society.
+Quantification has therefore been historically tied to the formation of the modern state.
+:::
 
 ## Data diversification (1/4)
 

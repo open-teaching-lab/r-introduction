@@ -47,11 +47,12 @@ format:
   html:
     theme: cosmo
     css: styles.css
+    from: markdown+emoji
     toc: true
     code-annotations: hover
     code-link: true
 
-author: Clara Baudry, Nathan Randriamanana
+author: Adapted by Clara Baudry, Nathan Randriamanana
 
 
 
