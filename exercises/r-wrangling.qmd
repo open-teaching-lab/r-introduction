@@ -951,4 +951,4 @@ ggplot(correlations) + geom_bar(aes(x = value, y = name), stat = "identity") +
 
 # Corrections
 
-You can find all corrections [here](https://github.com/open-teaching-lab/r-introduction/tree/main/exercises/corrections)
+You can find all corrections [here](https://github.com/open-teaching-lab/r-introduction/tree/main/exercises/corrections).
