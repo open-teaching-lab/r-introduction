@@ -40,6 +40,9 @@ random_sample <- sample_n(emissions,10)
 emissions_copy <- emissions %>%
   select(`INSEE commune`, `Commune`, `Autres transports`, `Autres transports international`)
 
+# I create a new dataframe called "emissions_copy" based on the "emissions" dataframe.
+# In this new dataframe I only select 4 columns out of the 12
+
 # Question 2
 emissions_copy <- emissions_copy %>%
   rename(
@@ -48,12 +51,20 @@ emissions_copy <- emissions_copy %>%
     transports_international = `Autres transports international`
   )
 
+# I replace the emissions_copy by another dataframe also called emissions_copy
+# where I rename 3 of the variables that had badly formated names 
+# (in fact we don't want blank spaces in the names of the columns)
+
 # Question 3
 emissions_copy <- emissions_copy %>%
   mutate(
-    transports = replace_na(transports),
-    transports_international = replace_na(transports_international)
+    transports = replace_na(transports,0),
+    transports_international = replace_na(transports_international,0)
   )
+
+# I replace "emissions_copy" with an other "emissions_copy" dataframe where the 
+# variables "transports" and "transports_international" don't have any NA values,
+# instead we put 0
 
 # Question 4
 emissions_copy <- emissions_copy %>%
