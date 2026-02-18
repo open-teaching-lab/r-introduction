@@ -120,6 +120,19 @@ filosofi %>%
   select('CODGEO', 'LIBGEO') %>%
   summarize(Unique_Count = n_distinct(LIBGEO))
 
+# to get the unique values of both geographic variables in the emissions dataset
+emissions %>% 
+  select(`INSEE commune`,Commune) %>%
+  summarize(unique_insee_commune = n_distinct(`INSEE commune`), 
+            unique_commune = n_distinct(Commune))
+
+# to get unique values using "pull()" function
+emissions %>% pull(`INSEE commune`) %>% n_distinct()
+# N.B. this works here because the pull() functions takes the vector not the whole
+# column (with the name). And n_distinct() is only applied to vectors.
+
+emissions %>% select(`INSEE commune`) %>% n_distinct() # this works as well!
+
 # Question 5
 duplicates <- filosofi %>%
   group_by(LIBGEO) %>%
