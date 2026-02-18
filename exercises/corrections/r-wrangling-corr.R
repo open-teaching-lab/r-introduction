@@ -3,9 +3,11 @@
 install.packages(c("readr","dplyr", "tidyr", "ggplot2", "remotes"))
 remotes::install_github('inseefrlab/DoReMIFaSol')
 
-library(dplyr)
-library(tidyr)
+library(dplyr) # for the functions mutate(), rename(), etc
+library(tidyr) # for the function replace_na()
 library(stringr)
+
+library(readr) # for the function read_csv
 
 # Exercise 1 -------------------------------------------------------------------
 url <- "https://koumoul.com/s/data-fair/api/v1/datasets/igt-pouvoir-de-rechauffement-global/convert"
@@ -38,7 +40,7 @@ random_sample <- sample_n(emissions,10)
 # Exercise 2 -------------------------------------------------------------------
 # Question 1
 emissions_copy <- emissions %>%
-  select(`INSEE commune`, `Commune`, `Autres transports`, `Autres transports international`)
+  select(`INSEE commune`, Commune, `Autres transports`, `Autres transports international`)
 
 # I create a new dataframe called "emissions_copy" based on the "emissions" dataframe.
 # In this new dataframe I only select 4 columns out of the 12
@@ -49,7 +51,7 @@ emissions_copy <- emissions_copy %>%
     code_insee = `INSEE commune`,
     transports = `Autres transports`,
     transports_international = `Autres transports international`
-  )
+    )
 
 # I replace the emissions_copy by another dataframe also called emissions_copy
 # where I rename 3 of the variables that had badly formated names 
@@ -65,6 +67,7 @@ emissions_copy <- emissions_copy %>%
 # I replace "emissions_copy" with an other "emissions_copy" dataframe where the 
 # variables "transports" and "transports_international" don't have any NA values,
 # instead we put 0
+# N.B replace_na() fucntion is from the tidyr package
 
 # Question 4
 emissions_copy <- emissions_copy %>%
@@ -73,12 +76,14 @@ emissions_copy <- emissions_copy %>%
     transports_total = transports + transports_international
   )
 
+# N.B. str_sub() function is from the stringr package
+
 # Question 5
 emissions_copy %>%
-  arrange(desc(transports_total))
+  arrange(desc(transports_total)) %>% View()
 
 emissions_copy %>%
-  arrange(dep, desc(transports_total))
+  arrange(dep, desc(transports_total)) %>% View()
 
 # Question 6
 emissions_copy %>%
