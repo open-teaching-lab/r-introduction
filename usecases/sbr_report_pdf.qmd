@@ -4,26 +4,23 @@ subtitle: "Activity economic census"
 echo: true
 number-sections: true
 execute:
-  warning: false     # Deletes warning globally
-  message: false
-format: 
-# To get prettier table on html
-  html:
+  warning: false     # Supprime les warnings globalement
+  message: false 
+# add template
+format:
+  pdf: 
+    pdf-engine: pdflatex
     df-print: paged # Options : paged, kable, tibble, or dt
+    number-sections: true
 ---
 
-# Preliminary steps
-
 ```{r}
-#| output: false
-#| code-fold: true
-#| code-summary: "URL link"
+#| include: false
 url <- "https://minio.lab.sspcloud.fr/nrandriamanana/BoS/SBR_census.csv"
 ```
 
 ```{r}
-#| code-fold: true
-#| code-summary: "Import packages"
+#| include: false
 library(readr)
 library(dplyr)
 library(tidyr)
@@ -31,22 +28,11 @@ library(ggplot2)
 ```
 
 ```{r}
-#| output: hide
-#| code-fold: true
-#| code-summary: "Import csv data"
-#| message: false
-#| warning: false
+#| include: false
 
 # 1. Import data
 
 sbr_data <- read_csv(url)
-```
-
-```{r}
-#| message: false
-#| warning: false
-#| echo: false
-head(sbr_data)
 ```
 
 ```{r}
@@ -110,7 +96,7 @@ dist_est_settlement <- sbr_data %>%
 
 ![](images/logo_bsr_report1.png){fig-align="center"}
 
-# Foreword
+# Foreground
 
 # Introduction
 
@@ -124,12 +110,12 @@ The census collected key business data, including economic activity classificati
 
 The specific objectives of the EAC were as follows:
 
-- To update and maintain a reliable register of business establishments across the country
-- To quantify and classify establishments by number, size, and industrial sector
-- To provide detailed employment data disaggregated by sex
-- To document business ownership, legal structure, and type of establishment
-- To geographically map the distribution of businesses across districts, constituencies, community councils, and villages
-- To collect data on turnover and other key financial indicators to assess business performance
+-   To update and maintain a reliable register of business establishments across the country
+-   To quantify and classify establishments by number, size, and industrial sector
+-   To provide detailed employment data disaggregated by sex
+-   To document business ownership, legal structure, and type of establishment
+-   To geographically map the distribution of businesses across districts, constituencies, community councils, and villages
+-   To collect data on turnover and other key financial indicators to assess business performance
 
 # Methodology
 
@@ -197,7 +183,6 @@ ggplot(dist_est_settlement, aes(x = "", y = n_establishments, fill = residence_t
   )
 
 ```
-
 
 The peri-urban constitute the least of them all with 9.5% of establishments.
 

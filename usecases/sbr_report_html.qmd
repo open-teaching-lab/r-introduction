@@ -4,26 +4,28 @@ subtitle: "Activity economic census"
 echo: true
 number-sections: true
 execute:
-  warning: false     # Deletes warning globally
+  warning: false     # Supprime les warnings globalement
   message: false
 format: 
 # To get prettier table on html
   html:
     df-print: paged # Options : paged, kable, tibble, or dt
+# To add template
+  clean-revealjs: default
+author:
+  - name: Your Name
+    email: alias@email.com
+    affiliations: Bureau of Statistics, Lesotho
+date: last-modified
 ---
 
-# Preliminary steps
-
 ```{r}
-#| output: false
-#| code-fold: true
-#| code-summary: "URL link"
+#| include: false
 url <- "https://minio.lab.sspcloud.fr/nrandriamanana/BoS/SBR_census.csv"
 ```
 
 ```{r}
-#| code-fold: true
-#| code-summary: "Import packages"
+#| include: false
 library(readr)
 library(dplyr)
 library(tidyr)
@@ -31,23 +33,13 @@ library(ggplot2)
 ```
 
 ```{r}
-#| output: hide
-#| code-fold: true
-#| code-summary: "Import csv data"
-#| message: false
-#| warning: false
+#| include: false
 
 # 1. Import data
 
 sbr_data <- read_csv(url)
 ```
 
-```{r}
-#| message: false
-#| warning: false
-#| echo: false
-head(sbr_data)
-```
 
 ```{r}
 #| include: false
