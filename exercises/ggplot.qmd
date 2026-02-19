@@ -108,7 +108,8 @@ In this section, we will reproduce the first two charts from the [data analysis 
 The data contains several dimensions suitable for statistical analysis. Therefore, it is necessary first to summarize them with aggregations to create a readable plot.
 
 1. Import the bike counter data from the `bike.gz` file;
-2. Keep the ten counters with the highest average;
+
+First, we translate the column names.
 
 ```{r}
 #| output: false
@@ -123,7 +124,12 @@ df <- readr::read_csv("bike.gz") %>%
     `counting_site_installation_date` = `Date d'installation du site de comptage`)
 ```
 
+2. Keep the ten counters with the highest average;
 
+<details>
+<summary>
+Answer
+</summary>
 ```{r}
 df1 <- df %>%
   group_by(`Counter name`) %>%
@@ -131,6 +137,7 @@ df1 <- df %>%
   arrange(desc(`Hourly count`)) %>%
   head(10)
 ```
+</details>
 
 <details>
 <summary>
@@ -181,7 +188,7 @@ figure1
 
 <details>
 <summary>
-Figurewith red bars
+Figure with red bars
 </summary>
 
 ```{r}
