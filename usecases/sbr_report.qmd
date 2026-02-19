@@ -111,7 +111,6 @@ dist_est_district_2023 <- sbr_data %>%
   arrange(desc(n_establishments))
 ```
 
-
 # Introduction
 
 ## Background
@@ -123,8 +122,6 @@ The census collected key business data, including economic activity classificati
 # Methodology
 
 # Establishments characteristics
-
-
 
 # List of tables
 
@@ -155,21 +152,14 @@ dist_est_district
 
 ## **Distribution of establishments by Employment size-2023**
 
-
 ## **Distribution of licenced and non-licensed establishments by district-2023**
-
 
 ## **Distribution of licensed establishments by settlement-2023**
 
-
 ## **Establishment CEOs/Owner and Employees by Sex-2023**
 
-
 ## **Distribution of establishment by Economic Activity-2023**
-
-
 
 ## **Distribution of establishments by sector and wage groups-2023**
 
 ## **Distribution of establishments by Internet Access-2023**
-
