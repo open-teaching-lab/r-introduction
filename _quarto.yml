@@ -12,6 +12,7 @@ project:
     - utils/report.qmd
     - "/cards/**/*.qmd"
     - "/exercises/**/*.qmd"
+    - "/usecases/**/*.qmd"
   resources:
     - "CNAME"
 
