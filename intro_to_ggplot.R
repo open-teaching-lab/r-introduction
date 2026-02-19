@@ -85,10 +85,62 @@ ggplot(mtcars, aes(x = hp, y = mpg, color = factor(cyl))) +
   ) +
   theme_dark()
 
+############################ Scale Functions ###################################
+# Every time you map a variable to an aesthetic (x, y, color, size, etc.), 
+# ggplot2 automatically creates a default scale for it. 
+# Scale functions let you override that default to control how the mapping looks.
+ggplot(mtcars, aes(x = factor(cyl), y = mpg)) +
+  geom_boxplot() +
+  scale_x_discrete(labels = c("4" = "4 cylinders",
+                              "6" = "6 cylinders",
+                              "8" = "8 cylinders"))
+
+# Setting axis limits and breaks
+ggplot(mtcars, aes(x = hp, y = mpg)) +
+  geom_point()
+
+ggplot(mtcars, aes(x = hp, y = mpg)) +
+  geom_point() +
+  scale_x_continuous(limits = c(0, 400),
+                     breaks = c(0, 100, 200, 300, 400))
+# Transforming an axis (n.b. log scale — useful for skewed data)
+ggplot(mtcars, aes(x = hp, y = mpg)) +
+  geom_point() +
+  scale_y_continuous(trans = "log")
+
+# Manual colors — you choose the colors yourself
+ggplot(mtcars, aes(x = hp, y = mpg, color = factor(cyl))) +
+  geom_point() +
+  scale_color_manual(values = c("4" = "steelblue",
+                                "6" = "orange",
+                                "8" = "tomato"))
+
+# Brewer palettes — curated, colorblind-friendly palettes for discrete variables
+ggplot(mtcars, aes(x = hp, y = mpg, color = factor(cyl))) +
+  geom_point() +
+  scale_color_brewer(palette = "Set1")
+
+# Viridis — the go-to palette for continuous variables, also colorblind-friendly
+ggplot(mtcars, aes(x = hp, y = mpg, color = wt)) +
+  geom_point() +
+  scale_color_viridis_c()   # _c for continuous
+                            # _d for discrete
+
+# Controlling the legend with scales
+# Scale functions also let you rename the legend title, 
+# which is often cleaner than using labs() for color/fill
+ggplot(mtcars, aes(x = hp, y = mpg, color = factor(cyl))) +
+  geom_point() +
+  scale_color_manual(
+    name = "Cylinders",
+    values = c("4" = "steelblue", "6" = "orange", "8" = "tomato")
+  )
+
+
 ################################# Wrap-up ######################################
-ggplot(data, aes(...))   ← data + mapping
-+ geom_*()             ← how to draw it
-+ facet_*()            ← split into panels
-+ labs()               ← titles & labels
-+ theme_*()            ← overall appearance
+# ggplot(data, aes(...))   ← data + mapping
+# + geom_*()             ← how to draw it
+# + facet_*()            ← split into panels
+# + labs()               ← titles & labels
+# + theme_*()            ← overall appearance
 
