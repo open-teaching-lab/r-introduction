@@ -656,3 +656,7 @@ ggplot(region_weighted, aes(x = reorder(region, weighted_mean), y = weighted_mea
 ```
 
 :::
+
+# Corrections
+
+You can find all corrections [here](https://github.com/open-teaching-lab/r-introduction/tree/main/exercises/corrections).

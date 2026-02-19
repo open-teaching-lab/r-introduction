@@ -12,6 +12,7 @@ project:
     - utils/report.qmd
     - "/cards/**/*.qmd"
     - "/exercises/**/*.qmd"
+    - "/usecases/**/*.qmd"
   resources:
     - "CNAME"
 
@@ -37,6 +38,7 @@ website:
       - text: "Evaluation"
         menu:
           - exercises/eval.qmd
+          - usecases/sbr_report.qmd
       - icon: github
         href: https://github.com/open-teaching-lab/r-introduction
     background: "#802a03"
