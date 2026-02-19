@@ -38,7 +38,7 @@ website:
         menu:
           - exercises/eval.qmd
       - icon: github
-        href: https://github.com/linogaliana/r-geographie
+        href: https://github.com/open-teaching-lab/r-introduction
     background: "#802a03"
   twitter-card:
     image: /cards/version-light/baby.png

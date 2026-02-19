@@ -14,6 +14,15 @@ Check out the _slides_ below or [click here](/slides/ggplot.qmd)
 to view the slides in full screen.
 </summary>
 
+<details>
+<summary>
+
+</summary>
+
+::: {.callout-tip}
+To get a brief but insightful introduction to ggplot, check out _code examples_ [here](https://github.com/open-teaching-lab/r-introduction/blob/main/intro_to_ggplot.R).
+:::
+
 
 ``` {.yaml code-preview="/slides/ggplot.qmd"}
 ```
@@ -765,3 +774,6 @@ fig
 3. (Optional, advanced) Produce a _lollipop chart_ with `Plotly`
 :::
 
+# Corrections
+
+You can find all corrections [here](https://github.com/open-teaching-lab/r-introduction/tree/main/exercises/corrections).
