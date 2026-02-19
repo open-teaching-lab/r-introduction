@@ -22,8 +22,7 @@ to view the slides in full screen.
 To get a brief but insightful introduction to ggplot, check out _code examples_ [here](https://github.com/open-teaching-lab/r-introduction/blob/main/intro_to_ggplot.R).
 
 
-In this practical session,
-We will learn how to create synthetic graphical representations with {{< fa brands r-project >}}, which is very well equipped for this task thanks to the `ggplot2` library. This library implements a [grammar of graphics](https://fr.wikibooks.org/wiki/Programmer_en_R/Comprendre_la_grammaire_des_graphiques) that is flexible, consistent, and easy to use.
+In this practical session, we will learn how to create synthetic graphical representations with {{< fa brands r-project >}}, which is very well equipped for this task thanks to the `ggplot2` library. This library implements a [grammar of graphics](https://fr.wikibooks.org/wiki/Programmer_en_R/Comprendre_la_grammaire_des_graphiques) that is flexible, consistent, and easy to use.
 
 
 ::: {.callout-note}
@@ -766,6 +765,6 @@ fig
 3. (Optional, advanced) Produce a _lollipop chart_ with `Plotly`
 :::
 
-# Corrections
+## Corrections
 
 You can find all corrections [here](https://github.com/open-teaching-lab/r-introduction/tree/main/exercises/corrections).
