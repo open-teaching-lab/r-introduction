@@ -422,19 +422,28 @@ to allow aggregation at a larger time interval.
 ## Exercise 4: monthly count barplot
 
 1. Use the `format` function to create a `month` variable in the `YYYY-MM` format ;
-2. Compute the mean hourly counts for each month
-
+<details>
+<summary>
+Solution
+</summary>
 ```{r}
 df <- df %>%
   mutate(month = format(`Counting date and time`, "%Y-%m"))
 ```
+</details>
 
+2. Compute the mean hourly counts for each month
+<details>
+<summary>
+Solution
+</summary>
 ```{r}
 # Question 2
 monthly_hourly_count <- df %>%
   group_by(month) %>%
   summarise(value = mean(`Hourly count`, na.rm = TRUE))
 ```
+</details>
 
 <details>
 <summary>
@@ -450,17 +459,22 @@ monthly_hourly_count
 Apply previous recommendations to gradually construct and improve a chart similar
 to the third figure on the Paris _Open Data_ page.
 
+<details>
+<summary>
+Solution
+</summary>
 ```{r}
 figure3 <- ggplot(monthly_hourly_count) +
   geom_bar(aes(x = month, y = value), fill = "#ffcd00", stat = "identity") +
   labs(x = "Date and time of count", y = "Average hourly count per month\nover the selected period",
        title = "Average monthly bicycle counts") +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        axis.title.y = element_text(color = "#ffcd00", face = "bold"),
-        plot.title = element_text(hjust = 0.5),
-        plot.margin = margin(1, 4, 1, 1, "cm"))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1), # rotates crowded X labels
+        axis.title.y = element_text(color = "#ffcd00", face = "bold"), # colors and bolds Y title
+        plot.title = element_text(hjust = 0.5), # centers the main title
+        plot.margin = margin(1, 4, 1, 1, "cm")) # adds extra space on the right side
 ```
+</details>
 
 <details>
 <summary>
