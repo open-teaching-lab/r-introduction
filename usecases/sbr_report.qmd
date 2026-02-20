@@ -9,7 +9,7 @@ execute:
 format: 
 # To get prettier table on html
   html:
-    df-print: paged # Options : paged, kable, tibble, or dt
+    df-print: kable # Options : paged, kable, tibble, or dt
 ---
 
 # Preliminary steps

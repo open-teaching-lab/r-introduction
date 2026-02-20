@@ -13,8 +13,8 @@ format:
 # To add template
   clean-revealjs: default
 author:
-  - name: Your Name
-    email: alias@email.com
+  - name: Mpho Kimane
+    email: mpho.kimane@gov.ls
     affiliations: Bureau of Statistics, Lesotho
 date: last-modified
 ---

@@ -7,11 +7,9 @@ execute:
   warning: false     # Supprime les warnings globalement
   message: false 
 # add template
-format:
-  pdf: 
-    pdf-engine: pdflatex
-    df-print: paged # Options : paged, kable, tibble, or dt
-    number-sections: true
+format: PrettyPDF-pdf
+date: "2026-02-20"
+author: "Mpho Kimane"
 ---
 
 ```{r}

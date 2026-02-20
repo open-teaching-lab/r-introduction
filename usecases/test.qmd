@@ -1,0 +1,19 @@
+---
+title: "My first quarto page"
+editor: visual
+execute:
+  warning: false     # Deletes warning globally
+  message: false
+---
+
+# Title 1
+
+## Subtitle 1
+
+### Subsubtitle1
+
+```{r}
+#| include: false
+library(dplyr)
+```
+
