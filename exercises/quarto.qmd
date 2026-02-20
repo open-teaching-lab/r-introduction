@@ -93,6 +93,10 @@ can be obtained using the following shortcut:
 <kbd>Shift</kbd> + <kbd>Option</kbd> + <kbd>L</kbd>
 :::
 
+# Resources
+
+Some examples [here](https://github.com/open-teaching-lab/r-introduction/tree/main/usecases)
+
 # Corrections
 
 You can find all corrections [here](https://github.com/open-teaching-lab/r-introduction/tree/main/exercises/corrections).
